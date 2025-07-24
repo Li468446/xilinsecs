@@ -1,7 +1,4 @@
-# EasyFrontend Generated Project
+# 海口希灵赛斯网络科技有限责任公司
 
-Website: [http://easyfrontend.com](http://easyfrontend.com/)
+边缘计算站点: [http://xinnew.top](http://xinnew.top/)
 
-
-## Usefull links
-Documentation: [http://help.easyfrontend.com](http://help.easyfrontend.com/)
