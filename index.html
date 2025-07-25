@@ -182,65 +182,334 @@
   </div>
 </section>
 
-<section class="ezy__blog1_LdsokiZvF">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-5 mb-4 mb-lg-0">
-        <div class="px-lg-5">
-          <h2 class="ezy__blog1_LdsokiZvF-heading mb-3">经典项目案例</h2>
-          <p class="ezy__blog1_LdsokiZvF-sub-heading mb-5">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --apple-bg: #f5f7fa;
+            --apple-card-bg: rgba(255, 255, 255, 0.7);
+            --apple-text: #333;
+            --apple-text-light: #6c757d;
+            --apple-accent: #0071e3;
+            --apple-accent-hover: #0077ed;
+            --apple-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--apple-text);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .section-title {
+            font-weight: 600;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            color: #1d1d1f;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--apple-accent);
+            border-radius: 2px;
+            margin-top: 12px;
+        }
+        
+        .custom-btn {
+            background: var(--apple-accent);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 12px 24px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 113, 227, 0.25);
+        }
+        
+        .custom-btn:hover {
+            background: var(--apple-accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 113, 227, 0.35);
+            color: white;
+        }
+        
+        .project-card {
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            height: 100%;
+            background: var(--apple-card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: var(--glass-border);
+            box-shadow: var(--apple-shadow);
+            position: relative;
+        }
+        
+        .project-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.25);
+            z-index: -1;
+            border-radius: 20px;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-img {
+            transform: scale(1.05);
+        }
+        
+        .card-date {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 12px 15px;
+            font-weight: 600;
+            text-align: center;
+            color: var(--apple-accent);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            line-height: 1.3;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .project-content {
+            padding: 25px;
+        }
+        
+        .project-author {
+            color: var(--apple-text-light);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+        
+        .project-title {
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: #1d1d1f;
+            line-height: 1.3;
+        }
+        
+        .project-description {
+            color: var(--apple-text-light);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+        
+        .btn-more {
+            background: rgba(0, 113, 227, 0.1);
+            color: var(--apple-accent);
+            border: none;
+            border-radius: 10px;
+            padding: 8px 18px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-more:hover {
+            background: var(--apple-accent);
+            color: white;
+        }
+        
+        .cta-box {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(245, 247, 250, 0.8) 100%);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 30px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            border: var(--glass-border);
+            box-shadow: var(--apple-shadow);
+        }
+        
+        .cta-title {
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #1d1d1f;
+        }
+        
+        .cta-description {
+            color: var(--apple-text-light);
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+        
+        .feature-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .feature-list li i {
+            color: var(--apple-accent);
+            margin-right: 10px;
+            margin-top: 5px;
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 991px) {
+            .cta-box {
+                margin-bottom: 30px;
+            }
             
-          </p>
-          <a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" class="btn btn-primary ezy__blog1_LdsokiZvF-btn">定制专属方案</a>
+            .project-card {
+                margin-bottom: 25px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: var(--apple-text-light);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-10 text-center">
+                <h1 class="section-title">项目案例展示</h1>
+                <p class="lead mb-4" style="color: #6c757d; max-width: 700px; margin: 0 auto;">
+                    精选项目展示，体验前沿技术与创新设计的完美融合
+                </p>
+            </div>
         </div>
-      </div>
-      <div class="col-lg-7 mt-4 mt-md-0">
+        
         <div class="row">
-          <div class="col-12 col-md-6 mb-3">
-            <article class="ezy__blog1_LdsokiZvF-post h-100">
-              <div class="position-relative">
-                <img
-                  src="https://cdn.easyfrontend.com/pictures/blog/blog_13_2.jpg"
-                  alt=""
-                  class="img-fluid w-100"
-                />
-                <div class="position-absolute top-0 start-0 px-4 py-3 fw-bold ezy__blog1_LdsokiZvF-calendar">
-                  17<br />JAN<br />2025
+            <div class="col-lg-5 mb-4 mb-lg-0">
+                <div class="cta-box">
+                    <h2 class="cta-title">定制专属方案</h2>
+                    <p class="cta-description">
+                        我们为每个客户提供量身定制的解决方案，满足您的独特需求，助力业务发展。
+                    </p>
+                    
+                    <ul class="feature-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>专业定制</strong> - 根据需求打造专属解决方案
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>高效交付</strong> - 严格遵循项目时间表
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>持续支持</strong> - 项目交付后提供完善的技术支持
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" class="btn custom-btn">
+                        <i class="fas fa-pen-fancy me-2"></i>定制专属方案
+                    </a>
                 </div>
-              </div>
-              <div class="p-3 p-md-4">
-                <p class="ezy__blog1_LdsokiZvF-author">By <a href="" class="text-decoration-none">徐中信</a></p>
-                <h4 class="mt-3 ezy__blog1_LdsokiZvF-title fs-4 mb-3">HTC iHAIKOU 网站建设</h4>
-                <p class="ezy__blog1_LdsokiZvF-description mb-4">
-                 海口旅游职业学院职教周内容分发系统（国际站及国内站）建设
-                </p>
-                <a href="https://ms.xinnew.top/" class="btn ezy__blog1_LdsokiZvF-btn-read-more">More</a>
-              </div>
-            </article>
-          </div>
-          <div class="col-12 col-md-6 mb-3">
-            <article class="ezy__blog1_LdsokiZvF-post h-100">
-              <div class="w-100 position-relative mx-auto">
-                <img src="https://cdn.easyfrontend.com/pictures/blog/blog_3.jpg" alt="" class="img-fluid w-100" />
-                <div class="position-absolute top-0 start-0 px-4 py-3 fw-bold ezy__blog1_LdsokiZvF-calendar">
-                  26<br />Mar<br />2025
+            </div>
+            
+            <div class="col-lg-7">
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="project-card">
+                            <div class="position-relative">
+                                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+                                     alt="HTC iHAIKOU 网站建设" class="project-img">
+                                <div class="card-date">
+                                    17<br>JAN<br>2025
+                                </div>
+                            </div>
+                            <div class="project-content">
+                                <p class="project-author">By <a href="#" class="text-decoration-none">徐中信</a></p>
+                                <h3 class="project-title">HTC iHAIKOU 网站建设</h3>
+                                <p class="project-description">
+                                    海口旅游职业学院职教周内容分发系统（国际站及国内站）建设
+                                </p>
+                                <a href="https://ms.xinnew.top/" class="btn btn-more">
+                                    <i class="fas fa-arrow-right me-1"></i>查看详情
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 mb-4">
+                        <div class="project-card">
+                            <div class="position-relative">
+                                <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+                                     alt="VMware 私有云故障修复" class="project-img">
+                                <div class="card-date">
+                                    26<br>MAR<br>2025
+                                </div>
+                            </div>
+                            <div class="project-content">
+                                <p class="project-author">By <a href="#" class="text-decoration-none">徐中信</a></p>
+                                <h3 class="project-title">VMware 私有云故障修复</h3>
+                                <p class="project-description">
+                                    海南好思达网络科技有限公司分管运维现场处理VMware私有云故障
+                                </p>
+                                <a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" class="btn btn-more">
+                                    <i class="fas fa-arrow-right me-1"></i>查看详情
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="p-3 p-md-4">
-                <p class="ezy__blog1_LdsokiZvF-author">By <a href="" class="text-decoration-none">徐中信</a></p>
-                <h4 class="mt-3 ezy__blog1_LdsokiZvF-title fs-4 mb-3">VMware 私有云故障修复</h4>
-                <p class="ezy__blog1_LdsokiZvF-description mb-4">
-                  海南好思达网络科技有限公司分管运维现场处理VMware私有云故障
-                </p>
-                <a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" class="btn ezy__blog1_LdsokiZvF-btn-read-more">More</a>
-              </div>
-            </article>
-          </div>
+            </div>
         </div>
-      </div>
+        
+        <div class="footer">
+            <p>© 2025 项目案例展示 | 苹果风格优化设计</p>
+        </div>
     </div>
-  </div>
-</section>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <section class="ezy__careers6_zvZzU4GV">
   <div class="container">
