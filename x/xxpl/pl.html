@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>信息披露页面</title>
+    <style>
+        body {
+            background-color: #e6f7ff;
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #e6f7ff 0%, #b3e0ff 100%);
+        }
+        
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 102, 204, 0.2);
+            padding: 40px;
+            text-align: center;
+            max-width: 600px;
+            width: 80%;
+            border: 1px solid #80c1ff;
+        }
+        
+        h1 {
+            color: #0066cc;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .status {
+            font-size: 1.8em;
+            color: #0066cc;
+            margin: 30px 0;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: rgba(179, 224, 255, 0.3);
+        }
+        
+        .date-info {
+            font-size: 1.2em;
+            color: #333;
+            margin: 20px 0;
+        }
+        
+        .glacier-blue {
+            color: #0099ff;
+            font-weight: bold;
+        }
+        
+        .tech-element {
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #0066cc, #00ccff);
+            margin: 30px auto;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>信息披露页面</h1>
+        <div class="tech-element"></div>
+        <div class="status">开发中...</div>
+        <div class="date-info">
+            预计上线时间：<span class="glacier-blue" id="launch-date"></span>
+        </div>
+        <div class="tech-element"></div>
+    </div>
+
+    <script>
+        // 计算28天后的日期
+        const today = new Date();
+        const launchDate = new Date();
+        launchDate.setDate(today.getDate() + 28);
+        
+        // 格式化日期显示
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('launch-date').textContent = launchDate.toLocaleDateString('zh-CN', options);
+    </script>
+</body>
+</html>
