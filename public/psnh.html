@@ -18,15 +18,27 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #8EC5FC, #E0C3FC);
             padding: 20px;
             overflow-x: hidden;
+            position: relative;
+        }
+        
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
         }
         
         .container {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
         
         header {
@@ -59,12 +71,15 @@
         }
         
         .nav-card {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-radius: 20px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 
+                0 8px 32px rgba(31, 38, 135, 0.15),
+                inset 0 4px 12px rgba(255, 255, 255, 0.4),
+                inset 0 -4px 8px rgba(0, 0, 0, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.18);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
@@ -73,12 +88,29 @@
             animation: fadeInUp 0.6s forwards;
             display: flex;
             flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+            z-index: -1;
+            transform: rotate(30deg);
         }
         
         .nav-card:hover {
             transform: translateY(-10px) scale(1.03);
-            background: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow: 
+                0 15px 35px rgba(31, 38, 135, 0.25),
+                inset 0 6px 16px rgba(255, 255, 255, 0.5),
+                inset 0 -6px 10px rgba(0, 0, 0, 0.08);
         }
         
         .card-icon {
@@ -91,8 +123,11 @@
             align-items: center;
             margin-bottom: 25px;
             font-size: 30px;
-            color: white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            color: rgba(255, 255, 255, 0.9);
+            box-shadow: 
+                0 4px 10px rgba(0,0,0,0.08),
+                inset 0 2px 6px rgba(255, 255, 255, 0.2),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.05);
         }
         
         .card-title {
@@ -100,6 +135,7 @@
             font-weight: 600;
             color: white;
             margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
         .card-desc {
@@ -119,6 +155,7 @@
             padding: 10px 0;
             opacity: 0.9;
             transition: opacity 0.3s;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
         }
         
         .card-link:hover {
@@ -142,6 +179,7 @@
             padding: 20px;
             animation: fadeIn 1.2s 1s forwards;
             opacity: 0;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
         }
         
         /* Animations */
@@ -204,6 +242,8 @@
     </style>
 </head>
 <body>
+    <div id="particles-js"></div>
+    
     <div class="container">
         <header>
             <h1>公共服务导航</h1>
@@ -219,7 +259,98 @@
         </footer>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
+        // 初始化粒子效果
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: "#8EC5FC"
+                },
+                shape: {
+                    type: "circle",
+                    stroke: {
+                        width: 0,
+                        color: "#000000"
+                    }
+                },
+                opacity: {
+                    value: 0.5,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 2,
+                        size_min: 0.1,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#8EC5FC",
+                    opacity: 0.3,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 1,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false,
+                    attract: {
+                        enable: true,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: "grab"
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: "push"
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 140,
+                        line_linked: {
+                            opacity: 0.6
+                        }
+                    },
+                    push: {
+                        particles_nb: 4
+                    }
+                }
+            },
+            retina_detect: true
+        });
+        
         // 公共服务数据
         const services = [
             {
@@ -230,7 +361,7 @@
             },
             {
                 icon: 'fas fa-passport',
-                title: '出入境服务',
+                title: '跨境互联服务',
                 description: '护照办理、港澳通行证、签证申请、出入境记录查询等服务',
                 link: '#'
             },
