@@ -18,7 +18,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #8EC5FC, #E0C3FC);
+            background: linear-gradient(135deg, #89CFF0, #A3C1F7, #B0E0E6);
             padding: 20px;
             overflow-x: hidden;
             position: relative;
@@ -265,14 +265,14 @@
         particlesJS('particles-js', {
             particles: {
                 number: {
-                    value: 80,
+                    value: 150,
                     density: {
                         enable: true,
                         value_area: 800
                     }
                 },
                 color: {
-                    value: "#8EC5FC"
+                    value: "#87CEEB"
                 },
                 shape: {
                     type: "circle",
@@ -282,35 +282,35 @@
                     }
                 },
                 opacity: {
-                    value: 0.5,
+                    value: 0.6,
                     random: true,
                     anim: {
                         enable: true,
-                        speed: 1,
+                        speed: 2,
                         opacity_min: 0.1,
                         sync: false
                     }
                 },
                 size: {
-                    value: 3,
+                    value: 4,
                     random: true,
                     anim: {
                         enable: true,
-                        speed: 2,
+                        speed: 3,
                         size_min: 0.1,
                         sync: false
                     }
                 },
                 line_linked: {
                     enable: true,
-                    distance: 150,
-                    color: "#8EC5FC",
-                    opacity: 0.3,
-                    width: 1
+                    distance: 120,
+                    color: "#87CEEB",
+                    opacity: 0.4,
+                    width: 1.2
                 },
                 move: {
                     enable: true,
-                    speed: 1,
+                    speed: 2,
                     direction: "none",
                     random: true,
                     straight: false,
@@ -340,17 +340,16 @@
                     grab: {
                         distance: 140,
                         line_linked: {
-                            opacity: 0.6
+                            opacity: 0.8
                         }
                     },
                     push: {
-                        particles_nb: 4
+                        particles_nb: 6
                     }
                 }
             },
             retina_detect: true
         });
-        
         // 公共服务数据
         const services = [
             {
@@ -361,21 +360,21 @@
             },
             {
                 icon: 'fas fa-passport',
-                title: '跨境互联服务',
-                description: '护照办理、港澳通行证、签证申请、出入境记录查询等服务',
-                link: '#'
+                title: 'Genimi API网关',
+                description: '谷歌顶级AI的API镜像网关，仅需使用自己申请的API就可以在大陆直接使用谷歌AI服务',
+                link: 'gemini/gemini.html'
             },
             {
                 icon: 'fas fa-id-card',
-                title: '社保公积金',
-                description: '社保缴纳查询、公积金提取、医保报销、养老待遇等民生服务',
-                link: '#'
+                title: 'DNS加密及解析查询',
+                description: 'DOH加密及域名解析查询',
+                link: 'https://xl-d0h-server.xinnew.top/'
             },
             {
                 icon: 'fas fa-graduation-cap',
-                title: '教育服务',
-                description: '入学报名、学历认证、助学贷款、职业资格等教育相关服务',
-                link: '#'
+                title: '最新新闻合集',
+                description: '汇聚国内国际大部分媒体的实时热点信息，助力用户打破信息闭塞',
+                link: 'https://new-xl.xinnew.top/c/realtime'
             },
             {
                 icon: 'fas fa-home',
@@ -389,18 +388,6 @@
                 description: '驾驶证换领、车辆年检、违章查询、公共交通出行规划等服务',
                 link: '#'
             },
-            {
-                icon: 'fas fa-heartbeat',
-                title: '医疗服务',
-                description: '预约挂号、医保结算、疫苗接种、电子健康档案等医疗服务',
-                link: '#'
-            },
-            {
-                icon: 'fas fa-landmark',
-                title: '司法服务',
-                description: '法律咨询、公证服务、法律援助、诉讼指南等司法相关服务',
-                link: '#'
-            }
         ];
         
         // 生成导航卡片
