@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在XSEC生活 - XSEC</title>
+    <link rel="icon" href="../../favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --apple-bg: #f5f7fa;
+            --apple-card-bg: rgba(255, 255, 255, 0.85);
+            --apple-text: #333;
+            --apple-accent: #0071e3;
+            --apple-accent-hover: #005bb5;
+            --apple-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.5);
+            --transition-smooth: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: var(--apple-text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        /* 背景装饰元素 */
+        .bg-decor {
+            position: fixed;
+            z-index: -1;
+            opacity: 0.05;
+            pointer-events: none;
+            filter: blur(40px);
+            animation: float 8s infinite ease-in-out;
+        }
+
+        .bg-decor-1 {
+            top: 20%;
+            left: 5%;
+            width: 250px;
+            height: 150px;
+            background: var(--apple-accent);
+            animation-delay: 0s;
+        }
+
+        .bg-decor-2 {
+            bottom: 20%;
+            right: 10%;
+            width: 300px;
+            height: 200px;
+            background: #ff2d55;
+            animation-delay: 2s;
+        }
+
+        .bg-decor-3 {
+            top: 40%;
+            right: 15%;
+            width: 150px;
+            height: 100px;
+            background: #34c759;
+            animation-delay: 4s;
+        }
+
+        .bg-decor-4 {
+            top: 70%;
+            left: 15%;
+            width: 100px;
+            height: 100px;
+            background: #ff9500;
+            animation: float 10s infinite ease-in-out, pulse 6s infinite alternate;
+            animation-delay: 1s;
+        }
+
+        .bg-decor-5 {
+            top: 10%;
+            right: 25%;
+            width: 180px;
+            height: 180px;
+            background: #5856d6;
+            animation: float 12s infinite ease-in-out, rotate 20s infinite linear;
+            animation-delay: 3s;
+        }
+
+        .bg-decor-6 {
+            bottom: 30%;
+            left: 20%;
+            width: 120px;
+            height: 120px;
+            background: #ffcc00;
+            animation: float 9s infinite ease-in-out;
+            animation-delay: 0s;
+        }
+
+        .bg-decor-7 {
+            top: 25%;
+            right: 20%;
+            width: 200px;
+            height: 200px;
+            background: #5ac8fa;
+            animation: float 11s infinite ease-in-out, pulse 7s infinite alternate;
+            animation-delay: 1.5s;
+        }
+
+        .bg-decor-8 {
+            bottom: 15%;
+            left: 30%;
+            width: 150px;
+            height: 150px;
+            background: #ff2d55;
+            animation: float 13s infinite ease-in-out;
+            animation-delay: 2.5s;
+        }
+
+        .bg-decor-9 {
+            top: 60%;
+            right: 30%;
+            width: 100px;
+            height: 100px;
+            background: #4cd964;
+            animation: float 10s infinite ease-in-out, rotate 15s infinite linear;
+            animation-delay: 3.5s;
+        }
+
+        .bg-decor-10 {
+            top: 15%;
+            left: 25%;
+            width: 180px;
+            height: 180px;
+            background: #ff9500;
+            animation: float 14s infinite ease-in-out, pulse 8s infinite alternate;
+            animation-delay: 4.5s;
+        }
+
+        .bg-triangle-1 {
+            top: 40%;
+            left: 10%;
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 100px solid #ff2d55;
+            animation: float 12s infinite ease-in-out;
+            animation-delay: 1s;
+        }
+
+        .bg-triangle-2 {
+            bottom: 25%;
+            right: 5%;
+            width: 0;
+            height: 0;
+            border-left: 75px solid transparent;
+            border-right: 75px solid transparent;
+            border-bottom: 125px solid #5856d6;
+            animation: float 10s infinite ease-in-out;
+            animation-delay: 3s;
+        }
+
+        .bg-square-1 {
+            top: 5%;
+            right: 10%;
+            width: 120px;
+            height: 120px;
+            background: #34c759;
+            animation: float 11s infinite ease-in-out, rotate 20s infinite linear;
+            animation-delay: 2s;
+        }
+
+        .bg-square-2 {
+            bottom: 5%;
+            left: 15%;
+            width: 100px;
+            height: 100px;
+            background: #ffcc00;
+            animation: float 9s infinite ease-in-out;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            25% {
+                transform: translate(20px, 20px);
+            }
+            50% {
+                transform: translate(0, 40px);
+            }
+            75% {
+                transform: translate(-20px, 20px);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.05;
+            }
+            100% {
+                transform: scale(1.2);
+                opacity: 0.15;
+            }
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* 导航栏样式 */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.85);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: var(--transition-smooth);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #1d1d1f;
+            letter-spacing: -0.5px;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: #444;
+            padding: 8px 16px;
+            margin: 0 4px;
+            border-radius: 12px;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .nav-link:hover {
+            background: rgba(0, 113, 227, 0.08);
+            color: var(--apple-accent);
+        }
+
+        .nav-link.active {
+            color: var(--apple-accent);
+            font-weight: 600;
+        }
+
+        /* 主要内容区域 */
+        .hero-section {
+            padding: 80px 0 40px;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #0071e3, #005bb5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: #555;
+        }
+
+        .quote-section {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 60px auto;
+            max-width: 900px;
+            box-shadow: var(--apple-shadow);
+            border: var(--glass-border);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quote-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 40%, rgba(0, 113, 227, 0.05) 50%, transparent 60%);
+            background-size: 200% 200%;
+            animation: shine 5s infinite;
+            z-index: -1;
+        }
+
+        .quote {
+            font-size: 1.4rem;
+            font-style: italic;
+            color: #333;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .quote:before, .quote:after {
+            content: '"';
+            font-size: 3rem;
+            color: rgba(0, 113, 227, 0.2);
+            position: absolute;
+        }
+
+        .quote:before {
+            top: -20px;
+            left: -20px;
+        }
+
+        .quote:after {
+            bottom: -40px;
+            right: -20px;
+        }
+
+        .quote-author {
+            text-align: right;
+            font-weight: 600;
+            color: var(--apple-accent);
+            margin-top: 20px;
+        }
+
+        /* 版块样式 */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 60px;
+            color: #1d1d1f;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--apple-accent);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: var(--apple-shadow);
+            border: var(--glass-border);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: var(--transition-smooth);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 40%, rgba(0, 113, 227, 0.05) 50%, transparent 60%);
+            background-size: 200% 200%;
+            animation: shine 5s infinite;
+            z-index: -1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #1d1d1f;
+        }
+
+        .feature-card p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--apple-accent);
+        }
+
+        .video-card {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--apple-shadow);
+            border: var(--glass-border);
+            margin-bottom: 30px;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .video-placeholder {
+            height: 250px;
+            background: linear-gradient(45deg, #0071e3, #005bb5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .video-content {
+            padding: 25px;
+        }
+
+        .btn-primary {
+            background: var(--apple-accent);
+            border: none;
+            border-radius: 12px;
+            padding: 12px 30px;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-primary:hover {
+            background: var(--apple-accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .tile-card {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--apple-shadow);
+            border: var(--glass-border);
+            margin-bottom: 30px;
+            transition: var(--transition-smooth);
+            height: 100%;
+            position: relative;
+        }
+
+        .tile-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .tile-image {
+            height: 200px;
+            background: linear-gradient(45deg, #8e8e93, #aeaeb2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tile-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.1) 50%, transparent 60%);
+            background-size: 200% 200%;
+            animation: shine 3s infinite;
+        }
+
+        .tile-content {
+            padding: 25px;
+        }
+
+        .tile-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #1d1d1f;
+        }
+
+        .employee-story {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: var(--apple-shadow);
+            border: var(--glass-border);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: var(--transition-smooth);
+        }
+
+        .employee-story:hover {
+            transform: translateY(-5px);
+        }
+
+        .employee-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #0071e3, #005bb5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            margin: 0 auto 20px;
+        }
+
+        .employee-name {
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .employee-position {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .employee-quote {
+            text-align: center;
+            font-style: italic;
+            color: #444;
+        }
+
+        .footer {
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 80px;
+        }
+
+        .footer a {
+            color: #64ffda;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #64ffda;
+            text-decoration: underline;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        @keyframes shine {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section {
+                padding: 50px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .quote {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 背景装饰元素 -->
+    <div class="bg-decor bg-decor-1"></div>
+    <div class="bg-decor bg-decor-2"></div>
+    <div class="bg-decor bg-decor-3"></div>
+    <div class="bg-decor bg-decor-4"></div>
+    <div class="bg-decor bg-decor-5"></div>
+    <div class="bg-decor bg-decor-6"></div>
+    <div class="bg-decor bg-decor-7"></div>
+    <div class="bg-decor bg-decor-8"></div>
+    <div class="bg-decor bg-decor-9"></div>
+    <div class="bg-decor bg-decor-10"></div>
+    <div class="bg-decor bg-triangle-1"></div>
+    <div class="bg-decor bg-triangle-2"></div>
+    <div class="bg-decor bg-square-1"></div>
+    <div class="bg-decor bg-square-2"></div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="/">XSEC</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">概述</a></li>
+                    <li class="nav-item"><a class="nav-link" href="work-at-xsec.html">在 XSEC 工作</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="life-at-xsec.html">在 XSEC 生活</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">搜索团队</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <div class="container">
+        <!-- 英雄区域 -->
+        <section class="hero-section">
+            <h1 class="hero-title">在XSEC生活</h1>
+            <p class="hero-subtitle">我们相信，真正的创新来自于多元化的团队。在XSEC，我们致力于创造一个包容、创新和充满活力的工作环境。</p>
+        </section>
+
+        <!-- 引用区域 -->
+        <div class="quote-section">
+            <p class="quote">在XSEC，我们不仅是在工作，更是在创造未来。每一天，我们都在用技术改变世界，让生活变得更美好。</p>
+            <p class="quote-author">- XSEC团队</p>
+        </div>
+
+        <!-- 版块内容 -->
+        <section class="section">
+            <h2 class="section-title">我们的价值观</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>包容性</h3>
+                        <p>我们欢迎来自不同背景、文化和经验的人才。多样性是我们创新的源泉，包容性是我们成功的基石。</p>
+                        <p>在XSEC，每个人的声音都被听到，每个人的价值都被认可。</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>专业和个人发展</h3>
+                        <p>我们投资于员工的成长，提供丰富的培训资源和职业发展机会。</p>
+                        <p>无论是技术提升还是领导力发展，XSEC都为你提供实现梦想的平台。</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <h3>创新文化</h3>
+                        <p>我们鼓励创新思维和实验精神，为员工提供自由探索的空间。</p>
+                        <p>在XSEC，你可以将想法变为现实，挑战技术的边界。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 员工故事 -->
+        <section class="section">
+            <h2 class="section-title">员工故事</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="employee-story">
+                        <div class="employee-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h3 class="employee-name">张明</h3>
+                        <p class="employee-position">高级软件工程师</p>
+                        <p class="employee-quote">"在XSEC工作的两年里，我不仅提升了技术能力，更重要的是学会了如何与来自不同背景的同事协作，这种体验让我受益匪浅。"</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="employee-story">
+                        <div class="employee-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h3 class="employee-name">李华</h3>
+                        <p class="employee-position">产品经理</p>
+                        <p class="employee-quote">"XSEC给了我充分的自由去尝试新的想法，公司鼓励创新的文化让我能够不断突破自己的边界，创造出真正有价值的产品。"</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="employee-story">
+                        <div class="employee-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h3 class="employee-name">王芳</h3>
+                        <p class="employee-position">UI/UX设计师</p>
+                        <p class="employee-quote">"公司重视员工的工作与生活平衡，提供了灵活的工作安排和丰富的团队活动，让我在高效工作的同时享受生活。"</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">团队故事</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="video-card">
+                        <div class="video-placeholder">
+                            <i class="fas fa-play-circle me-2"></i> 技术团队故事
+                        </div>
+                        <div class="video-content">
+                            <p>了解我们技术团队如何通过创新解决复杂问题</p>
+                            <a href="#" class="btn btn-primary">观看视频</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="video-card">
+                        <div class="video-placeholder">
+                            <i class="fas fa-play-circle me-2"></i> 设计团队故事
+                        </div>
+                        <div class="video-content">
+                            <p>探索我们设计团队如何创造用户友好的体验</p>
+                            <a href="#" class="btn btn-primary">观看视频</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="video-card">
+                        <div class="video-placeholder">
+                            <i class="fas fa-play-circle me-2"></i> 产品团队故事
+                        </div>
+                        <div class="video-content">
+                            <p>发现我们产品团队如何将概念转化为成功产品</p>
+                            <a href="#" class="btn btn-primary">观看视频</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">了解更多</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="tile-card">
+                        <div class="tile-image">
+                            团队活动
+                        </div>
+                        <div class="tile-content">
+                            <h3>多元化网络协会</h3>
+                            <p>了解我们如何构建友好融洽的工作环境</p>
+                            <a href="#" class="btn btn-primary">了解详情</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="tile-card">
+                        <div class="tile-image">
+                            公司活动
+                        </div>
+                        <div class="tile-content">
+                            <h3>共同价值观</h3>
+                            <p>了解我们如何践行企业社会责任</p>
+                            <a href="#" class="btn btn-primary">了解详情</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="tile-card">
+                        <div class="tile-image">
+                            福利待遇
+                        </div>
+                        <div class="tile-content">
+                            <h3>XSEC福利</h3>
+                            <p>人才是我们最重要的财富</p>
+                            <a href="#" class="btn btn-primary">了解详情</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h3>XSEC</h3>
+                    <p>致力于提供专业的信息化解决方案。</p>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h4>关于我们</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="../../about.html">公司简介</a></li>
+                        <li><a href="team.html">领导团队</a></li>
+                        <li><a href="#">发展历程</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h4>工作机会</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">加入我们</a></li>
+                        <li><a href="life-at-xsec.html">在 XSEC 生活</a></li>
+                        <li><a href="work-at-xsec.html">在 XSEC 工作</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h4>资源</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="x/xxpl/index.html">信息披露</a></li>
+                        <li><a href="https://blog.csdn.net/qq_73252299?spm=1000.2115.3001.5343">技术博客</a></li>
+                        <li><a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af">支持中心</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h4>联系我们</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af">联系方式</a></li>
+                        <li><a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af">商务合作</a></li>
+                        <li><a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af">客户服务</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 海口希灵赛斯网络科技有限公司. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 必需的JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 添加滚动视差效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const bgDecors = document.querySelectorAll('.bg-decor');
+            
+            window.addEventListener('scroll', function() {
+                const scrollY = window.scrollY;
+                const scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+                
+                bgDecors.forEach((decor, index) => {
+                    const speed = 0.05 * (index + 1);
+                    const yPos = -scrollY * speed;
+                    decor.style.transform = `translateY(${yPos}px)`;
+                    
+                    // 添加旋转效果
+                    const rotation = scrolled * 360 * (index + 1);
+                    decor.style.transform += ` rotate(${rotation}deg)`;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

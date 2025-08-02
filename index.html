@@ -14,27 +14,27 @@
     <!-- PWA应用清单文件链接 -->
     <title>希灵赛斯</title>
     <!-- 页面标题 -->
-    <link rel="icon" href="">
+    <link rel="icon" href="./favicon.ico">
     <!-- 网站图标 -->
-    <link rel="apple-touch-icon" href="">
+    <link rel="apple-touch-icon" href="source/imgs/logo.png">
     <!-- 苹果触摸图标 -->
-    <meta name="description" content="" />
+    <meta name="description" content="海口希灵赛斯网络科技有限公司 - 专业的信息化解决方案供应商，提供私有云建设、信息安全咨询、网站建设等服务" />
     <!-- 页面描述 -->
     <meta property="og:title" content="海口希灵赛斯网络科技有限公司" />
     <!-- Open Graph标题 -->
-    <meta property="og:description" content="" />
+    <meta property="og:description" content="专业的信息化解决方案供应商，提供私有云建设、信息安全咨询、网站建设等服务" />
     <!-- Open Graph描述 -->
-    <meta property="og:image" content="" />
+    <meta property="og:image" content="source/index_imgs/index_01.jpg" />
     <!-- Open Graph图片 -->
-    <meta property="og:url" content="" />
+    <meta property="og:url" content="https://www.xlse.com" />
     <!-- Open Graph网址 -->
     <meta name="twitter:card" content="summary_large_image" />
     <!-- Twitter卡片类型 -->
     <meta name="twitter:title" content="海口希灵赛斯网络科技有限公司" />
     <!-- Twitter标题 -->
-    <meta name="twitter:description" content="" />
+    <meta name="twitter:description" content="专业的信息化解决方案供应商，提供私有云建设、信息安全咨询、网站建设等服务" />
     <!-- Twitter描述 -->
-    <meta name="twitter:image" content="" />
+    <meta name="twitter:image" content="source/index_imgs/index_01.jpg" />
     <!-- Twitter图片 -->
     <!-- 必需的样式表 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -136,6 +136,36 @@
             width: 70%;
         }
 
+        /* 导航栏下拉菜单样式 */
+        .ezy__nav6_7SyLoOH3k .dropdown-menu {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            padding: 10px 0;
+            margin-top: 8px;
+            transition: var(--transition-smooth);
+        }
+        
+        .ezy__nav6_7SyLoOH3k .dropdown-item {
+            padding: 8px 20px;
+            color: #444;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+        }
+        
+        .ezy__nav6_7SyLoOH3k .dropdown-item:hover {
+            background: rgba(0, 113, 227, 0.08);
+            color: var(--apple-accent);
+        }
+        
+        .ezy__nav6_7SyLoOH3k .dropdown-divider {
+            margin: 8px 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
         /* 增强移动端导航栏切换按钮的可见性 */
         .ezy__nav6_7SyLoOH3k .navbar-toggler {
             border: 1px solid rgba(0, 0, 0, 0.1);
@@ -197,8 +227,9 @@
             font-size: 1.1rem;
             box-shadow: 0 6px 20px rgba(0, 113, 227, 0.3);
             transition: var(--transition-smooth);
-            animation: fadeInUp 1s ease-out 0.4s forwards;
-            opacity: 0;
+            /* 移除动画延迟，确保按钮立即可见 */
+            opacity: 1;
+            animation: fadeInUp 1s ease-out 0.3s;
         }
 
         .ezy__header22_9Wbn5LJN-btn:hover {
@@ -746,83 +777,48 @@
             color: white;
             transform: translateY(-5px);
         }
-
-        /* 动画效果 */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        
+        /* 新增页脚样式 */
+        .footer {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(245, 247, 250, 0.85) 100%);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 60px 0 30px;
+            color: var(--apple-text);
         }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-            100% {
-                transform: translateY(0px);
-            }
+        
+        .footer h3, .footer h4 {
+            color: #1d1d1f;
+            margin-bottom: 20px;
+            font-weight: 700;
         }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 0.8;
-            }
-            100% {
-                transform: scale(1.1);
-                opacity: 1;
-            }
+        
+        .footer ul li {
+            margin-bottom: 10px;
         }
-
-        /* 响应式调整 */
-        @media (max-width: 991px) {
-            .ezy__header22_9Wbn5LJN-heading {
-                font-size: 2.8rem;
-            }
-
-            .ezy__header22_9Wbn5LJN-sub-heading {
-                font-size: 1.2rem;
-            }
-
-            .ezy__howitworks11_cxxYqC5P-line {
-                left: 30px;
-            }
-
-            .ezy__howitworks11_cxxYqC5P-count {
-                left: -65px;
-                width: 60px;
-                height: 60px;
-                font-size: 0.9rem;
-            }
+        
+        .footer ul li a {
+            color: var(--apple-text-light);
+            text-decoration: none;
+            transition: var(--transition-smooth);
         }
-
-        @media (max-width: 767px) {
-            .ezy__header22_9Wbn5LJN-heading {
-                font-size: 2.3rem;
-            }
-
-            .ezy__header22_9Wbn5LJN-sub-heading {
-                font-size: 1.1rem;
-            }
-
-            .ezy__howitworks11_cxxYqC5P-line {
-                display: none;
-            }
-
-            .ezy__howitworks11_cxxYqC5P-count {
-                position: relative;
-                left: 0;
-                top: -30px;
-                margin-bottom: -30px;
-            }
+        
+        .footer ul li a:hover {
+            color: var(--apple-accent);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .copyright p {
+            color: var(--apple-text-light);
+            margin: 0;
         }
     </style>
 </head>
@@ -843,18 +839,56 @@
             <!-- 导航菜单 -->
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active" href="#">首页</a></li>
-                    <li class="nav-item"><a class="nav-link" href="public/psnh.html">公共服务</a></li>
+                    <li class="nav-item"><a class="nav-link" href="business/index.html">XSEC 合作</a></li>
+                    <li class="nav-item"><a class="nav-link" href="public/index.html">公共服务</a></li>
                     <li class="nav-item"><a class="nav-link" href="https://se-xl-services.xinnew.top/">资源监测</a></li>
                     <li class="nav-item"><a class="nav-link" href="https://blog.csdn.net/qq_73252299?spm=1000.2115.3001.5343" rel="noopener noreferrer">技术频道</a></li>
-                    <li class="nav-item"><a class="nav-link" href="x/xxpl/pl.html">信息披露</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">关于我们</a></li>
-                    <li class="nav-item"><a class="nav-link" href="hr.html">加入我们</a></li>
+                    <!-- 关于我们下拉菜单 -->
+                    <li class="nav-item dropdown" id="aboutDropdownItem">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            关于我们
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a class="dropdown-item" href="about.html">公司简介</a></li>
+                            <li><a class="dropdown-item" href="newsroom/a/index.html">信息披露</a></li>
+                            <li><a class="dropdown-item" href="#">领导团队</a></li>
+                            <li><a class="dropdown-item" href="#">发展历程</a></li>
+                            <li><a class="dropdown-item" href="careers/cn/index.html">职业机会</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 </div>
+
+<script>
+    // 为"关于我们"下拉菜单添加悬停自动展开功能
+    document.addEventListener('DOMContentLoaded', function() {
+        var dropdown = document.getElementById('aboutDropdownItem');
+        var toggle = document.getElementById('aboutDropdown');
+        var menu = dropdown.querySelector('.dropdown-menu');
+        
+        dropdown.addEventListener('mouseenter', function() {
+            var dropdownInstance = bootstrap.Dropdown.getInstance(toggle);
+            if (!dropdownInstance) {
+                dropdownInstance = new bootstrap.Dropdown(toggle);
+            }
+            dropdownInstance.show();
+            toggle.setAttribute('aria-expanded', 'true');
+        });
+        
+        dropdown.addEventListener('mouseleave', function() {
+            setTimeout(function() {
+                var dropdownInstance = bootstrap.Dropdown.getInstance(toggle);
+                if (dropdownInstance) {
+                    dropdownInstance.hide();
+                }
+                toggle.setAttribute('aria-expanded', 'false');
+            }, 100); // 添加短暂延迟，防止鼠标移动过快时菜单闪烁
+        });
+    });
+</script>
 
 <style>
     /* 毛玻璃效果 */
@@ -898,6 +932,17 @@
 
     .nav-link:hover {
         color: #007bff;
+    }
+    
+    /* 去除下拉菜单激活时的外围框线 */
+    .nav-item.dropdown:focus-within a.dropdown-toggle {
+        outline: none;
+        box-shadow: none;
+    }
+    
+    .nav-item.dropdown.show a.dropdown-toggle {
+        outline: none;
+        box-shadow: none;
     }
 </style>
 
@@ -1087,7 +1132,7 @@
                                     <p class="project-description">
                                         海口旅游职业学院职教周 iHAIKOU内容分发系统（国际站及国内站）建设
                                     </p>
-                                    <a href="https://htc-ms.xinnew.top/" class="btn btn-more">
+                                    <a href="business/htc-ihaikou.html" class="btn btn-more">
                                         <i class="fas fa-arrow-right me-1"></i>查看详情
                                     </a>
                                 </div>
@@ -1213,59 +1258,62 @@
                         <hr class="ezy__howitworks11_cxxYqC5P-divider" />
                     </div>
                 </div>
-                <div class="row position-relative mt-5 ps-5 ps-md-0">
-                    <!-- 垂直线 -->
-                    <div class="ezy__howitworks11_cxxYqC5P-line">
-                        <h4 class="ezy__howitworks11_cxxYqC5P-end">End</h4>
-                    </div>
-                    <!-- 发展阶段1：公司创立 -->
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="col-12 col-md-6">
-                                <div class="ezy__howitworks11_cxxYqC5P-card position-relative p-4 p-md-5">
-                                    <h5 class="ezy__howitworks11_cxxYqC5P-count ezy__howitworks11_cxxYqC5P-count-one text-center">
-                                        Step <br />
-                                        <span>O1</span>
-                                    </h5>
-                                    <h4 class="ezy__howitworks11_cxxYqC5P-title fw-bold mb-3">公司创立</h4>
-                                    <p class="opacity-75">
-                                        两位创始人经过6个月的设计和规划，决定于2025年4月创立团队，并命名海口希灵赛斯网络科技有限公司
-                                    </p>
-                                </div>
+            </div>
+            <div class="row position-relative mt-5 ps-5 ps-md-0">
+                <!-- 垂直线 -->
+                <div class="ezy__howitworks11_cxxYqC5P-line">
+                    <h4 class="ezy__howitworks11_cxxYqC5P-end">End</h4>
+                </div>
+                
+                <!-- 发展阶段1：公司创立 -->
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="ezy__howitworks11_cxxYqC5P-card position-relative p-4 p-md-5">
+                                <h5 class="ezy__howitworks11_cxxYqC5P-count ezy__howitworks11_cxxYqC5P-count-one text-center">
+                                    Step <br />
+                                    <span>O1</span>
+                                </h5>
+                                <h4 class="ezy__howitworks11_cxxYqC5P-title fw-bold mb-3">公司创立</h4>
+                                <p class="opacity-75">
+                                    两位创始人经过6个月的设计和规划，决定于2025年4月创立团队，并命名海口希灵赛斯网络科技有限公司
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <!-- 发展阶段2：与海南好思达网络科技有限公司合作 -->
-                    <div class="col-12">
-                        <div class="row justify-content-end">
-                            <div class="col-12 col-md-6">
-                                <div class="ezy__howitworks11_cxxYqC5P-card position-relative p-4 p-md-5 pt-3 pt-md-3">
-                                    <h5 class="ezy__howitworks11_cxxYqC5P-count ezy__howitworks11_cxxYqC5P-count-two text-center">
-                                        Step <br />
-                                        <span>O2</span>
-                                    </h5>
-                                    <h4 class="ezy__howitworks11_cxxYqC5P-title fw-bold mb-3">海南好思达网络科技有限公司合作</h4>
-                                    <p class="opacity-75">
-                                        为海南好思达网络科技有限公司提供多次故障处理服务及咨询服务
-                                    </p>
-                                </div>
+                </div>
+                
+                <!-- 发展阶段2：与海南好思达网络科技有限公司合作 -->
+                <div class="col-12">
+                    <div class="row justify-content-end">
+                        <div class="col-12 col-md-6">
+                            <div class="ezy__howitworks11_cxxYqC5P-card position-relative p-4 p-md-5 pt-3 pt-md-3">
+                                <h5 class="ezy__howitworks11_cxxYqC5P-count ezy__howitworks11_cxxYqC5P-count-two text-center">
+                                    Step <br />
+                                    <span>O2</span>
+                                </h5>
+                                <h4 class="ezy__howitworks11_cxxYqC5P-title fw-bold mb-3">海南好思达网络科技有限公司合作</h4>
+                                <p class="opacity-75">
+                                    为海南好思达网络科技有限公司提供多次故障处理服务及咨询服务
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <!-- 发展阶段3：与海口旅游职业学院（HTC）达成深度合作 -->
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="col-12 col-md-6">
-                                <div class="ezy__howitworks11_cxxYqC5P-card position-relative p-4 p-md-5 pt-3 pt-md-3">
-                                    <h5 class="ezy__howitworks11_cxxYqC5P-count ezy__howitworks11_cxxYqC5P-count-three text-center">
-                                        Step <br />
-                                        <span>O3</span>
-                                    </h5>
-                                    <h4 class="ezy__howitworks11_cxxYqC5P-title fw-bold mb-3">海口旅游职业学院（HTC）达成深度合作</h4>
-                                    <p class="opacity-75">
-                                        2025年5月，与HTC达成合作，为其建设VMware私有云体系，iHAIKOU平台及ai智能助手，并持续提供咨询服务
-                                    </p>
-                                </div>
+                </div>
+                
+                <!-- 发展阶段3：与海口旅游职业学院（HTC）达成深度合作 -->
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="ezy__howitworks11_cxxYqC5P-card position-relative p-4 p-md-5 pt-3 pt-md-3">
+                                <h5 class="ezy__howitworks11_cxxYqC5P-count ezy__howitworks11_cxxYqC5P-count-three text-center">
+                                    Step <br />
+                                    <span>O3</span>
+                                </h5>
+                                <h4 class="ezy__howitworks11_cxxYqC5P-title fw-bold mb-3">海口旅游职业学院（HTC）达成深度合作</h4>
+                                <p class="opacity-75">
+                                    2025年5月，与HTC达成合作，为其建设VMware私有云体系，iHAIKOU平台及ai智能助手，并持续提供咨询服务
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -1274,35 +1322,52 @@
         </div>
     </section>
     
-    <!-- 页脚部分 -->
-    <section class="ezy__copyright9_vnIOpFmz">
+    <!-- 页脚 -->
+    <footer class="footer">
         <div class="container">
-            <div class="row d-flex justify-content-center align-items-center text-center">
-                <div class="col-12 col-md-8 col-lg-7">
-                    <div class="d-flex align-items-center justify-content-center mb-4">
-                        <img src="source/imgs/logo.png" alt="" class="img-fluid" />
-                        <p class="mb-0 ms-3">&#169; 版权所有：海口希灵赛斯网络科技有限公司</p>
-                    </div>
-                    <p class="opacity-75 mb-4">
-                        联系我们：xsec-mail@sec.hn.cn
-                    </p>
-                    <!-- 社交媒体链接 -->
-                    <ul class="ezy__copyright9_vnIOpFmz-social nav justify-content-center">
-                        <li>
-                            <a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" class=""><i class="fab fa-weixin"></i></a>
-                        </li>
-                        <li>
-                            <a href="https://blog.csdn.net/qq_73252299?spm=1011.2124.3001.5343" class=""><i class="fas fa-code"></i></a>
-                        </li>
-                        <li>
-                            <a href="xsec-mail@sec.hn.cn" class=""><i class="fas fa-envelope"></i></a>
-                        </li>
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h3>XSEC</h3>
+                    <p>致力于提供专业的信息化解决方案。</p>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h4>关于我们</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="about.html">公司简介</a></li>
+                        <li><a href="#">领导团队</a></li>
+                        <li><a href="#">发展历程</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h4>工作机会</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="careers/cn/index.html">加入我们</a></li>
+                        <li><a href="careers/cn/life-at-xsec.html">在 XSEC 生活</a></li>
+                        <li><a href="careers/cn/work-at-xsec.html">在 XSEC 工作</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h4>资源</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="newsroom/a/index.html">信息披露</a></li>
+                        <li><a href="https://blog.csdn.net/qq_73252299?spm=1000.2115.3001.5343" target="_blank" rel="noopener noreferrer">技术博客</a></li>
+                        <li><a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af">支持中心</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h4>联系我们</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" target="_blank" rel="noopener noreferrer">客服咨询</a></li>
+                        <li><a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" target="_blank" rel="noopener noreferrer">商务合作</a></li>
+                        <li><a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" target="_blank" rel="noopener noreferrer">客户服务</a></li>
                     </ul>
                 </div>
             </div>
+            <div class="copyright">
+                <p>&copy; 2025 海口希灵赛斯网络科技有限公司. 保留所有权利.</p>
+            </div>
         </div>
-    </section>
-    <!-- END: Body Content -->
+    </footer>
     
     <!-- Required scripts -->
     <!-- 必需的JavaScript库 -->
