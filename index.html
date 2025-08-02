@@ -839,7 +839,17 @@
             <!-- 导航菜单 -->
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="business/index.html">XSEC 合作</a></li>
+                    <!-- 业务下拉菜单 -->
+                    <li class="nav-item dropdown" id="businessDropdownItem">
+                        <a class="nav-link dropdown-toggle" href="business/index.html" id="businessDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            业务
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="businessDropdown">
+                            <li><a class="dropdown-item" href="business/index.html#user-focused">面向用户</a></li>
+                            <li><a class="dropdown-item" href="business/index.html#enterprise">面向企业</a></li>
+                            <li><a class="dropdown-item" href="business/index.html#innovation">科技创新</a></li>
+                        </ul>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="public/index.html">公共服务</a></li>
                     <li class="nav-item"><a class="nav-link" href="https://se-xl-services.xinnew.top/">资源监测</a></li>
                     <li class="nav-item"><a class="nav-link" href="https://blog.csdn.net/qq_73252299?spm=1000.2115.3001.5343" rel="noopener noreferrer">技术频道</a></li>
