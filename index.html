@@ -217,7 +217,7 @@
             line-height: 1.6;
             margin-bottom: 40px;
             animation: fadeInUp 1s ease-out 0.2s forwards;
-            opacity: 0;
+            opacity: 1;
         }
 
         .ezy__header22_9Wbn5LJN-btn {
@@ -873,28 +873,51 @@
 </div>
 
 <script>
-    // 为"关于我们"下拉菜单添加悬停自动展开功能
+    // 为"业务"和"关于我们"下拉菜单添加悬停自动展开功能
     document.addEventListener('DOMContentLoaded', function() {
-        var dropdown = document.getElementById('aboutDropdownItem');
-        var toggle = document.getElementById('aboutDropdown');
-        var menu = dropdown.querySelector('.dropdown-menu');
+        // 业务下拉菜单
+        var businessDropdown = document.getElementById('businessDropdownItem');
+        var businessToggle = document.getElementById('businessDropdown');
         
-        dropdown.addEventListener('mouseenter', function() {
-            var dropdownInstance = bootstrap.Dropdown.getInstance(toggle);
+        businessDropdown.addEventListener('mouseenter', function() {
+            var dropdownInstance = bootstrap.Dropdown.getInstance(businessToggle);
             if (!dropdownInstance) {
-                dropdownInstance = new bootstrap.Dropdown(toggle);
+                dropdownInstance = new bootstrap.Dropdown(businessToggle);
             }
             dropdownInstance.show();
-            toggle.setAttribute('aria-expanded', 'true');
+            businessToggle.setAttribute('aria-expanded', 'true');
         });
         
-        dropdown.addEventListener('mouseleave', function() {
+        businessDropdown.addEventListener('mouseleave', function() {
             setTimeout(function() {
-                var dropdownInstance = bootstrap.Dropdown.getInstance(toggle);
+                var dropdownInstance = bootstrap.Dropdown.getInstance(businessToggle);
                 if (dropdownInstance) {
                     dropdownInstance.hide();
                 }
-                toggle.setAttribute('aria-expanded', 'false');
+                businessToggle.setAttribute('aria-expanded', 'false');
+            }, 100); // 添加短暂延迟，防止鼠标移动过快时菜单闪烁
+        });
+        
+        // 关于我们下拉菜单
+        var aboutDropdown = document.getElementById('aboutDropdownItem');
+        var aboutToggle = document.getElementById('aboutDropdown');
+        
+        aboutDropdown.addEventListener('mouseenter', function() {
+            var dropdownInstance = bootstrap.Dropdown.getInstance(aboutToggle);
+            if (!dropdownInstance) {
+                dropdownInstance = new bootstrap.Dropdown(aboutToggle);
+            }
+            dropdownInstance.show();
+            aboutToggle.setAttribute('aria-expanded', 'true');
+        });
+        
+        aboutDropdown.addEventListener('mouseleave', function() {
+            setTimeout(function() {
+                var dropdownInstance = bootstrap.Dropdown.getInstance(aboutToggle);
+                if (dropdownInstance) {
+                    dropdownInstance.hide();
+                }
+                aboutToggle.setAttribute('aria-expanded', 'false');
             }, 100); // 添加短暂延迟，防止鼠标移动过快时菜单闪烁
         });
     });
