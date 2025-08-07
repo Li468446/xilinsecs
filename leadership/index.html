@@ -1,10 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们 - 海口希灵赛斯网络科技有限公司</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="./favicon.ico">
+    <link rel="apple-touch-icon" href="source/imgs/logo.png">
+    <meta name="description" content="海口希灵赛斯网络科技有限公司 - 专业的信息化解决方案供应商，提供私有云建设、信息安全咨询、网站建设等服务" />
+    <meta property="og:title" content="海口希灵赛斯网络科技有限公司" />
+    <meta property="og:description" content="专业的信息化解决方案供应商，提供私有云建设、信息安全咨询、网站建设等服务" />
+    <meta property="og:image" content="source/index_imgs/index_01.jpg" />
+    <meta property="og:url" content="https://www.xlse.com" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="海口希灵赛斯网络科技有限公司" />
+    <meta name="twitter:description" content="专业的信息化解决方案供应商，提供私有云建设、信息安全咨询、网站建设等服务" />
+    <meta name="twitter:image" content="source/index_imgs/index_01.jpg" />
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background: #0a0f1f;
+            font-family: 'Courier New', Courier, monospace;
+            color: #00ffcc;
+            overflow: hidden;
+        }
+
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .hacker-logo {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 30px #007f66;
+            }
+            to {
+                text-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffaa, 0 0 60px #00ffcc;
+            }
+        }
+
+        .countdown {
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+
+        .qr-code {
+            margin-top: 30px;
+        }
+
+        .qr-code img {
+            width: 120px;
+            height: 120px;
+            border: 2px solid #00ffcc;
+        }
+    </style>
 </head>
 <body>
+    <div id="particles-js"></div>
+    <div class="container">
+        <div class="hacker-logo">海口希灵赛斯网络科技有限公司</div>
+        <div>我们专注于信息安全、系统集成、互联网数据处理等信息化解决方案</div>
+        <div class="countdown">网站将于 <strong>9月5日</strong>上线，<span id="timer">8</span> 秒后跳转...</div>
+        <div class="qr-code">
+            <p>联系客户经理</p>
+            <img src="business/index_imgs/czyxs.png" alt="微信二维码" onerror="this.style.display='none'" />
+        </div>
+    </div>
 
+    <!-- 粒子背景 -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS('particles-js', {
+            "particles": {
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#00ffcc" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5 },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#00ffcc", "opacity": 0.4, "width": 1 },
+                "move": { "enable": true, "speed": 2, "direction": "none", "out_mode": "out" }
+            },
+            "interactivity": {
+                "events": {
+                    "onhover": { "enable": true, "mode": "grab" },
+                    "onclick": { "enable": true, "mode": "push" }
+                },
+                "modes": {
+                    "grab": { "distance": 200, "line_linked": { "opacity": 0.6 } },
+                    "push": { "particles_nb": 4 }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+
+    <!-- 倒计时与自动跳转 -->
+    <script>
+        let timeLeft = 8;
+        const timerDisplay = document.getElementById("timer");
+        const countdown = setInterval(() => {
+            timeLeft--;
+            timerDisplay.textContent = timeLeft;
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                window.location.href = "/";
+            }
+        }, 1000);
+    </script>
+
+    <!-- 控制台敲字音效 -->
+    <audio id="typing-sound" src="https://cdn.pixabay.com/audio/2021/08/08/audio_37c878c4c1.mp3" preload="auto"></audio>
+    <script>
+        const typingSound = document.getElementById('typing-sound');
+        document.addEventListener('keydown', () => {
+            typingSound.currentTime = 0;
+            typingSound.play();
+        });
+    </script>
 </body>
 </html>
