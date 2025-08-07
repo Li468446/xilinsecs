@@ -1,9 +1,9 @@
-# *
+# robots.txt for 海口希灵赛斯网络科技有限公司
 User-agent: *
 Allow: /
 
 # Host
-Host: 
+Host: xinnew.top
 
 # Sitemaps
 Sitemap: /sitemap.xml
