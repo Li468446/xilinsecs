@@ -37,7 +37,7 @@
 
 ## 如何使用
 
-- **访问网站**：https://xinnew.top。
+- **访问网站**：https://www.xinnew.top 或 https://www.sec.hn.cn。
 - **开发人员**：如需了解代码库或贡献代码，请参考以下贡献部分。
 
 ## 贡献

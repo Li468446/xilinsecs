@@ -12,18 +12,18 @@
 </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>开发倒计时 - XSEC</title>
+    <title>正在前往企业动态发布平台 - XSEC</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #00ff41; /* 黑客绿 */
-            --secondary-color: #00cc33;
-            --accent-color: #00ff41;
-            --dark-color: #0a0a0a;
-            --light-color: #e6e6e6;
-            --countdown-bg: rgba(0, 10, 0, 0.85);
-            --matrix-color: rgba(0, 255, 65, 0.1);
+            --primary-color: #00bfff; /* 科技冰川蓝 */
+            --secondary-color: #00a0d9;
+            --accent-color: #00c8ff;
+            --dark-color: #0a0a1a;
+            --light-color: #e6f0ff;
+            --countdown-bg: rgba(0, 10, 30, 0.85);
+            --matrix-color: rgba(0, 191, 255, 0.1);
         }
 
         * {
@@ -44,6 +44,16 @@
             position: relative;
         }
 
+        /* 粒子效果容器 */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+
         /* 黑客风格背景 */
         #matrixCanvas {
             position: fixed;
@@ -51,7 +61,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -2;
+            z-index: -3;
         }
 
         /* 脉冲圆环效果 */
@@ -110,8 +120,8 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: rgba(0, 255, 65, 0.3);
-            box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+            background: rgba(0, 191, 255, 0.3);
+            box-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
             animation: scan 5s linear infinite;
             z-index: -1;
         }
@@ -150,7 +160,7 @@
             right: 10%;
             width: 300px;
             height: 200px;
-            background: #00ff41;
+            background: #00bfff;
             animation-delay: 2s;
             filter: blur(20px);
         }
@@ -160,7 +170,7 @@
             right: 15%;
             width: 150px;
             height: 100px;
-            background: #00cc33;
+            background: #00a0d9;
             animation-delay: 4s;
             filter: blur(20px);
         }
@@ -170,7 +180,7 @@
             left: 15%;
             width: 100px;
             height: 100px;
-            background: #00ff41;
+            background: #00bfff;
             animation: float 10s infinite ease-in-out, pulse 6s infinite alternate;
             animation-delay: 1s;
             filter: blur(20px);
@@ -181,7 +191,7 @@
             right: 25%;
             width: 180px;
             height: 180px;
-            background: #00cc33;
+            background: #00a0d9;
             animation: float 12s infinite ease-in-out, rotate 20s infinite linear;
             animation-delay: 3s;
             filter: blur(20px);
@@ -192,7 +202,7 @@
             left: 20%;
             width: 120px;
             height: 120px;
-            background: #00ff41;
+            background: #00bfff;
             animation: float 15s infinite ease-in-out, rotate 25s infinite linear reverse;
             animation-delay: 1s;
             filter: blur(20px);
@@ -203,7 +213,7 @@
             right: 30%;
             width: 80px;
             height: 80px;
-            background: #00cc33;
+            background: #00a0d9;
             animation: float 10s infinite ease-in-out;
             animation-delay: 3s;
             filter: blur(20px);
@@ -257,7 +267,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(transparent 0%, rgba(0, 255, 65, 0.1) 50%, transparent 100%);
+            background: linear-gradient(transparent 0%, rgba(0, 191, 255, 0.1) 50%, transparent 100%);
             animation: scan-text 3s linear infinite;
         }
 
@@ -276,7 +286,7 @@
             -webkit-backdrop-filter: blur(5px);
             border-radius: 5px;
             padding: 40px;
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+            box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
             border: 1px solid var(--primary-color);
             max-width: 800px;
             width: 90%;
@@ -294,8 +304,8 @@
             width: 100%;
             height: 100%;
             background:
-                linear-gradient(90deg, transparent 50%, rgba(0, 255, 65, 0.1) 50%),
-                linear-gradient(rgba(0, 255, 65, 0.1) 50%, transparent 50%);
+                linear-gradient(90deg, transparent 50%, rgba(0, 191, 255, 0.1) 50%),
+                linear-gradient(rgba(0, 191, 255, 0.1) 50%, transparent 50%);
             background-size: 10px 10px;
             z-index: -1;
             pointer-events: none;
@@ -307,7 +317,7 @@
             margin-bottom: 30px;
             color: var(--primary-color);
             position: relative;
-            text-shadow: 0 0 10px rgba(0, 255, 65, 0.7);
+            text-shadow: 0 0 10px rgba(0, 191, 255, 0.7);
         }
 
         .countdown-title::after {
@@ -336,12 +346,12 @@
         }
 
         .countdown-unit {
-            background: rgba(0, 30, 0, 0.7);
+            background: rgba(0, 30, 60, 0.7);
             border-radius: 3px;
             padding: 20px 15px;
             min-width: 100px;
-            box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
-            border: 1px solid rgba(0, 255, 65, 0.3);
+            box-shadow: 0 0 10px rgba(0, 191, 255, 0.3);
+            border: 1px solid rgba(0, 191, 255, 0.3);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -354,12 +364,12 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(0, 191, 255, 0.2), transparent);
             transition: 0.5s;
         }
 
         .countdown-unit:hover {
-            box-shadow: 0 0 15px rgba(0, 255, 65, 0.5);
+            box-shadow: 0 0 15px rgba(0, 191, 255, 0.5);
             transform: translateY(-5px);
         }
 
@@ -395,10 +405,10 @@
 
         .progress-bar {
             height: 15px;
-            background: rgba(0, 20, 0, 0.8);
+            background: rgba(0, 20, 60, 0.8);
             border-radius: 2px;
             overflow: hidden;
-            border: 1px solid rgba(0, 255, 65, 0.3);
+            border: 1px solid rgba(0, 191, 255, 0.3);
         }
 
         .progress-fill {
@@ -406,7 +416,7 @@
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
             border-radius: 2px;
             width: 0%;
-            transition: width 1s linear;
+            transition: width 0.5s linear;
             box-shadow: 0 0 10px var(--primary-color);
         }
 
@@ -460,6 +470,31 @@
             pointer-events: none;
         }
 
+        /* 新增跳转提示动画 */
+        .redirect-message {
+            font-size: 1.3rem;
+            margin-top: 20px;
+            color: var(--primary-color);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+
+        /* 新增数字跳动效果 */
+        @keyframes jump {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        .jump {
+            animation: jump 0.5s ease;
+        }
+
         @media (max-width: 768px) {
             .countdown-container {
                 padding: 25px;
@@ -489,6 +524,9 @@
     </style>
 </head>
 <body>
+    <!-- 粒子效果容器 -->
+    <div id="particles-js"></div>
+    
     <!-- 黑客风格背景元素 -->
     <canvas id="matrixCanvas"></canvas>
     <div class="static-noise"></div>
@@ -507,31 +545,19 @@
     <div class="bg-decor bg-decor-7"></div>
 
     <div class="countdown-container">
-        <h1 class="countdown-title scan-text">开发倒计时<span class="cursor"></span></h1>
-        <p class="countdown-description">距离项目完成还有</p>
+        <h1 class="countdown-title scan-text">正在前往企业动态发布平台<span class="cursor"></span></h1>
+        <p class="countdown-description">您正在前往海口希灵赛斯企业动态发布平台，请稍等</p>
 
         <div class="countdown-display" id="countdown">
             <div class="countdown-unit">
-                <div class="countdown-value" id="days">00</div>
-                <div class="countdown-label">天</div>
-            </div>
-            <div class="countdown-unit">
-                <div class="countdown-value" id="hours">00</div>
-                <div class="countdown-label">小时</div>
-            </div>
-            <div class="countdown-unit">
-                <div class="countdown-value" id="minutes">00</div>
-                <div class="countdown-label">分钟</div>
-            </div>
-            <div class="countdown-unit">
-                <div class="countdown-value" id="seconds">00</div>
+                <div class="countdown-value" id="seconds">8</div>
                 <div class="countdown-label">秒</div>
             </div>
         </div>
 
         <div class="progress-container">
             <div class="progress-label">
-                <span>项目进度</span>
+                <span>跳转进度</span>
                 <span id="progress-percent">0%</span>
             </div>
             <div class="progress-bar">
@@ -539,13 +565,12 @@
             </div>
         </div>
 
-        <div class="completion-message" id="completion-message">
-            项目已完成！感谢您的耐心等待。
+        <div class="redirect-message" id="redirect-message">
+            页面即将跳转...
         </div>
 
         <div class="time-sync-info">
-            <p>时间同步源：阿里云授时服务器 (ntp.aliyun.com)</p>
-            <p>项目完成日期：2025年9月1日</p>
+            <p>海口希灵赛斯网络科技有限公司</p>
         </div>
 
         <div class="footer">
@@ -553,7 +578,98 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
+        // 初始化粒子效果
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: "#00bfff"
+                },
+                shape: {
+                    type: "circle",
+                    stroke: {
+                        width: 0,
+                        color: "#000000"
+                    }
+                },
+                opacity: {
+                    value: 0.5,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 2,
+                        size_min: 0.1,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#00bfff",
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 1,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false,
+                    attract: {
+                        enable: true,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: "grab"
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: "push"
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 140,
+                        line_linked: {
+                            opacity: 1
+                        }
+                    },
+                    push: {
+                        particles_nb: 4
+                    }
+                }
+            },
+            retina_detect: true
+        });
+
         // Matrix代码雨效果
         const canvas = document.getElementById('matrixCanvas');
         const ctx = canvas.getContext('2d');
@@ -576,7 +692,7 @@
             ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            ctx.fillStyle = '#00ff41';
+            ctx.fillStyle = '#00bfff';
             ctx.font = `${fontSize}px monospace`;
 
             for (let i = 0; i < drops.length; i++) {
@@ -599,77 +715,41 @@
             canvas.height = window.innerHeight;
         });
 
-        // 设置倒计时结束时间为2025年9月1日
-        const endDate = new Date('2025-09-01T00:00:00+08:00');
-
-        // 获取阿里云授时服务器时间（模拟）
-        // 在实际应用中，您可能需要通过后端API获取精确的授时服务器时间
-        async function getTimeFromAliyun() {
-            try {
-                // 模拟从阿里云授时服务器获取时间
-                // 在生产环境中，您可能需要通过后端API调用来获取精确时间
-                // 这里我们使用本地时间，但在实际应用中应该替换为真实的授时服务器调用
-                const response = await fetch('https://ntp.aliyun.com/', {
-                    method: 'HEAD',
-                    mode: 'no-cors'
-                });
-
-                // 由于CORS限制，我们无法直接获取头部信息
-                // 在实际应用中，应该通过服务器端获取精确时间
-                return new Date();
-            } catch (error) {
-                console.warn('无法连接到阿里云授时服务器，使用本地时间:', error);
-                return new Date();
-            }
-        }
+        // 倒计时变量
+        let seconds = 5;
+        const totalSeconds = 5;
+        const countdownValue = document.getElementById('seconds');
+        const progressFill = document.getElementById('progress-fill');
+        const progressPercent = document.getElementById('progress-percent');
 
         // 更新倒计时函数
-        function updateCountdown(currentTime) {
-            const diff = endDate - currentTime;
+        function updateCountdown() {
+            // 更新显示
+            countdownValue.textContent = seconds;
+            countdownValue.classList.add('jump');
+            
+            // 移除跳动效果
+            setTimeout(() => {
+                countdownValue.classList.remove('jump');
+            }, 500);
+
+            // 计算并更新进度条
+            const progress = ((totalSeconds - seconds) / totalSeconds) * 100;
+            progressPercent.textContent = `${Math.round(progress)}%`;
+            progressFill.style.width = `${progress}%`;
 
             // 如果倒计时结束
-            if (diff <= 0) {
-                document.getElementById('days').textContent = '00';
-                document.getElementById('hours').textContent = '00';
-                document.getElementById('minutes').textContent = '00';
-                document.getElementById('seconds').textContent = '00';
-                document.getElementById('completion-message').style.display = 'block';
-                document.getElementById('progress-percent').textContent = '100%';
-                document.getElementById('progress-fill').style.width = '100%';
+            if (seconds <= 0) {
+                // 跳转到指定URL
+                window.location.href = 'https://sec.hn.cn/';
                 return;
             }
 
-            // 计算天、小时、分钟、秒
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            // 减少秒数
+            seconds--;
 
-            // 更新显示
-            document.getElementById('days').textContent = days.toString().padStart(2, '0');
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-
-            // 计算并更新进度条
-            const totalDuration = endDate - new Date('2025-08-02T00:00:00+08:00'); // 从当前日期到结束日期的总时间
-            const elapsed = totalDuration - diff;
-            const progressPercent = Math.min(100, Math.floor((elapsed / totalDuration) * 100));
-
-            document.getElementById('progress-percent').textContent = `${progressPercent}%`;
-            document.getElementById('progress-fill').style.width = `${progressPercent}%`;
-        }
-
-        // 初始化倒计时
-        async function initCountdown() {
-            const currentTime = await getTimeFromAliyun();
-            updateCountdown(currentTime);
-
-            // 每秒更新一次倒计时
-            setInterval(async function() {
-                const currentTime = await getTimeFromAliyun();
-                updateCountdown(currentTime);
-            }, 1000);
+            // 1秒后再次调用
+            setTimeout(updateCountdown, 1000);
         }
 
         // 添加背景元素视差效果
@@ -692,7 +772,7 @@
             });
 
             // 初始化倒计时
-            initCountdown();
+            updateCountdown();
         });
     </script>
 </body>
