@@ -1,25 +1,31 @@
 {
-    "short_name": "\u6d77\u53e3\u5e0c\u7075\u8d5b\u65af\u7f51\u7edc\u79d1\u6280\u6709\u9650\u516c\u53f8",
-    "name": "\u6d77\u53e3\u5e0c\u7075\u8d5b\u65af\u7f51\u7edc\u79d1\u6280\u6709\u9650\u516c\u53f8",
-    "icons": [
-        {
-            "src": "favicon.ico",
-            "sizes": "64x64 32x32 24x24 16x16",
-            "type": "image\/x-icon"
-        },
-        {
-            "src": "source/imgs/logo.png",
-            "type": "image\/png",
-            "sizes": "192x192"
-        },
-        {
-            "src": "source/imgs/logo.png",
-            "type": "image\/png",
-            "sizes": "512x512"
-        }
-    ],
-    "start_url": ".",
-    "display": "standalone",
-    "theme_color": "rgb(0 122 255)",
-    "background_color": "#ffffff"
+  "short_name": "海口希灵赛斯",
+  "name": "海口希灵赛斯网络科技有限责任公司",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "source/imgs/logo-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "source/imgs/logo-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "source/imgs/logo-180.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/index.html",
+  "display": "standalone",
+  "theme_color": "#007AFF",
+  "background_color": "#FFFFFF"
 }

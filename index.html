@@ -17,8 +17,12 @@
     <!-- 字符编码设置为UTF-8 -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 视口设置，用于响应式设计 -->
-    <meta name="theme-color" content="rgb(0 122 255)">
-    <!-- 主题颜色设置 -->
+    <meta name="theme-color" content="#007AFF">
+    <!-- 主题颜色（统一改成 hex，兼容性更好） -->
+    <meta name="robots" content="index, follow">
+    <!-- 告诉搜索引擎可以索引并跟踪页面链接 -->
+    <link rel="canonical" href="https://www.sec.hn.cn/">
+    <!-- 规范化网址，避免重复内容 -->
     <link rel="manifest" href="./manifest.json">
     <!-- PWA应用清单文件链接 -->
     <title>海口希灵赛斯</title>
@@ -27,6 +31,10 @@
     <!-- 网站图标 -->
     <link rel="apple-touch-icon" href="source/imgs/logo.png">
     <!-- 苹果触摸图标 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- 允许iOS全屏运行 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- iOS 状态栏样式 -->
     <meta name="description" content="海口希灵赛斯网络科技有限责任公司 - 专业的信息化解决方案供应商，提供私有云建设、信息安全咨询、网站建设等服务" />
     <!-- 页面描述 -->
     <meta property="og:title" content="海口希灵赛斯网络科技有限责任公司" />
@@ -50,6 +58,24 @@
     <!-- Bootstrap CSS框架 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Font Awesome图标库 -->
+    <!-- 性能优化 -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.sec.hn.cn">
+
+    <!-- 结构化数据 -->
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "海口希灵赛斯网络科技有限公司",
+    "url": "https://www.sec.hn.cn",
+    "logo": "https://www.sec.hn.cn/source/imgs/logo.png",
+    "sameAs": [
+      "https://www.linkedin.com/company/yourcompany",
+      "https://twitter.com/yourcompany"
+    ]
+  }
+</script>
     <style>
         /* CSS自定义属性（变量）定义 */
         :root {
@@ -225,6 +251,64 @@
             background: linear-gradient(135deg, rgba(0, 113, 227, 0.1) 0%, rgba(0, 113, 227, 0.05) 100%);
             z-index: -1;
             animation: pulse 6s infinite alternate;
+        }
+
+        /* 添加额外的动画元素 */
+        .ezy__header22_9Wbn5LJN::after {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 500px;
+            height: 500px;
+            border-radius: 45%;
+            background: linear-gradient(135deg, rgba(0, 113, 227, 0.05) 0%, rgba(0, 113, 227, 0.02) 100%);
+            z-index: -1;
+            animation: rotate 15s linear infinite, pulse 8s infinite alternate;
+            opacity: 0.7;
+        }
+
+        /* 添加浮动元素 */
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(0, 113, 227, 0.1) 0%, rgba(0, 113, 227, 0.03) 100%);
+            z-index: -1;
+            animation-duration: 20s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+        }
+
+        .shape-1 {
+            width: 150px;
+            height: 150px;
+            top: 20%;
+            left: 10%;
+            animation-name: float-1;
+        }
+
+        .shape-2 {
+            width: 100px;
+            height: 100px;
+            top: 60%;
+            left: 20%;
+            animation-name: float-2;
+        }
+
+        .shape-3 {
+            width: 80px;
+            height: 80px;
+            top: 30%;
+            right: 25%;
+            animation-name: float-3;
+        }
+
+        .shape-4 {
+            width: 120px;
+            height: 120px;
+            bottom: 20%;
+            right: 15%;
+            animation-name: float-4;
         }
 
         .ezy__header22_9Wbn5LJN-heading {
@@ -870,7 +954,7 @@
                     <!-- 业务下拉菜单 -->
                     <li class="nav-item dropdown" id="businessDropdownItem">
                         <a class="nav-link dropdown-toggle" href="business/index.html" id="businessDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            业务
+                            业   务
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="businessDropdown">
                             <li><a class="dropdown-item" href="business/index.html#user-focused">面向用户</a></li>
@@ -1042,6 +1126,12 @@
     <!-- 头部横幅部分 -->
     <section class="ezy__header22_9Wbn5LJN">
         <div class="container position-relative">
+            <!-- 添加浮动元素 -->
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+            <div class="floating-shape shape-4"></div>
+
             <div class="row justify-content-between">
                 <!-- 文本内容区域 -->
                 <div class="col-lg-6 pe-xl-5 text-center text-lg-start">
@@ -1119,7 +1209,7 @@
                 <div class="col-12 col-lg-6">
                     <div class="row">
                         <div class="col-12">
-                            <h1 class="ezy__howitworks1_0Fvj0bF9-heading mb-4">产品列表</h1>
+                            <h1 class="ezy__howitworks1_0Fvj0bF9-heading mb-4">包括但不仅限于此</h1>
                         </div>
                         <!-- 产品1：私有云建设及咨询 -->
                         <div class="col-12 col-md-6">
@@ -1575,6 +1665,62 @@
                     }
                 });
             });
+        });
+    </script>
+    
+    <!-- 背景音乐 -->
+    <audio id="bgMusic" autoplay loop>
+        <source src="" type="audio/mpeg">
+        您的浏览器不支持音频元素。
+    </audio>
+    
+    <script>
+        // 控制背景音乐
+        document.addEventListener('DOMContentLoaded', function() {
+            var bgMusic = document.getElementById('bgMusic');
+            var musicSrc = './source/audio/background.mp3'; // 请确保这个路径下有音乐文件
+            
+            // 设置音乐源
+            bgMusic.innerHTML = '<source src="' + musicSrc + '" type="audio/mpeg">' + 
+                               '您的浏览器不支持音频元素。';
+            
+            // 尝试自动播放（某些浏览器可能阻止自动播放）
+            bgMusic.load();
+            
+            // 添加播放控制
+            var musicControl = document.createElement('div');
+            musicControl.id = 'musicControl';
+            musicControl.innerHTML = '🔊';
+            musicControl.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                background: rgba(0, 113, 227, 0.8);
+                color: white;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                z-index: 9999;
+                font-size: 20px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+                transition: all 0.3s ease;
+            `;
+            
+            musicControl.addEventListener('click', function() {
+                if (bgMusic.paused) {
+                    bgMusic.play();
+                    musicControl.innerHTML = '🔊';
+                } else {
+                    bgMusic.pause();
+                    musicControl.innerHTML = '🔇';
+                }
+            });
+            
+            document.body.appendChild(musicControl);
         });
     </script>
 </body>
