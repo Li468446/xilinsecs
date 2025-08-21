@@ -930,6 +930,133 @@
             color: var(--apple-text-light);
             margin: 0;
         }
+        
+        /* --- 通用容器 --- */
+        .history-section {
+          position: relative;
+          padding: 100px 20px;
+          background-color: #0b0b0b;
+          color: #fff;
+          overflow: hidden;
+        }
+        .history-bg {
+          position: absolute;
+          top:0;
+          left:0;
+          width:100%;
+          height:100%;
+          z-index:0;
+        }
+        .history-header h2 {
+          font-size: 2.8rem;
+          font-weight: 700;
+          margin-bottom: 10px;
+        }
+        .history-divider {
+          width: 60px;
+          height: 3px;
+          background: #fff;
+          margin: 0 auto;
+          border-radius: 2px;
+        }
+
+        /* --- 时间线 --- */
+        .timeline {
+          position: relative;
+          margin-top: 60px;
+          display: flex;
+          flex-direction: column;
+          gap: 80px;
+          z-index: 1;
+        }
+
+        .timeline::before {
+          content: '';
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, #fff 0%, transparent 100%);
+    }
+
+    .timeline-item {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .timeline-item:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .timeline-dot {
+      flex-shrink: 0;
+      width: 50px;
+      height: 50px;
+      background: #fff;
+      color: #000;
+      border-radius: 50%;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2rem;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 0 15px rgba(255,255,255,0.4);
+      transition: transform 0.3s ease;
+    }
+
+    .timeline-dot:hover {
+      transform: scale(1.2);
+    }
+
+    .timeline-content {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(12px);
+      padding: 25px 35px;
+      margin: 0 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      flex: 1;
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 0.8s ease-out;
+    }
+
+    .timeline-item.visible .timeline-content {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .timeline-content h4 {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    .timeline-content p {
+      font-size: 1rem;
+      color: #ddd;
+      line-height: 1.6;
+    }
+
+    /* 响应式 */
+    @media (max-width: 768px) {
+      .timeline::before {
+        left: 20px;
+      }
+      .timeline-item {
+        flex-direction: row !important;
+      }
+      .timeline-content {
+        margin-left: 20px;
+      }
+    }
     </style>
 </head>
 <body>
@@ -1131,6 +1258,16 @@
             <div class="floating-shape shape-2"></div>
             <div class="floating-shape shape-3"></div>
             <div class="floating-shape shape-4"></div>
+            
+            <!-- 添加更多随机动态元素 -->
+            <div class="dynamic-bg-element element-1"></div>
+            <div class="dynamic-bg-element element-2"></div>
+            <div class="dynamic-bg-element element-3"></div>
+            <div class="dynamic-bg-element element-4"></div>
+            <div class="dynamic-bg-element element-5"></div>
+            <div class="dynamic-bg-element element-6"></div>
+            <div class="dynamic-bg-element element-7"></div>
+            <div class="dynamic-bg-element element-8"></div>
 
             <div class="row justify-content-between">
                 <!-- 文本内容区域 -->
@@ -1351,6 +1488,8 @@
     </section>
     
     <!-- 团队成员部分 -->
+
+    <!-- 团队成员部分 -->
     <section class="ezy__careers6_zvZzU4GV">
         <div class="container">
             <div class="row">
@@ -1431,80 +1570,105 @@
         </div>
     </section>
 
+    <!-- 团队成员部分 -->
+
     <!-- 发展历程部分 -->
-    <section class="ezy__howitworks11_cxxYqC5P">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="d-flex flex-column align-items-center text-center">
-                        <h2 class="ezy__howitworks11_cxxYqC5P-heading">发展历程</h2>
-                        <hr class="ezy__howitworks11_cxxYqC5P-divider" />
-                    </div>
-                </div>
-            </div>
-            <div class="row position-relative mt-5 ps-5 ps-md-0">
-                <!-- 垂直线 -->
-                <div class="ezy__howitworks11_cxxYqC5P-line">
-                    <h4 class="ezy__howitworks11_cxxYqC5P-end">End</h4>
-                </div>
-                
-                <!-- 发展阶段1：公司创立 -->
-                <div class="col-12">
-                    <div class="row">
-                        <div class="col-12 col-md-6">
-                            <div class="ezy__howitworks11_cxxYqC5P-card position-relative p-4 p-md-5">
-                                <h5 class="ezy__howitworks11_cxxYqC5P-count ezy__howitworks11_cxxYqC5P-count-one text-center">
-                                    Step <br />
-                                    <span>O1</span>
-                                </h5>
-                                <h4 class="ezy__howitworks11_cxxYqC5P-title fw-bold mb-3">公司创立</h4>
-                                <p class="opacity-75">
-                                    两位创始人经过6个月的设计和规划，决定于2025年4月创立团队，并命名海口希灵赛斯网络科技有限公司
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 发展阶段2：与海南好思达网络科技有限公司合作 -->
-                <div class="col-12">
-                    <div class="row justify-content-end">
-                        <div class="col-12 col-md-6">
-                            <div class="ezy__howitworks11_cxxYqC5P-card position-relative p-4 p-md-5 pt-3 pt-md-3">
-                                <h5 class="ezy__howitworks11_cxxYqC5P-count ezy__howitworks11_cxxYqC5P-count-two text-center">
-                                    Step <br />
-                                    <span>O2</span>
-                                </h5>
-                                <h4 class="ezy__howitworks11_cxxYqC5P-title fw-bold mb-3">海南好思达网络科技有限公司合作</h4>
-                                <p class="opacity-75">
-                                    为海南好思达网络科技有限公司提供多次故障处理服务及咨询服务
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 发展阶段3：与海口旅游职业学院（HTC）达成深度合作 -->
-                <div class="col-12">
-                    <div class="row">
-                        <div class="col-12 col-md-6">
-                            <div class="ezy__howitworks11_cxxYqC5P-card position-relative p-4 p-md-5 pt-3 pt-md-3">
-                                <h5 class="ezy__howitworks11_cxxYqC5P-count ezy__howitworks11_cxxYqC5P-count-three text-center">
-                                    Step <br />
-                                    <span>O3</span>
-                                </h5>
-                                <h4 class="ezy__howitworks11_cxxYqC5P-title fw-bold mb-3">海口旅游职业学院（HTC）达成深度合作</h4>
-                                <p class="opacity-75">
-                                    2025年5月，与HTC达成合作，为其建设VMware私有云体系，iHAIKOU平台及ai智能助手，并持续提供咨询服务
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+    <!-- 升级版发展历程模块 -->
+    <section id="development-history" class="history-section">
+      <!-- 背景粒子层 -->
+      <canvas id="history-bg" class="history-bg"></canvas>
+
+      <div class="container">
+        <div class="history-header text-center">
+          <h2>发展历程</h2>
+          <div class="history-divider"></div>
         </div>
+
+        <div class="timeline">
+          <!-- 阶段 1 -->
+          <div class="timeline-item" data-aos="fade-right">
+            <div class="timeline-dot">01</div>
+            <div class="timeline-content">
+              <h4>公司创立</h4>
+              <p>两位创始人经过6个月的设计和规划，决定于2025年4月创立团队，并命名海口希灵赛斯网络科技有限公司。</p>
+            </div>
+          </div>
+
+          <!-- 阶段 2 -->
+          <div class="timeline-item" data-aos="fade-left">
+            <div class="timeline-dot">02</div>
+            <div class="timeline-content">
+              <h4>海南好思达网络科技有限公司合作</h4>
+              <p>为海南好思达网络科技有限公司提供多次故障处理服务及咨询服务。</p>
+            </div>
+          </div>
+
+          <!-- 阶段 3 -->
+          <div class="timeline-item" data-aos="fade-right">
+            <div class="timeline-dot">03</div>
+            <div class="timeline-content">
+              <h4>海口旅游职业学院（HTC）达成深度合作</h4>
+              <p>2025年5月，与HTC达成合作，为其建设VMware私有云体系，iHAIKOU平台及ai智能助手，并持续提供咨询服务。</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-    
+
+    <script>
+    // 滚动入场动画
+    const items = document.querySelectorAll('.timeline-item');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.3 });
+    items.forEach(item => observer.observe(item));
+
+    // 背景粒子动效
+    const canvas = document.getElementById('history-bg');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    for(let i=0;i<100;i++){
+      particles.push({
+        x: Math.random()*canvas.width,
+        y: Math.random()*canvas.height,
+        r: Math.random()*2+1,
+        dx: (Math.random()-0.5)*0.3,
+        dy: (Math.random()-0.5)*0.3
+      });
+    }
+
+    function animateParticles(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      particles.forEach(p=>{
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle = 'rgba(255,255,255,0.2)';
+        ctx.fill();
+        p.x += p.dx;
+        p.y += p.dy;
+        if(p.x>canvas.width) p.x=0;
+        if(p.x<0) p.x=canvas.width;
+        if(p.y>canvas.height) p.y=0;
+        if(p.y<0) p.y=canvas.height;
+      });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    window.addEventListener('resize',()=>{
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+    </script>
+
     <!-- 页脚 -->
     <footer class="footer">
         <div class="container">

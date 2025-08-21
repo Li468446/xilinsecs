@@ -21,7 +21,7 @@
     <meta property="og:title" content="海口希灵赛斯网络科技有限公司" />
     <meta property="og:description" content="专业的信息化解决方案供应商，提供私有云建设、信息安全咨询、网站建设等服务" />
     <meta property="og:image" content="../../source/index_imgs/index_01.jpg" />
-    <meta property="og:url" content="https://www.xlse.com" />
+    <meta property="og:url" content="https://www.sec.hn.cn" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="海口希灵赛斯网络科技有限公司" />
     <meta name="twitter:description" content="专业的信息化解决方案供应商，提供私有云建设、信息安全咨询、网站建设等服务" />
@@ -186,24 +186,25 @@
 
         .navbar-brand {
             font-weight: 700;
-            font-size: 1.4rem;
+            font-size: 1.8rem;
             color: #1d1d1f;
             letter-spacing: -0.5px;
             transition: transform 0.3s ease;
         }
 
         .navbar-brand:hover {
-            transform: scale(1.05);
+            transform: scale(1.15);
         }
 
         .nav-link {
             font-weight: 500;
             color: #444;
-            padding: 8px 16px;
-            margin: 0 4px;
+            padding: 12px 20px;
+            margin: 0 8px;
             border-radius: 12px;
             transition: var(--transition-smooth);
             position: relative;
+            font-size: 1.1rem;
         }
 
         .nav-link:hover {
@@ -542,6 +543,35 @@
             .team-card .card-body {
                 padding: 20px;
             }
+            
+            .process-step {
+                padding: 15px;
+            }
+        }
+        
+        /* 针对小屏幕的额外优化 */
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .team-card .card-body {
+                padding: 15px;
+            }
+            
+            .team-icon {
+                font-size: 2rem;
+            }
+            
+            .process-step {
+                padding: 10px 5px;
+            }
+            
+            .step-number {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
@@ -559,12 +589,12 @@
     <div class="human-element human-3"></div>
 
     <!-- 导航栏 -->
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg" role="navigation" aria-label="主导航">
         <div class="container">
-            <a class="navbar-brand" href="../index.html">
-                希灵赛斯
+            <a class="navbar-brand" href="../index.html" aria-label="返回首页">
+                XSEC Teams
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="切换导航">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -579,7 +609,7 @@
                         <a class="nav-link" href="life-at-xsec.html">在 XSEC 生活</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">探索团队</a>
+                        <a class="nav-link active" href="#" aria-current="page">探索团队</a>
                     </li>
                 </ul>
             </div>
@@ -587,7 +617,7 @@
     </nav>
 
     <!-- 页面标题区域 -->
-    <section class="page-header">
+    <section class="page-header" role="banner">
         <div class="container">
             <h1>我们的团队</h1>
             <p>海口希灵赛斯网络科技有限公司拥有多元化的专业团队，各司其职，协同合作，为客户提供全方位的信息化解决方案</p>
@@ -595,18 +625,18 @@
     </section>
 
     <!-- 团队介绍区域 -->
-    <section class="team-section">
+    <section class="team-section" role="main">
         <div class="container">
             <h2 class="section-title">探索我们的团队</h2>
             <div class="row">
                 <!-- 开发团队 -->
                 <div class="col-lg-6 mb-4">
-                    <div class="team-card card">
+                    <div class="team-card card" role="region" aria-labelledby="dev-team">
                         <div class="card-body">
                             <div class="team-icon">
-                                <i class="fas fa-code"></i>
+                                <i class="fas fa-code" aria-hidden="true"></i>
                             </div>
-                            <h3>创新开发团队</h3>
+                            <h3 id="dev-team">创新开发团队</h3>
                             <p>我们的开发团队由经验丰富的软件工程师和系统架构师组成，专注于私有云建设、系统集成和定制化软件开发。</p>
                             <ul class="team-features">
                                 <li>精通多种编程语言和开发框架</li>
@@ -620,12 +650,12 @@
 
                 <!-- 商务团队 -->
                 <div class="col-lg-6 mb-4">
-                    <div class="team-card card">
+                    <div class="team-card card" role="region" aria-labelledby="business-team">
                         <div class="card-body">
                             <div class="team-icon">
-                                <i class="fas fa-handshake"></i>
+                                <i class="fas fa-handshake" aria-hidden="true"></i>
                             </div>
-                            <h3>商务团队</h3>
+                            <h3 id="business-team">商务团队</h3>
                             <p>商务团队负责客户关系管理、项目洽谈和合同执行，确保客户需求得到准确理解和满足。</p>
                             <ul class="team-features">
                                 <li>深入了解行业需求和市场趋势</li>
@@ -639,12 +669,12 @@
 
                 <!-- 信息安全咨询团队 -->
                 <div class="col-lg-6 mb-4">
-                    <div class="team-card card">
+                    <div class="team-card card" role="region" aria-labelledby="security-team">
                         <div class="card-body">
                             <div class="team-icon">
-                                <i class="fas fa-shield-alt"></i>
+                                <i class="fas fa-shield-alt" aria-hidden="true"></i>
                             </div>
-                            <h3>信息安全咨询团队</h3>
+                            <h3 id="security-team">信息安全咨询团队</h3>
                             <p>信息安全专家团队提供全面的安全评估、风险管理和合规咨询服务，保障客户信息资产安全。</p>
                             <ul class="team-features">
                                 <li>具备国家认可的信息安全资质</li>
@@ -658,12 +688,12 @@
 
                 <!-- 媒体运营团队 -->
                 <div class="col-lg-6 mb-4">
-                    <div class="team-card card">
+                    <div class="team-card card" role="region" aria-labelledby="media-team">
                         <div class="card-body">
                             <div class="team-icon">
-                                <i class="fas fa-bullhorn"></i>
+                                <i class="fas fa-bullhorn" aria-hidden="true"></i>
                             </div>
-                            <h3>媒体运营团队</h3>
+                            <h3 id="media-team">媒体运营团队</h3>
                             <p>媒体运营团队负责品牌推广、内容创作和数字营销，提升公司品牌影响力和市场知名度。</p>
                             <ul class="team-features">
                                 <li>专业的品牌策划和视觉设计能力</li>
@@ -684,30 +714,30 @@
             <h2 class="section-title">跨部门协作流程</h2>
             <div class="row">
                 <div class="col-md-3 col-6">
-                    <div class="process-step">
+                    <div class="process-step" role="region" aria-labelledby="process-1">
                         <div class="step-number">1</div>
-                        <h4>需求分析</h4>
+                        <h4 id="process-1">需求分析</h4>
                         <p>商务团队与客户深入沟通，明确需求</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-6">
-                    <div class="process-step">
+                    <div class="process-step" role="region" aria-labelledby="process-2">
                         <div class="step-number">2</div>
-                        <h4>方案设计</h4>
+                        <h4 id="process-2">方案设计</h4>
                         <p>开发和安全团队共同制定技术方案</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-6">
-                    <div class="process-step">
+                    <div class="process-step" role="region" aria-labelledby="process-3">
                         <div class="step-number">3</div>
-                        <h4>项目执行</h4>
+                        <h4 id="process-3">项目执行</h4>
                         <p>各团队协同工作，确保项目高质量交付</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-6">
-                    <div class="process-step">
+                    <div class="process-step" role="region" aria-labelledby="process-4">
                         <div class="step-number">4</div>
-                        <h4>持续优化</h4>
+                        <h4 id="process-4">持续优化</h4>
                         <p>媒体运营团队进行推广，其他团队提供支持</p>
                     </div>
                 </div>
@@ -716,7 +746,7 @@
     </section>
 
     <!-- 页脚 -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="copyright">
                 <p>&copy; 2025 海口希灵赛斯网络科技有限责任公司. 保留所有权利。</p>
