@@ -109,872 +109,1430 @@
             top: 0;
             left: 0;
         }
+    </style>
+</head>
+<body>
+<!-- ===================== 粒子背景 ===================== -->
+<div id="particles-js" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;"></div>
 
-        /* 导航栏美化 */
-        .ezy__nav6_7SyLoOH3k {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            background: rgba(255, 255, 255, 0.85);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            transition: var(--transition-smooth);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+<!-- ===================== 导航栏模块 ===================== -->
+<div class="ezy__nav6_7SyLoOH3k">
+    <nav class="navbar navbar-expand-lg py-3">
+        <div class="container position-relative">
+            <!-- 品牌标识 -->
+            <a class="navbar-brand" href="#home">
+                <img src="source/imgs/logo.png" alt="海口希灵赛斯" class="nav-logo">
+            </a>
+            <!-- 下划线指示器 -->
+            <div class="nav-indicator"></div>
+
+            <!-- 移动端导航切换按钮 -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- 导航菜单 -->
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown" id="businessDropdownItem">
+                        <a class="nav-link dropdown-toggle" href="business/index.html" id="businessDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            业   务
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="businessDropdown">
+                            <li><a class="dropdown-item" href="business/index.html#user-focused">面向用户</a></li>
+                            <li><a class="dropdown-item" href="business/index.html#enterprise">面向企业</a></li>
+                            <li><a class="dropdown-item" href="business/index.html#innovation">科技创新</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="public/index.html">公共服务</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://se-xl-services.xinnew.top/">资源监测</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://blog.csdn.net/qq_73252299?spm=1011.2124.3001.5343">技术频道</a></li>
+                    <li class="nav-item dropdown" id="aboutDropdownItem">
+                        <a class="nav-link dropdown-toggle" href="#about" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            关于我们
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a class="dropdown-item" href="leadership/about.html">企业简介</a></li>
+                            <li><a class="dropdown-item" href="https://sec.hn.cn/">更新动态</a></li>
+                            <li><a class="dropdown-item" href="leadership/about.html">领导团队</a></li>
+                            <li><a class="dropdown-item" href="#history">发展历程</a></li>
+                            <li><a class="dropdown-item" href="careers/cn/index.html">职业机会</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<!-- ===================== CSS ===================== -->
+<style>
+/* 导航栏基础 */
+.ezy__nav6_7SyLoOH3k {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    font-size: 1.125rem;
+}
+
+/* navbar 毛玻璃效果 */
+.navbar {
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    background: rgba(255,255,255,0.4);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+
+/* 滚动时的导航栏样式 */
+.navbar.scrolled {
+    background: rgba(30, 30, 30, 0.8); /* 深灰色背景 */
+    box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+}
+
+/* Logo */
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #1d1d1f;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar.scrolled .navbar-brand {
+    color: #ffffff; /* 滚动时字体变白 */
+}
+
+.nav-logo {
+    height: 40px;
+    margin-right: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* 导航链接 */
+.nav-link {
+    font-weight: 500;
+    color: #444;
+    padding: 10px 16px;
+    margin: 0 4px;
+    border-radius: 12px;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+    outline: none;
+}
+
+.navbar.scrolled .nav-link {
+    color: #ffffff; /* 滚动时字体变白 */
+}
+
+.nav-link:hover {
+    color: #007bff;
+    background: rgba(0,113,227,0.08);
+}
+
+.navbar.scrolled .nav-link:hover {
+    color: #007bff;
+    background: rgba(0,113,227,0.2);
+}
+
+/* 下拉菜单 */
+.dropdown-menu {
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    background: rgba(255,255,255,0.85);
+    border: 1px solid rgba(0,0,0,0.05);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    padding: 10px 0;
+    margin-top: 8px;
+    transition: all 0.5s ease-in-out; /* 强化淡入淡出效果 */
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+}
+
+.dropdown-menu.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* 滚动时下拉菜单样式 */
+.navbar.scrolled .dropdown-menu {
+    background: rgba(255,255,255,0.9);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* 下拉菜单项 */
+.dropdown-item {
+    padding: 8px 20px;
+    color: #444;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+/* 滚动时下拉菜单项样式 */
+.navbar.scrolled .dropdown-item {
+    color: #444;
+}
+
+.dropdown-item:hover {
+    background: rgba(0,113,227,0.08);
+    color: #007bff;
+}
+
+/* 滚动时下拉菜单项悬停样式 */
+.navbar.scrolled .dropdown-item:hover {
+    background: rgba(0,113,227,0.2);
+    color: #007bff;
+}
+
+/* 去除PC端二级菜单黑框 */
+.nav-item.dropdown:focus-within > a.dropdown-toggle,
+.nav-item.dropdown.show > a.dropdown-toggle {
+    outline: none;
+    box-shadow: none;
+}
+
+/* 移动端按钮 */
+.navbar-toggler {
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 5px;
+    padding: 2px 6px;
+    z-index: 1001; /* 确保按钮在导航栏上方 */
+}
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0,113,227,0.25);
+}
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280,0,0,0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar.scrolled .navbar-toggler {
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.navbar.scrolled .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255,255,255,0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* 滚动效果 */
+.navbar.scrolled {
+    background: rgba(30, 30, 30, 0.8);
+    box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+    font-size: 1rem;
+}
+.navbar.scrolled .nav-logo {
+    height: 30px;
+}
+
+/* 修复移动端导航栏遮挡内容的问题 */
+@media (max-width: 991.98px) {
+    .ezy__header22_9Wbn5LJN {
+        padding-top: 70px; /* 为固定导航栏留出空间 */
+    }
+}
+</style>
+
+<!-- ===================== JS ===================== -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    // 下拉菜单悬停 + 动画
+    function setupDropdown(dropdownItemId, dropdownToggleId){
+        var dropdownItem = document.getElementById(dropdownItemId);
+        var dropdownToggle = document.getElementById(dropdownToggleId);
+        var dropdownMenu = dropdownToggle.nextElementSibling;
+        var timeoutId;
+
+        function showDropdown(){
+            clearTimeout(timeoutId);
+            var instance = bootstrap.Dropdown.getOrCreateInstance(dropdownToggle);
+            instance.show();
+            dropdownToggle.setAttribute('aria-expanded','true');
+            dropdownMenu.classList.add('show');
+        }
+        function hideDropdown(){
+            timeoutId = setTimeout(function(){
+                dropdownMenu.classList.remove('show');
+                setTimeout(()=>{
+                    var instance = bootstrap.Dropdown.getOrCreateInstance(dropdownToggle);
+                    instance.hide(true);
+                    dropdownToggle.setAttribute('aria-expanded','false');
+                },250);
+            },300);
         }
 
-        .ezy__nav6_7SyLoOH3k .navbar-brand {
-            font-weight: 700;
-            font-size: 1.4rem;
-            color: #1d1d1f;
-            letter-spacing: -0.5px;
-            transition: transform 0.3s ease;
+        dropdownItem.addEventListener('mouseenter', showDropdown);
+        dropdownItem.addEventListener('mouseleave', hideDropdown);
+        if(dropdownMenu){
+            dropdownMenu.addEventListener('mouseenter', showDropdown);
+            dropdownMenu.addEventListener('mouseleave', hideDropdown);
         }
+    }
 
-        .ezy__nav6_7SyLoOH3k .navbar-brand:hover {
-            transform: scale(1.05);
-        }
+    setupDropdown('businessDropdownItem','businessDropdown');
+    setupDropdown('aboutDropdownItem','aboutDropdown');
 
-        .ezy__nav6_7SyLoOH3k .nav-link {
-            font-weight: 500;
-            color: #444;
-            padding: 8px 16px;
-            margin: 0 4px;
-            border-radius: 12px;
-            transition: var(--transition-smooth);
-            position: relative;
-        }
+    // 滚动透明度和Logo缩放
+    var navbar = document.querySelector('.navbar');
+    var navLinks = document.querySelectorAll('.nav-link');
+    var dropdownMenus = document.querySelectorAll('.dropdown-menu');
 
-        .ezy__nav6_7SyLoOH3k .nav-link:hover {
-            background: rgba(0, 113, 227, 0.08);
-            color: var(--apple-accent);
-        }
-
-        .ezy__nav6_7SyLoOH3k .nav-link.active {
-            color: var(--apple-accent);
-            font-weight: 600;
-        }
-
-        /* 优化下拉菜单的下划线样式 */
-        .ezy__nav6_7SyLoOH3k .nav-link.dropdown-toggle::after {
-            display: none;
-        }
-
-        .ezy__nav6_7SyLoOH3k .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 15%;
-            width: 0;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--apple-accent), transparent);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-            border-radius: 3px;
-        }
-
-        .ezy__nav6_7SyLoOH3k .nav-link:hover::after {
-            width: 70%;
-            left: 15%;
-        }
-
-        .ezy__nav6_7SyLoOH3k .nav-link.dropdown-toggle:hover::after {
-            width: 70%;
-            left: 15%;
-        }
-
-        .ezy__nav6_7SyLoOH3k .show > .nav-link.dropdown-toggle::after,
-        .ezy__nav6_7SyLoOH3k .nav-link.dropdown-toggle[aria-expanded="true"]::after {
-            width: 70%;
-            left: 15%;
-        }
-
-        /* 导航栏下拉菜单样式 */
-        .ezy__nav6_7SyLoOH3k .dropdown-menu {
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            background: rgba(255, 255, 255, 0.85);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            padding: 10px 0;
-            margin-top: 8px;
-            transition: var(--transition-smooth);
-        }
+    window.addEventListener('scroll', function(){
+        // 获取滚动位置
+        var scrollPosition = window.scrollY;
+        var scrollPercentage = Math.min(scrollPosition / 100, 1); // 0到1之间的值，100px后达到最大值
         
-        .ezy__nav6_7SyLoOH3k .dropdown-item {
-            padding: 8px 20px;
-            color: #444;
-            font-weight: 500;
-            transition: var(--transition-smooth);
-        }
+        // 计算背景颜色 (从浅色到深色)
+        var r = 255 - (255 - 30) * scrollPercentage;
+        var g = 255 - (255 - 30) * scrollPercentage;
+        var b = 255 - (255 - 30) * scrollPercentage;
+        var alpha = 0.4 + 0.4 * scrollPercentage; // 从0.4到0.8的透明度
         
-        .ezy__nav6_7SyLoOH3k .dropdown-item:hover {
-            background: rgba(0, 113, 227, 0.08);
-            color: var(--apple-accent);
-        }
+        // 应用背景颜色
+        navbar.style.background = `rgba(${Math.floor(r)}, ${Math.floor(g)}, ${Math.floor(b)}, ${alpha})`;
         
-        .ezy__nav6_7SyLoOH3k .dropdown-divider {
-            margin: 8px 0;
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        /* 增强移动端导航栏切换按钮的可见性 */
-        .ezy__nav6_7SyLoOH3k .navbar-toggler {
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            padding: 2px 6px;
-        }
-
-        .ezy__nav6_7SyLoOH3k .navbar-toggler:focus {
-            box-shadow: 0 0 0 0.2rem rgba(0, 113, 227, 0.25);
-        }
-
-        .ezy__nav6_7SyLoOH3k .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-        }
-
-        /* 头部区域美化 */
-        .ezy__header22_9Wbn5LJN {
-            padding: 100px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .ezy__header22_9Wbn5LJN::before {
-            content: '';
-            position: absolute;
-            top: -100px;
-            right: -100px;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(0, 113, 227, 0.1) 0%, rgba(0, 113, 227, 0.05) 100%);
-            z-index: -1;
-            animation: pulse 6s infinite alternate;
-        }
-
-        /* 添加额外的动画元素 */
-        .ezy__header22_9Wbn5LJN::after {
-            content: '';
-            position: absolute;
-            top: -200px;
-            right: -200px;
-            width: 500px;
-            height: 500px;
-            border-radius: 45%;
-            background: linear-gradient(135deg, rgba(0, 113, 227, 0.05) 0%, rgba(0, 113, 227, 0.02) 100%);
-            z-index: -1;
-            animation: rotate 15s linear infinite, pulse 8s infinite alternate;
-            opacity: 0.7;
-        }
-
-        /* 添加浮动元素 */
-        .floating-shape {
-            position: absolute;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(0, 113, 227, 0.1) 0%, rgba(0, 113, 227, 0.03) 100%);
-            z-index: -1;
-            animation-duration: 20s;
-            animation-iteration-count: infinite;
-            animation-timing-function: ease-in-out;
-        }
-
-        .shape-1 {
-            width: 150px;
-            height: 150px;
-            top: 20%;
-            left: 10%;
-            animation-name: float-1;
-        }
-
-        .shape-2 {
-            width: 100px;
-            height: 100px;
-            top: 60%;
-            left: 20%;
-            animation-name: float-2;
-        }
-
-        .shape-3 {
-            width: 80px;
-            height: 80px;
-            top: 30%;
-            right: 25%;
-            animation-name: float-3;
-        }
-
-        .shape-4 {
-            width: 120px;
-            height: 120px;
-            bottom: 20%;
-            right: 15%;
-            animation-name: float-4;
-        }
-
-        .ezy__header22_9Wbn5LJN-heading {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.2;
-            color: #1d1d1f;
-            letter-spacing: -1px;
-            margin-bottom: 25px;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .ezy__header22_9Wbn5LJN-sub-heading {
-            font-size: 1.4rem;
-            color: #444;
-            line-height: 1.6;
-            margin-bottom: 40px;
-            animation: fadeInUp 1s ease-out 0.2s forwards;
-            opacity: 1;
-        }
-
-        .ezy__header22_9Wbn5LJN-btn {
-            font-weight: 600;
-            padding: 14px 36px;
-            border-radius: 15px;
-            font-size: 1.1rem;
-            box-shadow: 0 6px 20px rgba(0, 113, 227, 0.3);
-            transition: var(--transition-smooth);
-            /* 移除动画延迟，确保按钮立即可见 */
-            opacity: 1;
-            animation: fadeInUp 1s ease-out 0.3s;
-        }
-
-        .ezy__header22_9Wbn5LJN-btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 30px rgba(0, 113, 227, 0.4);
-        }
-
-        .ezy__header22_9Wbn5LJN-thumbnail {
-            border-radius: 25px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-            animation: float 6s infinite ease-in-out;
-        }
-
-        /* 关于区域美化 */
-        .ezy__about3_xOZLftWU {
-            padding: 100px 0;
-            background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            position: relative;
-        }
-
-        .ezy__about3_xOZLftWU-heading {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #1d1d1f;
-            position: relative;
-            padding-bottom: 20px;
-            margin-bottom: 60px;
-        }
-
-        .ezy__about3_xOZLftWU-heading::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--apple-accent);
-            border-radius: 2px;
-        }
-
-        .ezy__about3_xOZLftWU .card {
-            border: none;
-            border-radius: 20px;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: var(--apple-shadow);
-            transition: var(--transition-smooth);
-            height: 100%;
-        }
-
-        .ezy__about3_xOZLftWU .card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
-        }
-
-        .ezy__about3_xOZLftWU-icon {
-            font-size: 3.5rem;
-            color: var(--apple-accent);
-            margin: 30px 0 20px;
-            transition: transform 0.5s ease;
-        }
-
-        .ezy__about3_xOZLftWU .card:hover .ezy__about3_xOZLftWU-icon {
-            transform: scale(1.2);
-        }
-
-        .ezy__about3_xOZLftWU .card-title {
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: #1d1d1f;
-            margin-bottom: 15px;
-        }
-
-        .ezy__about3_xOZLftWU .card-text {
-            color: var(--apple-text-light);
-            line-height: 1.7;
-            padding: 0 20px 30px;
-        }
-
-        /* 产品区域美化 */
-        .ezy__howitworks1_0Fvj0bF9 {
-            padding: 100px 0;
-            position: relative;
-        }
-
-        .ezy__howitworks1_0Fvj0bF9-heading {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #1d1d1f;
-            position: relative;
-            padding-bottom: 20px;
-            margin-bottom: 40px;
-        }
-
-        .ezy__howitworks1_0Fvj0bF9-heading::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 80px;
-            height: 4px;
-            background: var(--apple-accent);
-            border-radius: 2px;
-        }
-
-        .ezy__howitworks1_0Fvj0bF9-number {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            line-height: 50px;
-            text-align: center;
-            background: var(--apple-accent);
-            color: white;
-            border-radius: 50%;
-            font-weight: 700;
-            font-size: 1.2rem;
-            transition: var(--transition-smooth);
-        }
-
-        .ezy__howitworks1_0Fvj0bF9-title {
-            font-weight: 700;
-            color: #1d1d1f;
-            margin: 20px 0 15px;
-            transition: all 0.3s ease;
-        }
-
-        .ezy__howitworks1_0Fvj0bF9-content {
-            color: var(--apple-text-light);
-            line-height: 1.7;
-        }
-
-        .ezy__howitworks1_0Fvj0bF9 .p-xl-3 {
-            padding: 30px;
-            border-radius: 20px;
-            transition: var(--transition-smooth);
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: var(--apple-shadow);
-        }
-
-        .ezy__howitworks1_0Fvj0bF9 .p-xl-3:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
-        }
-
-        .ezy__howitworks1_0Fvj0bF9 .p-xl-3:hover .ezy__howitworks1_0Fvj0bF9-number {
-            transform: scale(1.1);
-            background: #005bb5;
-        }
-
-        /* 项目卡片美化 */
-        .project-section {
-            padding: 100px 0;
-            background: rgba(245, 247, 250, 0.6);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        .project-card {
-            border-radius: 20px;
-            overflow: hidden;
-            transition: var(--transition-smooth);
-            height: 100%;
-            background: var(--apple-card-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: var(--glass-border);
-            box-shadow: var(--apple-shadow);
-            position: relative;
-        }
-
-        .project-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.25);
-            z-index: -1;
-            border-radius: 20px;
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .project-img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .project-card:hover .project-img {
-            transform: scale(1.05);
-        }
-
-        .card-date {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 12px 15px;
-            font-weight: 600;
-            text-align: center;
-            color: var(--apple-accent);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-            line-height: 1.3;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            z-index: 2;
-        }
-
-        .project-content {
-            padding: 25px;
-        }
-
-        .project-author {
-            color: var(--apple-text-light);
-            font-size: 0.95rem;
-            margin-bottom: 8px;
-        }
-
-        .project-title {
-            font-weight: 700;
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-            color: #1d1d1f;
-            line-height: 1.3;
-        }
-
-        .project-description {
-            color: var(--apple-text-light);
-            margin-bottom: 20px;
-            line-height: 1.6;
-            font-size: 1.05rem;
-        }
-
-        .btn-more {
-            background: rgba(0, 113, 227, 0.1);
-            color: var(--apple-accent);
-            border: none;
-            border-radius: 10px;
-            padding: 8px 18px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .btn-more:hover {
-            background: var(--apple-accent);
-            color: white;
-        }
-
-        .cta-box {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(245, 247, 250, 0.8) 100%);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 20px;
-            padding: 30px;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            border: var(--glass-border);
-            box-shadow: var(--apple-shadow);
-            transition: var(--transition-smooth);
-        }
-
-        .cta-box:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
-        }
-
-        .cta-title {
-            font-weight: 700;
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: #1d1d1f;
-        }
-
-        .cta-description {
-            color: var(--apple-text-light);
-            margin-bottom: 25px;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        .feature-list {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 30px;
-        }
-
-        .feature-list li {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .feature-list li i {
-            color: var(--apple-accent);
-            margin-right: 10px;
-            margin-top: 5px;
-            font-size: 1.2rem;
-        }
-
-        .custom-btn {
-            background: var(--apple-accent);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            padding: 12px 24px;
-            font-weight: 500;
-            transition: var(--transition-smooth);
-            box-shadow: 0 4px 12px rgba(0, 113, 227, 0.25);
-        }
-
-        .custom-btn:hover {
-            background: var(--apple-accent-hover);
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 113, 227, 0.35);
-        }
-
-        /* 团队区域美化 */
-        .ezy__careers6_zvZzU4GV {
-            padding: 100px 0;
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        .ezy__careers6_zvZzU4GV-heading {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #1d1d1f;
-            position: relative;
-            padding-bottom: 20px;
-            margin-bottom: 60px;
-        }
-
-        .ezy__careers6_zvZzU4GV-heading::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 80px;
-            height: 4px;
-            background: var(--apple-accent);
-            border-radius: 2px;
-        }
-
-        .ezy__careers6_zvZzU4GV-card {
-            border-radius: 20px;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: var(--apple-shadow);
-            transition: var(--transition-smooth);
-            border: none;
-        }
-
-        .ezy__careers6_zvZzU4GV-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
-        }
-
-        .ezy__careers6_zvZzU4GV-card .card-body {
-            padding: 30px;
-            text-align: center;
-        }
-
-        .ezy__careers6_zvZzU4GV-card h5 {
-            font-weight: 700;
-            color: #1d1d1f;
-            margin: 15px 0 5px;
-        }
-
-        .ezy__careers6_zvZzU4GV-card p {
-            color: var(--apple-accent);
-            font-weight: 500;
-        }
+        // 计算文字颜色 (从深色到白色)
+        var textR = 68 + (255 - 68) * scrollPercentage;
+        var textG = 68 + (255 - 68) * scrollPercentage;
+        var textB = 68 + (255 - 68) * scrollPercentage;
         
-        /* 团队成员图标样式 */
-        .team-member-icon {
-            color: var(--apple-accent);
-        }
+        // 应用导航链接颜色
+        navLinks.forEach(link => {
+            link.style.color = `rgb(${Math.floor(textR)}, ${Math.floor(textG)}, ${Math.floor(textB)})`;
+        });
         
-        /* Memoji头像样式 */
-        .memoji-avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 0 auto 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            border: 3px solid white;
-        }
-
-        /* 发展历程美化 */
-        .ezy__howitworks11_cxxYqC5P {
-            padding: 100px 0;
-            position: relative;
-        }
-
-        .ezy__howitworks11_cxxYqC5P-heading {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #1d1d1f;
-            position: relative;
-            padding-bottom: 20px;
-            margin-bottom: 60px;
-        }
-
-        .ezy__howitworks11_cxxYqC5P-heading::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--apple-accent);
-            border-radius: 2px;
-        }
-
-        .ezy__howitworks11_cxxYqC5P-divider {
-            width: 100px;
-            height: 4px;
-            background: var(--apple-accent);
-            opacity: 1;
-            margin: 20px auto;
-        }
-
-        .ezy__howitworks11_cxxYqC5P-line {
-            position: absolute;
-            left: 50px;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: var(--apple-accent);
-            transform: translateX(-50%);
-        }
-
-        .ezy__howitworks11_cxxYqC5P-card {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: var(--apple-shadow);
-            margin-bottom: 60px;
-            transition: var(--transition-smooth);
-            position: relative;
-            border: var(--glass-border);
-        }
-
-        .ezy__howitworks11_cxxYqC5P-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
-        }
-
-        .ezy__howitworks11_cxxYqC5P-count {
-            position: absolute;
-            left: -85px;
-            top: 20px;
-            width: 70px;
-            height: 70px;
-            line-height: 1.4;
-            background: var(--apple-accent);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            font-weight: 600;
-            transition: var(--transition-smooth);
-        }
-
-        .ezy__howitworks11_cxxYqC5P-card:hover .ezy__howitworks11_cxxYqC5P-count {
-            transform: scale(1.1);
-            background: #005bb5;
-        }
-
-        .ezy__howitworks11_cxxYqC5P-title {
-            font-weight: 700;
-            color: #1d1d1f;
-            margin-bottom: 15px;
-        }
-
-        .ezy__howitworks11_cxxYqC5P-card p {
-            color: var(--apple-text-light);
-            line-height: 1.7;
-        }
-
-        /* 页脚美化 */
-        .ezy__copyright9_vnIOpFmz {
-            padding: 60px 0 30px;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .ezy__copyright9_vnIOpFmz img {
-            height: 40px;
-        }
-
-        .ezy__copyright9_vnIOpFmz p {
-            color: var(--apple-text-light);
-            margin: 20px 0;
-        }
-
-        .ezy__copyright9_vnIOpFmz-social li {
-            display: inline-block;
-            margin: 0 10px;
-        }
-
-        .ezy__copyright9_vnIOpFmz-social a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            background: rgba(0, 113, 227, 0.1);
-            color: var(--apple-accent);
-            border-radius: 50%;
-            font-size: 1.2rem;
-            transition: var(--transition-smooth);
-        }
-
-        .ezy__copyright9_vnIOpFmz-social a:hover {
-            background: var(--apple-accent);
-            color: white;
-            transform: translateY(-5px);
-        }
+        // 应用品牌文字颜色
+        var brand = document.querySelector('.navbar-brand');
+        brand.style.color = `rgb(${Math.floor(textR)}, ${Math.floor(textG)}, ${Math.floor(textB)})`;
         
-        /* 新增页脚样式 */
-        .footer {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(245, 247, 250, 0.85) 100%);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-            padding: 60px 0 30px;
-            color: var(--apple-text);
-        }
+        // 应用下拉菜单样式
+        dropdownMenus.forEach(menu => {
+            // 计算下拉菜单背景色
+            var menuBgAlpha = 0.85 + 0.15 * scrollPercentage; // 从0.85到1的透明度
+            menu.style.background = `rgba(255, 255, 255, ${menuBgAlpha})`;
+            
+            // 滚动时调整下拉菜单边框
+            if (scrollPercentage > 0.5) {
+                menu.style.border = '1px solid rgba(255, 255, 255, 0.2)';
+            } else {
+                menu.style.border = '1px solid rgba(0, 0, 0, 0.05)';
+            }
+        });
         
-        .footer h3, .footer h4 {
-            color: #1d1d1f;
-            margin-bottom: 20px;
-            font-weight: 700;
+        // 当滚动超过50px时添加scrolled类以应用其他样式
+        if(scrollPosition > 50){
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
         }
-        
-        .footer ul li {
-            margin-bottom: 10px;
-        }
-        
-        .footer ul li a {
-            color: var(--apple-text-light);
-            text-decoration: none;
-            transition: var(--transition-smooth);
-        }
-        
-        .footer ul li a:hover {
-            color: var(--apple-accent);
-            padding-left: 5px;
-        }
-        
-        .copyright {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-        }
-        
-        .copyright p {
-            color: var(--apple-text-light);
-            margin: 0;
-        }
-        
-        /* --- 通用容器 --- */
-        .history-section {
-          position: relative;
-          padding: 100px 20px;
-          background-color: #0b0b0b;
-          color: #fff;
-          overflow: hidden;
-        }
-        .history-bg {
-          position: absolute;
-          top:0;
-          left:0;
-          width:100%;
-          height:100%;
-          z-index:0;
-        }
-        .history-header h2 {
-          font-size: 2.8rem;
-          font-weight: 700;
-          margin-bottom: 10px;
-        }
-        .history-divider {
-          width: 60px;
-          height: 3px;
-          background: #fff;
-          margin: 0 auto;
-          border-radius: 2px;
+    });
+});
+</script>
+
+    <!-- 头部横幅模块 -->
+    <section class="ezy__header22_9Wbn5LJN">
+        <canvas id="header-mg-bg"></canvas>
+
+        <div class="container position-relative h-100 d-flex flex-column justify-content-center">
+            <div class="row justify-content-between align-items-center h-100">
+                <!-- 文本区域 -->
+                <div class="col-lg-6 text-center text-lg-start">
+                    <div class="ezy__header22_9Wbn5LJN-content-wrapper">
+                        <h2 class="ezy__header22_9Wbn5LJN-heading">云启无限</h2>
+                        <p class="ezy__header22_9Wbn5LJN-sub-heading">
+                            安全为盾，计算为矛，驱动数字未来。专业定制专属私有云基础设施建设，信息安全建设，网站建设等信息技术方案
+                        </p>
+                        <a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" class="btn btn-warning ezy__header22_9Wbn5LJN-btn fs-5 mt-4 mt-md-5">
+                            立即咨询
+                        </a>
+                    </div>
+                </div>
+                <!-- 图片展示区域 -->
+                <div class="col-lg-6 d-flex align-items-end justify-content-center">
+                    <img src="source/index_imgs/index_01.jpg" alt="滨海CBD" class="rounded img-fluid mt-3 ezy__header22_9Wbn5LJN-thumbnail" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CSS -->
+    <style>
+    .ezy__header22_9Wbn5LJN {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        background: #f0f5f9;
+    }
+
+    /* 粒子背景画布 */
+    #header-mg-bg {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        z-index: 0;
+    }
+
+    /* 文本样式 */
+    .ezy__header22_9Wbn5LJN-heading {
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: #1d1d1f;
+        letter-spacing: -1px;
+        margin-bottom: 25px;
+        animation: fadeInUp 1s ease-out forwards;
+    }
+    .ezy__header22_9Wbn5LJN-sub-heading {
+        font-size: 1.4rem;
+        color: #444;
+        line-height: 1.6;
+        margin-bottom: 40px;
+        animation: fadeInUp 1s ease-out 0.2s forwards;
+        opacity: 0;
+    }
+    .ezy__header22_9Wbn5LJN-btn {
+        font-weight: 600;
+        padding: 14px 36px;
+        border-radius: 15px;
+        font-size: 1.1rem;
+        box-shadow: 0 6px 20px rgba(0, 113, 227, 0.3);
+        transition: all 0.3s ease;
+        opacity: 0;
+        animation: fadeInUp 1s ease-out 0.4s forwards;
+    }
+    .ezy__header22_9Wbn5LJN-btn:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 10px 30px rgba(0, 113, 227, 0.4);
+    }
+    .ezy__header22_9Wbn5LJN-thumbnail {
+        border-radius: 25px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        animation: float 6s infinite ease-in-out;
+    }
+
+    /* 动画 */
+    @keyframes fadeInUp {
+        0% { opacity: 0; transform: translateY(30px);}
+        100% { opacity: 1; transform: translateY(0);}
+    }
+    @keyframes float {
+        0%,100% { transform: translateY(0px);}
+        50% { transform: translateY(-20px);}
+    }
+    </style>
+
+    <!-- JS: MG 粒子 + 连线 + 光晕 -->
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const canvas = document.getElementById('header-mg-bg');
+        const ctx = canvas.getContext('2d');
+        let W = canvas.width = window.innerWidth;
+        let H = canvas.height = window.innerHeight;
+
+        class Particle {
+            constructor(){
+                this.x = Math.random()*W;
+                this.y = Math.random()*H;
+                this.r = Math.random()*3 + 1;
+                this.dx = (Math.random()-0.5)*0.5;
+                this.dy = (Math.random()-0.5)*0.5;
+            }
+            draw(){
+                const gradient = ctx.createRadialGradient(this.x,this.y,this.r/2,this.x,this.y,this.r);
+                gradient.addColorStop(0,'rgba(0,200,255,0.7)');
+                gradient.addColorStop(1,'rgba(0,200,255,0.1)');
+                ctx.beginPath();
+                ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+                ctx.fillStyle = gradient;
+                ctx.fill();
+            }
+            update(){
+                this.x += this.dx;
+                this.y += this.dy;
+                if(this.x<0||this.x>W)this.dx*=-1;
+                if(this.y<0||this.y>H)this.dy*=-1;
+                this.draw();
+            }
         }
 
-        /* --- 时间线 --- */
-        .timeline {
-          position: relative;
-          margin-top: 60px;
-          display: flex;
-          flex-direction: column;
-          gap: 80px;
-          z-index: 1;
+        const particles = [];
+        const particleCount = 150;
+        for(let i=0;i<particleCount;i++) particles.push(new Particle());
+
+        function connect(){
+            for(let a=0;a<particles.length;a++){
+                for(let b=a+1;b<particles.length;b++){
+                    let dx = particles[a].x - particles[b].x;
+                    let dy = particles[a].y - particles[b].y;
+                    let dist = Math.sqrt(dx*dx + dy*dy);
+                    if(dist < 120){
+                        ctx.strokeStyle = 'rgba(0,180,255,'+(1-dist/120)*0.3+')';
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[a].x, particles[a].y);
+                        ctx.lineTo(particles[b].x, particles[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
         }
 
-        .timeline::before {
-          content: '';
-          position: absolute;
-          left: 50%;
-          transform: translateX(-50%);
+        function animate(){
+            ctx.clearRect(0,0,W,H);
+            particles.forEach(p => p.update());
+            connect();
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        window.addEventListener('resize', ()=>{
+            W = canvas.width = window.innerWidth;
+            H = canvas.height = window.innerHeight;
+        });
+    });
+    </script>
+
+    <!-- 核心定位模块 -->
+    <section class="ezy__about3_xOZLftWU">
+      <!-- 粒子背景 -->
+      <canvas id="particle-bg"></canvas>
+
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-6 text-center">
+            <h1 class="ezy__about3_xOZLftWU-heading">信息化解决方案供应商</h1>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <!-- 服务项目1 -->
+          <div class="col-12 col-md-4">
+            <div class="card text-center mt-4 mb-4 mb-md-0 fade-card">
+              <i class="fas fa-cloud ezy__about3_xOZLftWU-icon"></i>
+              <div class="card-body">
+                <h5 class="card-title">VMware 私有云</h5>
+                <p class="card-text">充分释放物理服务器的性能，为客户节省物理机采购费用</p>
+              </div>
+            </div>
+          </div>
+          <!-- 服务项目2 -->
+          <div class="col-12 col-md-4">
+            <div class="card text-center mt-4 mb-4 mb-md-0 fade-card">
+              <i class="fas fa-shield-alt ezy__about3_xOZLftWU-icon"></i>
+              <div class="card-body">
+                <h5 class="card-title">信息安全咨询</h5>
+                <p class="card-text">
+                  专业的信息安全咨询服务，部署、采购应用防火墙，态势感知平台，漏洞扫描等
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- 服务项目3 -->
+          <div class="col-12 col-md-4">
+            <div class="card text-center mt-4 mb-4 mb-md-0 fade-card">
+              <i class="fas fa-globe ezy__about3_xOZLftWU-icon"></i>
+              <div class="card-body">
+                <h5 class="card-title">信息化基础建设</h5>
+                <p class="card-text">快速落地企业门户网站，辅助增加SEO，为客户门户网站曝光助力，快速上线企业静态网站及托管服务等</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 样式 -->
+    <style>
+    /* 模块基础 */
+    .ezy__about3_xOZLftWU {
+      position: relative;
+      overflow: hidden;
+      padding: 100px 0;
+      background: #0a0a0a;
+      color: #fff;
+    }
+
+    /* 粒子背景画布 */
+    #particle-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    /* 标题 */
+    .ezy__about3_xOZLftWU-heading {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #fff;
+      position: relative;
+      padding-bottom: 20px;
+      margin-bottom: 60px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 1s ease forwards;
+    }
+    .ezy__about3_xOZLftWU-heading::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: #0af;
+      border-radius: 2px;
+    }
+
+    /* 卡片 */
+    .ezy__about3_xOZLftWU .card {
+      border: none;
+      border-radius: 20px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+      transition: transform 0.6s ease, box-shadow 0.6s ease;
+      height: 100%;
+      opacity: 0;
+      transform: translateY(50px) scale(0.95);
+      z-index: 1;
+    }
+    .ezy__about3_xOZLftWU .card.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    .ezy__about3_xOZLftWU .card:hover {
+      transform: translateY(-20px) scale(1.05);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+    }
+
+    /* 图标 */
+    .ezy__about3_xOZLftWU-icon {
+      font-size: 3.5rem;
+      color: #0af;
+      margin: 30px 0 20px;
+      transition: transform 0.5s ease, color 0.5s ease;
+    }
+    .ezy__about3_xOZLftWU .card:hover .ezy__about3_xOZLftWU-icon {
+      transform: scale(1.3) rotate(10deg);
+      color: #08f;
+    }
+
+    .ezy__about3_xOZLftWU .card-title {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 15px;
+    }
+    .ezy__about3_xOZLftWU .card-text {
+      color: #ccc;
+      line-height: 1.7;
+      padding: 0 20px 30px;
+    }
+
+    /* 动画 */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    </style>
+
+    <!-- JS: 粒子 + 卡片渐入 -->
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // 卡片渐入
+      const cards = document.querySelectorAll(".fade-card");
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+          if(entry.isIntersecting){
+            setTimeout(() => entry.target.classList.add("show"), index*250);
+          }
+        });
+      }, { threshold: 0.2 });
+      cards.forEach(card => observer.observe(card));
+
+      // 粒子背景
+      const canvas = document.getElementById('particle-bg');
+      const ctx = canvas.getContext('2d');
+      let W = canvas.width = window.innerWidth;
+      let H = canvas.height = window.innerHeight;
+
+      const particles = [];
+      const particleCount = 120;
+
+      function random(min,max){return Math.random()*(max-min)+min;}
+
+      class Particle {
+        constructor(){
+          this.x = random(0,W);
+          this.y = random(0,H);
+          this.r = random(1,4);
+          this.dx = random(-1,1);
+          this.dy = random(-1,1);
+        }
+        draw(){
+          ctx.beginPath();
+          ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+          ctx.fillStyle = 'rgba(10,170,255,0.7)';
+          ctx.fill();
+        }
+        update(){
+          this.x += this.dx;
+          this.y += this.dy;
+          if(this.x<0||this.x>W)this.dx*=-1;
+          if(this.y<0||this.y>H)this.dy*=-1;
+          this.draw();
+        }
+      }
+
+      for(let i=0;i<particleCount;i++) particles.push(new Particle());
+
+      function animate(){
+        ctx.clearRect(0,0,W,H);
+        particles.forEach(p=>p.update());
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+      window.addEventListener('resize',()=>{
+        W = canvas.width = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+      });
+    });
+    </script>
+
+    <!-- 产品列表模块 - 终极苹果MG动效 -->
+    <section class="product-section">
+      <canvas id="product-bg" class="product-bg"></canvas>
+      <div class="container">
+        <div class="row align-items-center">
+          <!-- 左侧图片展示 -->
+          <div class="col-12 col-lg-5 mb-5 mb-lg-0">
+            <div class="product-image-wrapper">
+              <img src="source/index_imgs/index_cplb01.png" alt="产品展示" class="product-image">
+            </div>
+          </div>
+
+          <!-- 右侧产品介绍 -->
+          <div class="col-12 col-lg-7">
+            <h1 class="product-heading mb-4">包括但不仅限于此</h1>
+            <div class="product-grid">
+              <div class="product-card" data-aos="fade-right" data-aos-delay="0">
+                <div class="product-number">1</div>
+                <h4>私有云建设及咨询</h4>
+                <p>针对不同客户群体与预算，分析需求，为客户量身定制私有云建设方案。</p>
+              </div>
+              <div class="product-card" data-aos="fade-right" data-aos-delay="100">
+                <div class="product-number">2</div>
+                <h4>信创系统集成</h4>
+                <p>将客户系统进行国产化封装，并进行BT等保测试，助力客户信创迁移。</p>
+              </div>
+              <div class="product-card" data-aos="fade-right" data-aos-delay="200">
+                <div class="product-number">3</div>
+                <h4>信息安全测试及咨询</h4>
+                <p>提供内网自查服务，对每台设备漏洞扫描或定向测试，并输出整改建议。</p>
+              </div>
+              <div class="product-card" data-aos="fade-right" data-aos-delay="300">
+                <div class="product-number">4</div>
+                <h4>信息系统建设</h4>
+                <p>建立企业/单位门户网站或定制部署Blog、WAF、LTD、CRM等应用系统。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <style>
+    .product-section {
+      position: relative;
+      padding: 100px 20px;
+      background: linear-gradient(135deg,#0b0b0b,#111);
+      color: #fff;
+      overflow: hidden;
+    }
+    .product-bg {
+      position: absolute;
+      top:0; left:0;
+      width:100%; height:100%;
+      z-index:0;
+      background: radial-gradient(circle, #0b0b0b 0%, #111 100%);
+    }
+
+    .product-heading {
+      font-size: 2.8rem;
+      font-weight: 700;
+      z-index:1;
+      position: relative;
+    }
+
+    .product-image-wrapper {
+      position: relative;
+      perspective: 1000px;
+      z-index:1;
+    }
+    .product-image {
+      width: 100%;
+      border-radius: 20px;
+      transform: rotateY(-5deg) rotateX(3deg);
+      transition: transform 0.6s ease, box-shadow 0.6s ease;
+    }
+    .product-image-wrapper:hover .product-image {
+      transform: rotateY(0deg) rotateX(0deg) scale(1.05);
+      box-shadow: 0 30px 60px rgba(0,255,255,0.2);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      position: relative;
+      z-index:1;
+    }
+    .product-card {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 30px 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 20px 50px rgba(0,255,255,0.3);
+    }
+    .product-card-glow {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top:0; left:0;
+      border-radius: 20px;
+      pointer-events: none;
+      background: radial-gradient(circle, rgba(0,255,255,0.2) 0%, rgba(0,255,255,0) 60%);
+      opacity:0;
+      transition: opacity 0.4s ease;
+    }
+    .product-card:hover .product-card-glow { opacity:1; }
+
+    .product-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0ff;
+      margin-bottom: 10px;
+      position: relative;
+    }
+    .product-number::after {
+      content: '';
+      position: absolute;
+      width: 60%;
+      height: 2px;
+      background: #0ff;
+      bottom: -5px;
+      left: 0;
+      opacity: 0.5;
+      animation: pulse 1.5s infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% { width: 40%; opacity:0.3; }
+      50% { width: 70%; opacity:0.6; }
+      100% { width: 60%; opacity:0.4; }
+    }
+
+    .product-card h4 {
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .product-card p {
+      color: #ccc;
+      font-size: 0.95rem;
+    }
+
+    @media(max-width:992px){ .product-grid {grid-template-columns: 1fr;} }
+    </style>
+
+    <script>
+    // 背景粒子
+    const canvas = document.getElementById('product-bg');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const particles = [];
+    for(let i=0;i<80;i++){
+      particles.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, r:Math.random()*2+1, dx:(Math.random()-0.5)*0.2, dy:(Math.random()-0.5)*0.2});
+    }
+    function animateParticles(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      particles.forEach(p=>{
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle='rgba(0,255,255,0.1)';
+        ctx.fill();
+        p.x+=p.dx; p.y+=p.dy;
+        if(p.x>canvas.width)p.x=0;if(p.x<0)p.x=canvas.width;
+        if(p.y>canvas.height)p.y=0;if(p.y<0)p.y=canvas.height;
+      });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    // 卡片光晕跟随鼠标
+    document.addEventListener('mousemove', e=>{
+      const cards = document.querySelectorAll('.product-card');
+      cards.forEach(card=>{
+        let glow = card.querySelector('.product-card-glow');
+        if(!glow){
+          glow = document.createElement('div');
+          glow.className='product-card-glow';
+          card.appendChild(glow);
+        }
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        glow.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(0,255,255,0.25) 0%, rgba(0,255,255,0) 60%)`;
+        glow.style.opacity = '1';
+      });
+    });
+
+    // AOS滚动动画
+    AOS.init({ duration: 800, easing: 'ease-out-back', once:true });
+    </script>
+
+    <!-- 项目展示模块 -->
+    <section class="project-section">
+      <!-- 背景粒子层 -->
+      <canvas id="project-bg" class="project-bg"></canvas>
+
+      <div class="container py-5">
+        <div class="row">
+          <!-- 左侧定制方案介绍 -->
+          <div class="col-lg-5 mb-4 mb-lg-0">
+            <div class="cta-box">
+              <h2 class="cta-title">定制专属方案</h2>
+              <p class="cta-description">
+                我们为每个客户提供量身定制的解决方案，满足您的独特需求，助力业务发展。
+              </p>
+
+              <ul class="feature-list">
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <div>
+                    <strong>专业定制</strong> - 根据需求打造专属解决方案
+                  </div>
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <div>
+                    <strong>高效交付</strong> - 严格遵循项目时间表
+                  </div>
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <div>
+                    <strong>持续支持</strong> - 项目交付后提供完善的技术支持
+                  </div>
+                </li>
+              </ul>
+
+              <a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" class="btn custom-btn">
+                <i class="fas fa-pen-fancy me-2"></i>定制专属方案
+              </a>
+            </div>
+          </div>
+
+          <!-- 右侧项目案例展示 -->
+          <div class="col-lg-7">
+            <div class="row">
+              <!-- 项目案例1 -->
+              <div class="col-md-6 mb-4">
+                <div class="project-card scroll-animate">
+                  <div class="position-relative">
+                    <img src="source/index_imgs/ihaikou_index01.png"
+                         alt="HTC iHAIKOU 网站建设" class="project-img">
+                    <div class="card-date">
+                      17<br>JAN<br>2025
+                    </div>
+                  </div>
+                  <div class="project-content">
+                    <p class="project-author">By <a href="#" class="text-decoration-none">徐中信</a></p>
+                    <h3 class="project-title">HTC iHAIKOU 网站建设</h3>
+                    <p class="project-description">
+                      海口旅游职业学院职教周 iHAIKOU内容分发系统（国际站及国内站）建设
+                    </p>
+                    <a href="business/htc-ihaikou.html" class="btn btn-more">
+                      <i class="fas fa-arrow-right me-1"></i>查看详情
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 项目案例2 -->
+              <div class="col-md-6 mb-4">
+                <div class="project-card scroll-animate">
+                  <div class="position-relative">
+                    <img src="source/index_imgs/hsd_index02.png"
+                         alt="VMware 私有云故障修复" class="project-img">
+                    <div class="card-date">
+                      26<br>MAR<br>2025
+                    </div>
+                  </div>
+                  <div class="project-content">
+                    <p class="project-author">By <a href="#" class="text-decoration-none">徐中信</a></p>
+                    <h3 class="project-title">VMware 私有云故障修复</h3>
+                    <p class="project-description">
+                      海南好思达网络科技有限公司分管运维现场处理VMware私有云故障
+                    </p>
+                    <a href="business/hnhsd-vmh3c.html" class="btn btn-more">
+                      <i class="fas fa-arrow-right me-1"></i>查看详情
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <style>
+    .project-section {
+      position: relative;
+      padding: 100px 0;
+      background-color: #0b0b0b;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .project-bg {
+      position: absolute;
+      top:0; left:0;
+      width:100%; height:100%;
+      z-index:0;
+    }
+
+    /* 卡片通用毛玻璃 */
+    .project-card, .cta-box {
+      border-radius: 20px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+      transition: all 0.5s ease;
+      position: relative;
+    }
+
+    /* hover动画 */
+    .project-card:hover, .cta-box:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+    }
+
+    .project-img { width: 100%; height: 220px; object-fit: cover; transition: transform 0.5s ease; }
+    .project-card:hover .project-img { transform: scale(1.05); }
+
+    .card-date {
+      position: absolute;
+      top: 20px; left: 20px;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 12px 15px;
+      font-weight: 600;
+      text-align: center;
+      color: #0ae0ff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      line-height: 1.3;
+      border: 1px solid rgba(255,255,255,0.3);
+      z-index: 2;
+    }
+
+    .project-content { padding: 25px; }
+    .project-author { color: rgba(255,255,255,0.6); font-size:0.95rem; margin-bottom:8px; }
+    .project-title { font-weight:700; font-size:1.5rem; margin-bottom:12px; color:#fff; line-height:1.3; }
+    .project-description { color: rgba(255,255,255,0.6); margin-bottom:20px; line-height:1.6; font-size:1.05rem; }
+    .btn-more { background: rgba(0,113,227,0.1); color:#0ae0ff; border:none; border-radius:10px; padding:8px 18px; transition: all 0.3s ease; }
+    .btn-more:hover { background:#0ae0ff; color:white; }
+
+    .cta-box { padding:30px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; }
+    .cta-title { font-weight:700; font-size:1.8rem; margin-bottom:15px; color:#fff; }
+    .cta-description { color: rgba(255,255,255,0.6); margin-bottom:25px; font-size:1.1rem; line-height:1.6; }
+    .feature-list { list-style:none; padding:0; margin-bottom:30px; }
+    .feature-list li { margin-bottom:12px; display:flex; align-items:flex-start; }
+    .feature-list li i { color:#0ae0ff; margin-right:10px; margin-top:5px; font-size:1.2rem; }
+    .custom-btn { background:#0ae0ff; color:white; border:none; border-radius:12px; padding:12px 24px; font-weight:500; transition: all 0.3s ease; }
+    .custom-btn:hover { transform:translateY(-5px) scale(1.05); box-shadow:0 8px 20px rgba(0,113,227,0.35); }
+
+    /* 滚动动效初始状态 */
+    .scroll-animate {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .scroll-animate.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* 响应式 */
+    @media(max-width:768px){ .project-img{height:180px;} }
+    </style>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 滚动入场 + 离场动画
+      const items = document.querySelectorAll('.scroll-animate');
+      const observer = new IntersectionObserver(entries=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+          } else {
+            entry.target.classList.remove('visible');
+          }
+        });
+      }, {threshold:0.3});
+      items.forEach(item=>observer.observe(item));
+
+      // 粒子背景
+      const canvas = document.getElementById('project-bg');
+      const ctx = canvas.getContext('2d');
+      canvas.width=window.innerWidth; canvas.height=window.innerHeight;
+
+      const particles=[];
+      for(let i=0;i<120;i++){
+        particles.push({
+          x:Math.random()*canvas.width,
+          y:Math.random()*canvas.height,
+          r:Math.random()*2+1,
+          dx:(Math.random()-0.5)*0.4,
+          dy:(Math.random()-0.5)*0.4
+        });
+      }
+
+      function animateParticles(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        particles.forEach(p=>{
+          ctx.beginPath();
+          ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+          ctx.fillStyle='rgba(255,255,255,0.2)';
+          ctx.fill();
+          p.x+=p.dx; p.y+=p.dy;
+          if(p.x>canvas.width) p.x=0;
+          if(p.x<0) p.x=canvas.width;
+          if(p.y>canvas.height) p.y=0;
+          if(p.y<0) p.y=canvas.height;
+        });
+        requestAnimationFrame(animateParticles);
+      }
+      animateParticles();
+
+      window.addEventListener('resize',()=>{canvas.width=window.innerWidth; canvas.height=window.innerHeight;});
+    });
+    </script>
+
+
+    <!-- 团队成员模块 -->
+    <section class="team-section-history">
+      <canvas id="team-bg" class="team-bg"></canvas>
+
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-12 mb-5">
+            <h1 class="team-heading-history">认识希灵赛斯背后的团队</h1>
+            <h4 class="team-subheading-history mt-3">核心团队成员</h4>
+          </div>
+
+          <!-- 团队成员卡片 -->
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="team-card-history">
+              <div class="team-card-inner-history">
+                <img src="source/index_imgs/touxiang/xuzhongxin_index_01.jpg" alt="徐中信" class="memoji-avatar-history">
+                <h5>徐中信</h5>
+                <p>创始人</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="team-card-history">
+              <div class="team-card-inner-history">
+                <img src="source/index_imgs/touxiang/chenziyi_index_01.jpg" alt="陈紫怡" class="memoji-avatar-history">
+                <h5>陈紫怡</h5>
+                <p>创始人</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="team-card-history">
+              <div class="team-card-inner-history">
+                <img src="source/index_imgs/touxiang/chenshiyi_index_01.jpg" alt="陈诗怡" class="memoji-avatar-history">
+                <h5>陈诗怡</h5>
+                <p>大数据及信息安全工程师</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="team-card-history">
+              <div class="team-card-inner-history">
+                <img src="source/index_imgs/touxiang/xiaohuahong_index_01.jpg" alt="肖骅鸿" class="memoji-avatar-history">
+                <h5>肖骅鸿</h5>
+                <p>信息安全工程师</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="team-card-history">
+              <div class="team-card-inner-history">
+                <img src="source/index_imgs/touxiang/wangyueyang_index_01.jpg" alt="王越阳" class="memoji-avatar-history">
+                <h5>王越阳</h5>
+                <p>软件开发工程师</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="team-card-history">
+              <div class="team-card-inner-history">
+                <img src="source/index_imgs/touxiang/pengqianhui_index_01.jpg" alt="彭芊惠" class="memoji-avatar-history">
+                <h5>彭芊惠</h5>
+                <p>新媒体运营</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <style>
+    .team-section-history { position: relative; padding: 100px 20px; background-color: #0b0b0b; color: #fff; overflow: hidden; }
+    .team-bg { position: absolute; top:0; left:0; width:100%; height:100%; z-index:0; }
+    .team-section-history .container { position: relative; z-index:1; }
+    .team-heading-history { font-size: 3rem; font-weight:700; text-align:center; }
+    .team-subheading-history { font-weight:400; color:rgba(255,255,255,0.7); text-align:center; margin-top:15px; }
+
+    .team-card-history { perspective:1000px; margin:20px 0; opacity:0; transform:translateY(60px); transition: all 0.8s ease-out; }
+    .team-card-history.visible { opacity:1; transform:translateY(0); }
+
+    .team-card-inner-history {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(18px);
+      padding: 25px 20px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      text-align:center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .team-card-inner-history::after {
+      content:'';
+      position:absolute;
+      top:-50%; left:-50%;
+      width:200%; height:200%;
+      background: radial-gradient(circle at 30% 30%, rgba(10,224,255,0.2), transparent 60%);
+      opacity:0.5;
+      transition: all 0.3s ease;
+      pointer-events:none;
+    }
+
+    .team-card-inner-history:hover::after { top:-30%; left:-30%; opacity:0.7; }
+
+    .memoji-avatar-history { width:120px; height:120px; border-radius:50%; object-fit:cover; margin:0 auto 15px; border:3px solid rgba(255,255,255,0.2); transition: transform 0.3s ease; }
+    .team-card-inner-history:hover .memoji-avatar-history { transform:scale(1.1) rotate(3deg); }
+
+    .team-card-inner-history h5 { color:#fff; font-weight:700; margin-bottom:5px; }
+    .team-card-inner-history p { color:#0ae0ff; font-weight:500; margin:0; }
+
+    @media(max-width:768px){ .team-heading-history { font-size:2.2rem; } .memoji-avatar-history { width:100px; height:100px; } }
+    </style>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      const canvas=document.getElementById('team-bg');
+      const ctx=canvas.getContext('2d');
+      canvas.width=window.innerWidth; canvas.height=window.innerHeight;
+
+      const particles=[];
+      for(let i=0;i<120;i++){
+        particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2+1,dx:(Math.random()-0.5)*0.4,dy:(Math.random()-0.5)*0.4});
+      }
+
+      let mouse={x:null,y:null};
+      document.addEventListener('mousemove',e=>{ mouse.x=e.clientX; mouse.y=e.clientY; });
+
+      function animateParticles(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        particles.forEach(p=>{
+          // 鼠标吸引粒子
+          if(mouse.x!==null && mouse.y!==null){
+            const dx=mouse.x-p.x, dy=mouse.y-p.y;
+            const dist=Math.sqrt(dx*dx+dy*dy);
+            if(dist<150){
+              const angle=Math.atan2(dy,dx);
+              p.x+=Math.cos(angle)*0.5;
+              p.y+=Math.sin(angle)*0.5;
+              ctx.fillStyle='rgba(10,224,255,'+((150-dist)/150*0.5)+')';
+            }else{
+              ctx.fillStyle='rgba(10,224,255,0.15)';
+            }
+          }else{ ctx.fillStyle='rgba(10,224,255,0.15)'; }
+
+          ctx.beginPath();
+          ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+          ctx.fill();
+
+          p.x+=p.dx; p.y+=p.dy;
+          if(p.x>canvas.width)p.x=0; if(p.x<0)p.x=canvas.width;
+          if(p.y>canvas.height)p.y=0; if(p.y<0)p.y=canvas.height;
+        });
+        requestAnimationFrame(animateParticles);
+      }
+      animateParticles();
+
+      window.addEventListener('resize',()=>{canvas.width=window.innerWidth; canvas.height=window.innerHeight;});
+
+      // 滑入滑出动画
+      const cards=document.querySelectorAll('.team-card-history');
+      const observer=new IntersectionObserver(entries=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting) entry.target.classList.add('visible');
+          else entry.target.classList.remove('visible');
+        });
+      },{threshold:0.2});
+      cards.forEach(card=>observer.observe(card));
+
+      // 卡片3D悬浮 + 光影
+      cards.forEach(card=>{
+        const inner=card.querySelector('.team-card-inner-history');
+        card.addEventListener('mousemove',e=>{
+          const rect=inner.getBoundingClientRect();
+          const x=e.clientX-rect.left;
+          const y=e.clientY-rect.top;
+          const cx=rect.width/2, cy=rect.height/2;
+          const dx=(x-cx)/cx, dy=(y-cy)/cy;
+          inner.style.transform=`rotateX(${-dy*10}deg) rotateY(${dx*10}deg) scale(1.03)`;
+          inner.style.boxShadow=`${-dx*20}px ${dy*20}px 50px rgba(0,0,0,0.7)`;
+        });
+        card.addEventListener('mouseleave',()=>{
+          inner.style.transform='rotateX(0deg) rotateY(0deg) scale(1)';
+          inner.style.boxShadow='0 8px 20px rgba(0,0,0,0.5)';
+        });
+      });
+    });
+    </script>
+
+    <!-- 发展历程模块 -->
+    <section id="development-history" class="history-section">
+      <!-- 背景粒子层 -->
+      <canvas id="history-bg" class="history-bg"></canvas>
+
+      <div class="container">
+        <div class="history-header text-center">
+          <h2>发展历程</h2>
+          <div class="history-divider"></div>
+        </div>
+
+        <div class="timeline">
+          <!-- 阶段 1 -->
+          <div class="timeline-item">
+            <div class="timeline-dot">01</div>
+            <div class="timeline-content">
+              <h4>公司创立</h4>
+              <p>两位创始人经过6个月的设计和规划，决定于2025年4月创立团队，并命名海口希灵赛斯网络科技有限公司。</p>
+            </div>
+          </div>
+
+          <!-- 阶段 2 -->
+          <div class="timeline-item">
+            <div class="timeline-dot">02</div>
+            <div class="timeline-content">
+              <h4>海南好思达网络科技有限公司合作</h4>
+              <p>为海南好思达网络科技有限公司提供多次故障处理服务及咨询服务。</p>
+            </div>
+          </div>
+
+          <!-- 阶段 3 -->
+          <div class="timeline-item">
+            <div class="timeline-dot">03</div>
+            <div class="timeline-content">
+              <h4>海口旅游职业学院（HTC）达成深度合作</h4>
+              <p>2025年5月，与HTC达成合作，为其建设VMware私有云体系，iHAIKOU平台及ai智能助手，并持续提供咨询服务。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <style>
+    .history-section {
+      position: relative;
+      padding: 100px 20px;
+      background-color: #0b0b0b;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .history-bg {
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      z-index:0;
+    }
+
+    .history-header h2 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .history-divider {
+      width: 60px;
+      height: 3px;
+      background: #fff;
+      margin: 0 auto;
+      border-radius: 2px;
+    }
+
+    /* 时间线 */
+    .timeline {
+      position: relative;
+      margin-top: 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+      z-index: 1;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
       top: 0;
       bottom: 0;
       width: 3px;
@@ -994,6 +1552,7 @@
       flex-direction: row-reverse;
     }
 
+    /* 时间轴节点 */
     .timeline-dot {
       flex-shrink: 0;
       width: 50px;
@@ -1012,10 +1571,9 @@
       transition: transform 0.3s ease;
     }
 
-    .timeline-dot:hover {
-      transform: scale(1.2);
-    }
+    .timeline-dot:hover { transform: scale(1.2); }
 
+    /* 时间线内容 */
     .timeline-content {
       background: rgba(255,255,255,0.05);
       backdrop-filter: blur(12px);
@@ -1026,7 +1584,7 @@
       flex: 1;
       opacity: 0;
       transform: translateY(60px);
-      transition: all 0.8s ease-out;
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     .timeline-item.visible .timeline-content {
@@ -1039,6 +1597,7 @@
       margin-bottom: 10px;
       font-weight: 600;
     }
+
     .timeline-content p {
       font-size: 1rem;
       color: #ddd;
@@ -1047,636 +1606,71 @@
 
     /* 响应式 */
     @media (max-width: 768px) {
-      .timeline::before {
-        left: 20px;
-      }
-      .timeline-item {
-        flex-direction: row !important;
-      }
-      .timeline-content {
-        margin-left: 20px;
-      }
+      .timeline::before { left: 20px; }
+      .timeline-item { flex-direction: row !important; }
+      .timeline-content { margin-left: 20px; }
     }
     </style>
-</head>
-<body>
-    <!-- 粒子背景 -->
-    <div id="particles-js"></div>
-
-    <!-- START: Body Content -->
-<div class="ezy__nav6_7SyLoOH3k">
-    <nav class="navbar navbar-expand-lg fixed-top py-3">
-        <div class="container">
-            <!-- 品牌标识 -->
-            <a class="navbar-brand" href="#">
-                <img src="source/imgs/logo.png" alt="海口希灵赛斯" height="40">
-            </a>
-            <!-- 移动端导航切换按钮 -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- 导航菜单 -->
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <!-- 业务下拉菜单 -->
-                    <li class="nav-item dropdown" id="businessDropdownItem">
-                        <a class="nav-link dropdown-toggle" href="business/index.html" id="businessDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            业   务
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="businessDropdown">
-                            <li><a class="dropdown-item" href="business/index.html#user-focused">面向用户</a></li>
-                            <li><a class="dropdown-item" href="business/index.html#enterprise">面向企业</a></li>
-                            <li><a class="dropdown-item" href="business/index.html#innovation">科技创新</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="public/index.html">公共服务</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://se-xl-services.xinnew.top/">资源监测</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://blog.csdn.net/qq_73252299?spm=1000.2115.3001.5343" rel="noopener noreferrer">技术频道</a></li>
-                    <!-- 关于我们下拉菜单 -->
-                    <li class="nav-item dropdown" id="aboutDropdownItem">
-                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            关于我们
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
-                            <li><a class="dropdown-item" href="leadership/about.html">企业简介</a></li>
-                            <li><a class="dropdown-item" href="https://sec.hn.cn">更新动态</a></li>
-                            <li><a class="dropdown-item" href="#">领导团队</a></li>
-                            <li><a class="dropdown-item" href="#">发展历程</a></li>
-                            <li><a class="dropdown-item" href="careers/cn/index.html">职业机会</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</div>
-
-<script>
-    // 为"业务"和"关于我们"下拉菜单添加悬停自动展开功能
-    document.addEventListener('DOMContentLoaded', function() {
-        // 业务下拉菜单
-        var businessDropdown = document.getElementById('businessDropdownItem');
-        var businessToggle = document.getElementById('businessDropdown');
-        var businessMenu = businessToggle.nextElementSibling; // 获取下拉菜单
-        
-        var businessTimeout; // 用于存储业务菜单的timeout ID
-        
-        // 鼠标进入主菜单项或下拉菜单时显示菜单
-        function showBusinessDropdown() {
-            clearTimeout(businessTimeout); // 清除之前的隐藏延迟
-            var dropdownInstance = bootstrap.Dropdown.getInstance(businessToggle);
-            if (!dropdownInstance) {
-                dropdownInstance = new bootstrap.Dropdown(businessToggle);
-            }
-            dropdownInstance.show();
-            businessToggle.setAttribute('aria-expanded', 'true');
-        }
-        
-        // 鼠标离开主菜单项或下拉菜单时隐藏菜单
-        function hideBusinessDropdown() {
-            businessTimeout = setTimeout(function() {
-                var dropdownInstance = bootstrap.Dropdown.getInstance(businessToggle);
-                if (dropdownInstance) {
-                    dropdownInstance.hide();
-                }
-                businessToggle.setAttribute('aria-expanded', 'false');
-            }, 300); // 300毫秒后隐藏菜单
-        }
-        
-        // 为主菜单项添加事件监听
-        businessDropdown.addEventListener('mouseenter', showBusinessDropdown);
-        businessDropdown.addEventListener('mouseleave', hideBusinessDropdown);
-        
-        // 为下拉菜单添加事件监听
-        if (businessMenu) {
-            businessMenu.addEventListener('mouseenter', showBusinessDropdown);
-            businessMenu.addEventListener('mouseleave', hideBusinessDropdown);
-        }
-        
-        // 关于我们下拉菜单
-        var aboutDropdown = document.getElementById('aboutDropdownItem');
-        var aboutToggle = document.getElementById('aboutDropdown');
-        var aboutMenu = aboutToggle.nextElementSibling; // 获取下拉菜单
-        
-        var aboutTimeout; // 用于存储关于菜单的timeout ID
-        
-        // 鼠标进入主菜单项或下拉菜单时显示菜单
-        function showAboutDropdown() {
-            clearTimeout(aboutTimeout); // 清除之前的隐藏延迟
-            var dropdownInstance = bootstrap.Dropdown.getInstance(aboutToggle);
-            if (!dropdownInstance) {
-                dropdownInstance = new bootstrap.Dropdown(aboutToggle);
-            }
-            dropdownInstance.show();
-            aboutToggle.setAttribute('aria-expanded', 'true');
-        }
-        
-        // 鼠标离开主菜单项或下拉菜单时隐藏菜单
-        function hideAboutDropdown() {
-            aboutTimeout = setTimeout(function() {
-                var dropdownInstance = bootstrap.Dropdown.getInstance(aboutToggle);
-                if (dropdownInstance) {
-                    dropdownInstance.hide();
-                }
-                aboutToggle.setAttribute('aria-expanded', 'false');
-            }, 300); // 300毫秒后隐藏菜单
-        }
-        
-        // 为主菜单项添加事件监听
-        aboutDropdown.addEventListener('mouseenter', showAboutDropdown);
-        aboutDropdown.addEventListener('mouseleave', hideAboutDropdown);
-        
-        // 为下拉菜单添加事件监听
-        if (aboutMenu) {
-            aboutMenu.addEventListener('mouseenter', showAboutDropdown);
-            aboutMenu.addEventListener('mouseleave', hideAboutDropdown);
-        }
-    });
-</script>
-
-<style>
-    /* 毛玻璃效果 */
-    .navbar {
-        backdrop-filter: blur(10px);
-        background-color: rgba(255, 255, 255, 0.5); /* 回退方案 */
-        animation: fadeIn 1s ease-in-out; /* 页面加载动画 */
-    }
-
-    /* 淡入动画 */
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
-    }
-
-    /* 链接悬停动画 */
-    .nav-link {
-        position: relative;
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-
-    .nav-link::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 2px;
-        bottom: -5px;
-        left: 0;
-        background-color: #007bff; /* Bootstrap 主色 */
-        transition: width 0.3s ease;
-    }
-
-    .nav-link:hover::after {
-        width: 100%;
-    }
-
-    .nav-link:hover {
-        color: #007bff;
-    }
-    
-    /* 去除下拉菜单激活时的外围框线 */
-    .nav-item.dropdown:focus-within a.dropdown-toggle {
-        outline: none;
-        box-shadow: none;
-    }
-    
-    .nav-item.dropdown.show a.dropdown-toggle {
-        outline: none;
-        box-shadow: none;
-    }
-</style>
-
-    <!-- 头部横幅部分 -->
-    <section class="ezy__header22_9Wbn5LJN">
-        <div class="container position-relative">
-            <!-- 添加浮动元素 -->
-            <div class="floating-shape shape-1"></div>
-            <div class="floating-shape shape-2"></div>
-            <div class="floating-shape shape-3"></div>
-            <div class="floating-shape shape-4"></div>
-            
-            <!-- 添加更多随机动态元素 -->
-            <div class="dynamic-bg-element element-1"></div>
-            <div class="dynamic-bg-element element-2"></div>
-            <div class="dynamic-bg-element element-3"></div>
-            <div class="dynamic-bg-element element-4"></div>
-            <div class="dynamic-bg-element element-5"></div>
-            <div class="dynamic-bg-element element-6"></div>
-            <div class="dynamic-bg-element element-7"></div>
-            <div class="dynamic-bg-element element-8"></div>
-
-            <div class="row justify-content-between">
-                <!-- 文本内容区域 -->
-                <div class="col-lg-6 pe-xl-5 text-center text-lg-start">
-                    <div class="ezy__header22_9Wbn5LJN-content-wrapper">
-                        <h2 class="ezy__header22_9Wbn5LJN-heading">云启无限</h2>
-                        <p class="ezy__header22_9Wbn5LJN-sub-heading">
-                            安全为盾，计算为矛，驱动数字未来。专业定制专属私有云基础设施建设，信息安全建设，网站建设等信息技术方案
-                        </p>
-                        <a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" class="btn btn-warning ezy__header22_9Wbn5LJN-btn fs-5 mt-4 mt-md-5">立即咨询</a>
-                    </div>
-                </div>
-                <!-- 图片展示区域 -->
-                <div class="col-lg-6 d-flex align-items-end justify-content-center">
-                    <img src="source/index_imgs/index_01.jpg" alt="滨海CBD"
-                        class="rounded img-fluid mt-3 ezy__header22_9Wbn5LJN-thumbnail" />
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 核心定位部分 -->
-    <section class="ezy__about3_xOZLftWU">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-6 text-center">
-                    <h1 class="ezy__about3_xOZLftWU-heading">信息化解决方案供应商</h1>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <!-- 服务项目1：私有云 -->
-                <div class="col-12 col-md-4">
-                    <div class="card text-center mt-4 mb-4 mb-md-0">
-                        <i class="fas fa-cloud ezy__about3_xOZLftWU-icon"></i>
-                        <div class="card-body">
-                            <h5 class="card-title">VMware 私有云</h5>
-                            <p class="card-text">充分释放物理服务器的性能，为客户节省物理机采购费用</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- 服务项目2：信息安全 -->
-                <div class="col-12 col-md-4">
-                    <div class="card text-center mt-4 mb-4 mb-md-0">
-                        <i class="fas fa-shield-alt ezy__about3_xOZLftWU-icon"></i>
-                        <div class="card-body">
-                            <h5 class="card-title">信息安全咨询</h5>
-                            <p class="card-text">
-                                专业的信息安全咨询服务，部署应用防火墙，态势感知平台，漏洞扫描等
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <!-- 服务项目3：网站建设 -->
-                <div class="col-12 col-md-4">
-                    <div class="card text-center mt-4 mb-4 mb-md-0">
-                        <i class="fas fa-globe ezy__about3_xOZLftWU-icon"></i>
-                        <div class="card-body">
-                            <h5 class="card-title">网站建设</h5>
-                            <p class="card-text">快速落地企业门户网站，辅助增加SEO，为客户门户网站曝光助力</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 产品列表部分 -->
-    <section class="ezy__howitworks1_0Fvj0bF9">
-        <div class="container">
-            <div class="row justify-content-between">
-                <!-- 左侧图片展示 -->
-                <div class="col-12 col-lg-5 d-flex align-items-center">
-                    <img src="source/index_imgs/index_cplb01.png" alt="" class="img-fluid rounded-4" />
-                </div>
-                <!-- 右侧产品介绍 -->
-                <div class="col-12 col-lg-6">
-                    <div class="row">
-                        <div class="col-12">
-                            <h1 class="ezy__howitworks1_0Fvj0bF9-heading mb-4">包括但不仅限于此</h1>
-                        </div>
-                        <!-- 产品1：私有云建设及咨询 -->
-                        <div class="col-12 col-md-6">
-                            <div class="p-xl-3 mt-4">
-                                <div class="ezy__howitworks1_0Fvj0bF9-number mb-3">1</div>
-                                <h4 class="ezy__howitworks1_0Fvj0bF9-title fs-4 mb-3">私有云建设及咨询</h4>
-                                <p class="ezy__howitworks1_0Fvj0bF9-content mb-0">
-                                    我们可以针对不同的客户群体与预算，分析客户实际需求，为客户量身定制私有云建设方案
-                                </p>
-                            </div>
-                        </div>
-                        <!-- 产品2：信创系统集成 -->
-                        <div class="col-12 col-md-6">
-                            <div class="p-xl-3 mt-4">
-                                <div class="ezy__howitworks1_0Fvj0bF9-number mb-3">2</div>
-                                <h4 class="ezy__howitworks1_0Fvj0bF9-title fs-4 mb-3">信创系统集成</h4>
-                                <p class="ezy__howitworks1_0Fvj0bF9-content mb-0">
-                                    我们将客户需求的系统进行国产化封装，并进行BT等保测试，助力客户的信创迁移工作
-                                </p>
-                            </div>
-                        </div>
-                        <!-- 产品3：信息安全测试及咨询 -->
-                        <div class="col-12 col-md-6">
-                            <div class="p-xl-3 mt-4">
-                                <div class="ezy__howitworks1_0Fvj0bF9-number mb-3">3</div>
-                                <h4 class="ezy__howitworks1_0Fvj0bF9-title fs-4 mb-3">信息安全测试及咨询</h4>
-                                <p class="ezy__howitworks1_0Fvj0bF9-content mb-0">
-                                    为客户提供物美价廉的内网自查服务，对客户的内网每一台设备进行漏洞扫描或定向测试，并输出报告提供整改建议
-                                </p>
-                            </div>
-                        </div>
-                        <!-- 产品4：信息系统建设 -->
-                        <div class="col-12 col-md-6">
-                            <div class="p-xl-3 mt-4">
-                                <div class="ezy__howitworks1_0Fvj0bF9-number mb-3">4</div>
-                                <h4 class="ezy__howitworks1_0Fvj0bF9-title fs-4 mb-3">信息系统建设</h4>
-                                <p class="ezy__howitworks1_0Fvj0bF9-content mb-0">
-                                    帮助客户建立企业/单位门户网站，或为客户定制部署各种应用系统，包括但不限于Blog，WAF，LTD，CRM等系统
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 项目展示部分 -->
-    <section class="project-section">
-        <div class="container py-5">
-            <div class="row">
-                <!-- 左侧定制方案介绍 -->
-                <div class="col-lg-5 mb-4 mb-lg-0">
-                    <div class="cta-box">
-                        <h2 class="cta-title">定制专属方案</h2>
-                        <p class="cta-description">
-                            我们为每个客户提供量身定制的解决方案，满足您的独特需求，助力业务发展。
-                        </p>
-                        
-                        <ul class="feature-list">
-                            <li>
-                                <i class="fas fa-check-circle"></i>
-                                <div>
-                                    <strong>专业定制</strong> - 根据需求打造专属解决方案
-                                </div>
-                            </li>
-                            <li>
-                                <i class="fas fa-check-circle"></i>
-                                <div>
-                                    <strong>高效交付</strong> - 严格遵循项目时间表
-                                </div>
-                            </li>
-                            <li>
-                                <i class="fas fa-check-circle"></i>
-                                <div>
-                                    <strong>持续支持</strong> - 项目交付后提供完善的技术支持
-                                </div>
-                            </li>
-                        </ul>
-                        
-                        <a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" class="btn custom-btn">
-                            <i class="fas fa-pen-fancy me-2"></i>定制专属方案
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- 右侧项目案例展示 -->
-                <div class="col-lg-7">
-                    <div class="row">
-                        <!-- 项目案例1：HTC iHAIKOU 网站建设 -->
-                        <div class="col-md-6 mb-4">
-                            <div class="project-card">
-                                <div class="position-relative">
-                                    <img src="source/index_imgs/ihaikou_index01.png"
-                                        alt="HTC iHAIKOU 网站建设" class="project-img">
-                                    <div class="card-date">
-                                        17<br>JAN<br>2025
-                                    </div>
-                                </div>
-                                <div class="project-content">
-                                    <p class="project-author">By <a href="#" class="text-decoration-none">徐中信</a></p>
-                                    <h3 class="project-title">HTC iHAIKOU 网站建设</h3>
-                                    <p class="project-description">
-                                        海口旅游职业学院职教周 iHAIKOU内容分发系统（国际站及国内站）建设
-                                    </p>
-                                    <a href="business/htc-ihaikou.html" class="btn btn-more">
-                                        <i class="fas fa-arrow-right me-1"></i>查看详情
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- 项目案例2：VMware 私有云故障修复 -->
-                        <div class="col-md-6 mb-4">
-                            <div class="project-card">
-                                <div class="position-relative">
-                                    <img src="source/index_imgs/hsd_index02.png"
-                                        alt="VMware 私有云故障修复" class="project-img">
-                                    <div class="card-date">
-                                        26<br>MAR<br>2025
-                                    </div>
-                                </div>
-                                <div class="project-content">
-                                    <p class="project-author">By <a href="#" class="text-decoration-none">徐中信</a></p>
-                                    <h3 class="project-title">VMware 私有云故障修复</h3>
-                                    <p class="project-description">
-                                        海南好思达网络科技有限公司分管运维现场处理VMware私有云故障
-                                    </p>
-                                    <a href="business/hnhsd-vmh3c.html" class="btn btn-more">
-                                        <i class="fas fa-arrow-right me-1"></i>查看详情
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- 团队成员部分 -->
-
-    <!-- 团队成员部分 -->
-    <section class="ezy__careers6_zvZzU4GV">
-        <div class="container">
-            <div class="row">
-                <!-- 标题 -->
-                <div class="col-12">
-                    <h1 class="ezy__careers6_zvZzU4GV-heading mb-0">认识希灵赛斯背后的团队</h1>
-                </div>
-                <div class="col-12 mt-5">
-                    <h4>核心团队成员</h4>
-                </div>
-                <!-- 团队成员1：徐中信 -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card ezy__careers6_zvZzU4GV-card mt-4">
-                        <div class="card-body p-3 p-md-4">
-                            <img src="source/index_imgs/touxiang/xuzhongxin_index_01.jpg"
-                                 alt="徐中信" class="memoji-avatar">
-                            <h5 class="fw-bold mb-1">徐中信</h5>
-                            <p class="mb-0 opacity-75">创始人</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- 团队成员2：陈紫怡 -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card ezy__careers6_zvZzU4GV-card mt-4">
-                        <div class="card-body p-3 p-md-4">
-                            <img src="source/index_imgs/touxiang/chenziyi_index_01.jpg"
-                                 alt="陈紫怡" class="memoji-avatar">
-                            <h5 class="fw-bold mb-1">陈紫怡</h5>
-                            <p class="mb-0 opacity-75">创始人</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- 团队成员3：陈诗怡 -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card ezy__careers6_zvZzU4GV-card mt-4">
-                        <div class="card-body p-3 p-md-4">
-                            <img src="source/index_imgs/touxiang/chenshiyi_index_01.jpg"
-                                 alt="陈诗怡" class="memoji-avatar">
-                            <h5 class="fw-bold mb-1">陈诗怡</h5>
-                            <p class="mb-0 opacity-75">大数据及信息安全工程师</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- 团队成员4：肖骅鸿 -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card ezy__careers6_zvZzU4GV-card mt-4">
-                        <div class="card-body p-3 p-md-4">
-                            <img src="source/index_imgs/touxiang/xiaohuahong_index_01.jpg"
-                                 alt="肖骅鸿" class="memoji-avatar">
-                            <h5 class="fw-bold mb-1">肖骅鸿</h5>
-                            <p class="mb-0 opacity-75">信息安全工程师</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- 团队成员5：王越阳 -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card ezy__careers6_zvZzU4GV-card mt-4">
-                        <div class="card-body p-3 p-md-4">
-                            <img src="source/index_imgs/touxiang/wangyueyang_index_01.jpg"
-                                 alt="王越阳" class="memoji-avatar">
-                            <h5 class="fw-bold mb-1">王越阳</h5>
-                            <p class="mb-0 opacity-75">软件开发工程师</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- 团队成员6：彭芊惠 -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card ezy__careers6_zvZzU4GV-card mt-4">
-                        <div class="card-body p-3 p-md-4">
-                            <img src="source/index_imgs/touxiang/pengqianhui_index_01.jpg"
-                                 alt="彭芊惠" class="memoji-avatar">
-                            <h5 class="fw-bold mb-1">彭芊惠</h5>
-                            <p class="mb-0 opacity-75">新媒体运营</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 团队成员部分 -->
-<!-- +++++++++++++++++++++++++++模块分割线++++++++++++++++++++++++++++++++++++ -->
-    <!-- 发展历程部分 -->
-
-    <!-- 升级版发展历程模块 -->
-    <section id="development-history" class="history-section">
-      <!-- 背景粒子层 -->
-      <canvas id="history-bg" class="history-bg"></canvas>
-
-      <div class="container">
-        <div class="history-header text-center">
-          <h2>发展历程</h2>
-          <div class="history-divider"></div>
-        </div>
-
-        <div class="timeline">
-          <!-- 阶段 1 -->
-          <div class="timeline-item" data-aos="fade-right">
-            <div class="timeline-dot">01</div>
-            <div class="timeline-content">
-              <h4>公司创立</h4>
-              <p>两位创始人经过6个月的设计和规划，决定于2025年4月创立团队，并命名海口希灵赛斯网络科技有限公司。</p>
-            </div>
-          </div>
-
-          <!-- 阶段 2 -->
-          <div class="timeline-item" data-aos="fade-left">
-            <div class="timeline-dot">02</div>
-            <div class="timeline-content">
-              <h4>海南好思达网络科技有限公司合作</h4>
-              <p>为海南好思达网络科技有限公司提供多次故障处理服务及咨询服务。</p>
-            </div>
-          </div>
-
-          <!-- 阶段 3 -->
-          <div class="timeline-item" data-aos="fade-right">
-            <div class="timeline-dot">03</div>
-            <div class="timeline-content">
-              <h4>海口旅游职业学院（HTC）达成深度合作</h4>
-              <p>2025年5月，与HTC达成合作，为其建设VMware私有云体系，iHAIKOU平台及ai智能助手，并持续提供咨询服务。</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <script>
-    // 滚动入场动画
-    const items = document.querySelectorAll('.timeline-item');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.3 });
-    items.forEach(item => observer.observe(item));
+    document.addEventListener('DOMContentLoaded', function() {
+      const items = document.querySelectorAll('.timeline-item');
 
-    // 背景粒子动效
-    const canvas = document.getElementById('history-bg');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+      // 滚动入场动画 + 上下滑动切换动画
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+          } else {
+            entry.target.classList.remove('visible');
+          }
+        });
+      }, { threshold: 0.3 });
+      items.forEach(item => observer.observe(item));
 
-    const particles = [];
-    for(let i=0;i<100;i++){
-      particles.push({
-        x: Math.random()*canvas.width,
-        y: Math.random()*canvas.height,
-        r: Math.random()*2+1,
-        dx: (Math.random()-0.5)*0.3,
-        dy: (Math.random()-0.5)*0.3
-      });
-    }
-
-    function animateParticles(){
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      particles.forEach(p=>{
-        ctx.beginPath();
-        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-        ctx.fillStyle = 'rgba(255,255,255,0.2)';
-        ctx.fill();
-        p.x += p.dx;
-        p.y += p.dy;
-        if(p.x>canvas.width) p.x=0;
-        if(p.x<0) p.x=canvas.width;
-        if(p.y>canvas.height) p.y=0;
-        if(p.y<0) p.y=canvas.height;
-      });
-      requestAnimationFrame(animateParticles);
-    }
-    animateParticles();
-
-    window.addEventListener('resize',()=>{
+      // 背景粒子动效
+      const canvas = document.getElementById('history-bg');
+      const ctx = canvas.getContext('2d');
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+
+      const particles = [];
+      for(let i=0;i<120;i++){
+        particles.push({
+          x: Math.random()*canvas.width,
+          y: Math.random()*canvas.height,
+          r: Math.random()*2+1,
+          dx: (Math.random()-0.5)*0.4,
+          dy: (Math.random()-0.5)*0.4
+        });
+      }
+
+      function animateParticles(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        particles.forEach(p=>{
+          ctx.beginPath();
+          ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+          ctx.fillStyle='rgba(255,255,255,0.2)';
+          ctx.fill();
+          p.x += p.dx; p.y += p.dy;
+          if(p.x>canvas.width) p.x=0;
+          if(p.x<0) p.x=canvas.width;
+          if(p.y>canvas.height) p.y=0;
+          if(p.y<0) p.y=canvas.height;
+        });
+        requestAnimationFrame(animateParticles);
+      }
+      animateParticles();
+
+      window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.height=window.innerHeight; });
     });
     </script>
-    <!-- 发展历程部分 -->
 
-<!-- ++++++++++++++++++++++++++++模块分割线+++++++++++++++++++++++++++++++++++ -->
-
-    <!-- 页脚 -->
+    <!-- 页脚模块 -->
     <footer class="footer">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4 mb-lg-0">
+            <div class="row footer-top">
+                <div class="col-lg-4 mb-4 mb-lg-0 footer-brand">
                     <h3>XSEC</h3>
                     <p>致力于提供专业的信息化解决方案。</p>
                 </div>
@@ -1713,12 +1707,73 @@
                     </ul>
                 </div>
             </div>
-            <div class="copyright">
+            <div class="footer-bottom">
                 <p>&copy; 2025 海口希灵赛斯网络科技有限责任公司. 保留所有权利.</p>
             </div>
         </div>
     </footer>
-    
+
+    <!-- 页脚CSS样式（苹果风格深色） -->
+    <style>
+        .footer {
+            background: #1d1d1f; /* 深色背景 */
+            color: #f5f5f7; /* 浅色文字 */
+            padding: 60px 0 30px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        .footer h3, .footer h4 {
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .footer p {
+            color: #d1d1d6;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .footer ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        .footer ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer ul li a {
+            color: #d1d1d6;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .footer ul li a:hover {
+            color: #0a84ff; /* 苹果蓝色高亮 */
+            transform: translateX(4px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #2c2c2e;
+            margin-top: 40px;
+            padding-top: 20px;
+            font-size: 13px;
+            color: #8e8e93;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .footer .row > div {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+
     <!-- Required scripts -->
     <!-- 必需的JavaScript库 -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
@@ -1857,38 +1912,119 @@
             // 添加播放控制
             var musicControl = document.createElement('div');
             musicControl.id = 'musicControl';
-            musicControl.innerHTML = '🔊';
+            musicControl.innerHTML = `
+                <div class="music-disc">
+                    <div class="disc-center"></div>
+                </div>
+            `;
             musicControl.style.cssText = `
                 position: fixed;
                 bottom: 20px;
                 right: 20px;
-                width: 40px;
-                height: 40px;
-                background: rgba(0, 113, 227, 0.8);
-                color: white;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
+                width: 50px;
+                height: 50px;
                 cursor: pointer;
                 z-index: 9999;
-                font-size: 20px;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
                 transition: all 0.3s ease;
             `;
+            
+            // 随机颜色数组
+            var colorPairs = [
+                { outer: '#6a11cb', inner: '#2575fc' },
+                { outer: '#ff416c', inner: '#ff4b2b' },
+                { outer: '#36d1dc', inner: '#5b86e5' },
+                { outer: '#f6d365', inner: '#fda085' },
+                { outer: '#5ee7df', inner: '#b490ca' },
+                { outer: '#d4fc79', inner: '#96e6a1' },
+                { outer: '#a1c4fd', inner: '#c2e9fb' },
+                { outer: '#84fab0', inner: '#8fd3f4' }
+            ];
+            
+            // 应用随机颜色
+            function applyRandomColors() {
+                var randomColors = colorPairs[Math.floor(Math.random() * colorPairs.length)];
+                var disc = musicControl.querySelector('.music-disc');
+                disc.style.background = `linear-gradient(135deg, ${randomColors.outer} 0%, ${randomColors.inner} 100%)`;
+            }
             
             musicControl.addEventListener('click', function() {
                 if (bgMusic.paused) {
                     bgMusic.play();
-                    musicControl.innerHTML = '🔊';
+                    musicControl.classList.add('playing');
+                    applyRandomColors(); // 播放时应用随机颜色
                 } else {
                     bgMusic.pause();
-                    musicControl.innerHTML = '🔇';
+                    musicControl.classList.remove('playing');
                 }
             });
             
             document.body.appendChild(musicControl);
+            
+            // 初始化时应用随机颜色
+            applyRandomColors();
         });
     </script>
+    
+    <style>
+        #musicControl {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .music-disc {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .music-disc::before {
+            content: '';
+            position: absolute;
+            width: 90%;
+            height: 90%;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 100%);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        .disc-center {
+            position: relative;
+            width: 20%;
+            height: 20%;
+            border-radius: 50%;
+            background: #333;
+            z-index: 2;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        #musicControl.playing .music-disc {
+            animation: rotate 1.5s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        #musicControl:hover {
+            transform: scale(1.1);
+        }
+        
+        #musicControl:hover .music-disc::before {
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+        }
+    </style>
 </body>
 </html>
