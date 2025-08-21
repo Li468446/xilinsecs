@@ -887,48 +887,80 @@
         // 业务下拉菜单
         var businessDropdown = document.getElementById('businessDropdownItem');
         var businessToggle = document.getElementById('businessDropdown');
+        var businessMenu = businessToggle.nextElementSibling; // 获取下拉菜单
         
-        businessDropdown.addEventListener('mouseenter', function() {
+        var businessTimeout; // 用于存储业务菜单的timeout ID
+        
+        // 鼠标进入主菜单项或下拉菜单时显示菜单
+        function showBusinessDropdown() {
+            clearTimeout(businessTimeout); // 清除之前的隐藏延迟
             var dropdownInstance = bootstrap.Dropdown.getInstance(businessToggle);
             if (!dropdownInstance) {
                 dropdownInstance = new bootstrap.Dropdown(businessToggle);
             }
             dropdownInstance.show();
             businessToggle.setAttribute('aria-expanded', 'true');
-        });
+        }
         
-        businessDropdown.addEventListener('mouseleave', function() {
-            setTimeout(function() {
+        // 鼠标离开主菜单项或下拉菜单时隐藏菜单
+        function hideBusinessDropdown() {
+            businessTimeout = setTimeout(function() {
                 var dropdownInstance = bootstrap.Dropdown.getInstance(businessToggle);
                 if (dropdownInstance) {
                     dropdownInstance.hide();
                 }
                 businessToggle.setAttribute('aria-expanded', 'false');
-            }, 100); // 添加短暂延迟，防止鼠标移动过快时菜单闪烁
-        });
+            }, 300); // 300毫秒后隐藏菜单
+        }
+        
+        // 为主菜单项添加事件监听
+        businessDropdown.addEventListener('mouseenter', showBusinessDropdown);
+        businessDropdown.addEventListener('mouseleave', hideBusinessDropdown);
+        
+        // 为下拉菜单添加事件监听
+        if (businessMenu) {
+            businessMenu.addEventListener('mouseenter', showBusinessDropdown);
+            businessMenu.addEventListener('mouseleave', hideBusinessDropdown);
+        }
         
         // 关于我们下拉菜单
         var aboutDropdown = document.getElementById('aboutDropdownItem');
         var aboutToggle = document.getElementById('aboutDropdown');
+        var aboutMenu = aboutToggle.nextElementSibling; // 获取下拉菜单
         
-        aboutDropdown.addEventListener('mouseenter', function() {
+        var aboutTimeout; // 用于存储关于菜单的timeout ID
+        
+        // 鼠标进入主菜单项或下拉菜单时显示菜单
+        function showAboutDropdown() {
+            clearTimeout(aboutTimeout); // 清除之前的隐藏延迟
             var dropdownInstance = bootstrap.Dropdown.getInstance(aboutToggle);
             if (!dropdownInstance) {
                 dropdownInstance = new bootstrap.Dropdown(aboutToggle);
             }
             dropdownInstance.show();
             aboutToggle.setAttribute('aria-expanded', 'true');
-        });
+        }
         
-        aboutDropdown.addEventListener('mouseleave', function() {
-            setTimeout(function() {
+        // 鼠标离开主菜单项或下拉菜单时隐藏菜单
+        function hideAboutDropdown() {
+            aboutTimeout = setTimeout(function() {
                 var dropdownInstance = bootstrap.Dropdown.getInstance(aboutToggle);
                 if (dropdownInstance) {
                     dropdownInstance.hide();
                 }
                 aboutToggle.setAttribute('aria-expanded', 'false');
-            }, 100); // 添加短暂延迟，防止鼠标移动过快时菜单闪烁
-        });
+            }, 300); // 300毫秒后隐藏菜单
+        }
+        
+        // 为主菜单项添加事件监听
+        aboutDropdown.addEventListener('mouseenter', showAboutDropdown);
+        aboutDropdown.addEventListener('mouseleave', hideAboutDropdown);
+        
+        // 为下拉菜单添加事件监听
+        if (aboutMenu) {
+            aboutMenu.addEventListener('mouseenter', showAboutDropdown);
+            aboutMenu.addEventListener('mouseleave', hideAboutDropdown);
+        }
     });
 </script>
 
