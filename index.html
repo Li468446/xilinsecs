@@ -25,7 +25,7 @@
     <!-- 规范化网址，避免重复内容 -->
     <link rel="manifest" href="./manifest.json">
     <!-- PWA应用清单文件链接 -->
-    <title>海口希灵赛斯</title>
+    <title>海口希灵赛斯：一家专注于信息化解决方案的科技公司</title>
     <!-- 页面标题 -->
     <link rel="icon" href="./favicon.ico">
     <!-- 网站图标 -->
@@ -92,530 +92,612 @@
 
         /* 页面主体样式 */
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             color: var(--apple-text);
             min-height: 100vh;
             overflow-x: hidden;
-            position: relative;
-        }
-
-        /* 添加背景粒子效果 */
-        #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            top: 0;
-            left: 0;
         }
     </style>
 </head>
 <body>
-<!-- ===================== 粒子背景 ===================== -->
-<div id="particles-js" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;"></div>
 
-<!-- ===================== 导航栏模块 ===================== -->
-<div class="ezy__nav6_7SyLoOH3k">
-    <nav class="navbar navbar-expand-lg py-3">
-        <div class="container position-relative">
-            <!-- 品牌标识 -->
-            <a class="navbar-brand" href="#home">
-                <img src="source/imgs/logo.png" alt="海口希灵赛斯" class="nav-logo">
-            </a>
-            <!-- 下划线指示器 -->
-            <div class="nav-indicator"></div>
+    <!-- ===================== 导航栏模块 ===================== -->
+    <div class="ezy__nav6_7SyLoOH3k">
+        <nav class="navbar navbar-expand-lg py-3">
+            <div class="container position-relative">
+                <!-- 品牌标识 -->
+                <a class="navbar-brand" href="#home">
+                    <img src="source/imgs/logo.png" alt="海口希灵赛斯" class="nav-logo">
+                </a>
+                <!-- 下划线指示器 -->
+                <div class="nav-indicator"></div>
 
-            <!-- 移动端导航切换按钮 -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <!-- 移动端导航切换按钮 -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <!-- 导航菜单 -->
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item dropdown" id="businessDropdownItem">
-                        <a class="nav-link dropdown-toggle" href="business/index.html" id="businessDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            业   务
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="businessDropdown">
-                            <li><a class="dropdown-item" href="business/index.html#user-focused">面向用户</a></li>
-                            <li><a class="dropdown-item" href="business/index.html#enterprise">面向企业</a></li>
-                            <li><a class="dropdown-item" href="business/index.html#innovation">科技创新</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="public/index.html">公共服务</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://se-xl-services.xinnew.top/">资源监测</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://blog.csdn.net/qq_73252299?spm=1011.2124.3001.5343">技术频道</a></li>
-                    <li class="nav-item dropdown" id="aboutDropdownItem">
-                        <a class="nav-link dropdown-toggle" href="#about" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            关于我们
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
-                            <li><a class="dropdown-item" href="leadership/about.html">企业简介</a></li>
-                            <li><a class="dropdown-item" href="https://sec.hn.cn/">更新动态</a></li>
-                            <li><a class="dropdown-item" href="leadership/about.html">领导团队</a></li>
-                            <li><a class="dropdown-item" href="#history">发展历程</a></li>
-                            <li><a class="dropdown-item" href="careers/cn/index.html">职业机会</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</div>
-
-<!-- ===================== CSS ===================== -->
-<style>
-/* 导航栏基础 */
-.ezy__nav6_7SyLoOH3k {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    font-size: 1.125rem;
-}
-
-/* navbar 毛玻璃效果 */
-.navbar {
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    background: rgba(255,255,255,0.4);
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    box-shadow: 0 2px 20px rgba(0,0,0,0.05);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-    position: relative;
-}
-
-/* 滚动时的导航栏样式 */
-.navbar.scrolled {
-    background: rgba(30, 30, 30, 0.8); /* 深灰色背景 */
-    box-shadow: 0 6px 25px rgba(0,0,0,0.15);
-}
-
-/* Logo */
-.navbar-brand {
-    font-weight: 700;
-    font-size: 1.4rem;
-    color: #1d1d1f;
-    letter-spacing: -0.5px;
-    display: flex;
-    align-items: center;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-}
-
-.navbar.scrolled .navbar-brand {
-    color: #ffffff; /* 滚动时字体变白 */
-}
-
-.nav-logo {
-    height: 40px;
-    margin-right: 8px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-}
-
-/* 导航链接 */
-.nav-link {
-    font-weight: 500;
-    color: #444;
-    padding: 10px 16px;
-    margin: 0 4px;
-    border-radius: 12px;
-    position: relative;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-    text-decoration: none;
-    outline: none;
-}
-
-.navbar.scrolled .nav-link {
-    color: #ffffff; /* 滚动时字体变白 */
-}
-
-.nav-link:hover {
-    color: #007bff;
-    background: rgba(0,113,227,0.08);
-}
-
-.navbar.scrolled .nav-link:hover {
-    color: #007bff;
-    background: rgba(0,113,227,0.2);
-}
-
-/* 下拉菜单 */
-.dropdown-menu {
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    background: rgba(255,255,255,0.85);
-    border: 1px solid rgba(0,0,0,0.05);
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-    padding: 10px 0;
-    margin-top: 8px;
-    transition: all 0.5s ease-in-out; /* 强化淡入淡出效果 */
-    opacity: 0;
-    transform: translateY(-10px);
-    pointer-events: none;
-}
-
-.dropdown-menu.show {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-
-/* 滚动时下拉菜单样式 */
-.navbar.scrolled .dropdown-menu {
-    background: rgba(255,255,255,0.9);
-    border: 1px solid rgba(255,255,255,0.2);
-}
-
-/* 下拉菜单项 */
-.dropdown-item {
-    padding: 8px 20px;
-    color: #444;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    outline: none;
-}
-
-/* 滚动时下拉菜单项样式 */
-.navbar.scrolled .dropdown-item {
-    color: #444;
-}
-
-.dropdown-item:hover {
-    background: rgba(0,113,227,0.08);
-    color: #007bff;
-}
-
-/* 滚动时下拉菜单项悬停样式 */
-.navbar.scrolled .dropdown-item:hover {
-    background: rgba(0,113,227,0.2);
-    color: #007bff;
-}
-
-/* 去除PC端二级菜单黑框 */
-.nav-item.dropdown:focus-within > a.dropdown-toggle,
-.nav-item.dropdown.show > a.dropdown-toggle {
-    outline: none;
-    box-shadow: none;
-}
-
-/* 移动端按钮 */
-.navbar-toggler {
-    border: 1px solid rgba(0,0,0,0.1);
-    border-radius: 5px;
-    padding: 2px 6px;
-    z-index: 1001; /* 确保按钮在导航栏上方 */
-}
-.navbar-toggler:focus {
-    box-shadow: 0 0 0 0.2rem rgba(0,113,227,0.25);
-}
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280,0,0,0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
-
-.navbar.scrolled .navbar-toggler {
-    border: 1px solid rgba(255,255,255,0.3);
-}
-
-.navbar.scrolled .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255,255,255,0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
-
-/* 滚动效果 */
-.navbar.scrolled {
-    background: rgba(30, 30, 30, 0.8);
-    box-shadow: 0 6px 25px rgba(0,0,0,0.15);
-    font-size: 1rem;
-}
-.navbar.scrolled .nav-logo {
-    height: 30px;
-}
-
-/* 修复移动端导航栏遮挡内容的问题 */
-@media (max-width: 991.98px) {
-    .ezy__header22_9Wbn5LJN {
-        padding-top: 70px; /* 为固定导航栏留出空间 */
-    }
-}
-</style>
-
-<!-- ===================== JS ===================== -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-
-    // 下拉菜单悬停 + 动画
-    function setupDropdown(dropdownItemId, dropdownToggleId){
-        var dropdownItem = document.getElementById(dropdownItemId);
-        var dropdownToggle = document.getElementById(dropdownToggleId);
-        var dropdownMenu = dropdownToggle.nextElementSibling;
-        var timeoutId;
-
-        function showDropdown(){
-            clearTimeout(timeoutId);
-            var instance = bootstrap.Dropdown.getOrCreateInstance(dropdownToggle);
-            instance.show();
-            dropdownToggle.setAttribute('aria-expanded','true');
-            dropdownMenu.classList.add('show');
-        }
-        function hideDropdown(){
-            timeoutId = setTimeout(function(){
-                dropdownMenu.classList.remove('show');
-                setTimeout(()=>{
-                    var instance = bootstrap.Dropdown.getOrCreateInstance(dropdownToggle);
-                    instance.hide(true);
-                    dropdownToggle.setAttribute('aria-expanded','false');
-                },250);
-            },300);
-        }
-
-        dropdownItem.addEventListener('mouseenter', showDropdown);
-        dropdownItem.addEventListener('mouseleave', hideDropdown);
-        if(dropdownMenu){
-            dropdownMenu.addEventListener('mouseenter', showDropdown);
-            dropdownMenu.addEventListener('mouseleave', hideDropdown);
-        }
-    }
-
-    setupDropdown('businessDropdownItem','businessDropdown');
-    setupDropdown('aboutDropdownItem','aboutDropdown');
-
-    // 滚动透明度和Logo缩放
-    var navbar = document.querySelector('.navbar');
-    var navLinks = document.querySelectorAll('.nav-link');
-    var dropdownMenus = document.querySelectorAll('.dropdown-menu');
-    var isScrolling = false;
-
-    // 使用requestAnimationFrame优化滚动性能
-    function updateNavbarOnScroll() {
-        if (!isScrolling) {
-            window.requestAnimationFrame(function() {
-                performScrollUpdates();
-                isScrolling = false;
-            });
-            isScrolling = true;
-        }
-    }
-
-    function performScrollUpdates() {
-        // 获取滚动位置
-        var scrollPosition = window.scrollY;
-        var scrollPercentage = Math.min(scrollPosition / 100, 1); // 0到1之间的值，100px后达到最大值
-        
-        // 计算背景颜色 (从浅色到深色)
-        var r = 255 - (255 - 30) * scrollPercentage;
-        var g = 255 - (255 - 30) * scrollPercentage;
-        var b = 255 - (255 - 30) * scrollPercentage;
-        var alpha = 0.4 + 0.4 * scrollPercentage; // 从0.4到0.8的透明度
-        
-        // 应用背景颜色
-        navbar.style.background = `rgba(${Math.floor(r)}, ${Math.floor(g)}, ${Math.floor(b)}, ${alpha})`;
-        
-        // 计算文字颜色 (从深色到白色)
-        var textR = 68 + (255 - 68) * scrollPercentage;
-        var textG = 68 + (255 - 68) * scrollPercentage;
-        var textB = 68 + (255 - 68) * scrollPercentage;
-        
-        // 应用导航链接颜色
-        navLinks.forEach(link => {
-            link.style.color = `rgb(${Math.floor(textR)}, ${Math.floor(textG)}, ${Math.floor(textB)})`;
-        });
-        
-        // 应用品牌文字颜色
-        var brand = document.querySelector('.navbar-brand');
-        brand.style.color = `rgb(${Math.floor(textR)}, ${Math.floor(textG)}, ${Math.floor(textB)})`;
-        
-        // 应用下拉菜单样式
-        dropdownMenus.forEach(menu => {
-            // 计算下拉菜单背景色
-            var menuBgAlpha = 0.85 + 0.15 * scrollPercentage; // 从0.85到1的透明度
-            menu.style.background = `rgba(255, 255, 255, ${menuBgAlpha})`;
-            
-            // 滚动时调整下拉菜单边框
-            if (scrollPercentage > 0.5) {
-                menu.style.border = '1px solid rgba(255, 255, 255, 0.2)';
-            } else {
-                menu.style.border = '1px solid rgba(0, 0, 0, 0.05)';
-            }
-        });
-        
-        // 当滚动超过50px时添加scrolled类以应用其他样式
-        if(scrollPosition > 50){
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    }
-
-    window.addEventListener('scroll', updateNavbarOnScroll, { passive: true });
-});
-</script>
-
-    <!-- 头部横幅模块 -->
-    <section class="ezy__header22_9Wbn5LJN">
-        <canvas id="header-mg-bg"></canvas>
-
-        <div class="container position-relative h-100 d-flex flex-column justify-content-center">
-            <div class="row justify-content-between align-items-center h-100">
-                <!-- 文本区域 -->
-                <div class="col-lg-6 text-center text-lg-start">
-                    <div class="ezy__header22_9Wbn5LJN-content-wrapper">
-                        <h2 class="ezy__header22_9Wbn5LJN-heading">云启无限</h2>
-                        <p class="ezy__header22_9Wbn5LJN-sub-heading">
-                            安全为盾，计算为矛，驱动数字未来。专业定制专属私有云基础设施建设，信息安全建设，网站建设等信息技术方案
-                        </p>
-                        <a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" class="btn btn-warning ezy__header22_9Wbn5LJN-btn fs-5 mt-4 mt-md-5">
-                            立即咨询
-                        </a>
-                    </div>
+                <!-- 导航菜单 -->
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown" id="businessDropdownItem">
+                            <a class="nav-link dropdown-toggle" href="business/index.html" id="businessDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                业  务
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="businessDropdown">
+                                <li><a class="dropdown-item" href="business/index.html#user-focused">面向用户</a></li>
+                                <li><a class="dropdown-item" href="business/index.html#enterprise">面向企业</a></li>
+                                <li><a class="dropdown-item" href="business/index.html#innovation">科技创新</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="public/index.html">公共服务</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://se-xl-services.xinnew.top/">资源监测</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://blog.csdn.net/qq_73252299?spm=1011.2124.3001.5343">技术频道</a></li>
+                        <li class="nav-item dropdown" id="aboutDropdownItem">
+                            <a class="nav-link dropdown-toggle" href="#about" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                关于我们
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                                <li><a class="dropdown-item" href="leadership/about.html">企业简介</a></li>
+                                <li><a class="dropdown-item" href="https://sec.hn.cn/">更新动态</a></li>
+                                <li><a class="dropdown-item" href="leadership/about.html">领导团队</a></li>
+                                <li><a class="dropdown-item" href="#history">发展历程</a></li>
+                                <li><a class="dropdown-item" href="careers/cn/index.html">职业机会</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
-                <!-- 图片展示区域 -->
-                <div class="col-lg-6 d-flex align-items-end justify-content-center">
-                    <img src="source/index_imgs/index_01.jpg" alt="滨海CBD" class="rounded img-fluid mt-3 ezy__header22_9Wbn5LJN-thumbnail" />
+            </div>
+        </nav>
+    </div>
+
+    <!-- ===================== CSS ===================== -->
+    <style>
+    /* 导航栏基础 */
+    .ezy__nav6_7SyLoOH3k {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        font-size: 1.125rem;
+    }
+
+    /* navbar 毛玻璃效果 */
+    .navbar {
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        background: rgba(255,255,255,0.4);
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        position: relative;
+    }
+
+    /* 滚动时的导航栏样式 */
+    .navbar.scrolled {
+        background: rgba(30, 30, 30, 0.8); /* 深灰色背景 */
+        box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+    }
+
+    /* Logo */
+    .navbar-brand {
+        font-weight: 700;
+        font-size: 1.4rem;
+        color: #1d1d1f;
+        letter-spacing: -0.5px;
+        display: flex;
+        align-items: center;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    }
+
+    .navbar.scrolled .navbar-brand {
+        color: #ffffff; /* 滚动时字体变白 */
+    }
+
+    .nav-logo {
+        height: 40px;
+        margin-right: 8px;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    }
+
+    /* 导航链接 */
+    .nav-link {
+        font-weight: 500;
+        color: #444;
+        padding: 10px 16px;
+        margin: 0 4px;
+        border-radius: 12px;
+        position: relative;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        text-decoration: none;
+        outline: none;
+    }
+
+    .navbar.scrolled .nav-link {
+        color: #ffffff; /* 滚动时字体变白 */
+    }
+
+    .nav-link:hover {
+        color: #007bff;
+        background: rgba(0,113,227,0.08);
+    }
+
+    .navbar.scrolled .nav-link:hover {
+        color: #007bff;
+        background: rgba(0,113,227,0.2);
+    }
+
+    /* 下拉菜单 */
+    .dropdown-menu {
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        background: rgba(255,255,255,0.85);
+        border: 1px solid rgba(0,0,0,0.05);
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        padding: 10px 0;
+        margin-top: 8px;
+        transition: all 0.5s ease-in-out; /* 强化淡入淡出效果 */
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+    }
+
+    .dropdown-menu.show {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    /* 滚动时下拉菜单样式 */
+    .navbar.scrolled .dropdown-menu {
+        background: rgba(255,255,255,0.9);
+        border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    /* 下拉菜单项 */
+    .dropdown-item {
+        padding: 8px 20px;
+        color: #444;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        outline: none;
+    }
+
+    /* 滚动时下拉菜单项样式 */
+    .navbar.scrolled .dropdown-item {
+        color: #444;
+    }
+
+    .dropdown-item:hover {
+        background: rgba(0,113,227,0.08);
+        color: #007bff;
+    }
+
+    /* 滚动时下拉菜单项悬停样式 */
+    .navbar.scrolled .dropdown-item:hover {
+        background: rgba(0,113,227,0.2);
+        color: #007bff;
+    }
+
+    /* 去除PC端二级菜单黑框 */
+    .nav-item.dropdown:focus-within > a.dropdown-toggle,
+    .nav-item.dropdown.show > a.dropdown-toggle {
+        outline: none;
+        box-shadow: none;
+    }
+
+    /* 移动端按钮 */
+    .navbar-toggler {
+        border: 1px solid rgba(0,0,0,0.1);
+        border-radius: 5px;
+        padding: 2px 6px;
+        z-index: 1001; /* 确保按钮在导航栏上方 */
+    }
+    .navbar-toggler:focus {
+        box-shadow: 0 0 0 0.2rem rgba(0,113,227,0.25);
+    }
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280,0,0,0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    .navbar.scrolled .navbar-toggler {
+        border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .navbar.scrolled .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255,255,255,0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    /* 滚动效果 */
+    .navbar.scrolled {
+        background: rgba(30, 30, 30, 0.8);
+        box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+        font-size: 1rem;
+    }
+    .navbar.scrolled .nav-logo {
+        height: 30px;
+    }
+
+    /* 修复移动端导航栏遮挡内容的问题 */
+    @media (max-width: 991.98px) {
+        .ezy__header22_9Wbn5LJN {
+            padding-top: 70px; /* 为固定导航栏留出空间 */
+        }
+    }
+    </style>
+
+    <!-- ===================== JS ===================== -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        // 下拉菜单悬停 + 动画
+        function setupDropdown(dropdownItemId, dropdownToggleId){
+            var dropdownItem = document.getElementById(dropdownItemId);
+            var dropdownToggle = document.getElementById(dropdownToggleId);
+            var dropdownMenu = dropdownToggle.nextElementSibling;
+            var timeoutId;
+
+            function showDropdown(){
+                clearTimeout(timeoutId);
+                var instance = bootstrap.Dropdown.getOrCreateInstance(dropdownToggle);
+                instance.show();
+                dropdownToggle.setAttribute('aria-expanded','true');
+                dropdownMenu.classList.add('show');
+            }
+            function hideDropdown(){
+                timeoutId = setTimeout(function(){
+                    dropdownMenu.classList.remove('show');
+                    setTimeout(()=>{
+                        var instance = bootstrap.Dropdown.getOrCreateInstance(dropdownToggle);
+                        instance.hide(true);
+                        dropdownToggle.setAttribute('aria-expanded','false');
+                    },250);
+                },300);
+            }
+
+            dropdownItem.addEventListener('mouseenter', showDropdown);
+            dropdownItem.addEventListener('mouseleave', hideDropdown);
+            if(dropdownMenu){
+                dropdownMenu.addEventListener('mouseenter', showDropdown);
+                dropdownMenu.addEventListener('mouseleave', hideDropdown);
+            }
+        }
+
+        setupDropdown('businessDropdownItem','businessDropdown');
+        setupDropdown('aboutDropdownItem','aboutDropdown');
+
+        // 滚动透明度和Logo缩放
+        var navbar = document.querySelector('.navbar');
+        var navLinks = document.querySelectorAll('.nav-link');
+        var dropdownMenus = document.querySelectorAll('.dropdown-menu');
+        var isScrolling = false;
+
+        // 使用requestAnimationFrame优化滚动性能
+        function updateNavbarOnScroll() {
+            if (!isScrolling) {
+                window.requestAnimationFrame(function() {
+                    performScrollUpdates();
+                    isScrolling = false;
+                });
+                isScrolling = true;
+            }
+        }
+
+        function performScrollUpdates() {
+            // 获取滚动位置
+            var scrollPosition = window.scrollY;
+            var scrollPercentage = Math.min(scrollPosition / 100, 1); // 0到1之间的值，100px后达到最大值
+
+            // 计算背景颜色 (从浅色到深色)
+            var r = 255 - (255 - 30) * scrollPercentage;
+            var g = 255 - (255 - 30) * scrollPercentage;
+            var b = 255 - (255 - 30) * scrollPercentage;
+            var alpha = 0.4 + 0.4 * scrollPercentage; // 从0.4到0.8的透明度
+
+            // 应用背景颜色
+            navbar.style.background = `rgba(${Math.floor(r)}, ${Math.floor(g)}, ${Math.floor(b)}, ${alpha})`;
+
+            // 计算文字颜色 (从深色到白色)
+            var textR = 68 + (255 - 68) * scrollPercentage;
+            var textG = 68 + (255 - 68) * scrollPercentage;
+            var textB = 68 + (255 - 68) * scrollPercentage;
+
+            // 应用导航链接颜色
+            navLinks.forEach(link => {
+                link.style.color = `rgb(${Math.floor(textR)}, ${Math.floor(textG)}, ${Math.floor(textB)})`;
+            });
+
+            // 应用品牌文字颜色
+            var brand = document.querySelector('.navbar-brand');
+            brand.style.color = `rgb(${Math.floor(textR)}, ${Math.floor(textG)}, ${Math.floor(textB)})`;
+
+            // 应用下拉菜单样式
+            dropdownMenus.forEach(menu => {
+                // 计算下拉菜单背景色
+                var menuBgAlpha = 0.85 + 0.15 * scrollPercentage; // 从0.85到1的透明度
+                menu.style.background = `rgba(255, 255, 255, ${menuBgAlpha})`;
+
+                // 滚动时调整下拉菜单边框
+                if (scrollPercentage > 0.5) {
+                    menu.style.border = '1px solid rgba(255, 255, 255, 0.2)';
+                } else {
+                    menu.style.border = '1px solid rgba(0, 0, 0, 0.05)';
+                }
+            });
+
+            // 当滚动超过50px时添加scrolled类以应用其他样式
+            if(scrollPosition > 50){
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
+
+        window.addEventListener('scroll', updateNavbarOnScroll, { passive: true });
+    });
+    </script>
+
+    <!-- ===================== 头部模块（视频背景 + 弹性滚动渐隐 + 渐变色动态 + 微动） ===================== -->
+    <section class="ezy__header22_9Wbn5LJN">
+        <!-- 视频背景 -->
+        <!-- 视频背景 暂时借用万事达官网视频，如有冒犯，请联系Email:xuzhongxin@sec.hn.cn 我们会第一时间更换，在此致谢！ -->
+        <video autoplay loop muted playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-video-orientation="portraint" preload="auto" controlslist="nodownload" disablepictureinpicture class="video-bg" id="header-video">
+            <source src="source/video/index_01.mp4" type="video/mp4">
+            <source src="source/video/index_01.webm" type="video/webm">
+            您的浏览器不支持视频标签。
+        </video>
+    
+        <!-- 渐变叠加层 -->
+        <div class="video-overlay" id="video-overlay"></div>
+    
+        <!-- 内容层 -->
+        <div class="container position-relative h-100 d-flex flex-column justify-content-center">
+            <div class="row justify-content-start align-items-center h-100">
+                <!-- 左侧文字区域 -->
+                <div class="col-lg-6 text-center text-lg-start hero-content" id="hero-content">
+                    <h1 class="ezy__header22_9Wbn5LJN-heading">云启无限</h1>
+                    <p class="ezy__header22_9Wbn5LJN-sub-heading">安全为盾，计算为矛，驱动数字未来。专业定制专属私有云基础设施建设，信息安全建设，网站建设，软件开发，计算机设备，信息安全设备销售等信息化建设解决方案</p>
+                    <a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" class="ezy__header22_9Wbn5LJN-btn btn mt-3">与客户经理对话</a>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- CSS -->
+    
     <style>
     .ezy__header22_9Wbn5LJN {
         position: relative;
         width: 100%;
         height: 100vh;
         overflow: hidden;
-        background: #f0f5f9;
     }
-
-    /* 粒子背景画布 */
-    #header-mg-bg {
+    
+    /* 视频背景样式 */
+    .video-bg {
         position: absolute;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        z-index: 0;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -2;
+        transform: translateY(0);
+        transition: transform 0.1s linear;
     }
-
+    
+    /* 渐变叠加层 */
+    .video-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.65));
+        z-index: -1;
+        transition: background 0.15s linear;
+    }
+    
     /* 文本样式 */
+    .hero-content {
+        color: #ffffff;
+        transform: translateY(0);
+        transition: transform 0.15s ease-out, opacity 0.15s ease-out;
+    }
+    
     .ezy__header22_9Wbn5LJN-heading {
-        font-size: 3.5rem;
-        font-weight: 800;
-        color: #1d1d1f;
-        letter-spacing: -1px;
-        margin-bottom: 25px;
-        animation: fadeInUp 1s ease-out forwards;
-    }
-    .ezy__header22_9Wbn5LJN-sub-heading {
-        font-size: 1.4rem;
-        color: #444;
-        line-height: 1.6;
-        margin-bottom: 40px;
-        animation: fadeInUp 1s ease-out 0.2s forwards;
+        font-size: 3rem;
+        font-weight: 700;
+        line-height: 1.1;
+        margin-bottom: 20px;
         opacity: 0;
+        animation: fadeInLeft 1s ease-out forwards;
     }
+    
+    .ezy__header22_9Wbn5LJN-sub-heading {
+        font-size: 1.25rem;
+        line-height: 1.6;
+        margin-bottom: 30px;
+        opacity: 0;
+        animation: fadeInLeft 1s ease-out 0.35s forwards;
+    }
+    
     .ezy__header22_9Wbn5LJN-btn {
         font-weight: 600;
-        padding: 14px 36px;
-        border-radius: 15px;
-        font-size: 1.1rem;
-        box-shadow: 0 6px 20px rgba(0, 113, 227, 0.3);
+        padding: 12px 36px;
+        border-radius: 30px;
+        font-size: 1rem;
+        background: linear-gradient(90deg, #ff5f00, #ffbc00);
+        color: #fff;
+        border: none;
+        box-shadow: 0 8px 24px rgba(255, 188, 0, 0.4);
         transition: all 0.3s ease;
         opacity: 0;
-        animation: fadeInUp 1s ease-out 0.4s forwards;
+        animation: fadeInLeft 1s ease-out 0.7s forwards;
     }
+    
     .ezy__header22_9Wbn5LJN-btn:hover {
-        transform: translateY(-5px) scale(1.05);
-        box-shadow: 0 10px 30px rgba(0, 113, 227, 0.4);
+        transform: translateY(-4px) scale(1.05);
+        box-shadow: 0 12px 36px rgba(255, 188, 0, 0.6);
     }
-    .ezy__header22_9Wbn5LJN-thumbnail {
-        border-radius: 25px;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        animation: float 6s infinite ease-in-out;
+    
+    /* 动画效果：从左侧淡入 */
+    @keyframes fadeInLeft {
+        0% { opacity: 0; transform: translateX(-50px); }
+        100% { opacity: 1; transform: translateX(0); }
     }
-
-    /* 动画 */
-    @keyframes fadeInUp {
-        0% { opacity: 0; transform: translateY(30px);}
-        100% { opacity: 1; transform: translateY(0);}
-    }
-    @keyframes float {
-        0%,100% { transform: translateY(0px);}
-        50% { transform: translateY(-20px);}
+    
+    /* 响应式调整 */
+    @media (max-width: 991px) {
+        .ezy__header22_9Wbn5LJN-heading {
+            font-size: 2.2rem;
+        }
+        .ezy__header22_9Wbn5LJN-sub-heading {
+            font-size: 1rem;
+        }
+        .ezy__header22_9Wbn5LJN-btn {
+            padding: 10px 24px;
+            font-size: 0.95rem;
+        }
     }
     </style>
-
-    <!-- JS: MG 粒子 + 连线 + 光晕 -->
+    
     <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const canvas = document.getElementById('header-mg-bg');
-        const ctx = canvas.getContext('2d');
-        let W = canvas.width = window.innerWidth;
-        let H = canvas.height = window.innerHeight;
+    // 弹性滚动函数
+    function lerp(start, end, amt){
+        return (1-amt)*start + amt*end;
+    }
 
-        class Particle {
-            constructor(){
-                this.x = Math.random()*W;
-                this.y = Math.random()*H;
-                this.r = Math.random()*3 + 1;
-                this.dx = (Math.random()-0.5)*0.5;
-                this.dy = (Math.random()-0.5)*0.5;
-            }
-            draw(){
-                const gradient = ctx.createRadialGradient(this.x,this.y,this.r/2,this.x,this.y,this.r);
-                gradient.addColorStop(0,'rgba(0,200,255,0.7)');
-                gradient.addColorStop(1,'rgba(0,200,255,0.1)');
-                ctx.beginPath();
-                ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
-                ctx.fillStyle = gradient;
-                ctx.fill();
-            }
-            update(){
-                this.x += this.dx;
-                this.y += this.dy;
-                if(this.x<0||this.x>W)this.dx*=-1;
-                if(this.y<0||this.y>H)this.dy*=-1;
-                this.draw();
-            }
-        }
+    let lastScroll = 0;
+    let currentScroll = 0;
 
-        const particles = [];
-        const particleCount = 150;
-        for(let i=0;i<particleCount;i++) particles.push(new Particle());
+    // 检测是否在微信浏览器中
+    function isWechatBrowser() {
+        return /micromessenger/i.test(navigator.userAgent);
+    }
 
-        function connect(){
-            for(let a=0;a<particles.length;a++){
-                for(let b=a+1;b<particles.length;b++){
-                    let dx = particles[a].x - particles[b].x;
-                    let dy = particles[a].y - particles[b].y;
-                    let dist = Math.sqrt(dx*dx + dy*dy);
-                    if(dist < 120){
-                        ctx.strokeStyle = 'rgba(0,180,255,'+(1-dist/120)*0.3+')';
-                        ctx.lineWidth = 1;
-                        ctx.beginPath();
-                        ctx.moveTo(particles[a].x, particles[a].y);
-                        ctx.lineTo(particles[b].x, particles[b].y);
-                        ctx.stroke();
+    // 检测是否为微信8.0.62版本
+    function isWechat8062() {
+        return /micromessenger\/8\.0\.62/i.test(navigator.userAgent);
+    }
+
+    // 检测视频是否可以播放，如果不能播放则添加相关类名
+    function checkVideoPlayback() {
+        const video = document.getElementById('header-video');
+    
+        // 微信8.0.62版本特殊处理
+        if (isWechat8062()) {
+            // 添加微信8.0.62浏览器特定属性
+            video.setAttribute('x5-video-player-type', 'h5');
+            video.setAttribute('x5-video-player-fullscreen', 'true');
+            video.setAttribute('x5-video-orientation', 'portraint');
+            video.setAttribute('preload', 'auto');
+            video.setAttribute('controlslist', 'nodownload');
+            video.setAttribute('disablepictureinpicture', '');
+        
+            // 微信8.0.62版本中延迟播放视频
+            setTimeout(() => {
+                // 先暂停再播放，解决微信8.0.62版本的播放问题
+                video.pause();
+                video.load();
+            
+                setTimeout(() => {
+                    const playPromise = video.play();
+                    if (playPromise !== undefined) {
+                        playPromise.then(() => {
+                            console.log('微信8.0.62版本视频播放成功');
+                            // 播放成功后隐藏视频控件
+                            video.removeAttribute('controls');
+                        }).catch(error => {
+                            console.log('微信8.0.62版本视频播放失败:', error);
+                            // 播放失败时显示控件让用户手动播放
+                            video.setAttribute('controls', '');
+                            // 设置海报图片作为后备方案
+                            video.setAttribute('poster', 'source/index_imgs/index_01.jpg');
+                        });
                     }
-                }
+                }, 100);
+            }, 500);
+        } 
+        // 微信浏览器特殊处理（非8.0.62版本）
+        else if (isWechatBrowser()) {
+            // 添加微信浏览器特定属性
+            video.setAttribute('x5-video-player-type', 'h5');
+            video.setAttribute('x5-video-player-fullscreen', 'true');
+            video.setAttribute('x5-video-orientation', 'portraint');
+            video.setAttribute('preload', 'auto');
+        
+            // 微信浏览器中延迟播放视频
+            setTimeout(() => {
+                video.play().then(() => {
+                    console.log('微信浏览器视频播放成功');
+                }).catch(error => {
+                    console.log('微信浏览器视频播放失败:', error);
+                    // 在微信中添加poster属性作为后备方案
+                    video.setAttribute('poster', 'source/index_imgs/index_01.jpg');
+                });
+            }, 300);
+        } 
+        // 非微信浏览器的处理
+        else {
+            const playPromise = video.play();
+        
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    // 视频播放成功
+                    console.log('视频播放成功');
+                }).catch(error => {
+                    // 视频播放失败
+                    console.log('视频播放失败:', error);
+                });
             }
         }
+    }
 
-        function animate(){
-            ctx.clearRect(0,0,W,H);
-            particles.forEach(p => p.update());
-            connect();
-            requestAnimationFrame(animate);
-        }
+    function updateHeader() {
+        currentScroll = window.scrollY;
 
-        animate();
+        // 平滑滚动值
+        lastScroll = lerp(lastScroll, currentScroll, 0.08);
 
-        window.addEventListener('resize', ()=>{
-            W = canvas.width = window.innerWidth;
-            H = canvas.height = window.innerHeight;
-        });
+        const video = document.getElementById('header-video');
+        const heroContent = document.getElementById('hero-content');
+        const overlay = document.getElementById('video-overlay');
+
+        // 视频微动比例
+        video.style.transform = `translateY(${lastScroll * 0.08}px)`;
+
+        // 文字微动比例
+        heroContent.style.transform = `translateY(${lastScroll * 0.04}px)`;
+
+        // 文字渐隐渐显：0-300px
+        const maxTextScroll = 300;
+        const textOpacity = Math.max(0, 1 - lastScroll / maxTextScroll);
+        heroContent.style.opacity = textOpacity;
+
+        // 动态叠加层：滚动 0-500px
+        const maxOverlayScroll = 500;
+        const overlayOpacity = Math.min(0.65, lastScroll / maxOverlayScroll * 0.65);
+
+        // 渐变色微调（偏暖橙/偏冷蓝）
+        const warmFactor = Math.min(1, lastScroll / maxOverlayScroll);
+        const r = Math.floor(0 + 255 * warmFactor * 0.1);
+        const g = Math.floor(0 + 200 * warmFactor * 0.05);
+        const b = Math.floor(0 + 255 * (1 - warmFactor) * 0.05);
+
+        overlay.style.background = `linear-gradient(to bottom, rgba(${r},${g},${b},${overlayOpacity*0.0}), rgba(${r},${g},${b},${overlayOpacity}))`;
+
+        requestAnimationFrame(updateHeader);
+    }
+
+    // 在页面加载完成后检查视频播放
+    document.addEventListener('DOMContentLoaded', function() {
+        // 等待一小段时间再检查视频播放，确保视频元素已准备好
+        setTimeout(checkVideoPlayback, 500);
     });
-    </script>
 
+    requestAnimationFrame(updateHeader);
+    </script>
+    
     <!-- 核心定位模块 -->
     <section class="ezy__about3_xOZLftWU">
       <!-- 粒子背景 -->
@@ -1872,7 +1954,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
                     <h4>关于我们</h4>
                     <ul class="list-unstyled">
-                        <li><a href="leadership/about.html">简介</a></li>
+                        <li><a href="/leadership/about.html">简介</a></li>
                         <li><a href="#">领导团队</a></li>
                         <li><a href="#">发展历程</a></li>
                     </ul>
@@ -1880,15 +1962,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
                     <h4>工作机会</h4>
                     <ul class="list-unstyled">
-                        <li><a href="careers/cn/index.html">XSEC 职业机会</a></li>
-                        <li><a href="careers/cn/life-at-xsec.html">在 XSEC 生活</a></li>
-                        <li><a href="careers/cn/work-at-xsec.html">在 XSEC 工作</a></li>
+                        <li><a href="/careers/cn/index.html">XSEC 职业机会</a></li>
+                        <li><a href="/careers/cn/life-at-xsec.html">在 XSEC 生活</a></li>
+                        <li><a href="/careers/cn/work-at-xsec.html">在 XSEC 工作</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
                     <h4>资源</h4>
                     <ul class="list-unstyled">
-                        <li><a href="newsroom/a/index.html">更新动态</a></li>
+                        <li><a href="/newsroom/a/index.html">更新动态</a></li>
                         <li><a href="https://blog.csdn.net/qq_73252299?spm=1000.2115.3001.5343" target="_blank" rel="noopener noreferrer">技术博客</a></li>
                         <li><a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af">支持中心</a></li>
                     </ul>
@@ -1979,94 +2061,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <!-- jQuery库 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js" integrity="sha512-rpLlll167T5LJHwp0waJCh3ZRf7pO6IT1+LZOhAyP6phAirwchClbTZV3iqL3BMrVxIYRbzGTpli4rfxsCK6Vw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Font Awesome图标库的JavaScript文件 -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <!-- particles.js用于创建背景粒子效果 -->
     <script>
-        // 初始化粒子背景
-        particlesJS("particles-js", {
-            "particles": {
-                "number": {
-                    "value": 80,
-                    "density": {
-                        "enable": true,
-                        "value_area": 800
-                    }
-                },
-                "color": {
-                    "value": "#0071e3"
-                },
-                "shape": {
-                    "type": "circle",
-                    "stroke": {
-                        "width": 0,
-                        "color": "#000000"
-                    }
-                },
-                "opacity": {
-                    "value": 0.5,
-                    "random": true,
-                    "anim": {
-                        "enable": true,
-                        "speed": 1,
-                        "opacity_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "size": {
-                    "value": 3,
-                    "random": true,
-                    "anim": {
-                        "enable": true,
-                        "speed": 2,
-                        "size_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#0071e3",
-                    "opacity": 0.4,
-                    "width": 1
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 1,
-                    "direction": "none",
-                    "random": true,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false
-                }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": {
-                        "enable": true,
-                        "mode": "grab"
-                    },
-                    "onclick": {
-                        "enable": true,
-                        "mode": "push"
-                    },
-                    "resize": true
-                },
-                "modes": {
-                    "grab": {
-                        "distance": 140,
-                        "line_linked": {
-                            "opacity": 1
-                        }
-                    },
-                    "push": {
-                        "particles_nb": 4
-                    }
-                }
-            },
-            "retina_detect": true
-        });
-        
         // 滚动动画效果
         $(document).ready(function() {
             // 添加滚动监听

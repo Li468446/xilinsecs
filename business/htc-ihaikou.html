@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <!-- Google tag (gtag.js) -->
@@ -13,11 +12,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iHAIKOU 平台 - 美食与旅游数据推荐平台</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- 全局样式 -->
+    <style>
+        /* 重置所有元素的默认边距、内边距，并设置盒模型 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 页面主体样式设置 */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, var(--dark-bg), var(--darker-bg));
+            color: var(--light-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        :root {
+            --primary-color: #0ff;
+            --secondary-color: #4dabf7;
+            --accent-color: #64ffda;
+            --dark-bg: #0a192f;
+            --darker-bg: #021b33;
+            --light-text: #fff;
+            --gray-text: #ccc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+            margin: 3rem 0 2rem;
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            margin: 0.5rem auto;
+            border-radius: 3px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- 科技感背景粒子效果 -->
     <div class="particles" id="particles-js"></div>
-    
+
+    <!-- 科技感背景粒子效果模块 -->
     <style>
         .particles {
             position: fixed;
@@ -29,7 +98,7 @@
             pointer-events: none;
         }
     </style>
-    
+
     <script>
         // 粒子效果配置
         document.addEventListener('DOMContentLoaded', function() {
@@ -47,11 +116,11 @@
                 particle.style.opacity = Math.random() * 0.5 + 0.1;
                 particle.style.boxShadow = '0 0 ' + (Math.random() * 10 + 5) + 'px #4dabf7';
                 particlesContainer.appendChild(particle);
-                
+
                 // 添加动画
                 animateParticle(particle);
             }
-            
+
             function animateParticle(particle) {
                 const duration = Math.random() * 10 + 10;
                 const keyframes = [
@@ -59,7 +128,7 @@
                     { transform: 'translate(' + (Math.random() * 100 - 50) + 'px, ' + (Math.random() * 100 - 50) + 'px)', opacity: parseFloat(particle.style.opacity) + 0.2 },
                     { transform: 'translate(' + (Math.random() * 100 - 50) + 'px, ' + (Math.random() * 100 - 50) + 'px)', opacity: particle.style.opacity }
                 ];
-                
+
                 particle.animate(keyframes, {
                     duration: duration * 1000,
                     iterations: Infinity
@@ -67,24 +136,16 @@
             }
         });
     </script>
-    
+
     <!-- 头部模块 -->
     <header class="tech-header">
-        <h1>iHAIKOU 平台</h1>
-        <p>海口旅职院"琼味食光，江海行旅"美食与旅游数据推荐平台</p>
+        <div class="container">
+            <h1>iHAIKOU 平台</h1>
+            <p>海口旅职院"琼味食光，江海行旅"美食与旅游数据推荐平台</p>
+        </div>
     </header>
-    
+
     <style>
-        :root {
-            --primary-color: #0ff;
-            --secondary-color: #4dabf7;
-            --accent-color: #64ffda;
-            --dark-bg: #0a192f;
-            --darker-bg: #021b33;
-            --light-text: #fff;
-            --gray-text: #ccc;
-        }
-        
         .tech-header {
             position: relative;
             padding: 2rem;
@@ -111,330 +172,498 @@
             margin: 0 auto;
             color: var(--gray-text);
         }
-        
+
         @media (max-width: 768px) {
             .tech-header h1 {
                 font-size: 2rem;
             }
         }
     </style>
-    
-    <!-- 主要内容容器 -->
-    <div class="container">
+
+    <!-- 主要内容 -->
+    <main class="main-content">
+        <!-- 平台概览模块 -->
+        <section class="overview-section">
+            <div class="container">
+                <h2 class="section-title">平台概览</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>后端私有云方案</h3>
+                        <div class="image-container">
+                            <img src="htc_ihaikou_images/后端私有云方案.png" alt="后端私有云方案">
+                        </div>
+                        <p>基于私有云的后端架构，确保数据安全与系统稳定性。</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>后端私有云主机性能</h3>
+                        <div class="image-container">
+                            <img src="htc_ihaikou_images/后端私有云主机性能概览.png" alt="后端私有云主机性能概览">
+                        </div>
+                        <p>高性能云主机配置，保障平台流畅运行。</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>安全防护</h3>
+                        <div class="image-container">
+                            <img src="htc_ihaikou_images/后端防护-免费的雷池waf方案.png" alt="后端防护-免费的雷池waf方案">
+                        </div>
+                        <p>采用雷池WAF方案，为平台提供全面的安全防护。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <style>
-            .container {
-                max-width: 1200px;
-                margin: 2rem auto;
-                padding: 0 2rem;
+            .card {
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 10px;
+                padding: 1.5rem;
+                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(77, 171, 247, 0.2);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            .card.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 12px 40px rgba(77, 171, 247, 0.3);
+                border-color: rgba(77, 171, 247, 0.5);
+            }
+
+            .card h3 {
+                font-family: 'Orbitron', sans-serif;
+                margin-bottom: 1rem;
+                color: var(--accent-color);
+            }
+
+            .image-container {
+                width: 100%;
+                height: 200px;
+                border-radius: 8px;
+                overflow: hidden;
+                margin: 1rem 0;
+                background: rgba(0, 0, 0, 0.2);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .image-container img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.3s ease;
+            }
+
+            .card:hover .image-container img {
+                transform: scale(1.05);
+            }
+
+            .image-placeholder {
+                color: var(--gray-text);
+                font-style: italic;
             }
         </style>
-    </div>
-    
-    <!-- 平台概览模块 -->
-    <div class="container">
-        <h2 class="section-title">平台概览</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>后端私有云方案</h3>
-                <div class="image-container">
-                    <img src="htc_ihaikou_images/后端私有云方案.png" alt="后端私有云方案">
+
+        <!-- 平台特色模块 -->
+        <section class="features-section">
+            <div class="container">
+                <h2 class="section-title">平台特色</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>双认证支持</h3>
+                        <div class="image-container">
+                            <img src="htc_ihaikou_images/支持国际国内双认证.png" alt="支持国际国内双认证">
+                        </div>
+                        <p>支持国际国内双重认证体系，确保用户身份安全。</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Gitee OAuth认证</h3>
+                        <div class="image-container">
+                            <img src="htc_ihaikou_images/链接Gitee OAuth认证.png" alt="链接Gitee OAuth认证">
+                        </div>
+                        <p>集成Gitee OAuth认证，简化用户登录流程。</p>
+                    </div>
                 </div>
-                <p>基于私有云的后端架构，确保数据安全与系统稳定性。</p>
             </div>
-            
-            <div class="card">
-                <h3>后端私有云主机性能</h3>
-                <div class="image-container">
-                    <img src="htc_ihaikou_images/后端私有云主机性能概览.png" alt="后端私有云主机性能概览">
+        </section>
+
+        <!-- 平台展示模块 -->
+        <section class="showcase-section">
+            <div class="container">
+                <h2 class="section-title">平台展示</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>网站首页</h3>
+                        <div class="image-container">
+                            <img src="htc_ihaikou_images/网站首页.png" alt="网站首页">
+                        </div>
+                        <p>现代化设计风格，直观展示平台核心功能。</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>文章页面</h3>
+                        <div class="image-container">
+                            <img src="htc_ihaikou_images/文章页.png" alt="文章页">
+                        </div>
+                        <p>精美的文章展示页面，提供良好的阅读体验。</p>
+                    </div>
                 </div>
-                <p>高性能云主机配置，保障平台流畅运行。</p>
             </div>
-            
-            <div class="card">
-                <h3>安全防护</h3>
-                <div class="image-container">
-                    <img src="htc_ihaikou_images/后端防护-免费的雷池waf方案.png" alt="后端防护-免费的雷池waf方案">
+        </section>
+
+        <!-- 访问入口模块 -->
+        <section class="contact-section">
+            <div class="container">
+                <h2 class="section-title">访问入口</h2>
+                <p class="contact-text">立即访问我们的平台，探索海口美食与旅游</p>
+                <div class="qr-container">
+                    <div class="qr-code">
+                        <h3>中国大陆入口</h3>
+                        <a href="https://ms.sec.hn.cn" target="_blank" rel="noopener noreferrer" class="qr-link">
+                            <div class="image-container">
+                                <img src="htc_ihaikou_images/访问入口二维码-中国大陆入口.png" alt="访问入口二维码-中国大陆入口" loading="lazy" onerror="this.parentElement.innerHTML='<div class=image-placeholder>二维码加载失败</div>'">
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="qr-code">
+                        <h3>海外访问入口</h3>
+                        <a href="https://htc-ms.xinnew.top" target="_blank" rel="noopener noreferrer" class="qr-link">
+                            <div class="image-container">
+                                <img src="htc_ihaikou_images/访问入口二维码-海外访问.png" alt="访问入口二维码-海外访问" loading="lazy" onerror="this.parentElement.innerHTML='<div class=image-placeholder>二维码加载失败</div>'">
+                            </div>
+                        </a>
+                    </div>
                 </div>
-                <p>采用雷池WAF方案，为平台提供全面的安全防护。</p>
             </div>
-        </div>
-    </div>
-    
-    <style>
-        .section-title {
-            font-family: 'Orbitron', sans-serif;
-            text-align: center;
-            margin: 3rem 0 2rem;
-            font-size: 2rem;
-            position: relative;
-        }
+        </section>
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-            margin: 0.5rem auto;
-            border-radius: 3px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(77, 171, 247, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(77, 171, 247, 0.3);
-            border-color: rgba(77, 171, 247, 0.5);
-        }
-
-        .card h3 {
-            font-family: 'Orbitron', sans-serif;
-            margin-bottom: 1rem;
-            color: var(--accent-color);
-        }
-
-        .image-container {
-            width: 100%;
-            height: 200px;
-            border-radius: 8px;
-            overflow: hidden;
-            margin: 1rem 0;
-            background: rgba(0, 0, 0, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover .image-container img {
-            transform: scale(1.05);
-        }
-
-        .image-placeholder {
-            color: var(--gray-text);
-            font-style: italic;
-        }
-        
-        @media (max-width: 768px) {
-            .grid {
-                grid-template-columns: 1fr;
+        <style>
+            .contact-text {
+                text-align: center;
+                font-size: 1.2rem;
+                margin-bottom: 2rem;
+                color: var(--gray-text);
             }
-        }
-    </style>
-    
-    <!-- 平台特色模块 -->
-    <div class="container">
-        <h2 class="section-title">平台特色</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>双认证支持</h3>
-                <div class="image-container">
-                    <img src="htc_ihaikou_images/支持国际国内双认证.png" alt="支持国际国内双认证">
-                </div>
-                <p>支持国际国内双重认证体系，确保用户身份安全。</p>
-            </div>
-            
-            <div class="card">
-                <h3>Gitee OAuth认证</h3>
-                <div class="image-container">
-                    <img src="htc_ihaikou_images/链接Gitee OAuth认证.png" alt="链接Gitee OAuth认证">
-                </div>
-                <p>集成Gitee OAuth认证，简化用户登录流程。</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- 平台展示模块 -->
-    <div class="container">
-        <h2 class="section-title">平台展示</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>网站首页</h3>
-                <div class="image-container">
-                    <img src="htc_ihaikou_images/网站首页.png" alt="网站首页">
-                </div>
-                <p>现代化设计风格，直观展示平台核心功能。</p>
-            </div>
-            
-            <div class="card">
-                <h3>文章页面</h3>
-                <div class="image-container">
-                    <img src="htc_ihaikou_images/文章页.png" alt="文章页">
-                </div>
-                <p>精美的文章展示页面，提供良好的阅读体验。</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- 访问入口模块 -->
-    <div class="container">
-        <div class="contact-section">
-            <h2 class="section-title">访问入口</h2>
-            <p>立即访问我们的平台，探索海口美食与旅游</p>
-            <div class="qr-container">
-                <div class="qr-code">
-                    <h3>中国大陆入口</h3>
-                    <a href="https://ms.sec.hn.cn" target="_blank" rel="noopener noreferrer" class="qr-link">
-                        <div class="image-container">
-                            <img src="htc_ihaikou_images/访问入口二维码-中国大陆入口.png" alt="访问入口二维码-中国大陆入口" loading="lazy" onerror="this.parentElement.innerHTML='<div class=image-placeholder>二维码加载失败</div>'">
-                        </div>
-                    </a>
-                </div>
-                
-                <div class="qr-code">
-                    <h3>海外访问入口</h3>
-                    <a href="https://htc-ms.xinnew.top" target="_blank" rel="noopener noreferrer" class="qr-link">
-                        <div class="image-container">
-                            <img src="htc_ihaikou_images/访问入口二维码-海外访问.png" alt="访问入口二维码-海外访问" loading="lazy" onerror="this.parentElement.innerHTML='<div class=image-placeholder>二维码加载失败</div>'">
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <style>
-        .features-list {
-            list-style: none;
-            padding-left: 1rem;
-        }
 
-        .features-list li {
-            margin-bottom: 0.8rem;
-            position: relative;
-            padding-left: 1.5rem;
-        }
+            .features-list {
+                list-style: none;
+                padding-left: 1rem;
+            }
 
-        .features-list li::before {
-            content: '>';
-            position: absolute;
-            left: 0;
-            color: var(--accent-color);
-            font-weight: bold;
-        }
+            .features-list li {
+                margin-bottom: 0.8rem;
+                position: relative;
+                padding-left: 1.5rem;
+            }
 
-        .contact-section {
-            text-align: center;
-            padding: 2rem;
-            background: rgba(10, 25, 47, 0.5);
-            border-radius: 10px;
-            margin: 3rem 0;
-            border: 1px solid rgba(77, 171, 247, 0.2);
-        }
+            .features-list li::before {
+                content: '>';
+                position: absolute;
+                left: 0;
+                color: var(--accent-color);
+                font-weight: bold;
+            }
 
-        .contact-section a {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.2rem;
-            display: inline-block;
-            margin: 1rem 0;
-            transition: all 0.3s ease;
-        }
+            .contact-section {
+                text-align: center;
+                padding: 2rem 0;
+                margin: 3rem 0;
+            }
 
-        .contact-section a:hover {
-            text-shadow: 0 0 10px rgba(102, 255, 218, 0.7);
-            transform: scale(1.05);
-        }
+            .contact-section a {
+                color: var(--accent-color);
+                text-decoration: none;
+                font-weight: 500;
+                font-size: 1.2rem;
+                display: inline-block;
+                margin: 1rem 0;
+                transition: all 0.3s ease;
+            }
 
-        .qr-link {
-            display: inline-block;
-            text-decoration: none;
-        }
+            .contact-section a:hover {
+                text-shadow: 0 0 10px rgba(102, 255, 218, 0.7);
+                transform: scale(1.05);
+            }
 
-        .qr-container {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
-        }
+            .qr-link {
+                display: inline-block;
+                text-decoration: none;
+            }
 
-        .qr-code {
-            text-align: center;
-        }
-
-        .qr-code img {
-            width: 150px;
-            height: 150px;
-            border: 2px solid var(--secondary-color);
-            border-radius: 10px;
-            padding: 5px;
-            background: rgba(255, 255, 255, 0.9);
-            object-fit: contain;
-        }
-
-        .image-placeholder {
-            width: 150px;
-            height: 150px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid var(--secondary-color);
-            border-radius: 10px;
-            padding: 5px;
-            background: rgba(255, 255, 255, 0.9);
-            color: var(--dark-bg);
-            font-weight: 500;
-        }
-        
-        @media (max-width: 768px) {
             .qr-container {
-                flex-direction: column;
+                display: flex;
+                justify-content: center;
+                gap: 2rem;
+                flex-wrap: wrap;
+                margin-top: 1.5rem;
+            }
+
+            .qr-code {
+                text-align: center;
+                background: rgba(10, 25, 47, 0.5);
+                border-radius: 10px;
+                padding: 1.5rem;
+                border: 1px solid rgba(77, 171, 247, 0.2);
+                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            }
+
+            .qr-code:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 12px 40px rgba(77, 171, 247, 0.3);
+                border-color: rgba(77, 171, 247, 0.5);
+            }
+
+            .qr-code img {
+                width: 150px;
+                height: 150px;
+                border: 2px solid var(--secondary-color);
+                border-radius: 10px;
+                padding: 5px;
+                background: rgba(255, 255, 255, 0.9);
+                object-fit: contain;
+                transition: transform 0.3s ease;
+            }
+
+            .qr-code:hover img {
+                transform: scale(1.05);
+            }
+
+            .image-placeholder {
+                width: 150px;
+                height: 150px;
+                display: flex;
                 align-items: center;
+                justify-content: center;
+                border: 2px solid var(--secondary-color);
+                border-radius: 10px;
+                padding: 5px;
+                background: rgba(255, 255, 255, 0.9);
+                color: var(--dark-bg);
+                font-weight: 500;
+            }
+
+            @media (max-width: 768px) {
+                .qr-container {
+                    flex-direction: column;
+                    align-items: center;
+                }
+            }
+        </style>
+    </main>
+
+    <!-- 页脚模块 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row footer-top">
+                <div class="col-lg-4 mb-4 mb-lg-0 footer-brand">
+                    <h3>XSEC</h3>
+                    <p>致力于提供专业的信息化解决方案。</p>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h4>关于我们</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="/leadership/about.html">简介</a></li>
+                        <li><a href="#">领导团队</a></li>
+                        <li><a href="#">发展历程</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h4>工作机会</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="/careers/cn/index.html">XSEC 职业机会</a></li>
+                        <li><a href="/careers/cn/life-at-xsec.html">在 XSEC 生活</a></li>
+                        <li><a href="/careers/cn/work-at-xsec.html">在 XSEC 工作</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h4>资源</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="/newsroom/a/index.html">更新动态</a></li>
+                        <li><a href="https://blog.csdn.net/qq_73252299?spm=1000.2115.3001.5343" target="_blank" rel="noopener noreferrer">技术博客</a></li>
+                        <li><a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af">支持中心</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h4>联系我们</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" target="_blank" rel="noopener noreferrer">客服咨询</a></li>
+                        <li><a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" target="_blank" rel="noopener noreferrer">商务合作</a></li>
+                        <li><a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" target="_blank" rel="noopener noreferrer">客户服务</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 海口希灵赛斯网络科技有限责任公司. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 页脚CSS样式（科技风格深色） -->
+    <style>
+        .footer {
+            background: #0a192f;
+            color: #ccc;
+            padding: 60px 0 30px;
+            font-family: 'Roboto', sans-serif;
+            border-top: 1px solid rgba(77, 171, 247, 0.3);
+            margin-top: auto;
+        }
+
+        .footer h3, .footer h4 {
+            color: #64ffda;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .footer p {
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .footer ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        .footer ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer ul li a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .footer ul li a:hover {
+            color: #4dabf7;
+            transform: translateX(4px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid rgba(77, 171, 247, 0.2);
+            margin-top: 40px;
+            padding-top: 20px;
+            font-size: 13px;
+            color: #888;
+        }
+        
+        /* 添加栅格系统样式以修复页脚布局 */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+        
+        .col-lg-4, .col-lg-2, .col-md-4 {
+            position: relative;
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+        
+        .mb-4 {
+            margin-bottom: 1.5rem!important;
+        }
+        
+        .mb-lg-0 {
+            margin-bottom: 0!important;
+        }
+        
+        .list-unstyled {
+            padding-left: 0;
+            list-style: none;
+        }
+        
+        @media (min-width: 992px) {
+            .col-lg-4 {
+                flex: 0 0 33.333333%;
+                max-width: 33.333333%;
+            }
+            
+            .col-lg-2 {
+                flex: 0 0 16.666667%;
+                max-width: 16.666667%;
+            }
+            
+            .mb-lg-0 {
+                margin-bottom: 0!important;
+            }
+        }
+        
+        @media (min-width: 768px) and (max-width: 991px) {
+            .col-md-4 {
+                flex: 0 0 33.333333%;
+                max-width: 33.333333%;
+            }
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .footer .row > div {
+                margin-bottom: 30px;
+            }
+            
+            .col-lg-4, .col-lg-2, .col-md-4 {
+                flex: 0 0 100%;
+                max-width: 100%;
             }
         }
     </style>
-    
-    <!-- 页脚模块 -->
-    <footer class="tech-footer">
-        <p>&copy; 2025 海口希灵赛斯网络科技有限公司. 所有权利保留.</p>
-        <p>海口旅职院"琼味食光，江海行旅"美食与旅游数据推荐平台</p>
-    </footer>
-    
-    <style>
-        .tech-footer {
-            text-align: center;
-            padding: 2rem;
-            background: rgba(2, 27, 51, 0.8);
-            border-top: 1px solid rgba(77, 171, 247, 0.3);
-            margin-top: 2rem;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        body {
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, var(--dark-bg), var(--darker-bg));
-            color: var(--light-text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-    </style>
+    <!-- 交互脚本 -->
+    <script>
+        // 视口检测和动画效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 卡片动画
+            const cards = document.querySelectorAll('.card');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            cards.forEach(card => {
+                observer.observe(card);
+            });
+
+            // 平滑滚动到锚点
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
