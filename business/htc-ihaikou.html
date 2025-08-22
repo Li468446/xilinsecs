@@ -2,18 +2,78 @@
 <html lang="zh-CN">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0PVCDX1CZK"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-0PVCDX1CZK');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PVCDX1CZK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0PVCDX1CZK');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iHAIKOU 平台 - 美食与旅游数据推荐平台</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 科技感背景粒子效果 -->
+    <div class="particles" id="particles-js"></div>
+    
+    <style>
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+    
+    <script>
+        // 粒子效果配置
+        document.addEventListener('DOMContentLoaded', function() {
+            // 创建粒子效果
+            const particlesContainer = document.getElementById('particles-js');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'absolute';
+                particle.style.width = Math.random() * 5 + 1 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.backgroundColor = '#4dabf7';
+                particle.style.borderRadius = '50%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.opacity = Math.random() * 0.5 + 0.1;
+                particle.style.boxShadow = '0 0 ' + (Math.random() * 10 + 5) + 'px #4dabf7';
+                particlesContainer.appendChild(particle);
+                
+                // 添加动画
+                animateParticle(particle);
+            }
+            
+            function animateParticle(particle) {
+                const duration = Math.random() * 10 + 10;
+                const keyframes = [
+                    { transform: 'translate(0, 0)', opacity: particle.style.opacity },
+                    { transform: 'translate(' + (Math.random() * 100 - 50) + 'px, ' + (Math.random() * 100 - 50) + 'px)', opacity: parseFloat(particle.style.opacity) + 0.2 },
+                    { transform: 'translate(' + (Math.random() * 100 - 50) + 'px, ' + (Math.random() * 100 - 50) + 'px)', opacity: particle.style.opacity }
+                ];
+                
+                particle.animate(keyframes, {
+                    duration: duration * 1000,
+                    iterations: Infinity
+                });
+            }
+        });
+    </script>
+    
+    <!-- 头部模块 -->
+    <header class="tech-header">
+        <h1>iHAIKOU 平台</h1>
+        <p>海口旅职院"琼味食光，江海行旅"美食与旅游数据推荐平台</p>
+    </header>
+    
     <style>
         :root {
             --primary-color: #0ff;
@@ -24,21 +84,7 @@
             --light-text: #fff;
             --gray-text: #ccc;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, var(--dark-bg), var(--darker-bg));
-            color: var(--light-text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
+        
         .tech-header {
             position: relative;
             padding: 2rem;
@@ -65,13 +111,56 @@
             margin: 0 auto;
             color: var(--gray-text);
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 2rem;
+        
+        @media (max-width: 768px) {
+            .tech-header h1 {
+                font-size: 2rem;
+            }
         }
-
+    </style>
+    
+    <!-- 主要内容容器 -->
+    <div class="container">
+        <style>
+            .container {
+                max-width: 1200px;
+                margin: 2rem auto;
+                padding: 0 2rem;
+            }
+        </style>
+    </div>
+    
+    <!-- 平台概览模块 -->
+    <div class="container">
+        <h2 class="section-title">平台概览</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>后端私有云方案</h3>
+                <div class="image-container">
+                    <img src="htc_ihaikou_images/后端私有云方案.png" alt="后端私有云方案">
+                </div>
+                <p>基于私有云的后端架构，确保数据安全与系统稳定性。</p>
+            </div>
+            
+            <div class="card">
+                <h3>后端私有云主机性能</h3>
+                <div class="image-container">
+                    <img src="htc_ihaikou_images/后端私有云主机性能概览.png" alt="后端私有云主机性能概览">
+                </div>
+                <p>高性能云主机配置，保障平台流畅运行。</p>
+            </div>
+            
+            <div class="card">
+                <h3>安全防护</h3>
+                <div class="image-container">
+                    <img src="htc_ihaikou_images/后端防护-免费的雷池waf方案.png" alt="后端防护-免费的雷池waf方案">
+                </div>
+                <p>采用雷池WAF方案，为平台提供全面的安全防护。</p>
+            </div>
+        </div>
+    </div>
+    
+    <style>
         .section-title {
             font-family: 'Orbitron', sans-serif;
             text-align: center;
@@ -146,7 +235,86 @@
             color: var(--gray-text);
             font-style: italic;
         }
-
+        
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    
+    <!-- 平台特色模块 -->
+    <div class="container">
+        <h2 class="section-title">平台特色</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>双认证支持</h3>
+                <div class="image-container">
+                    <img src="htc_ihaikou_images/支持国际国内双认证.png" alt="支持国际国内双认证">
+                </div>
+                <p>支持国际国内双重认证体系，确保用户身份安全。</p>
+            </div>
+            
+            <div class="card">
+                <h3>Gitee OAuth认证</h3>
+                <div class="image-container">
+                    <img src="htc_ihaikou_images/链接Gitee OAuth认证.png" alt="链接Gitee OAuth认证">
+                </div>
+                <p>集成Gitee OAuth认证，简化用户登录流程。</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 平台展示模块 -->
+    <div class="container">
+        <h2 class="section-title">平台展示</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>网站首页</h3>
+                <div class="image-container">
+                    <img src="htc_ihaikou_images/网站首页.png" alt="网站首页">
+                </div>
+                <p>现代化设计风格，直观展示平台核心功能。</p>
+            </div>
+            
+            <div class="card">
+                <h3>文章页面</h3>
+                <div class="image-container">
+                    <img src="htc_ihaikou_images/文章页.png" alt="文章页">
+                </div>
+                <p>精美的文章展示页面，提供良好的阅读体验。</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 访问入口模块 -->
+    <div class="container">
+        <div class="contact-section">
+            <h2 class="section-title">访问入口</h2>
+            <p>立即访问我们的平台，探索海口美食与旅游</p>
+            <div class="qr-container">
+                <div class="qr-code">
+                    <h3>中国大陆入口</h3>
+                    <a href="https://ms.sec.hn.cn" target="_blank" rel="noopener noreferrer" class="qr-link">
+                        <div class="image-container">
+                            <img src="htc_ihaikou_images/访问入口二维码-中国大陆入口.png" alt="访问入口二维码-中国大陆入口" loading="lazy" onerror="this.parentElement.innerHTML='<div class=image-placeholder>二维码加载失败</div>'">
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="qr-code">
+                    <h3>海外访问入口</h3>
+                    <a href="https://htc-ms.xinnew.top" target="_blank" rel="noopener noreferrer" class="qr-link">
+                        <div class="image-container">
+                            <img src="htc_ihaikou_images/访问入口二维码-海外访问.png" alt="访问入口二维码-海外访问" loading="lazy" onerror="this.parentElement.innerHTML='<div class=image-placeholder>二维码加载失败</div>'">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <style>
         .features-list {
             list-style: none;
             padding-left: 1rem;
@@ -230,7 +398,22 @@
             color: var(--dark-bg);
             font-weight: 500;
         }
-
+        
+        @media (max-width: 768px) {
+            .qr-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+    
+    <!-- 页脚模块 -->
+    <footer class="tech-footer">
+        <p>&copy; 2025 海口希灵赛斯网络科技有限公司. 所有权利保留.</p>
+        <p>海口旅职院"琼味食光，江海行旅"美食与旅游数据推荐平台</p>
+    </footer>
+    
+    <style>
         .tech-footer {
             text-align: center;
             padding: 2rem;
@@ -238,174 +421,20 @@
             border-top: 1px solid rgba(77, 171, 247, 0.3);
             margin-top: 2rem;
         }
-
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        @media (max-width: 768px) {
-            .grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .tech-header h1 {
-                font-size: 2rem;
-            }
-            
-            .qr-container {
-                flex-direction: column;
-                align-items: center;
-            }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, var(--dark-bg), var(--darker-bg));
+            color: var(--light-text);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
     </style>
-</head>
-<body>
-    <!-- 科技感背景粒子效果 -->
-    <div class="particles" id="particles-js"></div>
-    
-    <header class="tech-header">
-        <h1>iHAIKOU 平台</h1>
-        <p>海口旅职院"琼味食光，江海行旅"美食与旅游数据推荐平台</p>
-    </header>
-    
-    <div class="container">
-        <h2 class="section-title">平台概览</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>后端私有云方案</h3>
-                <div class="image-container">
-                    <img src="htc_ihaikou_images/后端私有云方案.png" alt="后端私有云方案">
-                </div>
-                <p>基于私有云的后端架构，确保数据安全与系统稳定性。</p>
-            </div>
-            
-            <div class="card">
-                <h3>后端私有云主机性能</h3>
-                <div class="image-container">
-                    <img src="htc_ihaikou_images/后端私有云主机性能概览.png" alt="后端私有云主机性能概览">
-                </div>
-                <p>高性能云主机配置，保障平台流畅运行。</p>
-            </div>
-            
-            <div class="card">
-                <h3>安全防护</h3>
-                <div class="image-container">
-                    <img src="htc_ihaikou_images/后端防护-免费的雷池waf方案.png" alt="后端防护-免费的雷池waf方案">
-                </div>
-                <p>采用雷池WAF方案，为平台提供全面的安全防护。</p>
-            </div>
-        </div>
-        
-        <h2 class="section-title">平台特色</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>双认证支持</h3>
-                <div class="image-container">
-                    <img src="htc_ihaikou_images/支持国际国内双认证.png" alt="支持国际国内双认证">
-                </div>
-                <p>支持国际国内双重认证体系，确保用户身份安全。</p>
-            </div>
-            
-            <div class="card">
-                <h3>Gitee OAuth认证</h3>
-                <div class="image-container">
-                    <img src="htc_ihaikou_images/链接Gitee OAuth认证.png" alt="链接Gitee OAuth认证">
-                </div>
-                <p>集成Gitee OAuth认证，简化用户登录流程。</p>
-            </div>
-        </div>
-        
-        <h2 class="section-title">平台展示</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>网站首页</h3>
-                <div class="image-container">
-                    <img src="htc_ihaikou_images/网站首页.png" alt="网站首页">
-                </div>
-                <p>现代化设计风格，直观展示平台核心功能。</p>
-            </div>
-            
-            <div class="card">
-                <h3>文章页面</h3>
-                <div class="image-container">
-                    <img src="htc_ihaikou_images/文章页.png" alt="文章页">
-                </div>
-                <p>精美的文章展示页面，提供良好的阅读体验。</p>
-            </div>
-        </div>
-        
-        <div class="contact-section">
-            <h2 class="section-title">访问入口</h2>
-            <p>立即访问我们的平台，探索海口美食与旅游</p>
-            <div class="qr-container">
-                <div class="qr-code">
-                    <h3>中国大陆入口</h3>
-                    <a href="https://ms.sec.hn.cn" target="_blank" rel="noopener noreferrer" class="qr-link">
-                        <div class="image-container">
-                            <img src="htc_ihaikou_images/访问入口二维码-中国大陆入口.png" alt="访问入口二维码-中国大陆入口" loading="lazy" onerror="this.parentElement.innerHTML='<div class=image-placeholder>二维码加载失败</div>'">
-                        </div>
-                    </a>
-                </div>
-                
-                <div class="qr-code">
-                    <h3>海外访问入口</h3>
-                    <a href="https://htc-ms.xinnew.top" target="_blank" rel="noopener noreferrer" class="qr-link">
-                        <div class="image-container">
-                            <img src="htc_ihaikou_images/访问入口二维码-海外访问.png" alt="访问入口二维码-海外访问" loading="lazy" onerror="this.parentElement.innerHTML='<div class=image-placeholder>二维码加载失败</div>'">
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <footer class="tech-footer">
-        <p>&copy; 2025 海口希灵赛斯网络科技有限公司. 所有权利保留.</p>
-        <p>海口旅职院"琼味食光，江海行旅"美食与旅游数据推荐平台</p>
-    </footer>
-    
-    <script>
-        // 粒子效果配置
-        document.addEventListener('DOMContentLoaded', function() {
-            // 创建粒子效果
-            const particlesContainer = document.getElementById('particles-js');
-            for (let i = 0; i < 50; i++) {
-                const particle = document.createElement('div');
-                particle.style.position = 'absolute';
-                particle.style.width = Math.random() * 5 + 1 + 'px';
-                particle.style.height = particle.style.width;
-                particle.style.backgroundColor = '#4dabf7';
-                particle.style.borderRadius = '50%';
-                particle.style.top = Math.random() * 100 + '%';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.opacity = Math.random() * 0.5 + 0.1;
-                particle.style.boxShadow = '0 0 ' + (Math.random() * 10 + 5) + 'px #4dabf7';
-                particlesContainer.appendChild(particle);
-                
-                // 添加动画
-                animateParticle(particle);
-            }
-            
-            function animateParticle(particle) {
-                const duration = Math.random() * 10 + 10;
-                const keyframes = [
-                    { transform: 'translate(0, 0)', opacity: particle.style.opacity },
-                    { transform: 'translate(' + (Math.random() * 100 - 50) + 'px, ' + (Math.random() * 100 - 50) + 'px)', opacity: parseFloat(particle.style.opacity) + 0.2 },
-                    { transform: 'translate(' + (Math.random() * 100 - 50) + 'px, ' + (Math.random() * 100 - 50) + 'px)', opacity: particle.style.opacity }
-                ];
-                
-                particle.animate(keyframes, {
-                    duration: duration * 1000,
-                    iterations: Infinity
-                });
-            }
-        });
-    </script>
 </body>
 </html>
