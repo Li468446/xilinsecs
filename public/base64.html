@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+        <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PVCDX1CZK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0PVCDX1CZK');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base64 加解密工具 | 苹果风格</title>
+    <!-- 添加Bootstrap CSS框架 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- 配置Tailwind自定义主题 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0071e3', // 苹果蓝
+                        secondary: '#34c759', // 苹果绿
+                        danger: '#ff3b30',   // 苹果红
+                        neutral: '#f5f5f7', // 苹果背景灰
+                        dark: '#1d1d1f',    // 苹果文本黑
+                        'dark-bg': '#1c1c1e', // 深色模式背景
+                        'dark-card': '#2c2c2e', // 深色模式卡片
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.15)',
+                        'glass-hover': '0 8px 32px 0 rgba(31, 38, 135, 0.25)',
+                        'dark-glass': '0 8px 32px 0 rgba(0, 0, 0, 0.3)',
+                    }
+                },
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .backdrop-blur-xl {
+                backdrop-filter: blur(24px);
+            }
+            .glass-effect {
+                background: rgba(255, 255, 255, 0.7);
+                backdrop-filter: blur(24px);
+                border: 1px solid rgba(255, 255, 255, 0.18);
+            }
+            .dark-glass-effect {
+                background: rgba(44, 44, 46, 0.7);
+                backdrop-filter: blur(24px);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+            }
+            .text-balance {
+                text-wrap: balance;
+            }
+            .transition-all-300 {
+                transition: all 0.3s ease;
+            }
+            .pulse-animation {
+                animation: pulse 2s infinite;
+            }
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+            .fade-in {
+                animation: fadeIn 0.5s ease-in-out;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            .shake {
+                animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+            }
+            @keyframes shake {
+                10%, 90% { transform: translateX(-1px); }
+                20%, 80% { transform: translateX(2px); }
+                30%, 50%, 70% { transform: translateX(-3px); }
+                40%, 60% { transform: translateX(3px); }
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-neutral to-gray-100 font-sans text-dark transition-all-300" id="app-body">
+    <!-- 背景装饰元素 -->
+    <div class="fixed top-0 right-0 w-96 h-96 bg-primary/5 rounded-full -mr-48 -mt-48 blur-3xl transition-all-300" id="bg-circle-1"></div>
+    <div class="fixed bottom-0 left-0 w-96 h-96 bg-secondary/5 rounded-full -ml-48 -mb-48 blur-3xl transition-all-300" id="bg-circle-2"></div>
+
+    <!-- 主容器 -->
+    <div class="container mx-auto px-4 py-12 relative z-10 max-w-4xl">
+        <!-- 页面标题和设置 -->
+        <header class="text-center mb-12 relative">
+            <button id="theme-toggle" class="absolute right-0 top-0 text-gray-500 hover:text-primary transition-all-300 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-card">
+                <i class="fa fa-moon-o"></i>
+            </button>
+            <h1 class="text-[clamp(1.8rem,5vw,2.5rem)] font-bold mb-3 text-dark transition-all-300">Base64 加解密工具</h1>
+            <p class="text-gray-500 max-w-xl mx-auto text-balance transition-all-300">简单高效的在线 Base64 编码与解码工具，保护您的数据传输安全</p>
+        </header>
+
+        <!-- 主内容区 - 玻璃效果卡片 -->
+        <div class="glass-effect rounded-2xl shadow-glass p-6 md:p-8 transition-all-300 hover:shadow-glass-hover mb-8">
+            <!-- 输入区域 -->
+            <div class="mb-8">
+                <label for="input-text" class="block text-sm font-medium text-gray-600 mb-2 transition-all-300">输入文本</label>
+
+                <!-- 文件上传区域 -->
+                <div class="mb-4 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl p-4 text-center hover:border-primary transition-all-300 cursor-pointer" id="file-dropzone">
+                    <input type="file" id="file-upload" class="hidden" accept="image/*,text/*" />
+                    <i class="fa fa-cloud-upload text-gray-400 text-2xl mb-2"></i>
+                    <p class="text-sm text-gray-500 transition-all-300">拖放文件到此处或 <span class="text-primary font-medium">点击上传</span>（支持文本和图片）</p>
+                </div>
+
+                <div class="relative group">
+                    <textarea
+                        id="input-text"
+                        class="w-full h-40 p-4 pr-12 rounded-xl border border-gray-200 bg-white/50 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all-300 resize-none dark:bg-dark-card/50 dark:border-gray-700 dark:text-white"
+                        placeholder="请输入要加密或解密的文本..."></textarea>
+                    <button id="clear-input" class="absolute right-3 top-3 text-gray-400 hover:text-danger transition-all-300 opacity-0 group-hover:opacity-100">
+                        <i class="fa fa-times-circle"></i>
+                    </button>
+                </div>
+                <div class="flex justify-between mt-2 text-xs text-gray-500 transition-all-300">
+                    <span id="input-length">0 字符</span>
+                    <span>支持中文、特殊符号和URL</span>
+                </div>
+            </div>
+
+            <!-- 操作按钮 -->
+            <div class="flex flex-wrap gap-4 justify-center mb-8">
+                <button id="encode-btn" class="px-6 py-3 bg-primary text-white rounded-full font-medium flex items-center gap-2 hover:bg-primary/90 active:scale-95 transition-all-300 shadow-md">
+                    <i class="fa fa-lock"></i>
+                    <span>Base64 加密</span>
+                </button>
+                <button id="decode-btn" class="px-6 py-3 bg-white text-primary rounded-full font-medium flex items-center gap-2 hover:bg-gray-50 active:scale-95 transition-all-300 shadow-md border border-gray-200 dark:bg-dark-card dark:hover:bg-gray-800 dark:border-gray-700">
+                    <i class="fa fa-unlock"></i>
+                    <span>Base64 解密</span>
+                </button>
+                <button id="swap-btn" class="px-6 py-3 bg-white text-gray-700 rounded-full font-medium flex items-center gap-2 hover:bg-gray-50 active:scale-95 transition-all-300 shadow-md border border-gray-200 dark:bg-dark-card dark:text-gray-300 dark:hover:bg-gray-800 dark:border-gray-700">
+                    <i class="fa fa-exchange"></i>
+                    <span>交换内容</span>
+                </button>
+                <button id="history-btn" class="px-6 py-3 bg-white text-gray-700 rounded-full font-medium flex items-center gap-2 hover:bg-gray-50 active:scale-95 transition-all-300 shadow-md border border-gray-200 dark:bg-dark-card dark:text-gray-300 dark:hover:bg-gray-800 dark:border-gray-700">
+                    <i class="fa fa-history"></i>
+                    <span>历史</span>
+                </button>
+                <button id="clear-all-btn" class="px-6 py-3 bg-white text-danger rounded-full font-medium flex items-center gap-2 hover:bg-gray-50 active:scale-95 transition-all-300 shadow-md border border-gray-200 dark:bg-dark-card dark:hover:bg-gray-800 dark:border-gray-700">
+                    <i class="fa fa-trash"></i>
+                    <span>清空全部</span>
+                </button>
+            </div>
+
+            <!-- 结果区域 -->
+            <div>
+                <label for="result-text" class="block text-sm font-medium text-gray-600 mb-2 transition-all-300">结果</label>
+                <div class="relative group">
+                    <textarea
+                        id="result-text"
+                        class="w-full h-40 p-4 pr-12 rounded-xl border border-gray-200 bg-white/50 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all-300 resize-none dark:bg-dark-card/50 dark:border-gray-700 dark:text-white"
+                        placeholder="处理结果将显示在这里..." readonly></textarea>
+                    <button id="copy-result" class="absolute right-3 top-3 text-gray-400 hover:text-primary transition-all-300">
+                        <i class="fa fa-copy"></i>
+                    </button>
+                    <!-- 图片预览按钮（仅在结果是图片Base64时显示） -->
+                    <button id="preview-image" class="absolute right-10 top-3 text-gray-400 hover:text-primary transition-all-300 hidden">
+                        <i class="fa fa-image"></i>
+                    </button>
+                </div>
+                <div class="flex justify-between mt-2 text-xs text-gray-500 transition-all-300">
+                    <span id="result-length">0 字符</span>
+                    <span id="copy-status" class="text-secondary opacity-0 transition-all-300"><i class="fa fa-check"></i> 已复制到剪贴板</span>
+                    <span id="clear-status" class="text-danger opacity-0 transition-all-300"><i class="fa fa-check"></i> 已清空内容</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 快捷操作提示 -->
+        <div class="glass-effect rounded-2xl shadow-glass p-4 md:p-6 mb-8">
+            <h3 class="text-sm font-medium text-gray-600 mb-3 transition-all-300">键盘快捷键</h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-sm">
+                <div class="flex items-center gap-2">
+                    <span class="bg-gray-100 px-2 py-1 rounded text-gray-700 text-xs dark:bg-gray-800 dark:text-gray-300">⌘/Ctrl+E</span>
+                    <span class="text-gray-600 transition-all-300">加密</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="bg-gray-100 px-2 py-1 rounded text-gray-700 text-xs dark:bg-gray-800 dark:text-gray-300">⌘/Ctrl+D</span>
+                    <span class="text-gray-600 transition-all-300">解密</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="bg-gray-100 px-2 py-1 rounded text-gray-700 text-xs dark:bg-gray-800 dark:text-gray-300">⌘/Ctrl+C</span>
+                    <span class="text-gray-600 transition-all-300">复制结果</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="bg-gray-100 px-2 py-1 rounded text-gray-700 text-xs dark:bg-gray-800 dark:text-gray-300">⌘/Ctrl+X</span>
+                    <span class="text-gray-600 transition-all-300">清空输入</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="bg-gray-100 px-2 py-1 rounded text-gray-700 text-xs dark:bg-gray-800 dark:text-gray-300">⌘/Ctrl+L</span>
+                    <span class="text-gray-600 transition-all-300">清空全部</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 功能说明 -->
+        <div class="glass-effect rounded-2xl shadow-glass p-6 md:p-8 mb-8">
+            <h2 class="text-xl font-semibold mb-4 transition-all-300">什么是 Base64 编码？</h2>
+            <p class="text-gray-600 mb-4 transition-all-300">Base64 是一种基于 64 个可打印字符来表示二进制数据的编码方式，常用于需要通过文本协议传输二进制数据的场景，如在 URL、Cookie、网页中嵌入图片等。</p>
+
+            <div class="grid md:grid-cols-2 gap-6 mt-6">
+                <div class="flex items-start gap-3">
+                    <div class="mt-1 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                        <i class="fa fa-info"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-medium mb-1 transition-all-300">编码用途</h3>
+                        <p class="text-sm text-gray-600 transition-all-300">将二进制数据转换为文本格式，便于在网络上传输和存储，常用于邮件附件、网页图片嵌入等场景。</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                    <div class="mt-1 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                        <i class="fa fa-shield"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-medium mb-1 transition-all-300">安全提示</h3>
+                        <p class="text-sm text-gray-600 transition-all-300">Base64 是编码方式而非加密方法，不应作为安全措施使用，敏感数据需额外加密处理。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 历史记录模态框 -->
+        <div id="history-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center opacity-0 pointer-events-none transition-all-300">
+            <div class="glass-effect rounded-2xl shadow-glass max-w-md w-full max-h-[80vh] overflow-hidden transition-all-300 transform scale-95">
+                <div class="p-6 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+                    <h3 class="text-lg font-semibold transition-all-300">历史记录</h3>
+                    <button id="close-history" class="text-gray-400 hover:text-gray-600 transition-all-300">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+                <div id="history-list" class="p-6 overflow-y-auto max-h-[calc(80vh-120px)] space-y-4">
+                    <!-- 历史记录将通过JS动态添加 -->
+                    <div class="text-center text-gray-500 py-8 transition-all-300" id="empty-history">
+                        <i class="fa fa-history text-3xl mb-2 opacity-30"></i>
+                        <p>暂无历史记录</p>
+                    </div>
+                </div>
+                <div class="p-4 border-t border-gray-200 dark:border-gray-700 flex justify-end gap-3">
+                    <button id="clear-history" class="px-4 py-2 text-gray-600 hover:text-danger transition-all-300 text-sm dark:text-gray-400">
+                        清空历史
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 图片预览模态框 -->
+        <div id="image-modal" class="fixed inset-0 bg-black/80 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-all-300">
+            <button id="close-image" class="absolute top-4 right-4 text-white text-2xl hover:text-gray-300 transition-all-300">
+                <i class="fa fa-times"></i>
+            </button>
+            <div class="max-w-4xl max-h-[90vh] p-4">
+                <img id="preview-img" src="" alt="图片预览" class="max-w-full max-h-[85vh] object-contain" />
+            </div>
+        </div>
+    </div>
+<!-- 页脚模块 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row footer-top">
+                <div class="col-lg-4 mb-4 mb-lg-0 footer-brand">
+                    <h3>XSEC</h3>
+                    <p>致力于提供专业的信息化解决方案。</p>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h4>关于我们</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="/leadership/about.html">简介</a></li>
+                        <li><a href="#">领导团队</a></li>
+                        <li><a href="#">发展历程</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h4>工作机会</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="/careers/cn/index.html">XSEC 职业机会</a></li>
+                        <li><a href="/careers/cn/life-at-xsec.html">在 XSEC 生活</a></li>
+                        <li><a href="/careers/cn/work-at-xsec.html">在 XSEC 工作</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h4>资源</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="/newsroom/a/index.html">更新动态</a></li>
+                        <li><a href="https://blog.csdn.net/qq_73252299?spm=1000.2115.3001.5343" target="_blank" rel="noopener noreferrer">技术博客</a></li>
+                        <li><a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af">支持中心</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h4>联系我们</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" target="_blank" rel="noopener noreferrer">客服咨询</a></li>
+                        <li><a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" target="_blank" rel="noopener noreferrer">商务合作</a></li>
+                        <li><a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" target="_blank" rel="noopener noreferrer">客户服务</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 海口希灵赛斯网络科技有限责任公司. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 页脚CSS样式（苹果风格深色） -->
+    <style>
+        .footer {
+            background: #1d1d1f; /* 深色背景 */
+            color: #f5f5f7; /* 浅色文字 */
+            padding: 60px 0 30px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        .footer h3, .footer h4 {
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .footer p {
+            color: #d1d1d6;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .footer ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        .footer ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer ul li a {
+            color: #d1d1d6;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .footer ul li a:hover {
+            color: #0a84ff; /* 苹果蓝色高亮 */
+            transform: translateX(4px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #2c2c2e;
+            margin-top: 40px;
+            padding-top: 20px;
+            font-size: 13px;
+            color: #8e8e93;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .footer .row > div {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+    <script>
+        // DOM元素
+        const inputText = document.getElementById('input-text');
+        const resultText = document.getElementById('result-text');
+        const encodeBtn = document.getElementById('encode-btn');
+        const decodeBtn = document.getElementById('decode-btn');
+        const swapBtn = document.getElementById('swap-btn');
+        const clearInputBtn = document.getElementById('clear-input');
+        const clearAllBtn = document.getElementById('clear-all-btn');
+        const copyResultBtn = document.getElementById('copy-result');
+        const copyStatus = document.getElementById('copy-status');
+        const clearStatus = document.getElementById('clear-status');
+        const inputLength = document.getElementById('input-length');
+        const resultLength = document.getElementById('result-length');
+        const themeToggle = document.getElementById('theme-toggle');
+        const appBody = document.getElementById('app-body');
+        const bgCircle1 = document.getElementById('bg-circle-1');
+        const bgCircle2 = document.getElementById('bg-circle-2');
+        const historyBtn = document.getElementById('history-btn');
+        const historyModal = document.getElementById('history-modal');
+        const closeHistory = document.getElementById('close-history');
+        const historyList = document.getElementById('history-list');
+        const emptyHistory = document.getElementById('empty-history');
+        const clearHistory = document.getElementById('clear-history');
+        const fileDropzone = document.getElementById('file-dropzone');
+        const fileUpload = document.getElementById('file-upload');
+        const previewImage = document.getElementById('preview-image');
+        const imageModal = document.getElementById('image-modal');
+        const closeImage = document.getElementById('close-image');
+        const previewImg = document.getElementById('preview-img');
+
+        // 历史记录管理
+        let historyRecords = JSON.parse(localStorage.getItem('base64History') || '[]');
+
+        // 更新字符计数
+        function updateCharCount() {
+            inputLength.textContent = `${inputText.value.length} 字符`;
+            resultLength.textContent = `${resultText.value.length} 字符`;
+
+            // 显示或隐藏图片预览按钮
+            if (resultText.value.startsWith('data:image/')) {
+                previewImage.classList.remove('hidden');
+            } else {
+                previewImage.classList.add('hidden');
+            }
+        }
+
+        // 显示复制成功提示
+        function showCopySuccess() {
+            copyStatus.style.opacity = '1';
+            copyStatus.classList.add('fade-in');
+            setTimeout(() => {
+                copyStatus.style.opacity = '0';
+                copyStatus.classList.remove('fade-in');
+            }, 2000);
+        }
+
+        // 显示清空成功提示
+        function showClearSuccess() {
+            clearStatus.style.opacity = '1';
+            clearStatus.classList.add('fade-in');
+            setTimeout(() => {
+                clearStatus.style.opacity = '0';
+                clearStatus.classList.remove('fade-in');
+            }, 2000);
+        }
+
+        // 添加到历史记录
+        function addToHistory(input, output, type) {
+            const timestamp = new Date();
+            const record = {
+                id: Date.now(),
+                input: input.length > 50 ? input.substring(0, 50) + '...' : input,
+                output: output.length > 50 ? output.substring(0, 50) + '...' : output,
+                fullInput: input,
+                fullOutput: output,
+                type: type, // 'encode' 或 'decode'
+                time: timestamp.toLocaleString()
+            };
+
+            // 限制历史记录数量为20条
+            historyRecords.unshift(record);
+            if (historyRecords.length > 20) {
+                historyRecords.pop();
+            }
+
+            // 保存到localStorage
+            localStorage.setItem('base64History', JSON.stringify(historyRecords));
+
+            // 更新历史记录UI
+            renderHistory();
+        }
+
+        // 渲染历史记录
+        function renderHistory() {
+            if (historyRecords.length === 0) {
+                emptyHistory.classList.remove('hidden');
+                return;
+            }
+
+            emptyHistory.classList.add('hidden');
+            historyList.innerHTML = '';
+
+            historyRecords.forEach(record => {
+                const recordEl = document.createElement('div');
+                recordEl.className = 'p-3 bg-white/50 rounded-lg border border-gray-200 hover:border-primary transition-all-300 cursor-pointer dark:bg-dark-card/50 dark:border-gray-700';
+
+                const typeIcon = record.type === 'encode' ?
+                    '<i class="fa fa-lock text-primary mr-2"></i>' :
+                    '<i class="fa fa-unlock text-primary mr-2"></i>';
+
+                recordEl.innerHTML = `
+                    <div class="flex justify-between items-start mb-2">
+                        <div class="font-medium text-sm flex items-center transition-all-300">
+                            ${typeIcon}
+                            ${record.type === 'encode' ? 'Base64 加密' : 'Base64 解密'}
+                        </div>
+                        <span class="text-xs text-gray-500 transition-all-300">${record.time}</span>
+                    </div>
+                    <div class="text-xs text-gray-600 mb-1 truncate transition-all-300">输入: ${record.input}</div>
+                    <div class="text-xs text-gray-600 truncate transition-all-300">输出: ${record.output}</div>
+                `;
+
+                recordEl.addEventListener('click', () => {
+                    inputText.value = record.fullInput;
+                    resultText.value = record.fullOutput;
+                    updateCharCount();
+                    closeHistoryModal();
+                });
+
+                historyList.appendChild(recordEl);
+            });
+        }
+
+        // 清空历史记录
+        function clearAllHistory() {
+            if (confirm('确定要清空所有历史记录吗？')) {
+                historyRecords = [];
+                localStorage.removeItem('base64History');
+                renderHistory();
+            }
+        }
+
+        // 打开历史记录模态框
+        function openHistoryModal() {
+            renderHistory();
+            historyModal.classList.remove('opacity-0', 'pointer-events-none');
+            historyModal.querySelector('div').classList.remove('scale-95');
+            historyModal.querySelector('div').classList.add('scale-100');
+        }
+
+        // 关闭历史记录模态框
+        function closeHistoryModal() {
+            historyModal.classList.add('opacity-0', 'pointer-events-none');
+            historyModal.querySelector('div').classList.remove('scale-100');
+            historyModal.querySelector('div').classList.add('scale-95');
+        }
+
+        // 切换主题
+        function toggleTheme() {
+            const isDark = appBody.classList.toggle('dark');
+
+            if (isDark) {
+                // 切换到深色模式
+                appBody.classList.remove('from-neutral', 'to-gray-100', 'text-dark');
+                appBody.classList.add('from-dark-bg', 'to-gray-900', 'text-white');
+                themeToggle.innerHTML = '<i class="fa fa-sun-o"></i>';
+
+                // 更新玻璃效果类
+                document.querySelectorAll('.glass-effect').forEach(el => {
+                    el.classList.remove('glass-effect', 'shadow-glass', 'hover:shadow-glass-hover');
+                    el.classList.add('dark-glass-effect', 'shadow-dark-glass');
+                });
+
+                // 更新背景装饰
+                bgCircle1.classList.remove('bg-primary/5');
+                bgCircle1.classList.add('bg-primary/10');
+                bgCircle2.classList.remove('bg-secondary/5');
+                bgCircle2.classList.add('bg-secondary/10');
+
+                localStorage.setItem('base64Theme', 'dark');
+            } else {
+                // 切换到浅色模式
+                appBody.classList.remove('from-dark-bg', 'to-gray-900', 'text-white');
+                appBody.classList.add('from-neutral', 'to-gray-100', 'text-dark');
+                themeToggle.innerHTML = '<i class="fa fa-moon-o"></i>';
+
+                // 更新玻璃效果类
+                document.querySelectorAll('.dark-glass-effect').forEach(el => {
+                    el.classList.remove('dark-glass-effect', 'shadow-dark-glass');
+                    el.classList.add('glass-effect', 'shadow-glass', 'hover:shadow-glass-hover');
+                });
+
+                // 更新背景装饰
+                bgCircle1.classList.remove('bg-primary/10');
+                bgCircle1.classList.add('bg-primary/5');
+                bgCircle2.classList.remove('bg-secondary/10');
+                bgCircle2.classList.add('bg-secondary/5');
+
+                localStorage.setItem('base64Theme', 'light');
+            }
+        }
+
+        // 检查并应用保存的主题
+        function applySavedTheme() {
+            const savedTheme = localStorage.getItem('base64Theme');
+            if (savedTheme === 'dark' ||
+                (savedTheme === null && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                toggleTheme();
+            }
+        }
+
+        // 显示图片预览
+        function showImagePreview() {
+            previewImg.src = resultText.value;
+            imageModal.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        // 关闭图片预览
+        function closeImagePreview() {
+            imageModal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        // 处理文件上传
+        function handleFileUpload(file) {
+            const reader = new FileReader();
+
+            if (file.type.startsWith('image/')) {
+                // 图片文件，读取为dataURL
+                reader.onload = function(e) {
+                    inputText.value = e.target.result;
+                    updateCharCount();
+                };
+                reader.readAsDataURL(file);
+            } else {
+                // 文本文件，读取为文本
+                reader.onload = function(e) {
+                    inputText.value = e.target.result;
+                    updateCharCount();
+                };
+                reader.readAsText(file);
+            }
+        }
+
+        // Base64 加密
+        function encodeBase64() {
+            const text = inputText.value.trim();
+            if (!text) return;
+
+            try {
+                // 添加加载状态
+                encodeBtn.disabled = true;
+                encodeBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i><span>加密中...</span>';
+
+                // 处理非ASCII字符
+                setTimeout(() => { // 使用setTimeout模拟异步处理，避免UI阻塞
+                    const encoded = btoa(encodeURIComponent(text));
+                    resultText.value = encoded;
+                    updateCharCount();
+
+                    // 添加到历史记录
+                    addToHistory(text, encoded, 'encode');
+
+                    // 恢复按钮状态
+                    encodeBtn.disabled = false;
+                    encodeBtn.innerHTML = '<i class="fa fa-lock"></i><span>Base64 加密</span>';
+
+                    // 添加完成动画
+                    resultText.classList.add('pulse-animation');
+                    setTimeout(() => resultText.classList.remove('pulse-animation'), 1000);
+                }, 100);
+            } catch (error) {
+                resultText.value = '加密失败: ' + error.message;
+                encodeBtn.disabled = false;
+                encodeBtn.innerHTML = '<i class="fa fa-lock"></i><span>Base64 加密</span>';
+            }
+        }
+
+        // Base64 解密
+        function decodeBase64() {
+            const text = inputText.value.trim();
+            if (!text) return;
+
+            try {
+                // 添加加载状态
+                decodeBtn.disabled = true;
+                decodeBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i><span>解密中...</span>';
+
+                // 处理非ASCII字符
+                setTimeout(() => { // 使用setTimeout模拟异步处理，避免UI阻塞
+                    const decoded = decodeURIComponent(atob(text));
+                    resultText.value = decoded;
+                    updateCharCount();
+
+                    // 添加到历史记录
+                    addToHistory(text, decoded, 'decode');
+
+                    // 恢复按钮状态
+                    decodeBtn.disabled = false;
+                    decodeBtn.innerHTML = '<i class="fa fa-unlock"></i><span>Base64 解密</span>';
+
+                    // 添加完成动画
+                    resultText.classList.add('pulse-animation');
+                    setTimeout(() => resultText.classList.remove('pulse-animation'), 1000);
+                }, 100);
+            } catch (error) {
+                resultText.value = '解密失败: 请输入有效的Base64编码';
+                decodeBtn.disabled = false;
+                decodeBtn.innerHTML = '<i class="fa fa-unlock"></i><span>Base64 解密</span>';
+            }
+        }
+
+        // 交换输入和结果内容
+        function swapContent() {
+            const temp = inputText.value;
+            inputText.value = resultText.value;
+            resultText.value = temp;
+            updateCharCount();
+
+            // 添加交换动画
+            const inputContainer = inputText.parentElement;
+            const resultContainer = resultText.parentElement;
+
+            inputContainer.classList.add('pulse-animation');
+            resultContainer.classList.add('pulse-animation');
+
+            setTimeout(() => {
+                inputContainer.classList.remove('pulse-animation');
+                resultContainer.classList.remove('pulse-animation');
+            }, 500);
+        }
+
+        // 清空输入
+        function clearInput() {
+            inputText.value = '';
+            updateCharCount();
+
+            // 添加清空动画
+            inputText.classList.add('fade-in');
+            setTimeout(() => inputText.classList.remove('fade-in'), 500);
+        }
+
+        // 清空全部内容（输入和结果）
+        function clearAll() {
+            // 如果已经都是空的，就不执行任何操作
+            if (!inputText.value && !resultText.value) return;
+
+            inputText.value = '';
+            resultText.value = '';
+            updateCharCount();
+
+            // 添加清空动画
+            inputText.classList.add('shake');
+            resultText.classList.add('shake');
+
+            setTimeout(() => {
+                inputText.classList.remove('shake');
+                resultText.classList.remove('shake');
+            }, 500);
+
+            // 显示清空提示
+            showClearSuccess();
+        }
+
+        // 复制结果到剪贴板
+        function copyToClipboard() {
+            if (!resultText.value) return;
+
+            // 现代浏览器剪贴板API
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(resultText.value).then(() => {
+                    showCopySuccess();
+                }).catch(err => {
+                    console.error('无法复制内容: ', err);
+                    fallbackCopy();
+                });
+            } else {
+                fallbackCopy();
+            }
+        }
+
+        // 复制的 fallback 方法
+        function fallbackCopy() {
+            resultText.select();
+            document.execCommand('copy');
+            showCopySuccess();
+        }
+
+        // 键盘快捷键处理
+        function handleKeyboard(e) {
+            const isCtrlOrCmd = e.ctrlKey || e.metaKey;
+
+            if (isCtrlOrCmd) {
+                switch(e.key.toLowerCase()) {
+                    case 'e': // 加密
+                        e.preventDefault();
+                        encodeBase64();
+                        break;
+                    case 'd': // 解密
+                        e.preventDefault();
+                        decodeBase64();
+                        break;
+                    case 'c': // 复制结果
+                        e.preventDefault();
+                        copyToClipboard();
+                        break;
+                    case 'x': // 清空输入
+                        e.preventDefault();
+                        clearInput();
+                        break;
+                    case 'l': // 清空全部 (L for Clear All)
+                        e.preventDefault();
+                        clearAll();
+                        break;
+                }
+            }
+        }
+
+        // 拖拽文件处理
+        function handleDragOver(e) {
+            e.preventDefault();
+            fileDropzone.classList.add('border-primary');
+        }
+
+        function handleDragLeave() {
+            fileDropzone.classList.remove('border-primary');
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            fileDropzone.classList.remove('border-primary');
+
+            if (e.dataTransfer.files.length) {
+                handleFileUpload(e.dataTransfer.files[0]);
+            }
+        }
+
+        // 事件监听
+        encodeBtn.addEventListener('click', encodeBase64);
+        decodeBtn.addEventListener('click', decodeBase64);
+        swapBtn.addEventListener('click', swapContent);
+        clearInputBtn.addEventListener('click', clearInput);
+        clearAllBtn.addEventListener('click', clearAll);
+        copyResultBtn.addEventListener('click', copyToClipboard);
+        inputText.addEventListener('input', updateCharCount);
+        resultText.addEventListener('input', updateCharCount);
+        themeToggle.addEventListener('click', toggleTheme);
+        historyBtn.addEventListener('click', openHistoryModal);
+        closeHistory.addEventListener('click', closeHistoryModal);
+        clearHistory.addEventListener('click', clearAllHistory);
+        previewImage.addEventListener('click', showImagePreview);
+        closeImage.addEventListener('click', closeImagePreview);
+
+        // 文件上传相关事件
+        fileDropzone.addEventListener('click', () => fileUpload.click());
+        fileUpload.addEventListener('change', (e) => {
+            if (e.target.files.length) {
+                handleFileUpload(e.target.files[0]);
+            }
+        });
+
+        // 拖拽事件
+        fileDropzone.addEventListener('dragover', handleDragOver);
+        fileDropzone.addEventListener('dragleave', handleDragLeave);
+        fileDropzone.addEventListener('drop', handleDrop);
+
+        // 点击模态框外部关闭
+        historyModal.addEventListener('click', (e) => {
+            if (e.target === historyModal) closeHistoryModal();
+        });
+
+        imageModal.addEventListener('click', (e) => {
+            if (e.target === imageModal) closeImagePreview();
+        });
+
+        // 键盘事件
+        document.addEventListener('keydown', handleKeyboard);
+
+        // 输入框聚焦/失焦事件
+        inputText.addEventListener('focus', () => {
+            clearInputBtn.style.opacity = '1';
+        });
+
+        inputText.addEventListener('blur', () => {
+            if (!inputText.value) {
+                clearInputBtn.style.opacity = '0';
+            }
+        });
+
+        // 初始化
+        updateCharCount();
+        applySavedTheme();
+    </script>
+</body>
+</html>
