@@ -716,8 +716,8 @@
         });
 
         // 倒计时变量
-        let seconds = 5;
-        const totalSeconds = 5;
+        let seconds = 0;
+        const totalSeconds = 0;
         const countdownValue = document.getElementById('seconds');
         const progressFill = document.getElementById('progress-fill');
         const progressPercent = document.getElementById('progress-percent');
@@ -734,22 +734,12 @@
             }, 500);
 
             // 计算并更新进度条
-            const progress = ((totalSeconds - seconds) / totalSeconds) * 100;
+            const progress = totalSeconds === 0 ? 100 : ((totalSeconds - seconds) / totalSeconds) * 100;
             progressPercent.textContent = `${Math.round(progress)}%`;
             progressFill.style.width = `${progress}%`;
 
-            // 如果倒计时结束
-            if (seconds <= 0) {
-                // 跳转到指定URL
-                window.location.href = 'https://sec.hn.cn/';
-                return;
-            }
-
-            // 减少秒数
-            seconds--;
-
-            // 1秒后再次调用
-            setTimeout(updateCountdown, 1000);
+            // 立即跳转到指定URL
+            window.location.href = 'https://sec.hn.cn/';
         }
 
         // 添加背景元素视差效果
