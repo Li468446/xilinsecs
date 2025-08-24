@@ -479,31 +479,33 @@
         </style>
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
     <!-- 页脚模块 -->
     <footer class="footer">
         <div class="container">
             <div class="row footer-top">
-                <div class="col-lg-4 mb-4 mb-lg-0 footer-brand">
+                <div class="col-lg-4 col-md-12 footer-brand">
                     <h3>XSEC</h3>
                     <p>致力于提供专业的信息化解决方案。</p>
                 </div>
-                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                <div class="col-lg-2 col-md-4">
                     <h4>关于我们</h4>
                     <ul class="list-unstyled">
-                        <li><a href="/leadership/about.html">简介</a></li>
-                        <li><a href="#">领导团队</a></li>
-                        <li><a href="#">发展历程</a></li>
+                        <li><a href="../leadership/about.html">公司简介</a></li>
+                        <li><a href="../leadership/about.html">领导团队</a></li>
+                        <li><a href="../leadership/about.html#history">发展历程</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                <div class="col-lg-2 col-md-4">
                     <h4>工作机会</h4>
                     <ul class="list-unstyled">
-                        <li><a href="/careers/cn/index.html">XSEC 职业机会</a></li>
-                        <li><a href="/careers/cn/life-at-xsec.html">在 XSEC 生活</a></li>
-                        <li><a href="/careers/cn/work-at-xsec.html">在 XSEC 工作</a></li>
+                        <li><a href="../careers/cn/index.html">加入我们</a></li>
+                        <li><a href="../careers/cn/life-at-xsec.html">在希灵赛斯生活</a></li>
+                        <li><a href="../careers/cn/work-at-xsec.html">在希灵赛斯工作</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                <div class="col-lg-2 col-md-4">
                     <h4>资源</h4>
                     <ul class="list-unstyled">
                         <li><a href="https://sec.hn.cn">更新动态</a></li>
@@ -511,8 +513,8 @@
                         <li><a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af">支持中心</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-2">
-                    <h4>联系我们</h4>
+                <div class="col-lg-2 col-md-12">
+                    <h4>联系与支持</h4>
                     <ul class="list-unstyled">
                         <li><a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" target="_blank" rel="noopener noreferrer">客服咨询</a></li>
                         <li><a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" target="_blank" rel="noopener noreferrer">商务合作</a></li>
@@ -522,23 +524,26 @@
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 海口希灵赛斯网络科技有限责任公司. 保留所有权利.</p>
+                <!-- 备案信息 -->
+                <p class="beian-info">
+                    <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">琼ICP备2025000001号</a> | 
+                    <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=2025000001" target="_blank" rel="noopener noreferrer">琼公网安备2025000001号</a>
+                </p>
             </div>
         </div>
     </footer>
 
-    <!-- 页脚CSS样式（科技风格深色） -->
+    <!-- 页脚CSS样式（苹果风格深色） -->
     <style>
         .footer {
-            background: #0a192f;
-            color: #ccc;
+            background: #1d1d1f; /* 深色背景 */
+            color: #f5f5f7; /* 浅色文字 */
             padding: 60px 0 30px;
-            font-family: 'Roboto', sans-serif;
-            border-top: 1px solid rgba(77, 171, 247, 0.3);
-            margin-top: auto;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
 
         .footer h3, .footer h4 {
-            color: #64ffda;
+            color: #ffffff;
             font-weight: 600;
             margin-bottom: 20px;
             font-size: 16px;
@@ -546,7 +551,7 @@
         }
 
         .footer p {
-            color: #aaa;
+            color: #d1d1d6;
             font-size: 14px;
             line-height: 1.6;
         }
@@ -561,75 +566,24 @@
         }
 
         .footer ul li a {
-            color: #ccc;
+            color: #d1d1d6;
             text-decoration: none;
             font-size: 14px;
             transition: all 0.3s ease;
         }
 
         .footer ul li a:hover {
-            color: #4dabf7;
+            color: #0a84ff; /* 苹果蓝色高亮 */
             transform: translateX(4px);
         }
 
         .footer-bottom {
             text-align: center;
-            border-top: 1px solid rgba(77, 171, 247, 0.2);
+            border-top: 1px solid #2c2c2e;
             margin-top: 40px;
             padding-top: 20px;
             font-size: 13px;
-            color: #888;
-        }
-        
-        /* 添加栅格系统样式以修复页脚布局 */
-        .row {
-            display: flex;
-            flex-wrap: wrap;
-            margin-right: -15px;
-            margin-left: -15px;
-        }
-        
-        .col-lg-4, .col-lg-2, .col-md-4 {
-            position: relative;
-            width: 100%;
-            padding-right: 15px;
-            padding-left: 15px;
-        }
-        
-        .mb-4 {
-            margin-bottom: 1.5rem!important;
-        }
-        
-        .mb-lg-0 {
-            margin-bottom: 0!important;
-        }
-        
-        .list-unstyled {
-            padding-left: 0;
-            list-style: none;
-        }
-        
-        @media (min-width: 992px) {
-            .col-lg-4 {
-                flex: 0 0 33.333333%;
-                max-width: 33.333333%;
-            }
-            
-            .col-lg-2 {
-                flex: 0 0 16.666667%;
-                max-width: 16.666667%;
-            }
-            
-            .mb-lg-0 {
-                margin-bottom: 0!important;
-            }
-        }
-        
-        @media (min-width: 768px) and (max-width: 991px) {
-            .col-md-4 {
-                flex: 0 0 33.333333%;
-                max-width: 33.333333%;
-            }
+            color: #8e8e93;
         }
 
         /* 响应式调整 */
@@ -637,13 +591,23 @@
             .footer .row > div {
                 margin-bottom: 30px;
             }
-            
-            .col-lg-4, .col-lg-2, .col-md-4 {
-                flex: 0 0 100%;
-                max-width: 100%;
-            }
         }
     </style>
+
+    <!-- 引入配置文件 -->
+    <script src="/source/config.js"></script>
+    <script>
+        // 动态设置备案信息
+        document.addEventListener('DOMContentLoaded', function() {
+            const beianInfo = document.querySelector('.beian-info');
+            if (beianInfo && window.siteConfig) {
+                beianInfo.innerHTML = `
+                    <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">${window.siteConfig.beian.icp}</a> | 
+                    <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${window.siteConfig.beian.police.replace('琼公网安备', '')}" target="_blank" rel="noopener noreferrer">${window.siteConfig.beian.police}</a>
+                `;
+            }
+        });
+    </script>
 
     <!-- 交互脚本 -->
     <script>

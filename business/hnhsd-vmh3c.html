@@ -606,31 +606,30 @@
     <!-- 主要内容区域模块结束 -->
     
     <!-- 页脚模块 -->
-    <!-- 页脚模块 -->
     <footer class="footer">
         <div class="container">
             <div class="row footer-top">
-                <div class="col-lg-4 mb-4 mb-lg-0 footer-brand">
+                <div class="col-lg-4 col-md-12 footer-brand">
                     <h3>XSEC</h3>
                     <p>致力于提供专业的信息化解决方案。</p>
                 </div>
-                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                <div class="col-lg-2 col-md-4">
                     <h4>关于我们</h4>
                     <ul class="list-unstyled">
-                        <li><a href="/leadership/about.html">简介</a></li>
-                        <li><a href="#">领导团队</a></li>
-                        <li><a href="#">发展历程</a></li>
+                        <li><a href="/leadership/about.html">公司简介</a></li>
+                        <li><a href="/leadership/about.html">领导团队</a></li>
+                        <li><a href="/leadership/about.html#history">发展历程</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                <div class="col-lg-2 col-md-4">
                     <h4>工作机会</h4>
                     <ul class="list-unstyled">
-                        <li><a href="/careers/cn/index.html">XSEC 职业机会</a></li>
-                        <li><a href="/careers/cn/life-at-xsec.html">在 XSEC 生活</a></li>
-                        <li><a href="/careers/cn/work-at-xsec.html">在 XSEC 工作</a></li>
+                        <li><a href="/careers/cn/index.html">加入我们</a></li>
+                        <li><a href="/careers/cn/life-at-xsec.html">在希灵赛斯生活</a></li>
+                        <li><a href="/careers/cn/work-at-xsec.html">在希灵赛斯工作</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                <div class="col-lg-2 col-md-4">
                     <h4>资源</h4>
                     <ul class="list-unstyled">
                         <li><a href="https://sec.hn.cn">更新动态</a></li>
@@ -638,8 +637,8 @@
                         <li><a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af">支持中心</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-2">
-                    <h4>联系我们</h4>
+                <div class="col-lg-2 col-md-12">
+                    <h4>联系与支持</h4>
                     <ul class="list-unstyled">
                         <li><a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" target="_blank" rel="noopener noreferrer">客服咨询</a></li>
                         <li><a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" target="_blank" rel="noopener noreferrer">商务合作</a></li>
@@ -649,6 +648,11 @@
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 海口希灵赛斯网络科技有限责任公司. 保留所有权利.</p>
+                <!-- 备案信息 -->
+                <p class="beian-info">
+                    <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">琼ICP备2025000001号</a> | 
+                    <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=2025000001" target="_blank" rel="noopener noreferrer">琼公网安备2025000001号</a>
+                </p>
             </div>
         </div>
     </footer>
@@ -713,155 +717,28 @@
             }
         }
     </style>
-    <!-- 页脚模块结束 -->
-    
-    <!-- 全局动画样式模块 -->
-    <style>
-        /* 动画效果 */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        
-        .fade-in.appear {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* 响应式设计 */
-        @media (max-width: 992px) {
-            .section-content {
-                flex-direction: column !important;
-            }
-            
-            .text-content, .image-placeholder {
-                width: 100%;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            header {
-                padding: 1rem 5%;
-            }
-            
-            .nav-links {
-                gap: 1.2rem;
-            }
-            
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .section {
-                padding: 3rem 0;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-    </style>
-    <!-- 全局动画样式模块结束 -->
-    
-    <!-- 页面脚本模块 -->
+
+    <!-- 引入配置文件 -->
+    <script src="../source/config.js"></script>
     <script>
-        // 滚动动画效果
+        // 动态设置备案信息
         document.addEventListener('DOMContentLoaded', function() {
-            // 滚动监听实现淡入效果
-            const fadeElements = document.querySelectorAll('.fade-in');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('appear');
-                    }
-                });
-            }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px -100px 0px'
-            });
-            
-            fadeElements.forEach(element => {
-                observer.observe(element);
-            });
-            
-            // 平滑滚动
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        window.scrollTo({
-                            top: target.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-            
-            // 导航指示器功能
-            const navLinks = document.querySelectorAll('.nav-link');
-            const navIndicator = document.querySelector('.nav-indicator');
-            const sections = document.querySelectorAll('section');
-            
-            // 设置初始指示器位置
-            function setInitialIndicator() {
-                const activeLink = document.querySelector('.nav-link[href="#overview"]');
-                if (activeLink) {
-                    const left = activeLink.offsetLeft;
-                    const width = activeLink.offsetWidth;
-                    navIndicator.style.left = left + 'px';
-                    navIndicator.style.width = width + 'px';
+            const beianInfo = document.querySelector('.beian-info');
+            if (beianInfo && window.siteConfig && window.siteConfig.beian) {
+                // 检查必要地备案信息是否存在
+                const icp = window.siteConfig.beian.icp;
+                const police = window.siteConfig.beian.police;
+                
+                if (icp && police) {
+                    // 安全地移除"琼公网安备"前缀，确保recordcode参数正确
+                    const recordcode = police.replace('琼公网安备', '').trim();
+                    beianInfo.innerHTML = `
+                        <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">${icp}</a> | 
+                        <a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${encodeURIComponent(recordcode)}" target="_blank" rel="noopener noreferrer">${police}</a>
+                    `;
                 }
             }
-            
-            // 页面加载完成后设置初始指示器位置
-            setInitialIndicator();
-            
-            // 监听滚动事件，更新导航指示器
-            window.addEventListener('scroll', function() {
-                let current = '';
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    
-                    if (pageYOffset >= (sectionTop - 100)) {
-                        current = section.getAttribute('id');
-                    }
-                });
-                
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    const target = link.getAttribute('data-target');
-                    
-                    if (target === current) {
-                        link.classList.add('active');
-                        const left = link.offsetLeft;
-                        const width = link.offsetWidth;
-                        navIndicator.style.left = left + 'px';
-                        navIndicator.style.width = width + 'px';
-                    }
-                });
-            });
         });
     </script>
-    <!-- 页面脚本模块结束 -->
 </body>
 </html>

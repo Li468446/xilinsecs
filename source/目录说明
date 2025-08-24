@@ -1,1 +1,8 @@
 此页面存放根首页说明
+1、audio
+    background.mp3         首页音频
+2、dist                    字体信息
+3、imgs                    logo信息
+4、index_imgs              首页图片存放目录
+5、video                   首页视频存放
+6、config.js               备案信息调整备案文件

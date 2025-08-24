@@ -932,8 +932,89 @@
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 海口希灵赛斯网络科技有限责任公司. 保留所有权利。</p>
+                <!-- 备案信息 -->
+                <p class="beian-info">
+                    <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">琼ICP备2025000001号</a> | 
+                    <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=2025000001" target="_blank" rel="noopener noreferrer">琼公网安备2025000001号</a>
+                </p>
             </div>
         </div>
     </footer>
+
+    <!-- 页脚CSS样式（苹果风格深色） -->
+    <style>
+        .footer {
+            background: #1d1d1f; /* 深色背景 */
+            color: #f5f5f7; /* 浅色文字 */
+            padding: 60px 0 30px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        .footer h3, .footer h4 {
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .footer p {
+            color: #d1d1d6;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .footer ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        .footer ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer ul li a {
+            color: #d1d1d6;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .footer ul li a:hover {
+            color: #0a84ff; /* 苹果蓝色高亮 */
+            transform: translateX(4px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #2c2c2e;
+            margin-top: 40px;
+            padding-top: 20px;
+            font-size: 13px;
+            color: #8e8e93;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .footer .row > div {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+
+    <!-- 引入配置文件 -->
+    <script src="../../source/config.js"></script>
+    <script>
+        // 动态设置备案信息
+        document.addEventListener('DOMContentLoaded', function() {
+            const beianInfo = document.querySelector('.beian-info');
+            if (beianInfo && window.siteConfig) {
+                beianInfo.innerHTML = `
+                    <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">${window.siteConfig.beian.icp}</a> | 
+                    <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${window.siteConfig.beian.police.replace('琼公网安备', '')}" target="_blank" rel="noopener noreferrer">${window.siteConfig.beian.police}</a>
+                `;
+            }
+        });
+    </script>
 </body>
 </html>
