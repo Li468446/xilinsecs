@@ -1,225 +1,629 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0PVCDX1CZK"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PVCDX1CZK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0PVCDX1CZK');
+  </script>
 
-  gtag('config', 'G-0PVCDX1CZK');
-</script>
-    <meta charset="UTF-8">
-    <title>Gemini API 镜像网关介绍</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
-            color: #333;
-        }
-        .container {
-            background-color: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-        h1 {
-            color: #1a73e8;
-            text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-        .subtitle {
-            text-align: center;
-            color: #5f6368;
-            font-size: 1.2em;
-            margin-bottom: 40px;
-        }
-        .api-url {
-            background: linear-gradient(to right, #e8f0fe, #d2e3fc);
-            padding: 20px;
-            border-radius: 10px;
-            font-family: monospace;
-            text-align: center;
-            font-size: 20px;
-            margin: 30px 0;
-            border: 1px solid #1a73e8;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-        .steps {
-            background: #f8f9fa;
-            padding: 30px;
-            border-radius: 10px;
-            margin: 30px 0;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
-        }
-        .step {
-            margin-bottom: 25px;
-            padding-bottom: 25px;
-            border-bottom: 1px solid #eee;
-        }
-        .step:last-child {
-            border-bottom: none;
-        }
-        .step h3 {
-            color: #1a73e8;
-            display: flex;
-            align-items: center;
-        }
-        .step-number {
-            background-color: #1a73e8;
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-        }
-        .highlight {
-            color: #d93025;
-            font-weight: bold;
-        }
-        
-        /* 图片区域样式 */
-        .image-section {
-            text-align: center;
-            margin: 40px 0;
-            padding: 20px;
-            background-color: #f8f9fa;
-            border-radius: 10px;
-        }
-        
-        .image-placeholder {
-            width: 100%;
-            max-width: 600px;
-            height: 300px;
-            background: linear-gradient(45deg, #e0e0e0, #f5f5f5);
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            border: 2px dashed #bdbdbd;
-        }
-        
-        .image-placeholder-text {
-            color: #757575;
-            font-size: 18px;
-        }
-        
-        h2 {
-            color: #1a73e8;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #1a73e8;
-            display: inline-block;
-        }
-        
-        ul {
-            padding-left: 20px;
-        }
-        
-        li {
-            margin-bottom: 10px;
-        }
-        
-        a {
-            color: #1a73e8;
-            text-decoration: none;
-        }
-        
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Gemini API 镜像网关 — 稳定快速访问 Google Gemini</title>
+  <meta name="description" content="免费的Gemini API镜像网关服务，让您稳定、快速地访问Google Gemini AI。支持IPv4/IPv6双栈，兼容Google Gemini API格式，适用于各种应用集成。">
+  <meta name="keywords" content="Gemini API, Google Gemini, AI镜像网关, Gemini API代理, 人工智能API, AI服务, 开发者工具, API集成">
+  <meta name="author" content="海口希灵赛斯网络科技有限责任公司">
+  <link rel="canonical" href="https://www.sec.hn.cn/public/gemini/gemini.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Gemini API 镜像网关 - 稳定快速访问Google Gemini">
+  <meta property="og:description" content="免费的Gemini API镜像网关服务，让您稳定、快速地访问Google Gemini AI。支持IPv4/IPv6双栈，兼容Google Gemini API格式，适用于各种应用集成。">
+  <meta property="og:url" content="https://www.sec.hn.cn/public/gemini/gemini.html">
+  <meta property="og:image" content="https://www.sec.hn.cn/source/index_imgs/index_01.jpg">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebAPI",
+    "name": "Gemini API 镜像网关",
+    "description": "免费的Gemini API镜像网关服务，让您稳定、快速地访问Google Gemini AI。支持IPv4/IPv6双栈，兼容Google Gemini API格式，适用于各种应用集成。",
+    "url": "https://www.sec.hn.cn/public/gemini/gemini.html",
+    "provider": {
+      "@type": "Organization",
+      "name": "海口希灵赛斯网络科技有限责任公司",
+      "url": "https://www.sec.hn.cn/"
+    }
+  }
+  </script>
+
+  <style>
+    /* -------------------------
+       Design tokens / variables
+       ------------------------- */
+    :root{
+      --bg: #ffffff;
+      --page-bg-1: #f4f7fb;
+      --page-bg-2: #eef6ff;
+      --muted: #64748b;
+      --text: #0f1724;
+      --accent: #0a84ff;      /* refined apple-blue */
+      --accent-2: #005ecb;
+      --accent-weak: rgba(10,132,255,0.08);
+      --danger: #d23b3b;
+      --card-radius: 14px;
+      --glass: rgba(255,255,255,0.7);
+      --shadow-1: 0 6px 22px rgba(18,35,55,0.08);
+      --shadow-2: 0 4px 14px rgba(18,35,55,0.06);
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace;
+      --ui-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC";
+      --max-width: 1080px;
+      --gap: 20px;
+    }
+
+    /* prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+    }
+
+    /* -------------------------
+       Base reset & layout
+       ------------------------- */
+    * { box-sizing: border-box; }
+    html,body { height:100%; }
+    body{
+      margin:0;
+      font-family: var(--ui-sans);
+      color:var(--text);
+      background: linear-gradient(180deg, var(--page-bg-1) 0%, var(--page-bg-2) 100%);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      display:flex;
+      justify-content:center;
+      padding:36px 20px;
+      line-height:1.5;
+    }
+
+    .wrap {
+      width:100%;
+      max-width:var(--max-width);
+      margin:0 auto;
+    }
+
+    /* -------------------------
+       Header
+       ------------------------- */
+    header.site-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:var(--gap);
+      margin-bottom:18px;
+    }
+
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    /* SVG logo (small, crisp) */
+    .logo {
+      width:56px;
+      height:56px;
+      display:inline-grid;
+      place-items:center;
+      border-radius:12px;
+      background:linear-gradient(135deg,#ffffff,#f3f8ff);
+      box-shadow:var(--shadow-2);
+      flex-shrink:0;
+    }
+    .logo svg { width:34px;height:34px; display:block; }
+
+    .site-title h1{
+      margin:0;
+      font-size:1.125rem;
+      letter-spacing:-0.3px;
+      color:var(--text);
+    }
+    .site-title p {
+      margin:2px 0 0;
+      font-size:0.85rem;
+      color:var(--muted);
+    }
+
+    .header-tag {
+      font-size:0.8rem;
+      color:var(--muted);
+      background:rgba(10,132,255,0.06);
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(10,132,255,0.08);
+    }
+
+    /* -------------------------
+       Card / hero
+       ------------------------- */
+    main.card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(250,252,255,0.98));
+      border-radius:18px;
+      padding:26px;
+      box-shadow:var(--shadow-1);
+      overflow:visible;
+      border:1px solid rgba(12,18,28,0.04);
+    }
+
+    .hero {
+      display:flex;
+      gap:20px;
+      align-items:flex-start;
+      flex-direction:column;
+    }
+    @media (min-width:880px) {
+      .hero { flex-direction:row; align-items:center; }
+    }
+
+    .hero-left { flex:1; min-width:0; }
+
+    .hero h2{
+      margin:0 0 8px 0;
+      font-size:1.5rem;
+      color:var(--text);
+    }
+    .hero p { margin:0; color:var(--muted); font-size:0.98rem; }
+
+    /* fancy endpoint box */
+    .endpoint {
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(245,249,255,0.9));
+      padding:12px 14px;
+      border-radius:12px;
+      border:1px solid rgba(12,18,28,0.04);
+      margin-top:12px;
+      font-family:var(--mono);
+      font-weight:600;
+      color:var(--text);
+      box-shadow:var(--shadow-2);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .endpoint:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(10,30,80,0.08); }
+
+    .endpoint .url { color:var(--accent-2); }
+
+    .cta {
+      display:flex;
+      gap:10px;
+      align-items:center;
+      margin-top:12px;
+    }
+    .btn {
+      border:0;
+      background:linear-gradient(180deg,var(--accent) 0%, var(--accent-2) 100%);
+      color:#fff;
+      padding:10px 14px;
+      border-radius:10px;
+      font-weight:700;
+      cursor:pointer;
+      box-shadow: 0 8px 22px rgba(10,132,255,0.18);
+      transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+      font-size:0.95rem;
+    }
+    .btn:active { transform: translateY(1px) scale(.998); }
+    .btn-ghost {
+      background:transparent;
+      color:var(--accent-2);
+      border:1px solid rgba(10,132,255,0.12);
+      box-shadow:none;
+    }
+    .btn.secondary {
+      background:transparent;
+      color:var(--text);
+      border:1px solid rgba(12,18,28,0.06);
+      box-shadow: none;
+    }
+
+    /* -------------------------
+       layout: grid content
+       ------------------------- */
+    .hr { height:1px; background:linear-gradient(90deg, transparent, rgba(12,18,28,0.04), transparent); margin:18px 0; }
+
+    .grid {
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:18px;
+    }
+    @media (min-width:920px) {
+      .grid { grid-template-columns: 1fr 360px; align-items:start; }
+    }
+
+    .panel {
+      background:linear-gradient(180deg,#ffffff,#fbfdff);
+      border-radius:12px;
+      padding:16px;
+      border:1px solid rgba(10,18,30,0.03);
+      box-shadow:var(--shadow-2);
+    }
+    .panel h3 { margin:0 0 10px 0; font-size:1.05rem; color:var(--text); }
+
+    /* steps */
+    .steps { display:flex; flex-direction:column; gap:12px; }
+    .step {
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding:12px;
+      border-radius:10px;
+      transition: background .12s ease, transform .12s ease;
+    }
+    .step:hover { background:var(--accent-weak); transform: translateY(-4px); }
+    .badge {
+      min-width:44px;
+      height:44px;
+      border-radius:10px;
+      display:inline-grid;
+      place-items:center;
+      background:linear-gradient(180deg,#fff,#f2f7ff);
+      color:var(--accent-2);
+      font-weight:800;
+      border:1px solid rgba(10,132,255,0.08);
+      font-size:1rem;
+    }
+    .step .text { font-size:0.96rem; color:var(--text); }
+    .step .text p { margin:6px 0 0 0; color:var(--muted); font-size:0.92rem; }
+
+    /* IP lists */
+    .ip-list { list-style:none; padding:0; margin:6px 0 0 0; display:grid; gap:10px; grid-template-columns:repeat(1,minmax(0,1fr)); }
+    @media (min-width:520px) { .ip-list { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+    .ip-list li {
+      background: linear-gradient(180deg,#fbfdff,#ffffff);
+      padding:10px 12px;
+      border-radius:8px;
+      font-family:var(--mono);
+      font-size:0.92rem;
+      color:var(--text);
+      border:1px solid rgba(10,18,30,0.03);
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .ip-list li:hover { transform: translateY(-4px); box-shadow: 0 10px 26px rgba(12,18,28,0.06); }
+
+    /* advantages */
+    .advantages { display:grid; gap:12px; grid-template-columns:1fr; }
+    @media (min-width:720px) { .advantages { grid-template-columns:repeat(2,1fr); } }
+    .adv {
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding:12px;
+      border-radius:10px;
+      border:1px solid rgba(10,18,30,0.03);
+      background:linear-gradient(180deg,#fff,#fbfdff);
+    }
+    .adv .icon {
+      width:48px;height:48px;border-radius:10px;
+      display:inline-grid;place-items:center;
+      background:linear-gradient(180deg,rgba(10,132,255,0.06),rgba(10,132,255,0.02));
+      color:var(--accent-2);
+      font-weight:800;
+      flex-shrink:0;
+    }
+    .adv p { margin:0; color:var(--muted); font-size:0.92rem; }
+
+    /* code sample */
+    .code-sample {
+      font-family:var(--mono);
+      font-size:0.88rem;
+      background:linear-gradient(180deg,#fbfdff,#ffffff);
+      padding:12px;
+      border-radius:8px;
+      border:1px solid rgba(10,18,30,0.03);
+      white-space:pre-wrap;
+      line-height:1.45;
+    }
+
+    /* notice */
+    .notice { padding-left:18px; margin:8px 0 0; color:var(--muted); }
+    .notice li { margin-bottom:8px; }
+
+    .highlight { color:var(--danger); font-weight:700; }
+
+    /* footer - modern compact */
+    footer.footer {
+      margin-top:22px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .foot-links { display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+    .foot-links a { color:var(--muted); text-decoration:none; font-weight:600; }
+    .foot-links a:hover { color:var(--accent-2); text-decoration:underline; }
+
+    /* small screens adjustments */
+    @media (max-width:720px){
+      .endpoint { width:100%; justify-content:space-between; }
+      .cta { flex-wrap:wrap; }
+      .hero { gap:12px; }
+      .logo { width:48px; height:48px; border-radius:10px; }
+    }
+
+    /* accessible focus */
+    :focus { outline: 3px solid rgba(10,132,255,0.14); outline-offset: 3px; border-radius:8px; }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Gemini API 镜像网关</h1>
-        <p class="subtitle">稳定、快速地访问 Google Gemini API</p>
-        
-        <p>欢迎使用 Gemini API 镜像网关服务。通过此服务，您可以更稳定、更快速地访问 Google Gemini API。</p>
-        
-        <h2>API 镜像网关地址</h2>
-        <div class="api-url">
-            https://gemini.xinnew.top/
+  <div class="wrap" role="document">
+    <!-- Header -->
+    <header class="site-header" aria-label="页面头部">
+      <div class="brand" aria-hidden="false">
+        <div class="logo" aria-hidden="true">
+          <!-- SVG logo: 可以替换为你的公司 SVG -->
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0" stop-color="#0A84FF"/>
+                <stop offset="1" stop-color="#005ECB"/>
+              </linearGradient>
+            </defs>
+            <rect width="48" height="48" rx="10" fill="url(#g1)" opacity="0.12"></rect>
+            <path d="M14 32 L24 14 L34 32 Z" fill="url(#g1)"></path>
+          </svg>
         </div>
-        
-        <!-- 可添加使用流程图的区域 -->
-        <div class="image-section">
-            <h3>使用流程</h3>
-            </div>
-            <img src="01.png" alt="使用流程图" style="max-width: 100%; height: auto; border-radius: 8px;">
+        <div class="site-title">
+          <h1>Gemini API 镜像网关</h1>
+          <p>稳定 · 快速 · 兼容 Google Gemini</p>
         </div>
-        
-        <h2>使用方法</h2>
-        <div class="steps">
-            <div class="step">
-                <h3><span class="step-number">1</span> 获取 Gemini API 密钥</h3>
-                <p>访问 <a href="https://aistudio.google.com/" target="_blank">Google AI Studio</a> 申请您的 Gemini API 密钥</p>
+      </div>
+      <div>
+        <div class="header-tag" aria-hidden="true">IPv4 / IPv6 双栈</div>
+      </div>
+    </header>
+
+    <!-- Main card -->
+    <main class="card" role="main" aria-labelledby="page-title">
+      <div class="hero" aria-hidden="false">
+        <div class="hero-left">
+          <h2 id="page-title">稳定快速访问 Google Gemini</h2>
+          <p class="muted">免费的 Gemini API 镜像网关，方便开发者在受限网络环境下稳定调用 Google Gemini。兼容 OpenAI/Gemini 格式，便于无缝集成与迁移。</p>
+
+          <div>
+            <div class="endpoint" role="status" aria-live="polite" id="endpointBox">
+              <span class="url" id="endpointText">https://gemini.xinnew.top/</span>
+              <button class="btn" style="margin-left:auto" onclick="copyEndpoint()" aria-label="复制地址">复制地址</button>
             </div>
-            
-            <div class="step">
-                <h3><span class="step-number">2</span> 配置 API 网关</h3>
-                <p>将以下地址设置为您的 API 端点：</p>
-                <div class="api-url">https://gemini.xinnew.top/</div>
+
+            <div class="cta" style="margin-top:12px;">
+              <a class="btn btn-ghost" href="#usage">使用说明</a>
+              <button class="btn secondary" onclick="openDocs()">查看文档</button>
             </div>
-            
-            <div class="step">
-                <h3><span class="step-number">3</span> 整合到您的应用</h3>
-                <p>您可以在任何支持 Gemini 和 OpenAI API 格式的终端或 Web 应用中使用：</p>
-                <ul>
-                    <li>网页应用</li>
-                    <li>移动应用</li>
-                    <li>桌面客户端</li>
-                    <li>命令行工具</li>
+          </div>
+        </div>
+
+        <div style="width:220px;">
+          <div style="background:linear-gradient(180deg,#fff,#fbfdff); border-radius:12px; padding:14px; text-align:center; box-shadow:var(--shadow-2); border:1px solid rgba(10,18,30,0.03);">
+            <div style="font-weight:700; color:var(--text); font-size:0.96rem;">多节点部署</div>
+            <div style="margin-top:8px; color:var(--muted); font-size:0.92rem;">智能路由 · 智能选路</div>
+            <div style="margin-top:12px;">
+              <span style="display:inline-block; padding:6px 10px; border-radius:999px; background:rgba(10,132,255,0.06); color:var(--accent-2); font-weight:700; font-size:0.85rem;">稳定</span>
+              <span style="display:inline-block; padding:6px 10px; border-radius:999px; margin-left:8px; background:rgba(3,155,119,0.06); color:#037b5a; font-weight:700; font-size:0.85rem;">高速</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hr" aria-hidden="true"></div>
+
+      <div class="grid" role="region" aria-label="主要内容">
+        <!-- Left -->
+        <section class="panel" id="usage" aria-labelledby="usage-title">
+          <h3 id="usage-title">使用方法</h3>
+
+          <div class="steps" style="margin-top:12px;">
+            <div class="step" aria-label="步骤 一：获取密钥">
+              <div class="badge">1</div>
+              <div class="text">
+                <div style="font-weight:700">获取 Gemini API 密钥</div>
+                <p>前往 <a href="https://aistudio.google.com/" target="_blank" rel="noopener noreferrer" class="inline">Google AI Studio</a> 申请并获取您的 Gemini API 密钥。</p>
+              </div>
+            </div>
+
+            <div class="step" aria-label="步骤 二：配置网关">
+              <div class="badge">2</div>
+              <div class="text">
+                <div style="font-weight:700">配置 API 网关</div>
+                <p>将 API 端点配置为：</p>
+                <div class="code-sample" style="margin-top:8px;">https://gemini.xinnew.top/</div>
+              </div>
+            </div>
+
+            <div class="step" aria-label="步骤 三：集成使用">
+              <div class="badge">3</div>
+              <div class="text">
+                <div style="font-weight:700">整合到您的应用</div>
+                <p>支持网页、移动、桌面、CLI、聊天机器人与自动化脚本等多种接入方式。</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="height:14px"></div>
+
+          <h3 style="margin-top:8px">镜像服务器 IP 地址</h3>
+          <div style="margin-top:8px">
+            <div style="display:grid; gap:12px;">
+              <div>
+                <div style="font-weight:700; margin-bottom:6px;">IPv4 地址</div>
+                <ul class="ip-list" aria-label="IPv4 列表">
+                  <li>104.21.48.1 — US</li>
+                  <li>104.21.96.1 — CA</li>
+                  <li>104.21.16.1 — CA</li>
+                  <li>104.21.32.1 — US</li>
+                  <li>104.21.112.1 — US</li>
                 </ul>
+              </div>
+
+              <div>
+                <div style="font-weight:700; margin-bottom:6px;">IPv6 地址</div>
+                <ul class="ip-list" aria-label="IPv6 列表">
+                  <li>2606:4700:3030::6815:3001 — US</li>
+                  <li>2606:4700:3030::6815:1001 — US</li>
+                  <li>2606:4700:3030::6815:7001 — US</li>
+                  <li>2606:4700:3030::6815:6001 — US</li>
+                  <li>2606:4700:3030::6815:5001 — US</li>
+                </ul>
+              </div>
             </div>
+          </div>
+
+          <div style="height:16px"></div>
+
+          <h3>注意事项</h3>
+          <ul class="notice" style="margin-top:8px;">
+            <li>请妥善保管您的 API 密钥，避免在公开仓库或前端代码中暴露。</li>
+            <li>本镜像网关兼容 Google Gemini API 格式；使用时请遵守 Google 的 <span class="highlight">API 使用条款</span>。</li>
+            <li>如遇服务异常，请通过官网技术支持页面联系管理员。</li>
+            <li>建议对关键密钥进行离线备份并合理控制并发请求，避免短时间内高频调用。</li>
+          </ul>
+        </section>
+
+        <!-- Right aside -->
+        <aside class="panel" aria-labelledby="aside-title">
+          <h3 id="aside-title">技术优势</h3>
+
+          <div class="advantages" style="margin-top:12px;">
+            <div class="adv">
+              <div class="icon">⛓</div>
+              <div>
+                <div style="font-weight:700">稳定访问</div>
+                <p>多节点 + 智能路由，提升可用性并降低单点风险。</p>
+              </div>
+            </div>
+
+            <div class="adv">
+              <div class="icon">⚡</div>
+              <div>
+                <div style="font-weight:700">高速响应</div>
+                <p>网络路径与缓存策略优化，减少延迟和等待时间。</p>
+              </div>
+            </div>
+
+            <div class="adv">
+              <div class="icon">🔁</div>
+              <div>
+                <div style="font-weight:700">完全兼容</div>
+                <p>兼容 Google Gemini / OpenAI API，减少二次开发成本。</p>
+              </div>
+            </div>
+
+            <div class="adv">
+              <div class="icon">🔒</div>
+              <div>
+                <div style="font-weight:700">安全可靠</div>
+                <p>TLS 全链路加密，保护密钥与传输隐私。</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="height:12px"></div>
+
+          <h3 style="margin-top:6px">快速示例</h3>
+          <div class="code-sample" style="margin-top:8px;">
+POST https://gemini.xinnew.top/v1/models/gemini:predict
+Authorization: Bearer &lt;YOUR_KEY&gt;
+Content-Type: application/json
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <!-- Footer: modern compact -->
+    <footer class="footer" role="contentinfo" aria-label="页脚">
+      <div class="footer-inner" style="margin-top:14px;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="font-weight:700; font-size:0.95rem; color:var(--text)">XSEC</div>
+          <div style="color:var(--muted)">海口希灵赛斯网络科技有限责任公司 · © 2025</div>
         </div>
 
-<h2>镜像服务器IP地址及归属地列表</h2>
-<div class="steps">
-    <div class="step">
-        <h3><span class="step-number">IPv4</span> IPv4地址列表</h3>
-        <ul id="ipv4-list">
-            <!-- IPv4地址将在此处添加 -->
-            <li>104.21.48.1 - US</li>
-            <li>104.21.96.1 - CA</li>
-            <li>104.21.16.1 - CA</li>
-            <li>104.21.32.1 - US</li>
-            <li>104.21.112.1 - US</li>
-        </ul>
-    </div>
+        <nav class="foot-links" aria-label="页脚链接">
+          <a href="/leadership/about.html">关于我们</a>
+          <a href="/careers/cn/index.html">职业机会</a>
+          <a href="https://sec.hn.cn">更新动态</a>
+          <a href="https://blog.csdn.net/qq_73252299" target="_blank" rel="noopener noreferrer">技术博客</a>
+          <a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" target="_blank" rel="noopener noreferrer">支持中心</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
 
-    <div class="step">
-        <h3><span class="step-number">IPv6</span> IPv6地址列表</h3>
-        <ul id="ipv6-list">
-            <!-- IPv6地址将在此处添加 -->
-            <li>2606:4700:3030::6815:3001 - US</li>
-            <li>2606:4700:3030::6815:1001 - US</li>
-            <li>2606:4700:3030::6815:7001 - US</li>
-            <li>2606:4700:3030::6815:6001 - US</li>
-            <li>2606:4700:3030::6815:5001 - US</li>
-        </ul>
-    </div>
-</div>
-        </div>
-    </div>
-        <h2>注意事项</h2>
-        <ul>
-            <li>请妥善保管您的 API 密钥，不要在公开代码中暴露</li>
-            <li>本镜像网关完全兼容 Google Gemini API 格式</li>
-            <li>使用时请遵守 Google 的 <span class="highlight">API 使用条款</span></li>
-            <li>如遇到任何问题，请联系首页技术支持</li>
-        </ul>
+  <!-- Scripts -->
+  <script>
+    /* 复制端点到剪贴板，带提示 */
+    function copyEndpoint(){
+      const text = document.getElementById('endpointText').textContent.trim();
+      if(!text) return toast('没有可复制的地址');
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(()=> toast('已复制到剪贴板'));
+      } else {
+        fallbackCopy(text);
+      }
+    }
+    function fallbackCopy(t){
+      const ta = document.createElement('textarea');
+      ta.value = t;
+      ta.style.position='fixed'; ta.style.left='-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); toast('已复制到剪贴板'); } catch(e){ toast('复制失败，请手动复制'); }
+      document.body.removeChild(ta);
+    }
 
+    /* 简单 toast */
+    function toast(msg){
+      if(document.getElementById('simple-toast')) return;
+      const el = document.createElement('div');
+      el.id = 'simple-toast';
+      el.textContent = msg;
+      Object.assign(el.style, {
+        position:'fixed',
+        right:'20px',
+        bottom:'28px',
+        padding:'10px 14px',
+        background:'#0b1220',
+        color:'#fff',
+        borderRadius:'10px',
+        boxShadow:'0 10px 30px rgba(2,6,23,0.35)',
+        zIndex:9999,
+        fontSize:'13px',
+        opacity: '1',
+      });
+      document.body.appendChild(el);
+      setTimeout(()=> { el.style.transition='opacity .3s ease'; el.style.opacity='0'; setTimeout(()=> el.remove(),300); }, 1400);
+    }
+
+    /* 附加交互：打开文档（示例） */
+    function openDocs(){
+      // 若有自有文档页面可以直接跳转，此处示例打开站点首页
+      window.open('https://www.sec.hn.cn/public/gemini/gemini.html', '_blank', 'noopener');
+    }
+
+    // Smooth in-page hash scroll for browsers that support it
+    if ('scrollBehavior' in document.documentElement.style) {
+      document.querySelectorAll('a[href^="#"]').forEach(a=>{
+        a.addEventListener('click', (e)=>{
+          const t = document.querySelector(a.getAttribute('href'));
+          if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'center'}); }
+        });
+      });
+    }
+  </script>
 </body>
 </html>

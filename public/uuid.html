@@ -1,11 +1,64 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PVCDX1CZK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0PVCDX1CZK');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UUID 生成器</title>
+    <title>UUID 生成器 - 在线批量生成唯一标识符</title>
+    <meta name="description" content="免费的在线UUID生成器工具，支持单个和批量生成UUID（通用唯一识别码）。适用于软件开发、数据库设计、分布式系统等场景，简单易用且高效。">
+    <meta name="keywords" content="UUID生成器, 在线UUID工具, 批量生成UUID, 唯一标识符, GUID生成器, 软件开发工具, 数据库设计工具, 分布式系统">
+    <meta name="author" content="海口希灵赛斯网络科技有限责任公司">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.sec.hn.cn/public/uuid.html">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="UUID 生成器 - 在线批量生成唯一标识符">
+    <meta property="og:description" content="免费的在线UUID生成器工具，支持单个和批量生成UUID（通用唯一识别码）。适用于软件开发、数据库设计、分布式系统等场景，简单易用且高效。">
+    <meta property="og:url" content="https://www.sec.hn.cn/public/uuid.html">
+    <meta property="og:image" content="https://www.sec.hn.cn/source/index_imgs/index_01.jpg">
+    <meta property="og:site_name" content="海口希灵赛斯网络科技有限责任公司">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="UUID 生成器 - 在线批量生成唯一标识符">
+    <meta name="twitter:description" content="免费的在线UUID生成器工具，支持单个和批量生成UUID（通用唯一识别码）。适用于软件开发、数据库设计、分布式系统等场景，简单易用且高效。">
+    <meta name="twitter:image" content="https://www.sec.hn.cn/source/index_imgs/index_01.jpg">
+    
+    <!-- 结构化数据 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "UUID 生成器",
+      "description": "免费的在线UUID生成器工具，支持单个和批量生成UUID（通用唯一识别码）。适用于软件开发、数据库设计、分布式系统等场景，简单易用且高效。",
+      "url": "https://www.sec.hn.cn/public/uuid.html",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "CNY"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "海口希灵赛斯网络科技有限责任公司",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.sec.hn.cn/source/imgs/logo.png"
+        }
+      }
+    }
+    </script>
 
     <!-- 配置Tailwind自定义颜色和字体 -->
     <script>
@@ -62,8 +115,8 @@
         <div class="w-full max-w-2xl">
             <!-- 说明文字 -->
             <div class="text-center mb-10">
-                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-semibold mb-4 text-dark">生成 UUID 快速简单</h2>
-                <p class="text-neutral text-balance max-w-lg mx-auto">UUID（通用唯一识别码）是一种用于标识信息的128位数字，可在分布式系统中安全使用。</p>
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-semibold mb-4 text-dark">在线UUID生成器 - 快速生成唯一标识符</h2>
+                <p class="text-neutral text-balance max-w-lg mx-auto">UUID（通用唯一识别码）是一种用于标识信息的128位数字，可在分布式系统中安全使用。我们的免费工具支持单个和批量生成UUID，适用于软件开发、数据库设计等场景。</p>
             </div>
 
             <!-- UUID 显示区域 -->
@@ -78,7 +131,7 @@
                         <i class="fa fa-refresh mr-2"></i> 生成 UUID
                     </button>
                     <button id="copy-btn" class="flex-1 bg-white border border-gray-200 hover:bg-apple-hover text-dark py-3 px-4 rounded-lg font-medium transition-apple flex items-center justify-center">
-                        <i class="fa fa-copy mr-2"></i> 复制
+                        <i class="fa fa-copy mr-2"></i> 复制 UUID
                     </button>
                 </div>
 
@@ -90,7 +143,7 @@
 
             <!-- 批量生成选项 -->
             <div class="bg-white rounded-xl shadow-apple p-6 mb-8 transition-apple hover:shadow-apple-hover">
-                <h3 class="font-medium text-lg mb-4">批量生成</h3>
+                <h3 class="font-medium text-lg mb-4">批量生成UUID</h3>
                 <div class="flex items-center gap-3">
                     <label for="count" class="text-neutral whitespace-nowrap">生成数量:</label>
                     <input type="number" id="count" min="1" max="50" value="1"
@@ -112,7 +165,16 @@
                 <h3 class="font-medium text-lg mb-3">关于 UUID</h3>
                 <p class="text-neutral text-sm mb-3">UUID 是一个128位长的数字，通常以36个字符的字符串表示，格式为8-4-4-4-12，例如：</p>
                 <p class="font-mono text-xs md:text-sm bg-gray-50 p-2 rounded text-gray-700 mb-3">550e8400-e29b-41d4-a716-446655440000</p>
-                <p class="text-neutral text-sm">UUID 可以保证在空间和时间上的唯一性，无需中央注册机构即可生成。</p>
+                <p class="text-neutral text-sm">UUID 可以保证在空间和时间上的唯一性，无需中央注册机构即可生成。广泛应用于软件开发、数据库主键、分布式系统标识等场景。</p>
+                
+                <h4 class="font-medium text-md mt-4 mb-2">UUID 应用场景</h4>
+                <ul class="text-neutral text-sm list-disc pl-5 space-y-1">
+                    <li>数据库记录的唯一标识符</li>
+                    <li>分布式系统中的对象标识</li>
+                    <li>软件开发中的临时文件命名</li>
+                    <li>Web应用中的会话标识</li>
+                    <li>API密钥和令牌生成</li>
+                </ul>
             </div>
         </div>
     </main>
@@ -144,7 +206,7 @@
                 <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
                     <h4>资源</h4>
                     <ul class="list-unstyled">
-                        <li><a href="/newsroom/a/index.html">更新动态</a></li>
+                        <li><a href="https://sec.hn.cn">更新动态</a></li>
                         <li><a href="https://blog.csdn.net/qq_73252299?spm=1000.2115.3001.5343" target="_blank" rel="noopener noreferrer">技术博客</a></li>
                         <li><a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af">支持中心</a></li>
                     </ul>

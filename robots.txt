@@ -6,4 +6,18 @@ Allow: /
 Host: www.sec.hn.cn
 
 # Sitemaps
-Sitemap: /sitemap.xml
+Sitemap: https://www.sec.hn.cn/sitemap.xml
+
+# Crawl-delay for specific bots (optional)
+# Crawl-delay: 10
+
+# Specific directories
+Allow: /business/
+Allow: /careers/
+Allow: /leadership/
+Allow: /newsroom/
+Allow: /public/
+
+# Disallow certain file types (if any)
+# Disallow: /*.pdf$
+# Disallow: /*.doc$
