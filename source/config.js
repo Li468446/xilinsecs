@@ -9,4 +9,4 @@ const siteConfig = {
 };
 
 // 使配置在全局可访问
-window.siteConfig = siteConfig;
+window.siteConfig = siteConfig; 
