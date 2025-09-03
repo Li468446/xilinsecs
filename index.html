@@ -137,7 +137,15 @@
                                 <li><a class="dropdown-item" href="business/index.html#innovation">科技创新</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="public/index.html">公共服务</a></li>
+                        <li class="nav-item dropdown" id="serviceDropdownItem">
+                            <a class="nav-link dropdown-toggle" href="#" id="serviceDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                服  务
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="serviceDropdown">
+                                <li><a class="dropdown-item" href="business/c/index.html">客户服务</a></li>
+                                <li><a class="dropdown-item" href="public/index.html">公共服务</a></li>
+                            </ul>
+                        </li>
                         <li class="nav-item"><a class="nav-link" href="https://se-xl-services.xinnew.top/">资源监测</a></li>
                         <li class="nav-item"><a class="nav-link" href="https://blog.csdn.net/qq_73252299?spm=1011.2124.3001.5343">技术频道</a></li>
                         <li class="nav-item dropdown" id="aboutDropdownItem">
@@ -381,10 +389,12 @@
 
         setupDropdown('businessDropdownItem','businessDropdown');
         setupDropdown('aboutDropdownItem','aboutDropdown');
+        setupDropdown('serviceDropdownItem','serviceDropdown');
 
         // 滚动透明度和Logo缩放
         var navbar = document.querySelector('.navbar');
         var navLinks = document.querySelectorAll('.nav-link');
+
         var dropdownMenus = document.querySelectorAll('.dropdown-menu');
         var isScrolling = false;
 
@@ -456,7 +466,7 @@
     <!-- ===================== 头部模块（视频背景 + 弹性滚动渐隐 + 渐变色动态 + 微动） ===================== -->
     <section class="ezy__header22_9Wbn5LJN">
         <!-- 视频背景 -->
-        <!-- 视频背景 暂时借用万事达官网视频，如有冒犯，请联系Email:xuzhongxin@sec.hn.cn 我们会第一时间更换，在此致谢！ -->
+        <!-- 视频背景 暂时借用万事达官网视频，如有冒犯，请联系Email:xuzhongxin@sec.hn.cn 我们会第一时间更换，在此致谢万事达！ -->
         <video autoplay loop muted playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-video-orientation="portraint" preload="auto" controlslist="nodownload" disablepictureinpicture class="video-bg" id="header-video">
             <source src="source/video/index_01.mp4" type="video/mp4">
             <source src="source/video/index_01.webm" type="video/webm">
@@ -648,7 +658,7 @@
                 }).catch(error => {
                     console.log('微信浏览器视频播放失败:', error);
                     // 在微信中添加poster属性作为后备方案
-                    video.setAttribute('poster', 'source/index_imgs/index_01.jpg');
+                    video.setAttribute('poster', 'source/index_imgs/wx.jpg');
                 });
             }, 300);
         } 
@@ -2071,6 +2081,19 @@
         .footer ul li a:hover {
             color: #0a84ff; /* 苹果蓝色高亮 */
             transform: translateX(4px);
+        }
+
+        /* 修改备案信息链接样式，去除悬停高亮效果 */
+        .footer-bottom a {
+            color: #d1d1d6;
+            text-decoration: none;
+            font-size: 13px;
+            transition: none;
+        }
+
+        .footer-bottom a:hover {
+            color: #d1d1d6;
+            transform: none;
         }
 
         .footer-bottom {

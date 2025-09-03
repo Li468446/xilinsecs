@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#007AFF">
+  <meta name="robots" content="index, follow">
+  <meta name="keywords" content="客户服务, 在线客服, 产品文档, 系统状态, 账单查询, 社区论坛, 开发者API, 希灵赛斯">
+  <link rel="canonical" href="https://www.sec.hn.cn/business/c/">
+  <title>客户服务导航 - 海口希灵赛斯网络科技有限责任公司</title>
+  <link rel="icon" href="/source/imgs/favicon.png">
+  <link rel="apple-touch-icon" href="/source/imgs/logo.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="海口希灵赛斯客户服务导航页面，提供常见问题解答、在线客服支持、产品文档查阅、系统状态监控、账单与发票管理、社区论坛交流、开发者API接口等一站式客户服务入口。" />
+  <meta property="og:title" content="客户服务导航 - 海口希灵赛斯网络科技有限责任公司" />
+  <meta property="og:description" content="海口希灵赛斯客户服务导航页面，提供常见问题解答、在线客服支持、产品文档查阅、系统状态监控、账单与发票管理、社区论坛交流、开发者API接口等一站式客户服务入口。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://www.sec.hn.cn/source/imgs/logo.png" />
+  <meta property="og:url" content="https://www.sec.hn.cn/business/c/" />
+  <meta property="og:site_name" content="海口希灵赛斯网络科技有限责任公司" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="客户服务导航 - 海口希灵赛斯网络科技有限责任公司" />
+  <meta name="twitter:description" content="海口希灵赛斯客户服务导航页面，提供常见问题解答、在线客服支持、产品文档查阅、系统状态监控、账单与发票管理、社区论坛交流、开发者API接口等一站式客户服务入口。" />
+  <meta name="twitter:image" content="https://www.sec.hn.cn/source/imgs/logo.png" />
+  <meta name="author" content="海口希灵赛斯网络科技有限责任公司" />
+  <!-- Tailwind CDN（Play） -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind 配置：启用 backdropFilter、lineClamp（play CDN 支持有限），我们补充必要的 util
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            glass: 'rgba(255,255,255,0.06)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* 全局样式与苹果风动效 */
+    :root{
+      --card-bg: rgba(255,255,255,0.04);
+      --card-border: rgba(255,255,255,0.10);
+      --glass-shadow: 0 10px 30px rgba(2,6,23,0.6);
+    }
+
+    html,body{height:100%;}
+    body{
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'SF Pro Text', 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: linear-gradient(135deg, #051330 0%, #2b0f35 50%, #501b3a 100%);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-y:auto;
+    }
+
+    /* 漂浮渐变圆形背景 */
+    .bg-orbs{position:fixed;inset:0;pointer-events:none;z-index:-10}
+    .orb{
+      position:absolute;border-radius:50%;filter:blur(60px);opacity:0.16;transform:translateZ(0);
+    }
+    .orb.a{width:560px;height:560px;left:-120px;top:-120px;background:radial-gradient(circle at 30% 30%, rgba(255,255,255,0.06), rgba(255,255,255,0.00));}
+    .orb.b{width:460px;height:460px;right:-120px;bottom:-120px;background:radial-gradient(circle at 70% 70%, rgba(255,255,255,0.04), rgba(255,255,255,0.00));}
+
+    /* 渐变动画背景（轻微移动） */
+    @keyframes floatOrb {
+      0%{transform: translateY(0) scale(1)}
+      50%{transform: translateY(-16px) scale(1.02)}
+      100%{transform: translateY(0) scale(1)}
+    }
+    .orb{animation: floatOrb 10s ease-in-out infinite}
+
+    /* 卡片样式（毛玻璃） */
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(12px) saturate(120%);
+      -webkit-backdrop-filter: blur(12px) saturate(120%);
+      box-shadow: var(--glass-shadow);
+      transition: transform 240ms cubic-bezier(.2,.9,.3,1), box-shadow 240ms ease, background 240ms ease;
+    }
+    .card:hover{
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 30px 60px rgba(2,6,23,0.7);
+    }
+
+    /* 光泽伪元素 */
+    .card::after{
+      content:"";position:absolute;inset:0;pointer-events:none;border-radius:1rem;background:linear-gradient(120deg, rgba(255,255,255,0.06), rgba(255,255,255,0.01));mix-blend-mode:overlay;opacity:0;transition:opacity 300ms ease, transform 400ms ease;transform:translateY(-12px) scale(1.06);
+    }
+    .card:hover::after{opacity:1;transform:translateY(0) scale(1)}
+
+    /* 卡片底部小标签 */
+    .pill{background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));padding:.25rem .5rem;border-radius:999px;border:1px solid rgba(255,255,255,0.06);font-size:.75rem}
+
+    /* 搜索输入聚焦风格 */
+    .search-input:focus{outline:none;box-shadow:0 6px 20px rgba(56,189,248,0.12);}
+
+    /* 添加搜索输入框默认样式 */
+    .search-input {
+      color: #000000; /* 黑色文字，确保在浅色背景上清晰可见 */
+    }
+
+    /* 入口动画 */
+    .fade-in-up{opacity:0;transform:translateY(12px);animation:fadeInUp .6s cubic-bezier(.2,.9,.3,1) forwards}
+    @keyframes fadeInUp{to{opacity:1;transform:none}}
+
+    /* 响应式调整小屏时卡片高度 */
+    @media (max-width:640px){.card{height:120px}}
+  </style>
+</head>
+<body>
+  <!-- 背景装饰球 -->
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb a"></div>
+    <div class="orb b"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 py-12">
+    <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-8">
+      <div>
+        <h1 class="text-3xl font-semibold">客户服务导航</h1>
+        <p class="mt-1 text-slate-300">点击任意卡片将打开对应页面（新标签）。具备毛玻璃视觉与苹果风动效。</p>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <label class="relative">
+          <svg class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+            <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+            <circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></circle>
+          </svg>
+          <input id="search" class="search-input pl-11 pr-3 py-2 w-64 rounded-lg bg-white/6 text-slate-100 placeholder:text-slate-400 border border-white/8" placeholder="搜索服务（示例：文档、客服）"/>
+        </label>
+      </div>
+    </header>
+
+    <main>
+      <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+
+      <div id="no-result" class="mt-12 text-center text-slate-300 hidden">未找到匹配项。</div>
+
+      <footer class="mt-10 text-sm text-slate-400"><code>没找到需要的服务？可以点击在线客服提交反馈</code></footer>
+    </main>
+  </div>
+
+  <script>
+    // 卡片数据：编辑这个数组来自定义你的导航入口
+    const cards = [
+      { id:'faq', title:'常见问题 (FAQ)开发中', desc:'快速查找常见问题和解决步骤', url:'https://example.com/faq', tag:'文档' },
+      { id:'support', title:'在线客服', desc:'与我们的支持团队实时沟通', url:'https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af', tag:'客服' },
+      { id:'docs', title:'产品文档 - 开发中', desc:'查看开发者文档和集成说明', url:'https://example.com/docs', tag:'文档' },
+      { id:'status', title:'系统状态 - 开发中', desc:'查看服务运行状态与维护公告', url:'https://example.com/docs', tag:'监控' },
+      { id:'billing', title:'账单与发票', desc:'查看账单记录、下载发票与支付信息', url:'https://www.kdocs.cn/etapps/query/q/3xMjDQLw', tag:'账务' },
+      { id:'community', title:'产品订阅查询', desc:'客户可自行查询已购产品信息', url:'https://www.kdocs.cn/etapps/query/q/f2jfAF1M', tag:'社区' },
+      { id:'download', title:'社区与论坛 - 开发中', desc:'加入社区讨论，查找使用技巧', url:'https://example.com/downloads', tag:'下载' },
+      { id:'api', title:'开发者 API - 开发中', desc:'API 调用示例与 SDK 文档', url:'https://example.com/api', tag:'开发' }
+    ];
+
+    const grid = document.getElementById('grid');
+    const search = document.getElementById('search');
+    const noResult = document.getElementById('no-result');
+
+    // icon helper: 返回一个 SVG 字符串（可按需替换）
+    function getIconSVG(name){
+      const icons = {
+        doc:`<svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M6 2h7l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z" fill="currentColor"/></svg>`,
+        chat:`<svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M20 2H4c-1.1 0-2 .9-2 2v14l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" fill="currentColor"/></svg>`,
+        status:`<svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2zm1 10H7v-2h6V6l5 4-5 4v2z" fill="currentColor"/></svg>`,
+        default:`<svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden><circle cx="12" cy="12" r="10" fill="currentColor"/></svg>`
+      };
+      if(name==='docs' || name==='api' || name==='doc') return icons.doc;
+      if(name==='support' || name==='chat') return icons.chat;
+      if(name==='status') return icons.status;
+      return icons.default;
+    }
+
+    // 渲染卡片
+    function render(list){
+      grid.innerHTML = '';
+      if(!list.length){ noResult.classList.remove('hidden'); return } else { noResult.classList.add('hidden') }
+
+      list.forEach((c, idx)=>{
+        const el = document.createElement('a');
+        el.className = 'relative block card rounded-2xl p-5 h-40 overflow-hidden text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 fade-in-up';
+        el.href = c.url;
+        el.target = '_blank';
+        el.rel = 'noopener noreferrer';
+        el.setAttribute('aria-label', c.title + '，在新标签页打开');
+        el.tabIndex = 0;
+
+        // inner HTML
+        el.innerHTML = `
+          <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute -top-8 -left-10 w-48 h-48 rounded-full blur-xl opacity-10 bg-white/40 transform rotate-45"></div>
+            <div class="absolute -bottom-8 -right-12 w-36 h-36 rounded-full blur-lg opacity-8 bg-white/20"></div>
+          </div>
+
+          <div class="flex h-full flex-col justify-between relative z-10">
+            <div class="flex items-start gap-4">
+              <div class="rounded-md p-2 bg-white/6 ring-1 ring-white/6 w-12 h-12 flex items-center justify-center text-sky-300">${getIconSVG(c.id)}</div>
+              <div class="flex-1 min-w-0">
+                <h3 class="text-lg font-semibold leading-tight truncate">${c.title}</h3>
+                <p class="mt-1 text-sm text-slate-300 line-clamp-2">${c.desc}</p>
+              </div>
+            </div>
+            <div class="flex items-center justify-between text-sm text-slate-300">
+              <span class="pill">${c.tag||''}</span>
+              <span class="flex items-center gap-2 opacity-90">立即访问<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M14 3h7v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 14L21 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 21H3V3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </div>
+        `;
+
+        // 小的 entrance stagger
+        el.style.animationDelay = (idx * 40) + 'ms';
+
+        // keyboard support: Enter 打开
+        el.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ window.open(c.url,'_blank') } });
+
+        grid.appendChild(el);
+      })
+    }
+
+    // 初次渲染
+    render(cards);
+
+    // 简单搜索功能
+    search.addEventListener('input', (e)=>{
+      const q = e.target.value.trim().toLowerCase();
+      const filtered = cards.filter(c => (c.title + ' ' + c.desc + ' ' + (c.tag||'')).toLowerCase().includes(q));
+      render(filtered);
+    });
+
+    // 可扩展点：你可以在这里加入 click 事件上报埋点，比如 mixpanel、gtag 等
+  </script>
+
+  <!-- 添加页脚 -->
+  <footer class="footer">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="md:col-span-1">
+          <h3>海口希灵赛斯</h3>
+          <p>专业的信息化解决方案供应商，致力于为客户提供高效、安全的数字化解决方案。</p>
+        </div>
+        <div class="md:col-span-1">
+          <h4>解决方案</h4>
+          <ul>
+            <li><a href="/business/index.html#user-focused">面向用户</a></li>
+            <li><a href="/business/index.html#enterprise">面向企业</a></li>
+            <li><a href="/business/index.html#innovation">科技创新</a></li>
+          </ul>
+        </div>
+        <div class="md:col-span-1">
+          <h4>客户服务</h4>
+          <ul>
+            <li><a href="/business/c/index.html">客户服务导航</a></li>
+            <li><a href="/public/index.html">公共服务</a></li>
+          </ul>
+        </div>
+        <div class="md:col-span-1">
+          <h4>联系我们</h4>
+          <ul>
+            <li><a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" target="_blank" rel="noopener noreferrer">客服咨询</a></li>
+            <li><a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" target="_blank" rel="noopener noreferrer">商务合作</a></li>
+            <li><a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" target="_blank" rel="noopener noreferrer">客户服务</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 海口希灵赛斯网络科技有限责任公司. 保留所有权利.</p>
+        <!-- 备案信息 -->
+        <p class="beian-info">
+          <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">琼ICP备2025000001号</a> | 
+          <a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=2025000001" target="_blank" rel="noopener noreferrer">琼公网安备2025000001号</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 页脚CSS样式 -->
+  <style>
+    .footer {
+      background: #1d1d1f;
+      color: #f5f5f7;
+      padding: 60px 0 30px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      margin-top: auto;
+    }
+
+    .footer h3, .footer h4 {
+      color: #ffffff;
+      font-weight: 600;
+      margin-bottom: 20px;
+      font-size: 16px;
+      letter-spacing: 0.5px;
+    }
+
+    .footer p {
+      color: #d1d1d6;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .footer ul {
+      padding: 0;
+      list-style: none;
+    }
+
+    .footer ul li {
+      margin-bottom: 12px;
+    }
+
+    .footer ul li a {
+      color: #d1d1d6;
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .footer ul li a:hover {
+      color: #0a84ff;
+      transform: translateX(4px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid #2c2c2e;
+      margin-top: 40px;
+      padding-top: 20px;
+      font-size: 13px;
+      color: #8e8e93;
+    }
+
+    /* 修改备案信息链接样式，去除悬停高亮效果 */
+    .footer-bottom a {
+      color: #d1d1d6;
+      text-decoration: none;
+      font-size: 13px;
+      transition: none;
+    }
+
+    .footer-bottom a:hover {
+      color: #d1d1d6;
+      transform: none;
+    }
+
+    /* 响应式调整 */
+    @media (max-width: 768px) {
+      .footer .grid > div {
+        margin-bottom: 30px;
+      }
+    }
+  </style>
+
+  <!-- 引入配置文件 -->
+  <script src="/source/config.js"></script>
+  <script>
+    // 动态设置备案信息
+    document.addEventListener('DOMContentLoaded', function() {
+      const beianInfo = document.querySelector('.beian-info');
+      if (beianInfo && window.siteConfig) {
+        beianInfo.innerHTML = `
+          <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">${window.siteConfig.beian.icp}</a> | 
+          <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${window.siteConfig.beian.police.replace(/[^\d]/g, '')}" target="_blank" rel="noopener noreferrer">${window.siteConfig.beian.police}</a>
+        `;
+      }
+    });
+  </script>
+</body>
+</html>
