@@ -2,97 +2,109 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://www.sec.hn.cn/</loc>
-        <lastmod>2025-09-03</lastmod>
+        <lastmod>2025-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://www.sec.hn.cn/business/index.html</loc>
-        <lastmod>2025-09-03</lastmod>
+        <lastmod>2025-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://www.sec.hn.cn/business/c/index.html</loc>
-        <lastmod>2025-09-03</lastmod>
+        <lastmod>2025-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://www.sec.hn.cn/business/c/need.html</loc>
+        <lastmod>2025-09-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.sec.hn.cn/business/c/order.html</loc>
+        <lastmod>2025-09-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.sec.hn.cn/business/c/subscription.html</loc>
+        <lastmod>2025-09-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
         <loc>https://www.sec.hn.cn/business/hnhsd-vmh3c.html</loc>
-        <lastmod>2025-09-03</lastmod>
+        <lastmod>2025-09-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://www.sec.hn.cn/business/htc-ihaikou.html</loc>
-        <lastmod>2025-09-03</lastmod>
+        <lastmod>2025-09-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://www.sec.hn.cn/careers/cn/index.html</loc>
-        <lastmod>2025-09-03</lastmod>
+        <lastmod>2025-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.sec.hn.cn/careers/cn/life-at-xsec.html</loc>
-        <lastmod>2025-09-03</lastmod>
+        <lastmod>2025-09-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://www.sec.hn.cn/careers/cn/team.html</loc>
-        <lastmod>2025-09-03</lastmod>
+        <lastmod>2025-09-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://www.sec.hn.cn/careers/cn/work-at-xsec.html</loc>
-        <lastmod>2025-09-03</lastmod>
+        <lastmod>2025-09-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://www.sec.hn.cn/leadership/about.html</loc>
-        <lastmod>2025-09-03</lastmod>
+        <lastmod>2025-09-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://www.sec.hn.cn/newsroom/a/index.html</loc>
-        <lastmod>2025-09-03</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
         <loc>https://www.sec.hn.cn/public/index.html</loc>
-        <lastmod>2025-09-03</lastmod>
+        <lastmod>2025-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.sec.hn.cn/public/base64.html</loc>
-        <lastmod>2025-09-03</lastmod>
+        <lastmod>2025-09-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://www.sec.hn.cn/public/gemini/gemini.html</loc>
-        <lastmod>2025-09-03</lastmod>
+        <lastmod>2025-09-05</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://www.sec.hn.cn/public/sjdm.html</loc>
-        <lastmod>2025-09-03</lastmod>
+        <lastmod>2025-09-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://www.sec.hn.cn/public/uuid.html</loc>
-        <lastmod>2025-09-03</lastmod>
+        <lastmod>2025-09-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
