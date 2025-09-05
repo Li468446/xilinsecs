@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>海口希灵赛斯网络科技有限公司</title>
+    <description>专业的信息化解决方案供应商，提供私有云建设、信息安全咨询、网站建设等服务</description>
+    <link>https://www.sec.hn.cn</link>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 05 Sep 2025 12:00:00 +0800</lastBuildDate>
+    <pubDate>Fri, 05 Sep 2025 12:00:00 +0800</pubDate>
+    <ttl>60</ttl>
+    <atom:link href="https://www.sec.hn.cn/rss.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title> Gemini AI工具上线</title>
+      <description>我们推出了基于Gemini的AI工具，提供智能化的信息处理服务</description>
+      <link>https://www.sec.hn.cn/public/gemini/gemini.html</link>
+      <guid isPermaLink="true">https://www.sec.hn.cn/public/gemini/gemini.html</guid>
+      <pubDate>Fri, 05 Sep 2025 12:00:00 +0800</pubDate>
+    </item>
+    
+    <item>
+      <title>隐私政策更新</title>
+      <description>我们更新了隐私政策，更好地保护用户个人信息</description>
+      <link>https://www.sec.hn.cn/legal/privacy/</link>
+      <guid isPermaLink="true">https://www.sec.hn.cn/legal/privacy/</guid>
+      <pubDate>Fri, 05 Sep 2025 12:00:00 +0800</pubDate>
+    </item>
+    
+    <item>
+      <title>企业服务页面更新</title>
+      <description>我们更新了企业服务页面，提供更多定制化解决方案</description>
+      <link>https://www.sec.hn.cn/business/index.html</link>
+      <guid isPermaLink="true">https://www.sec.hn.cn/business/index.html</guid>
+      <pubDate>Thu, 04 Sep 2025 12:00:00 +0800</pubDate>
+    </item>
+    
+    <item>
+      <title>加入我们 - 团队招聘信息更新</title>
+      <description>我们正在寻找优秀的人才加入我们的团队</description>
+      <link>https://www.sec.hn.cn/careers/cn/work-at-xsec.html</link>
+      <guid isPermaLink="true">https://www.sec.hn.cn/careers/cn/work-at-xsec.html</guid>
+      <pubDate>Wed, 03 Sep 2025 12:00:00 +0800</pubDate>
+    </item>
+    
+    <item>
+      <title>HTC iHAIKOU网站建设项目完成</title>
+      <description>我们成功完成了HTC iHAIKOU网站建设项目</description>
+      <link>https://www.sec.hn.cn/business/htc-ihaikou.html</link>
+      <guid isPermaLink="true">https://www.sec.hn.cn/business/htc-ihaikou.html</guid>
+      <pubDate>Tue, 02 Sep 2025 12:00:00 +0800</pubDate>
+    </item>
+  </channel>
+</rss>
