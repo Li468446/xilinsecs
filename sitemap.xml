@@ -37,6 +37,18 @@
         <priority>0.7</priority>
     </url>
     <url>
+        <loc>https://www.sec.hn.cn/business/c/wo.html</loc>
+        <lastmod>2025-09-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.sec.hn.cn/business/c/wosu.html</loc>
+        <lastmod>2025-09-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
         <loc>https://www.sec.hn.cn/business/hnhsd-vmh3c.html</loc>
         <lastmod>2025-09-05</lastmod>
         <changefreq>monthly</changefreq>
