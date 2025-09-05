@@ -1,5 +1,5 @@
 # robots.txt for 海口希灵赛斯网络科技有限公司
-# Last updated: 2025-09-03
+# Last updated: 2025-09-05
 
 User-agent: *
 Allow: /
@@ -9,6 +9,9 @@ Host: www.sec.hn.cn
 
 # Sitemaps
 Sitemap: https://www.sec.hn.cn/sitemap.xml
+
+# RSS Feed
+Sitemap: https://www.sec.hn.cn/rss.xml
 
 # Crawl-delay for specific bots (optional)
 # Crawl-delay: 10
