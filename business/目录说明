@@ -1,4 +1,4 @@
-此目录存放商业合作展示页面
+此目录存放商业页面
 1、index.html           标准化业务页面
 2、htc-ihaikou.html     海口旅游职业学院iHAIKOU平台页面
 3、hnhsd-vmh3c.html     好思达VMware故障处理技术支持页面
@@ -7,3 +7,9 @@
 6、order.html           用户账单查询页面
 7、subscription.html    用户产品订阅查询
 8、wo.html              用户建立工单页面
+
+
+目录说明：
+1、c/                   最终用户服务
+2、p/                   代理商服务
+3、b/                   企业商户服务
