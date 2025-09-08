@@ -19,7 +19,7 @@
     <meta name="author" content="海口希灵赛斯网络科技有限责任公司">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.sec.hn.cn/public/index.html">
-    <link rel="icon" href="../favicon.ico" />
+    <link rel="icon" href="../../favicon.ico" />
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
     
     <!-- Open Graph / Facebook -->
@@ -128,6 +128,37 @@
         .nav-links a{ color:var(--muted); text-decoration:none; font-size:.95rem; padding:6px 10px; border-radius:10px; transition:color .2s, background .3s; }
         .nav-links a:hover{color:var(--text); background:rgba(255,255,255,.06)}
 
+        /* 汉堡菜单按钮 */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 4px;
+        }
+
+        .hamburger {
+            width: 24px;
+            height: 2px;
+            background-color: var(--text);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* 汉堡菜单动画 */
+        .nav-toggle.active .hamburger:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .nav-toggle.active .hamburger:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active .hamburger:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
         /* ===== Hero with aurora beams ===== */
         .hero{ position:relative; overflow:clip; }
         .aurora{ position:absolute; inset:0; pointer-events:none; z-index:0; }
@@ -182,7 +213,30 @@
 
         /* ===== Responsive ===== */
         @media (max-width: 900px){ .hero-grid{grid-template-columns:1fr; gap:26px} .device{order:-1; aspect-ratio:16/10}}
-        @media (max-width: 520px){ .nav-links{display:none} .container{padding:64px 16px} }
+        @media (max-width: 520px){ 
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: color-mix(in srgb, #0c1016 95%, transparent);
+                flex-direction: column;
+                padding: 10px 20px;
+                border-bottom: 1px solid rgba(255,255,255,.06);
+                box-shadow: 0 10px 20px rgba(0,0,0,.3);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-toggle {
+                display: flex;
+            }
+            
+            .container{padding:64px 16px} 
+        }
 
         /* ===== Motion opt-out ===== */
         @media (prefers-reduced-motion:reduce){ .beam,.card,.btn{transition:none !important} .reveal{opacity:1 !important; transform:none !important; filter:none !important} }
@@ -202,6 +256,12 @@
                 <a href="http://se-xl-services.xinnew.top/">服务状态</a>
                 <a href="https://blog.csdn.net/qq_73252299?spm=1011.2124.3001.5343">技术博客</a>
             </nav>
+            <!-- 汉堡菜单按钮 -->
+            <div class="nav-toggle" aria-label="切换导航" role="button" tabindex="0">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </div>
         </div>
     </div>
 
@@ -404,7 +464,7 @@
     </style>
 
     <!-- 引入配置文件 -->
-    <script src="../source/config.js"></script>
+    <script src="../../source/config.js"></script>
     <script>
         // ===== 服务数据（保持你的原始链接与描述）=====
         const services = [
@@ -515,6 +575,37 @@
         });
     </script>
     
+    <!-- Navigation JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            navToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                navToggle.classList.toggle('active');
+            });
+            
+            // 点击导航链接后关闭菜单
+            const links = document.querySelectorAll('.nav-links a');
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    navToggle.classList.remove('active');
+                });
+            });
+            
+            // 点击页面其他地方关闭菜单
+            document.addEventListener('click', function(event) {
+                const isClickInsideNav = navToggle.contains(event.target) || navLinks.contains(event.target);
+                if (!isClickInsideNav && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    navToggle.classList.remove('active');
+                }
+            });
+        });
+    </script>
+    
     <!-- 页脚模块 -->
     <footer class="footer" id="contact">
         <div class="container footer-container">
@@ -529,7 +620,7 @@
                         <li><a href="/leadership/about.html">公司简介</a></li>
                         <li><a href="/leadership/about.html">领导团队</a></li>
                         <li><a href="/leadership/about.html#history">发展历程</a></li>
-                        <li><a href="/legal/privacy/">隐私政策</a></li>
+                        <li><a href="/legal/privacy">隐私政策</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-4">

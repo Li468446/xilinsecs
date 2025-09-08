@@ -121,10 +121,16 @@
             </div>
             <nav class="nav-links" aria-label="主导航">
                 <a href="/">首页</a>
-                <a href="/public/">公共服务</a>
+                <a href="/business/g/">公共服务</a>
                 <a href="http://se-xl-services.xinnew.top/">服务状态</a>
                 <a href="https://blog.csdn.net/qq_73252299?spm=1011.2124.3001.5343">技术博客</a>
             </nav>
+            <!-- 汉堡菜单按钮 -->
+            <div class="nav-toggle" aria-label="切换导航" role="button" tabindex="0">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </div>
         </div>
     </div>
 
@@ -148,9 +154,92 @@
         .nav-links{display:flex; gap:18px; align-items:center}
         .nav-links a{ color:var(--muted); text-decoration:none; font-size:.95rem; padding:6px 10px; border-radius:10px; transition:color .2s, background .3s; }
         .nav-links a:hover{color:var(--text); background:rgba(255,255,255,.06)}
-        
-        @media (max-width: 520px){ .nav-links{display:none} }
+
+        /* 汉堡菜单按钮 */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 4px;
+        }
+
+        .hamburger {
+            width: 24px;
+            height: 2px;
+            background-color: var(--text);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* 汉堡菜单动画 */
+        .nav-toggle.active .hamburger:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .nav-toggle.active .hamburger:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active .hamburger:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        @media (max-width: 520px){ 
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: color-mix(in srgb, #0c1016 95%, transparent);
+                flex-direction: column;
+                padding: 10px 20px;
+                border-bottom: 1px solid rgba(255,255,255,.06);
+                box-shadow: 0 10px 20px rgba(0,0,0,.3);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-toggle {
+                display: flex;
+            }
+        }
     </style>
+
+    <!-- Navigation JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            navToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                navToggle.classList.toggle('active');
+            });
+            
+            // 点击导航链接后关闭菜单
+            const links = document.querySelectorAll('.nav-links a');
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    navToggle.classList.remove('active');
+                });
+            });
+            
+            // 点击页面其他地方关闭菜单
+            document.addEventListener('click', function(event) {
+                const isClickInsideNav = navToggle.contains(event.target) || navLinks.contains(event.target);
+                if (!isClickInsideNav && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    navToggle.classList.remove('active');
+                }
+            });
+        });
+    </script>
 
     <!-- ===== HERO MODULE ===== -->
     <!-- Hero HTML -->
@@ -276,12 +365,12 @@
     <script>
         // ===== 服务数据（保持你的原始链接与描述）=====
         const services = [
-            { icon: 'fas fa-file-invoice-dollar', title: '需求反馈', description: '用户可在此提交定制需求或项目计划', link: 'need.html' },
+            { icon: 'fas fa-file-invoice-dollar', title: '用户注册', description: '用户可通过此页面自行注册', link: 'join.html' },
             { icon: 'fas fa-passport', title: '账单查询', description: '用户可通过此页面自行查询账单信息', link: 'order.html' },
             { icon: 'fas fa-id-card', title: '产品订阅查询', description: '客户可自行通过此页面查询订阅的产品信息', link: 'subscription.html' },
             { icon: 'fas fa-graduation-cap', title: '发起工单', description: '用户可通过此页面自行发起工单', link: 'wo.html' },
             { icon: 'fas fa-home', title: '工单查询', description: '用户可点此页面自助查询工单处理进度', link: 'wosu.html' },
-            { icon: 'fas fa-car', title: '开发中', description: '开发中', link: 'bi.html' }
+            { icon: 'fas fa-car', title: '客户信息查询', description: '用户可通过此页面自行查询与更新用户信息', link: 'customer-info.html' }
         ];
 
         // ===== 生成卡片（Apple风格玻璃卡）=====
