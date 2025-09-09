@@ -1675,6 +1675,199 @@
     });
     </script>
 
+<!-- 近期动态模块 -->
+<section class="news-section">
+  <h1 class="news-heading">近期动态</h1>
+  <h4 class="news-subheading">关注我们的最新进展</h4>
+
+  <div class="news-carousel-wrapper responsive-carousel-wrapper">
+    <div class="news-carousel responsive-carousel"></div>
+  </div>
+
+  <div class="news-dots"></div>
+</section>
+
+<style>
+.news-section {
+  padding: 160px 20px;
+  background: #0b0b0b;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+}
+.news-heading { font-size: 2.5rem; font-weight: 700; margin-bottom: 20px; }
+.news-subheading { color: rgba(255,255,255,0.6); margin-bottom: 60px; }
+
+.responsive-carousel-wrapper {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  cursor: grab;
+}
+.responsive-carousel-wrapper:active { cursor: grabbing; }
+
+.responsive-carousel {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.5s ease;
+  will-change: transform;
+}
+.news-card {
+  flex: 0 0 100%;
+  opacity: 0;
+  transform: scale(0.95) translateY(60px);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+.news-card.active { transform: scale(1) translateY(0); opacity: 1; }
+
+.news-card-inner {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+  border-radius: 18px;
+  padding: 0 0 15px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.news-card-inner:hover {
+  transform: scale(1.03) translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.7);
+}
+.news-thumb {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 18px 18px 0 0;
+}
+.news-card-inner h5 { font-size: 1.2rem; font-weight: 700; margin: 12px 15px 6px; }
+.news-card-inner time { display: block; font-size: 0.9rem; color: #aaa; margin: 0 15px 10px; }
+.news-card-inner p { font-size: 0.95rem; color: rgba(255,255,255,0.85); line-height: 1.4; margin: 0 15px 15px; }
+.read-more-btn { display: block; margin: 0 15px; padding: 8px 14px; border: none; border-radius: 6px; background: #0ae0ff; color: #000; cursor: pointer; font-weight: 600; text-align: center; transition: all 0.2s; }
+.read-more-btn:hover { background: #08b8d0; }
+
+.news-dots { text-align: center; padding-top: 25px; }
+.news-dots .dot { display: inline-block; width: 10px; height: 10px; margin: 0 6px; border-radius: 50%; background: #555; transition: background 0.3s; cursor: pointer; }
+.news-dots .dot.active { background: #0ae0ff; }
+
+@media(min-width:768px){
+  .news-card { flex: 0 0 33.3333%; }
+}
+</style>
+
+<script src="leadership/indexnews/js/newsConfig.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", ()=>{
+  const carousel = document.querySelector(".responsive-carousel");
+  const dotsContainer = document.querySelector(".news-dots");
+
+  let currentIndex = 0;
+  let autoSlideInterval;
+  let visibleCards = window.innerWidth >= 768 ? 3 : 1;
+
+  function setVisibleCards() { visibleCards = window.innerWidth >= 768 ? 3 : 1; }
+
+  // 生成卡片 & 小圆点
+  newsData.forEach((item, index)=>{
+    const card = document.createElement("div");
+    card.className = "news-card";
+    card.innerHTML = `
+      <div class="news-card-inner">
+        <img src="${item.thumb}" alt="${item.title}" class="news-thumb">
+        <h5>${item.title}</h5>
+        <time>${item.date}</time>
+        <p>${item.desc}</p>
+        <a href="${item.link}" class="read-more-btn">阅读更多</a>
+      </div>
+    `;
+    carousel.appendChild(card);
+
+    const dot = document.createElement("span");
+    dot.className = "dot";
+    dot.dataset.index = index;
+    dotsContainer.appendChild(dot);
+  });
+
+  const cards = document.querySelectorAll(".news-card");
+  const dots = document.querySelectorAll(".dot");
+
+  function updateDisplay(index){
+    const total = cards.length;
+    const offset = index * (100/visibleCards);
+    carousel.style.transition = 'transform 0.5s ease'; // 平滑过渡
+    carousel.style.transform = `translateX(-${offset}%)`;
+    cards.forEach((card,i)=>card.classList.toggle("active", i>=index && i<index+visibleCards));
+    dots.forEach((d,i)=>d.classList.toggle("active", i>=index && i<index+visibleCards));
+  }
+
+  function goTo(index){ currentIndex = index; updateDisplay(currentIndex); }
+
+  // 圆点点击跳转平滑滚动
+  dots.forEach(dot=>{
+    dot.addEventListener("click", ()=>{
+      const idx = parseInt(dot.dataset.index);
+      goTo(idx);
+      pauseAutoSlide();
+      resumeAutoSlide();
+    });
+  });
+
+  function startAutoSlide() {
+    clearInterval(autoSlideInterval);
+    autoSlideInterval = setInterval(()=>{
+      currentIndex = (currentIndex + 1) > (cards.length-visibleCards) ? 0 : currentIndex + 1;
+      updateDisplay(currentIndex);
+    }, 4000);
+  }
+  function pauseAutoSlide() { clearInterval(autoSlideInterval); }
+  function resumeAutoSlide() { startAutoSlide(); }
+
+  window.addEventListener("resize", ()=>{
+    setVisibleCards();
+    updateDisplay(currentIndex);
+  });
+
+  // 拖动滑动切换
+  let isDragging = false, startX = 0, currentTranslate = 0;
+  carousel.addEventListener("mousedown", startDrag);
+  carousel.addEventListener("touchstart", startDrag);
+  carousel.addEventListener("mousemove", dragMove);
+  carousel.addEventListener("touchmove", dragMove);
+  carousel.addEventListener("mouseup", endDrag);
+  carousel.addEventListener("mouseleave", endDrag);
+  carousel.addEventListener("touchend", endDrag);
+
+  function startDrag(e){
+    pauseAutoSlide();
+    isDragging = true;
+    startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+    currentTranslate = -currentIndex * (carousel.offsetWidth/visibleCards);
+  }
+  function dragMove(e){
+    if(!isDragging) return;
+    const x = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+    const dx = x - startX;
+    carousel.style.transition = 'none';
+    carousel.style.transform = `translateX(${currentTranslate + dx}px)`;
+  }
+  function endDrag(e){
+    if(!isDragging) return;
+    isDragging = false;
+    const x = e.type.includes('touch') ? e.changedTouches[0].clientX : e.clientX;
+    const dx = x - startX;
+    if(dx < -50 && currentIndex < cards.length-visibleCards) currentIndex++;
+    else if(dx > 50 && currentIndex > 0) currentIndex--;
+    carousel.style.transition = 'transform 0.5s ease';
+    updateDisplay(currentIndex);
+    resumeAutoSlide();
+  }
+
+  setVisibleCards();
+  updateDisplay(currentIndex);
+  startAutoSlide();
+});
+</script>
+
 
     <!-- 团队成员模块 -->
     <section class="team-section-history">

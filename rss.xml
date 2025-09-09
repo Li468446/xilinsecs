@@ -11,10 +11,18 @@
     <atom:link href="https://www.sec.hn.cn/rss.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>XILINGSYS 发布新一代安全网关</title>
+      <description>新一代VPN安全网关正式发布，采用零信任架构，性能提升40%。</description>
+      <link>https://www.sec.hn.cn/leadership/indexnews/post1.html</link>
+      <guid isPermaLink="true">https://www.sec.hn.cn/leadership/indexnews/post1.html</guid>
+      <pubDate>Mon, 01 Sep 2025 12:00:00 +0800</pubDate>
+    </item>
+    
+    <item>
       <title> Gemini AI工具上线</title>
       <description>我们推出了基于Gemini的AI工具，提供智能化的信息处理服务</description>
-      <link>https://www.sec.hn.cn/public/gemini/gemini.html</link>
-      <guid isPermaLink="true">https://www.sec.hn.cn/public/gemini/gemini.html</guid>
+      <link>https://www.sec.hn.cn/business/g/gemini/gemini.html</link>
+      <guid isPermaLink="true">https://www.sec.hn.cn/business/g/gemini/gemini.html</guid>
       <pubDate>Fri, 05 Sep 2025 12:00:00 +0800</pubDate>
     </item>
     
