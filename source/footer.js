@@ -9,9 +9,9 @@ window.siteConfig = {
             {
                 title: "关于我们",
                 items: [
-                    { text: "企业简介", href: "/leadership/index.html" },
+                    { text: "企业简介", href: "/leadership/me/" },
                     { text: "企业动态", href: "/leadership/" },
-                    { text: "领导团队", href: "#" },
+                    { text: "领导团队", href: "/leadership/me/lead/" },
                     { text: "发展历程", href: "#" },
                     { text: "隐私政策", href: "/legal/privacy/" }
                 ]
@@ -28,7 +28,8 @@ window.siteConfig = {
                 title: "资源",
                 items: [
                     { text: "技术博客", href: "https://blog.csdn.net/qq_73252299?spm=1000.2115.3001.5343", target: "_blank" },
-                    { text: "支持中心", href: "https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" }
+                    { text: "支持中心", href: "https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" },
+                    { text: "公共服务", href: "/business/g/" }
                 ]
             },
             {

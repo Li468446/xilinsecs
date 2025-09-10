@@ -1,57 +1,57 @@
 // 动态内容配置
 const data = {
-  life: [
+  life: [     //企业生活
     {
-      title: "年度团建活动",
-      desc: "公司举办了为期三天的户外团建，加强团队凝聚力。",
+      title: "发展中",
+      desc: "发展中",
       date: "2025-06-18",
-      img: "images/team_building.jpg",
+      img: "finance_q2/team_building.jpg",
       url: "pages/team_building.html"
     },
     {
-      title: "公益志愿服务",
-      desc: "员工积极参与环保志愿活动，推动绿色发展理念。",
-      date: "2025-07-05",
-      img: "images/volunteer.jpg",
-      url: "pages/volunteer.html"
+      title: "发展中",
+      desc: "发展中",
+      date: "2025-06-18",
+      img: "finance_q2/team_building.jpg",
+      url: "pages/team_building.html"
     },
     {
-      title: "企业文化日",
-      desc: "举办内部文化日，分享公司发展故事与愿景。",
-      date: "2025-09-01",
-      img: "images/culture_day.jpg",
-      url: "pages/culture_day.html"
+      title: "发展中",
+      desc: "发展中",
+      date: "2025-06-18",
+      img: "finance_q2/team_building.jpg",
+      url: "pages/team_building.html"
     }
   ],
-  finance: [
+  finance: [   //财务
+    {
+      title: "2025年Q2财报",
+      desc: "公司开立，筹备基础设施和开立服务",
+      date: "2025-08-1",
+      img: "/leadership/pages/2025/finance_q2/20250730finance1.png",
+      url: "/leadership/pages/2025/finance_q2.html"
+    },
     {
       title: "2025年Q1财报",
-      desc: "营收同比增长12%，净利润稳步提升。",
-      date: "2025-07-30",
-      img: "images/finance_q1.jpg",
-      url: "pages/finance_q1.html"
+      desc: "——————————",
+      date: "2025-04-1",
+      img: "/leadership/pages/2025/finance_q2/20250730finance1.png",
+      url: "/leadership/pages/2025/finance_q2.html"
     },
-    {
-      title: "股东大会公告",
-      desc: "即将召开年度股东大会，公布公司未来战略。",
-      date: "2025-08-15",
-      img: "images/shareholders.jpg",
-      url: "pages/shareholders.html"
-    }
   ],
-  product: [
+  product: [   //产品
     {
       title: "新品智能终端发布",
       desc: "全新一代智能设备亮相，融合AI与IoT技术。",
       date: "2025-08-01",
-      img: "images/product_1.jpg",
+      img: "finance_q2/product_1.jpg",
       url: "pages/product_1.html"
     },
     {
       title: "软件版本升级",
       desc: "推出V2.0版本，优化性能并增强安全性。",
       date: "2025-04-22",
-      img: "images/product_2.jpg",
+      img: "finance_q2/product_2.jpg",
       url: "pages/product_2.html"
     }
   ]
