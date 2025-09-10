@@ -9,7 +9,7 @@ window.siteConfig = {
             {
                 title: "关于我们",
                 items: [
-                    { text: "企业简介", href: "/leadership/about.html" },
+                    { text: "企业简介", href: "/leadership/index.html" },
                     { text: "企业动态", href: "/leadership/" },
                     { text: "领导团队", href: "#" },
                     { text: "发展历程", href: "#" },
