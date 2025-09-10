@@ -97,6 +97,22 @@
                 transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             }
         }
+        /* Mermaid 图表容器样式 */
+        .mermaid {
+            background-color: #fff;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        }
+        /* 执行流程模拟器样式 */
+        .step-highlight {
+            background-color: #fef3c7; /* Tailwind amber-100 */
+            border-left: 4px solid #f59e0b; /* Tailwind amber-500 */
+            padding: 0.5rem 1rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-radius: 0 0.375rem 0.375rem 0;
+        }
     </style>
 </head>
 <body class="bg-apple-gray min-h-screen font-sans text-dark flex flex-col">
@@ -141,6 +157,25 @@
                 </div>
             </div>
 
+            <!-- 新增：UUID 格式选项 -->
+            <div class="bg-white rounded-xl shadow-apple p-6 mb-6 transition-apple hover:shadow-apple-hover">
+                <h3 class="font-medium text-lg mb-3">输出格式</h3>
+                <div class="flex flex-wrap gap-4">
+                    <label class="flex items-center space-x-2 cursor-pointer">
+                        <input type="radio" name="format" value="lower" class="format-option" checked>
+                        <span class="text-neutral">小写 (e.g., 550e...)</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer">
+                        <input type="radio" name="format" value="upper" class="format-option">
+                        <span class="text-neutral">大写 (e.g., 550E...)</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer">
+                        <input type="radio" name="format" value="braced" class="format-option">
+                        <span class="text-neutral">花括号 (e.g., {550e...})</span>
+                    </label>
+                </div>
+            </div>
+
             <!-- 批量生成选项 -->
             <div class="bg-white rounded-xl shadow-apple p-6 mb-8 transition-apple hover:shadow-apple-hover">
                 <h3 class="font-medium text-lg mb-4">批量生成UUID</h3>
@@ -160,13 +195,54 @@
                 </div>
             </div>
 
+            <!-- 新增：UUID 验证器 -->
+            <div class="bg-white rounded-xl shadow-apple p-6 mb-8 transition-apple hover:shadow-apple-hover">
+                <h3 class="font-medium text-lg mb-3">UUID 验证器</h3>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <input type="text" id="uuid-input" placeholder="在此粘贴 UUID 进行验证..."
+                           class="flex-1 border border-gray-200 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-apple">
+                    <button id="validate-btn" class="bg-primary hover:bg-primary/90 text-white py-2 px-4 rounded-lg font-medium transition-apple whitespace-nowrap">
+                        验证 UUID
+                    </button>
+                </div>
+                <div id="validation-result" class="mt-3 text-sm p-3 rounded-lg hidden"></div>
+            </div>
+
+            <!-- 新增：UUID 生成逻辑与执行流程 -->
+            <div class="bg-white rounded-xl shadow-apple p-6 mb-8 transition-apple hover:shadow-apple-hover">
+                <h3 class="font-medium text-lg mb-4">UUID 生成逻辑详解</h3>
+
+                <!-- 逻辑流程图 -->
+                <h4 class="font-medium mb-2 text-md">1. 生成流程图 (UUID v4)</h4>
+                <div class="mermaid overflow-x-auto">
+                    flowchart TD
+                        A[开始] --> B[生成128位随机数]
+                        B --> C[设置版本位为0100 (v4)]
+                        C --> D[设置变体位为10xx]
+                        D --> E[格式化为8-4-4-4-12字符串]
+                        E --> F[输出UUID]
+                </div>
+
+                <!-- 执行流程模拟器 -->
+                <h4 class="font-medium mt-6 mb-2 text-md">2. 执行流程模拟</h4>
+                <p class="text-neutral text-sm mb-3">点击下方按钮，逐步查看 UUID v4 的生成过程：</p>
+
+                <button id="simulate-btn" class="bg-primary hover:bg-primary/90 text-white py-2 px-4 rounded-lg font-medium transition-apple mb-3">
+                    开始模拟
+                </button>
+
+                <div id="simulation-steps" class="mt-4 space-y-3 text-sm font-mono">
+                    <!-- 步骤将通过JavaScript动态插入 -->
+                </div>
+            </div>
+
             <!-- 关于UUID -->
             <div class="bg-white rounded-xl shadow-apple p-6 transition-apple hover:shadow-apple-hover">
                 <h3 class="font-medium text-lg mb-3">关于 UUID</h3>
                 <p class="text-neutral text-sm mb-3">UUID 是一个128位长的数字，通常以36个字符的字符串表示，格式为8-4-4-4-12，例如：</p>
                 <p class="font-mono text-xs md:text-sm bg-gray-50 p-2 rounded text-gray-700 mb-3">550e8400-e29b-41d4-a716-446655440000</p>
                 <p class="text-neutral text-sm">UUID 可以保证在空间和时间上的唯一性，无需中央注册机构即可生成。广泛应用于软件开发、数据库主键、分布式系统标识等场景。</p>
-                
+
                 <h4 class="font-medium text-md mt-4 mb-2">UUID 应用场景</h4>
                 <ul class="text-neutral text-sm list-disc pl-5 space-y-1">
                     <li>数据库记录的唯一标识符</li>
@@ -175,197 +251,90 @@
                     <li>Web应用中的会话标识</li>
                     <li>API密钥和令牌生成</li>
                 </ul>
+
+                <!-- 新增：UUID 版本说明 -->
+                <h4 class="font-medium text-md mt-4 mb-2">UUID 版本简介</h4>
+                <ul class="text-neutral text-sm list-disc pl-5 space-y-1">
+                    <li><strong>Version 1 (时间戳 + MAC地址):</strong> 基于时间戳和节点（通常是MAC地址）生成。</li>
+                    <li><strong>Version 2 (DCE Security):</strong> 类似于Version 1，但用本地域和UID/GID替换了部分时间戳和MAC地址。</li>
+                    <li><strong>Version 3 (MD5 哈希):</strong> 基于命名空间标识符和名称的MD5哈希值生成。</li>
+                    <li><strong>Version 4 (随机):</strong> 完全由随机数或伪随机数生成。这是本工具使用的版本。</li>
+                    <li><strong>Version 5 (SHA-1 哈希):</strong> 基于命名空间标识符和名称的SHA-1哈希值生成。</li>
+                </ul>
             </div>
         </div>
     </main>
 
-    <!-- 页脚模块 -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row footer-top">
-                <div class="col-lg-4 mb-4 mb-lg-0 footer-brand">
-                    <h3>XSEC</h3>
-                    <p>致力于提供专业的信息化解决方案。</p>
-                </div>
-                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
-                    <h4>关于我们</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="/leadership/about.html">简介</a></li>
-                        <li><a href="#">领导团队</a></li>
-                        <li><a href="#">发展历程</a></li>
-                        <li><a href="/legal/privacy">隐私政策</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
-                    <h4>工作机会</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="/careers/cn">XSEC 职业机会</a></li>
-                        <li><a href="/careers/cn/life-at-xsec.html">在 XSEC 生活</a></li>
-                        <li><a href="/careers/cn/work-at-xsec.html">在 XSEC 工作</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
-                    <h4>资源</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="https://sec.hn.cn">更新动态</a></li>
-                        <li><a href="https://blog.csdn.net/qq_73252299?spm=1000.2115.3001.5343" target="_blank" rel="noopener noreferrer">技术博客</a></li>
-                        <li><a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af">支持中心</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2">
-                    <h4>联系我们</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" target="_blank" rel="noopener noreferrer">客服咨询</a></li>
-                        <li><a href="business/c/subscription.html" target="_blank" rel="noopener noreferrer">商务合作</a></li>
-                        <li><a href="business/c/index.html" target="_blank" rel="noopener noreferrer">客户服务</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 海口希灵赛斯网络科技有限责任公司. 保留所有权利.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- 页脚CSS样式（苹果风格深色） -->
-    <style>
-        .footer {
-            background: #1d1d1f; /* 深色背景 */
-            color: #f5f5f7; /* 浅色文字 */
-            padding: 60px 0 30px;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        }
-
-        .footer h3, .footer h4 {
-            color: #ffffff;
-            font-weight: 600;
-            margin-bottom: 20px;
-            font-size: 16px;
-            letter-spacing: 0.5px;
-        }
-
-        .footer p {
-            color: #d1d1d6;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .footer ul {
-            padding: 0;
-            list-style: none;
-        }
-
-        .footer ul li {
-            margin-bottom: 12px;
-        }
-
-        .footer ul li a {
-            color: #d1d1d6;
-            text-decoration: none;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-
-        .footer ul li a:hover {
-            color: #0a84ff; /* 苹果蓝色高亮 */
-            transform: translateX(4px);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            border-top: 1px solid #2c2c2e;
-            margin-top: 40px;
-            padding-top: 20px;
-            font-size: 13px;
-            color: #8e8e93;
-        }
-
-        /* 添加栅格系统样式以修复页脚布局 */
-        .row {
-            display: flex;
-            flex-wrap: wrap;
-            margin-right: -15px;
-            margin-left: -15px;
-        }
-        
-        .col-lg-4, .col-lg-2, .col-md-4 {
-            position: relative;
-            width: 100%;
-            padding-right: 15px;
-            padding-left: 15px;
-        }
-        
-        .mb-4 {
-            margin-bottom: 1.5rem !important;
-        }
-        
-        .mb-lg-0 {
-            margin-bottom: 0 !important;
-        }
-        
-        .mb-md-0 {
-            margin-bottom: 0 !important;
-        }
-        
-        .list-unstyled {
-            padding-left: 0;
-            list-style: none;
-        }
-        
-        /* 默认大屏列宽（模拟 Bootstrap 栅格系统） */
-        @media (min-width: 992px) {
-            .col-lg-4 {
-                flex: 0 0 33.333333%;
-                max-width: 33.333333%;
-            }
-            .col-lg-2 {
-                flex: 0 0 16.666667%;
-                max-width: 16.666667%;
-            }
-            .mb-lg-0 {
-                margin-bottom: 0 !important;
-            }
-        }
-        
-        /* 中等屏幕 */
-        @media (min-width: 768px) and (max-width: 991px) {
-            .col-md-4 {
-                flex: 0 0 33.333333%;
-                max-width: 33.333333%;
-            }
-            .mb-md-0 {
-                margin-bottom: 0 !important;
-            }
-        }
-        
-        /* 小屏幕：单列垂直堆叠 */
-        @media (max-width: 767px) {
-            .row {
-                flex-direction: column;
-            }
-            .col-lg-4, 
-            .col-lg-2, 
-            .col-md-4 {
-                flex: 0 0 100%;
-                max-width: 100%;
-            }
-            .footer .row > div {
-                margin-bottom: 30px;
-            }
-            .footer .row > div:last-child {
-                margin-bottom: 0;
-            }
-        }
-    </style>
+    <!-- 引入 Mermaid.js 库用于渲染流程图 -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true });
+    </script>
 
     <script>
-        // UUID 生成函数
+        // UUID 生成函数 (标准版本4)
         function generateUUID() {
             return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
                 const r = Math.random() * 16 | 0;
                 const v = c === 'x' ? r : (r & 0x3 | 0x8);
                 return v.toString(16);
             });
+        }
+
+        // 根据选项格式化 UUID
+        function formatUUID(uuid) {
+            const selectedFormat = document.querySelector('input[name="format"]:checked').value;
+            switch (selectedFormat) {
+                case 'upper':
+                    return uuid.toUpperCase();
+                case 'braced':
+                    return `{${uuid}}`;
+                case 'lower':
+                default:
+                    return uuid.toLowerCase();
+            }
+        }
+
+        // UUID 验证函数 (正则表达式)
+        function validateUUID(uuid) {
+            const uuidRegex = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$/;
+            const bracedUuidRegex = /^\{[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}\}$/;
+            return uuidRegex.test(uuid) || bracedUuidRegex.test(uuid);
+        }
+
+        // --- 新增：用于模拟的详细UUID生成函数 ---
+        let simulationSteps = [];
+        let currentStepIndex = 0;
+
+        // 生成一个详细的UUID v4，并记录步骤
+        function generateUUIDWithSteps() {
+            simulationSteps = []; // 重置步骤
+            currentStepIndex = 0; // 重置索引
+
+            // 1. 生成128位随机数 (用16进制字符串模拟)
+            let uuidArray = new Array(32);
+            for (let i = 0; i < 32; i++) {
+                uuidArray[i] = Math.floor(Math.random() * 16).toString(16);
+            }
+            const initialHex = uuidArray.join('');
+            simulationSteps.push(`1. 生成128位随机数 (十六进制): ${initialHex}`);
+
+            // 2. 设置版本号 (第13个字符, 索引12)
+            uuidArray[12] = '4';
+            simulationSteps.push(`2. 设置版本位 (第13位) 为 '4': ${uuidArray.join('')}`);
+
+            // 3. 设置变体 (第17个字符, 索引16)
+            const variantChar = uuidArray[16];
+            const variantValue = parseInt(variantChar, 16);
+            const newVariantValue = (variantValue & 0x3) | 0x8; // 保留低2位，高2位设为10
+            uuidArray[16] = newVariantValue.toString(16);
+            simulationSteps.push(`3. 设置变体位 (第17位) 为 '10xx' 形式: ${uuidArray.join('')} (原值: ${variantChar}, 新值: ${uuidArray[16]})`);
+
+            // 4. 格式化
+            const formattedUUID = `${uuidArray.slice(0, 8).join('')}-${uuidArray.slice(8, 12).join('')}-${uuidArray.slice(12, 16).join('')}-${uuidArray.slice(16, 20).join('')}-${uuidArray.slice(20, 32).join('')}`;
+            simulationSteps.push(`4. 格式化为标准字符串: ${formattedUUID}`);
+
+            return formattedUUID;
         }
 
         // 获取DOM元素
@@ -377,21 +346,33 @@
         const countInput = document.getElementById('count');
         const multipleUuids = document.getElementById('multiple-uuids');
         const uuidsList = document.getElementById('uuids-list');
+        const formatOptions = document.querySelectorAll('.format-option');
 
-        // 生成单个UUID
-        generateBtn.addEventListener('click', () => {
-            const uuid = generateUUID();
+        // --- 新增DOM元素 ---
+        const simulateBtn = document.getElementById('simulate-btn');
+        const simulationStepsContainer = document.getElementById('simulation-steps');
+        const validateBtn = document.getElementById('validate-btn');
+        const uuidInput = document.getElementById('uuid-input');
+        const validationResult = document.getElementById('validation-result');
+
+        // 生成单个UUID (并应用格式)
+        function generateAndDisplaySingleUUID() {
+            const rawUUID = generateUUID();
+            const formattedUUID = formatUUID(rawUUID);
 
             // 添加淡入效果
             uuidContainer.style.opacity = '0';
             setTimeout(() => {
-                uuidContainer.textContent = uuid;
+                uuidContainer.textContent = formattedUUID;
                 uuidContainer.style.opacity = '1';
             }, 150);
 
-            // 隐藏批量生成结果
+            // 隐藏批量生成结果和模拟步骤
             multipleUuids.classList.add('hidden');
-        });
+            simulationStepsContainer.innerHTML = '';
+        }
+
+        generateBtn.addEventListener('click', generateAndDisplaySingleUUID);
 
         // 复制UUID到剪贴板
         copyBtn.addEventListener('click', () => {
@@ -419,19 +400,20 @@
             }
         });
 
-        // 批量生成UUID
+        // 批量生成UUID (并应用格式)
         generateMultipleBtn.addEventListener('click', () => {
             const count = parseInt(countInput.value) || 1;
             uuidsList.innerHTML = '';
 
             // 生成指定数量的UUID
             for (let i = 0; i < count; i++) {
-                const uuid = generateUUID();
+                const rawUUID = generateUUID();
+                const formattedUUID = formatUUID(rawUUID);
                 const uuidElement = document.createElement('div');
                 uuidElement.className = 'flex items-center justify-between bg-gray-50 p-2 rounded-lg hover:bg-apple-hover transition-apple';
                 uuidElement.innerHTML = `
-                    <span class="font-mono text-xs md:text-sm break-all">${uuid}</span>
-                    <button class="copy-single text-neutral hover:text-primary transition-apple p-1" data-uuid="${uuid}">
+                    <span class="font-mono text-xs md:text-sm break-all">${formattedUUID}</span>
+                    <button class="copy-single text-neutral hover:text-primary transition-apple p-1" data-uuid="${formattedUUID}">
                         <i class="fa fa-copy"></i>
                     </button>
                 `;
@@ -459,10 +441,103 @@
             });
         });
 
+        // --- 新增：处理模拟流程 ---
+        simulateBtn.addEventListener('click', () => {
+            // 生成带步骤的UUID
+            const finalUUID = generateUUIDWithSteps();
+            const formattedFinalUUID = formatUUID(finalUUID); // 应用当前格式选项
+
+            // 显示最终UUID
+            uuidContainer.textContent = formattedFinalUUID;
+
+            // 重置并显示第一步
+            simulationStepsContainer.innerHTML = '';
+            currentStepIndex = 0;
+            if (simulationSteps.length > 0) {
+                const stepElement = document.createElement('div');
+                stepElement.className = 'step-highlight';
+                stepElement.textContent = simulationSteps[currentStepIndex];
+                simulationStepsContainer.appendChild(stepElement);
+            }
+            // 隐藏批量生成结果
+            multipleUuids.classList.add('hidden');
+        });
+
+        // 监听模拟区域的点击，进行下一步
+        simulationStepsContainer.addEventListener('click', () => {
+             if (simulationSteps.length > 0 && currentStepIndex < simulationSteps.length - 1) {
+                 currentStepIndex++;
+                 const stepElement = document.createElement('div');
+                 stepElement.className = 'step-highlight';
+                 stepElement.textContent = simulationSteps[currentStepIndex];
+                 simulationStepsContainer.appendChild(stepElement);
+                 // 平滑滚动到新步骤
+                 stepElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+             } else if (currentStepIndex >= simulationSteps.length - 1) {
+                 // 可选：所有步骤完成后提示或重置
+                 // alert('模拟完成!');
+             }
+        });
+
+        // --- 新增：处理UUID验证 ---
+        validateBtn.addEventListener('click', () => {
+            const inputUUID = uuidInput.value.trim();
+            if (!inputUUID) {
+                validationResult.textContent = '请输入一个 UUID 进行验证。';
+                validationResult.className = 'mt-3 text-sm p-3 rounded-lg bg-yellow-100 text-yellow-800';
+                validationResult.classList.remove('hidden');
+                return;
+            }
+
+            const isValid = validateUUID(inputUUID);
+            if (isValid) {
+                validationResult.textContent = '✅ 有效的 UUID 格式。';
+                validationResult.className = 'mt-3 text-sm p-3 rounded-lg bg-green-100 text-green-800';
+            } else {
+                validationResult.textContent = '❌ 无效的 UUID 格式。';
+                validationResult.className = 'mt-3 text-sm p-3 rounded-lg bg-red-100 text-red-800';
+            }
+            validationResult.classList.remove('hidden');
+        });
+
+        // --- 新增：监听格式选项变化 ---
+        formatOptions.forEach(option => {
+            option.addEventListener('change', () => {
+                // 如果当前显示的是单个UUID，则重新格式化显示
+                if (!multipleUuids.classList.contains('hidden') && multipleUuids.children.length > 0) {
+                     // 如果批量结果显示着，不立即更改主显示区，但下次生成会应用新格式
+                     return;
+                }
+                const currentUUID = uuidContainer.textContent;
+                if (currentUUID && currentUUID !== '点击下方按钮生成 UUID') {
+                    try {
+                        // 尝试去除可能的花括号再格式化
+                        let rawUUID = currentUUID;
+                        if (rawUUID.startsWith('{') && rawUUID.endsWith('}')) {
+                            rawUUID = rawUUID.slice(1, -1);
+                        }
+                        // 简单校验一下是否像UUID
+                        if (/^[0-9a-fA-F\-]+$/.test(rawUUID.replace(/\-/g, '')) && rawUUID.length >= 32) {
+                             const newFormattedUUID = formatUUID(rawUUID);
+                             uuidContainer.textContent = newFormattedUUID;
+                        }
+                    } catch (e) {
+                        // 如果解析失败，不处理
+                    }
+                }
+            });
+        });
+
         // 初始化页面时生成一个UUID
         window.addEventListener('load', () => {
-            generateBtn.click();
+            generateAndDisplaySingleUUID();
         });
     </script>
+    <!-- 统一引用全局页脚 -->
+    <footer id="site-footer"></footer>
+    <script src="/source/footer.js"></script>
 </body>
 </html>
+
+
+

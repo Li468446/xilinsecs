@@ -2,7 +2,7 @@
 1、index.html         页面未完善
 2、about.html         页面开发完毕，待优化
 3、newsConfig.js      首页近期动态模块的动态绑定
-
+4、config.js           企业动态页面配置文件
 
 目录说明
 1、images/            存放首页近期动态模块缩略图
