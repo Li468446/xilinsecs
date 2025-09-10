@@ -127,8 +127,14 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://www.sec.hn.cn/leadership/pages/2025/finance_q2.html</loc>
+        <lastmod>2025-09-11T12:00:00+08:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://www.sec.hn.cn/rss.xml</loc>
-        <lastmod>2025-09-05</lastmod>
+        <lastmod>2025-09-11T12:00:00+08:00</lastmod>
         <changefreq>hourly</changefreq>
         <priority>1.0</priority>
     </url>
