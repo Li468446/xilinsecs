@@ -1675,393 +1675,402 @@
     });
     </script>
 
-<!-- 近期动态模块 -->
-<section class="news-section">
-  <h1 class="news-heading">近期动态</h1>
-  <h4 class="news-subheading">关注我们的最新进展</h4>
+    <!-- 近期动态模块 -->
+    <section class="news-section">
+      <h1 class="news-heading">近期动态</h1>
+      <h4 class="news-subheading">关注我们的最新进展</h4>
 
-  <div class="news-carousel-wrapper responsive-carousel-wrapper">
-    <div class="news-carousel responsive-carousel"></div>
-  </div>
-
-  <div class="news-dots"></div>
-</section>
-
-<style>
-.news-section {
-  padding: 160px 20px;
-  background: #0b0b0b;
-  color: #fff;
-  text-align: center;
-  overflow: hidden;
-}
-.news-heading { font-size: 2.5rem; font-weight: 700; margin-bottom: 20px; }
-.news-subheading { color: rgba(255,255,255,0.6); margin-bottom: 60px; }
-
-.responsive-carousel-wrapper {
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-  overflow: hidden;
-  cursor: grab;
-}
-.responsive-carousel-wrapper:active { cursor: grabbing; }
-
-.responsive-carousel {
-  display: flex;
-  gap: 20px;
-  transition: transform 0.5s ease;
-  will-change: transform;
-}
-.news-card {
-  flex: 0 0 100%;
-  opacity: 0;
-  transform: scale(0.95) translateY(60px);
-  transition: transform 0.5s ease, opacity 0.5s ease;
-}
-.news-card.active { transform: scale(1) translateY(0); opacity: 1; }
-
-.news-card-inner {
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(15px);
-  border-radius: 18px;
-  padding: 0 0 15px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.5);
-  text-align: left;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.news-card-inner:hover {
-  transform: scale(1.03) translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.7);
-}
-.news-thumb {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 18px 18px 0 0;
-}
-.news-card-inner h5 { font-size: 1.2rem; font-weight: 700; margin: 12px 15px 6px; }
-.news-card-inner time { display: block; font-size: 0.9rem; color: #aaa; margin: 0 15px 10px; }
-.news-card-inner p { font-size: 0.95rem; color: rgba(255,255,255,0.85); line-height: 1.4; margin: 0 15px 15px; }
-.read-more-btn { display: block; margin: 0 15px; padding: 8px 14px; border: none; border-radius: 6px; background: #0ae0ff; color: #000; cursor: pointer; font-weight: 600; text-align: center; transition: all 0.2s; }
-.read-more-btn:hover { background: #08b8d0; }
-
-.news-dots { text-align: center; padding-top: 25px; }
-.news-dots .dot { display: inline-block; width: 10px; height: 10px; margin: 0 6px; border-radius: 50%; background: #555; transition: background 0.3s; cursor: pointer; }
-.news-dots .dot.active { background: #0ae0ff; }
-
-@media(min-width:768px){
-  .news-card { flex: 0 0 33.3333%; }
-}
-</style>
-
-<script src="leadership/indexnews/js/newsConfig.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", ()=>{
-  const carousel = document.querySelector(".responsive-carousel");
-  const dotsContainer = document.querySelector(".news-dots");
-
-  let currentIndex = 0;
-  let autoSlideInterval;
-  let visibleCards = window.innerWidth >= 768 ? 3 : 1;
-
-  function setVisibleCards() { visibleCards = window.innerWidth >= 768 ? 3 : 1; }
-
-  // 生成卡片 & 小圆点
-  newsData.forEach((item, index)=>{
-    const card = document.createElement("div");
-    card.className = "news-card";
-    card.innerHTML = `
-      <div class="news-card-inner">
-        <img src="${item.thumb}" alt="${item.title}" class="news-thumb">
-        <h5>${item.title}</h5>
-        <time>${item.date}</time>
-        <p>${item.desc}</p>
-        <a href="${item.link}" class="read-more-btn">阅读更多</a>
+      <div class="news-carousel-wrapper responsive-carousel-wrapper">
+        <div class="news-carousel responsive-carousel"></div>
       </div>
-    `;
-    carousel.appendChild(card);
 
-    const dot = document.createElement("span");
-    dot.className = "dot";
-    dot.dataset.index = index;
-    dotsContainer.appendChild(dot);
-  });
-
-  const cards = document.querySelectorAll(".news-card");
-  const dots = document.querySelectorAll(".dot");
-
-  function updateDisplay(index){
-    const total = cards.length;
-    const offset = index * (100/visibleCards);
-    carousel.style.transition = 'transform 0.5s ease'; // 平滑过渡
-    carousel.style.transform = `translateX(-${offset}%)`;
-    cards.forEach((card,i)=>card.classList.toggle("active", i>=index && i<index+visibleCards));
-    dots.forEach((d,i)=>d.classList.toggle("active", i>=index && i<index+visibleCards));
-  }
-
-  function goTo(index){ currentIndex = index; updateDisplay(currentIndex); }
-
-  // 圆点点击跳转平滑滚动
-  dots.forEach(dot=>{
-    dot.addEventListener("click", ()=>{
-      const idx = parseInt(dot.dataset.index);
-      goTo(idx);
-      pauseAutoSlide();
-      resumeAutoSlide();
-    });
-  });
-
-  function startAutoSlide() {
-    clearInterval(autoSlideInterval);
-    autoSlideInterval = setInterval(()=>{
-      currentIndex = (currentIndex + 1) > (cards.length-visibleCards) ? 0 : currentIndex + 1;
-      updateDisplay(currentIndex);
-    }, 4000);
-  }
-  function pauseAutoSlide() { clearInterval(autoSlideInterval); }
-  function resumeAutoSlide() { startAutoSlide(); }
-
-  window.addEventListener("resize", ()=>{
-    setVisibleCards();
-    updateDisplay(currentIndex);
-  });
-
-  // 拖动滑动切换
-  let isDragging = false, startX = 0, currentTranslate = 0;
-  carousel.addEventListener("mousedown", startDrag);
-  carousel.addEventListener("touchstart", startDrag);
-  carousel.addEventListener("mousemove", dragMove);
-  carousel.addEventListener("touchmove", dragMove);
-  carousel.addEventListener("mouseup", endDrag);
-  carousel.addEventListener("mouseleave", endDrag);
-  carousel.addEventListener("touchend", endDrag);
-
-  function startDrag(e){
-    pauseAutoSlide();
-    isDragging = true;
-    startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-    currentTranslate = -currentIndex * (carousel.offsetWidth/visibleCards);
-  }
-  function dragMove(e){
-    if(!isDragging) return;
-    const x = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-    const dx = x - startX;
-    carousel.style.transition = 'none';
-    carousel.style.transform = `translateX(${currentTranslate + dx}px)`;
-  }
-  function endDrag(e){
-    if(!isDragging) return;
-    isDragging = false;
-    const x = e.type.includes('touch') ? e.changedTouches[0].clientX : e.clientX;
-    const dx = x - startX;
-    if(dx < -50 && currentIndex < cards.length-visibleCards) currentIndex++;
-    else if(dx > 50 && currentIndex > 0) currentIndex--;
-    carousel.style.transition = 'transform 0.5s ease';
-    updateDisplay(currentIndex);
-    resumeAutoSlide();
-  }
-
-  setVisibleCards();
-  updateDisplay(currentIndex);
-  startAutoSlide();
-});
-</script>
-
-
-    <!-- 团队成员模块 -->
-    <section class="team-section-history">
-      <canvas id="team-bg" class="team-bg"></canvas>
-
-      <div class="container">
-        <div class="row text-center">
-          <div class="col-12 mb-5">
-            <h1 class="team-heading-history">认识希灵赛斯背后的团队</h1>
-            <h4 class="team-subheading-history mt-3">核心团队成员</h4>
-          </div>
-
-          <!-- 团队成员卡片 -->
-          <div class="col-12 col-md-6 col-lg-4">
-            <div class="team-card-history">
-              <div class="team-card-inner-history">
-                <img src="source/index_imgs/touxiang/xuzhongxin_index_01.jpg" alt="徐中信" class="memoji-avatar-history">
-                <h5>徐中信</h5>
-                <p>创始人</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-12 col-md-6 col-lg-4">
-            <div class="team-card-history">
-              <div class="team-card-inner-history">
-                <img src="source/index_imgs/touxiang/chenziyi_index_01.jpg" alt="陈紫怡" class="memoji-avatar-history">
-                <h5>陈紫怡</h5>
-                <p>创始人</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-12 col-md-6 col-lg-4">
-            <div class="team-card-history">
-              <div class="team-card-inner-history">
-                <img src="source/index_imgs/touxiang/chenshiyi_index_01.jpg" alt="陈诗怡" class="memoji-avatar-history">
-                <h5>陈诗怡</h5>
-                <p>大数据及信息安全工程师</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-12 col-md-6 col-lg-4">
-            <div class="team-card-history">
-              <div class="team-card-inner-history">
-                <img src="source/index_imgs/touxiang/xiaohuahong_index_01.jpg" alt="肖骅鸿" class="memoji-avatar-history">
-                <h5>肖骅鸿</h5>
-                <p>信息安全工程师</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-12 col-md-6 col-lg-4">
-            <div class="team-card-history">
-              <div class="team-card-inner-history">
-                <img src="source/index_imgs/touxiang/wangyueyang_index_01.jpg" alt="王越阳" class="memoji-avatar-history">
-                <h5>王越阳</h5>
-                <p>软件开发工程师</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-12 col-md-6 col-lg-4">
-            <div class="team-card-history">
-              <div class="team-card-inner-history">
-                <img src="source/index_imgs/touxiang/pengqianhui_index_01.jpg" alt="彭芊惠" class="memoji-avatar-history">
-                <h5>彭芊惠</h5>
-                <p>新媒体运营</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="news-dots"></div>
     </section>
 
     <style>
-    .team-section-history { position: relative; padding: 100px 20px; background-color: #0b0b0b; color: #fff; overflow: hidden; }
-    .team-bg { position: absolute; top:0; left:0; width:100%; height:100%; z-index:0; }
-    .team-section-history .container { position: relative; z-index:1; }
-    .team-heading-history { font-size: 3rem; font-weight:700; text-align:center; }
-    .team-subheading-history { font-weight:400; color:rgba(255,255,255,0.7); text-align:center; margin-top:15px; }
-
-    .team-card-history { perspective:1000px; margin:20px 0; opacity:0; transform:translateY(60px); transition: all 0.8s ease-out; }
-    .team-card-history.visible { opacity:1; transform:translateY(0); }
-
-    .team-card-inner-history {
-      background: rgba(255,255,255,0.05);
-      backdrop-filter: blur(18px);
-      padding: 25px 20px;
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-      text-align:center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
+    .news-section {
+      padding: 160px 20px;
+      background: #0b0b0b;
+      color: #fff;
+      text-align: center;
       overflow: hidden;
     }
+    .news-heading { font-size: 2.5rem; font-weight: 700; margin-bottom: 20px; }
+    .news-subheading { color: rgba(255,255,255,0.6); margin-bottom: 60px; }
 
-    .team-card-inner-history::after {
-      content:'';
-      position:absolute;
-      top:-50%; left:-50%;
-      width:200%; height:200%;
-      background: radial-gradient(circle at 30% 30%, rgba(10,224,255,0.2), transparent 60%);
-      opacity:0.5;
-      transition: all 0.3s ease;
-      pointer-events:none;
+    .responsive-carousel-wrapper {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      overflow: hidden;
+      cursor: grab;
     }
+    .responsive-carousel-wrapper:active { cursor: grabbing; }
 
-    .team-card-inner-history:hover::after { top:-30%; left:-30%; opacity:0.7; }
+    .responsive-carousel {
+      display: flex;
+      gap: 20px;
+      transition: transform 0.5s ease;
+      will-change: transform;
+    }
+    .news-card {
+      flex: 0 0 100%;
+      opacity: 0;
+      transform: scale(0.95) translateY(60px);
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+    .news-card.active { transform: scale(1) translateY(0); opacity: 1; }
 
-    .memoji-avatar-history { width:120px; height:120px; border-radius:50%; object-fit:cover; margin:0 auto 15px; border:3px solid rgba(255,255,255,0.2); transition: transform 0.3s ease; }
-    .team-card-inner-history:hover .memoji-avatar-history { transform:scale(1.1) rotate(3deg); }
+    .news-card-inner {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(15px);
+      border-radius: 18px;
+      padding: 0 0 15px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+      text-align: left;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .news-card-inner:hover {
+      transform: scale(1.03) translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.7);
+    }
+    .news-thumb {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 18px 18px 0 0;
+    }
+    .news-card-inner h5 { font-size: 1.2rem; font-weight: 700; margin: 12px 15px 6px; }
+    .news-card-inner time { display: block; font-size: 0.9rem; color: #aaa; margin: 0 15px 10px; }
+    .news-card-inner p { font-size: 0.95rem; color: rgba(255,255,255,0.85); line-height: 1.4; margin: 0 15px 15px; }
+    .read-more-btn { display: block; margin: 0 15px; padding: 8px 14px; border: none; border-radius: 6px; background: #0ae0ff; color: #000; cursor: pointer; font-weight: 600; text-align: center; transition: all 0.2s; }
+    .read-more-btn:hover { background: #08b8d0; }
 
-    .team-card-inner-history h5 { color:#fff; font-weight:700; margin-bottom:5px; }
-    .team-card-inner-history p { color:#0ae0ff; font-weight:500; margin:0; }
+    .news-dots { text-align: center; padding-top: 25px; }
+    .news-dots .dot { display: inline-block; width: 10px; height: 10px; margin: 0 6px; border-radius: 50%; background: #555; transition: background 0.3s; cursor: pointer; }
+    .news-dots .dot.active { background: #0ae0ff; }
 
-    @media(max-width:768px){ .team-heading-history { font-size:2.2rem; } .memoji-avatar-history { width:100px; height:100px; } }
+    @media(min-width:768px){
+      .news-card { flex: 0 0 33.3333%; }
+    }
     </style>
 
+    <script src="/leadership/indexnews/js/newsConfig.js"></script>
     <script>
-    document.addEventListener('DOMContentLoaded', function(){
-      const canvas=document.getElementById('team-bg');
-      const ctx=canvas.getContext('2d');
-      canvas.width=window.innerWidth; canvas.height=window.innerHeight;
+    document.addEventListener("DOMContentLoaded", ()=>{
+      const carousel = document.querySelector(".responsive-carousel");
+      const dotsContainer = document.querySelector(".news-dots");
 
-      const particles=[];
-      for(let i=0;i<120;i++){
-        particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2+1,dx:(Math.random()-0.5)*0.4,dy:(Math.random()-0.5)*0.4});
+      let currentIndex = 0;
+      let autoSlideInterval;
+      let visibleCards = window.innerWidth >= 768 ? 3 : 1;
+
+      function setVisibleCards() { visibleCards = window.innerWidth >= 768 ? 3 : 1; }
+
+      // 生成卡片 & 小圆点
+      newsData.forEach((item, index)=>{
+        const card = document.createElement("div");
+        card.className = "news-card";
+        card.innerHTML = `
+          <div class="news-card-inner">
+            <img src="${item.thumb}" alt="${item.title}" class="news-thumb">
+            <h5>${item.title}</h5>
+            <time>${item.date}</time>
+            <p>${item.desc}</p>
+            <a href="${item.link}" class="read-more-btn">立即前往</a>
+          </div>
+        `;
+        carousel.appendChild(card);
+
+        const dot = document.createElement("span");
+        dot.className = "dot";
+        dot.dataset.index = index;
+        dotsContainer.appendChild(dot);
+      });
+
+      const cards = document.querySelectorAll(".news-card");
+      const dots = document.querySelectorAll(".dot");
+
+      function updateDisplay(index){
+        const total = cards.length;
+        const offset = index * (100/visibleCards);
+        carousel.style.transition = 'transform 0.5s ease'; // 平滑过渡
+        carousel.style.transform = `translateX(-${offset}%)`;
+        cards.forEach((card,i)=>card.classList.toggle("active", i>=index && i<index+visibleCards));
+        dots.forEach((d,i)=>d.classList.toggle("active", i>=index && i<index+visibleCards));
       }
 
-      let mouse={x:null,y:null};
-      document.addEventListener('mousemove',e=>{ mouse.x=e.clientX; mouse.y=e.clientY; });
+      function goTo(index){ currentIndex = index; updateDisplay(currentIndex); }
 
-      function animateParticles(){
-        ctx.clearRect(0,0,canvas.width,canvas.height);
-        particles.forEach(p=>{
-          // 鼠标吸引粒子
-          if(mouse.x!==null && mouse.y!==null){
-            const dx=mouse.x-p.x, dy=mouse.y-p.y;
-            const dist=Math.sqrt(dx*dx+dy*dy);
-            if(dist<150){
-              const angle=Math.atan2(dy,dx);
-              p.x+=Math.cos(angle)*0.5;
-              p.y+=Math.sin(angle)*0.5;
-              ctx.fillStyle='rgba(10,224,255,'+((150-dist)/150*0.5)+')';
-            }else{
-              ctx.fillStyle='rgba(10,224,255,0.15)';
-            }
-          }else{ ctx.fillStyle='rgba(10,224,255,0.15)'; }
-
-          ctx.beginPath();
-          ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-          ctx.fill();
-
-          p.x+=p.dx; p.y+=p.dy;
-          if(p.x>canvas.width)p.x=0; if(p.x<0)p.x=canvas.width;
-          if(p.y>canvas.height)p.y=0; if(p.y<0)p.y=canvas.height;
-        });
-        requestAnimationFrame(animateParticles);
-      }
-      animateParticles();
-
-      window.addEventListener('resize',()=>{canvas.width=window.innerWidth; canvas.height=window.innerHeight;});
-
-      // 滑入滑出动画
-      const cards=document.querySelectorAll('.team-card-history');
-      const observer=new IntersectionObserver(entries=>{
-        entries.forEach(entry=>{
-          if(entry.isIntersecting) entry.target.classList.add('visible');
-          else entry.target.classList.remove('visible');
-        });
-      },{threshold:0.2});
-      cards.forEach(card=>observer.observe(card));
-
-      // 卡片3D悬浮 + 光影
-      cards.forEach(card=>{
-        const inner=card.querySelector('.team-card-inner-history');
-        card.addEventListener('mousemove',e=>{
-          const rect=inner.getBoundingClientRect();
-          const x=e.clientX-rect.left;
-          const y=e.clientY-rect.top;
-          const cx=rect.width/2, cy=rect.height/2;
-          const dx=(x-cx)/cx, dy=(y-cy)/cy;
-          inner.style.transform=`rotateX(${-dy*10}deg) rotateY(${dx*10}deg) scale(1.03)`;
-          inner.style.boxShadow=`${-dx*20}px ${dy*20}px 50px rgba(0,0,0,0.7)`;
-        });
-        card.addEventListener('mouseleave',()=>{
-          inner.style.transform='rotateX(0deg) rotateY(0deg) scale(1)';
-          inner.style.boxShadow='0 8px 20px rgba(0,0,0,0.5)';
+      // 圆点点击跳转平滑滚动
+      dots.forEach(dot=>{
+        dot.addEventListener("click", ()=>{
+          const idx = parseInt(dot.dataset.index);
+          goTo(idx);
+          pauseAutoSlide();
+          resumeAutoSlide();
         });
       });
+
+      function startAutoSlide() {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = setInterval(()=>{
+          currentIndex = (currentIndex + 1) > (cards.length-visibleCards) ? 0 : currentIndex + 1;
+          updateDisplay(currentIndex);
+        }, 4000);
+      }
+      function pauseAutoSlide() { clearInterval(autoSlideInterval); }
+      function resumeAutoSlide() { startAutoSlide(); }
+
+      window.addEventListener("resize", ()=>{
+        setVisibleCards();
+        updateDisplay(currentIndex);
+      });
+
+      // 拖动滑动切换
+      let isDragging = false, startX = 0, currentTranslate = 0;
+      carousel.addEventListener("mousedown", startDrag);
+      carousel.addEventListener("touchstart", startDrag);
+      carousel.addEventListener("mousemove", dragMove);
+      carousel.addEventListener("touchmove", dragMove);
+      carousel.addEventListener("mouseup", endDrag);
+      carousel.addEventListener("mouseleave", endDrag);
+      carousel.addEventListener("touchend", endDrag);
+
+      function startDrag(e){
+        pauseAutoSlide();
+        isDragging = true;
+        startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+        currentTranslate = -currentIndex * (carousel.offsetWidth/visibleCards);
+      }
+      function dragMove(e){
+        if(!isDragging) return;
+        const x = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+        const dx = x - startX;
+        carousel.style.transition = 'none';
+        carousel.style.transform = `translateX(${currentTranslate + dx}px)`;
+      }
+      function endDrag(e){
+        if(!isDragging) return;
+        isDragging = false;
+        const x = e.type.includes('touch') ? e.changedTouches[0].clientX : e.clientX;
+        const dx = x - startX;
+        if(dx < -50 && currentIndex < cards.length-visibleCards) currentIndex++;
+        else if(dx > 50 && currentIndex > 0) currentIndex--;
+        carousel.style.transition = 'transform 0.5s ease';
+        updateDisplay(currentIndex);
+        resumeAutoSlide();
+      }
+
+      setVisibleCards();
+      updateDisplay(currentIndex);
+      startAutoSlide();
     });
     </script>
+
+
+<!-- 团队成员模块（全屏苹果风格 + 动态背景 + 进场缩放 + 依次延迟） -->
+<section class="team-section-apple">
+  <div class="background-overlay"></div>
+  <div class="container team-container-apple">
+    <div class="row text-center">
+      <div class="col-12 mb-5">
+        <h1 class="team-heading-apple">认识希灵赛斯背后的团队</h1>
+        <h4 class="team-subheading-apple">核心团队成员</h4>
+      </div>
+
+      <!-- 团队成员卡片 -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="team-card-apple">
+          <img src="source/index_imgs/touxiang/xuzhongxin_index_01.jpg" alt="徐中信" class="team-avatar-apple">
+          <h5>徐中信</h5>
+          <p>创始人</p>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="team-card-apple">
+          <img src="source/index_imgs/touxiang/chenziyi_index_01.jpg" alt="陈紫怡" class="team-avatar-apple">
+          <h5>陈紫怡</h5>
+          <p>创始人</p>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="team-card-apple">
+          <img src="source/index_imgs/touxiang/chenshiyi_index_01.jpg" alt="陈诗怡" class="team-avatar-apple">
+          <h5>陈诗怡</h5>
+          <p>大数据及信息安全工程师</p>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="team-card-apple">
+          <img src="source/index_imgs/touxiang/xiaohuahong_index_01.jpg" alt="肖骅鸿" class="team-avatar-apple">
+          <h5>肖骅鸿</h5>
+          <p>信息安全工程师</p>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="team-card-apple">
+          <img src="source/index_imgs/touxiang/wangyueyang_index_01.jpg" alt="王越阳" class="team-avatar-apple">
+          <h5>王越阳</h5>
+          <p>软件开发工程师</p>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="team-card-apple">
+          <img src="source/index_imgs/touxiang/pengqianhui_index_01.jpg" alt="彭芊惠" class="team-avatar-apple">
+          <h5>彭芊惠</h5>
+          <p>新媒体运营</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* 整体全屏苹果风格 */
+.team-section-apple {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
+  overflow: hidden;
+  padding: 80px 20px;
+}
+
+.team-container-apple {
+  width: 100%;
+  max-width: 1200px;
+  position: relative;
+  z-index: 1;
+}
+
+/* 背景光晕层 + 动态效果 */
+.background-overlay {
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  width: 140%;
+  height: 140%;
+  background: radial-gradient(circle at 30% 30%, rgba(10, 224, 255, 0.1), transparent 60%),
+              radial-gradient(circle at 70% 70%, rgba(255, 0, 128, 0.1), transparent 60%);
+  animation: moveBackground 20s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes moveBackground {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-30px, 20px) scale(1.05); }
+  100% { transform: translate(30px, -20px) scale(1); }
+}
+
+/* 标题 */
+.team-heading-apple,
+.team-subheading-apple {
+  opacity: 0;
+  transform: translateY(30px) scale(1.05);
+  transition: all 0.8s ease;
+}
+
+.team-heading-apple {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+.team-subheading-apple {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: rgba(0,0,0,0.6);
+  margin-bottom: 50px;
+}
+
+/* 卡片设计 */
+.team-card-apple {
+  background: #fff;
+  border-radius: 24px;
+  padding: 30px 20px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  text-align: center;
+  transition: all 0.4s ease;
+  margin-bottom: 40px;
+  opacity: 0;
+  transform: translateY(30px) scale(1.05);
+}
+
+.team-card-apple:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+.team-avatar-apple {
+  width: 140px;
+  height: 140px;
+  border-radius: 20px;
+  object-fit: cover;
+  margin: 0 auto 20px;
+  transition: transform 0.3s ease;
+}
+
+.team-card-apple:hover .team-avatar-apple {
+  transform: scale(1.03);
+}
+
+.team-card-apple h5 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #111;
+}
+
+.team-card-apple p {
+  font-size: 0.95rem;
+  color: #666;
+  margin: 0;
+}
+
+/* 响应式 */
+@media(max-width:768px){
+  .team-heading-apple { font-size: 2rem; }
+  .team-avatar-apple { width: 110px; height: 110px; }
+}
+
+/* 可见时动画触发 */
+.visible {
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
+}
+</style>
+
+<script>
+/* 进场动画触发 + 依次延迟 */
+document.addEventListener("DOMContentLoaded", () => {
+  const elements = document.querySelectorAll(
+    ".team-heading-apple, .team-subheading-apple, .team-card-apple"
+  );
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        const index = Array.from(elements).indexOf(entry.target);
+        entry.target.style.transitionDelay = `${index * 0.1}s`;
+        entry.target.classList.add("visible");
+      }
+    });
+  }, { threshold: 0.2 });
+
+  elements.forEach(el => observer.observe(el));
+});
+</script>
+
 
     <!-- 发展历程模块 -->
     <section id="development-history" class="history-section">
