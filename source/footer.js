@@ -203,7 +203,7 @@ function renderFooter(containerId = "site-footer") {
     let siteType = '';
     let icpNumber = '';
     if(domesticDomains.includes(hostname)){
-        siteType="国内站 - 已支持IPv6"; icpNumber="琼ICP备2025060601号-1";
+        siteType="中国站 - 已支持IPv6"; icpNumber="琼ICP备2025060601号-1";
     } else if(internationalDomains.includes(hostname)){
         siteType="国际站 - 已支持IPv6"; icpNumber="琼ICP备2025060601号-2";
     } else {
