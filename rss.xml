@@ -5,10 +5,26 @@
     <description>专业的信息化解决方案供应商，提供私有云建设、信息安全咨询、网站建设等服务</description>
     <link>https://www.sec.hn.cn</link>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 11 Sep 2025 12:00:00 +0800</lastBuildDate>
-    <pubDate>Thu, 11 Sep 2025 12:00:00 +0800</pubDate>
+    <lastBuildDate>Sat, 13 Sep 2025 12:00:00 +0800</lastBuildDate>
+    <pubDate>Sat, 13 Sep 2025 12:00:00 +0800</pubDate>
     <ttl>60</ttl>
     <atom:link href="https://www.sec.hn.cn/rss.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>代理商OA协作系统上线</title>
+      <description>全新的代理商OA协作系统正式上线，提供订单管理、结算查询等一站式业务协作服务</description>
+      <link>https://www.sec.hn.cn/business/p/oa.html</link>
+      <guid isPermaLink="true">https://www.sec.hn.cn/business/p/oa.html</guid>
+      <pubDate>Sat, 13 Sep 2025 12:00:00 +0800</pubDate>
+    </item>
+    
+    <item>
+      <title>代理商管理系统功能完善</title>
+      <description>新增代理商订单查询、信息维护、注册及营收结算等功能页面，完善代理商管理体系</description>
+      <link>https://www.sec.hn.cn/business/p/</link>
+      <guid isPermaLink="true">https://www.sec.hn.cn/business/p/</guid>
+      <pubDate>Sat, 13 Sep 2025 12:00:00 +0800</pubDate>
+    </item>
     
     <item>
       <title>2025年第二季度财务报告页面上线</title>
