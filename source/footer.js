@@ -2,7 +2,8 @@
 window.siteConfig = {
     footer: {
         brand: {
-            name: "XSEC",
+            logo: "/source/imgs/logo.png",
+            name: "HKXSEC",
             description: "致力于提供专业的信息化解决方案,助力企业数字化转型升级。"
         },
         links: [
@@ -42,23 +43,22 @@ window.siteConfig = {
             }
         ],
         copyright: "© 2025 海口希灵赛斯网络科技有限公司.保留所有权利.",
-        beian: {
-            icp: "琼ICP备2025060601号",
-            police: "本站已支持 IPv6"
+        extra: {
+            ipv6: "本站支持IPv6"
         }
     }
 };
 
-// -------------------- 样式部分 --------------------
+// -------------------- 样式注入 --------------------
 const footerStyle = `
 .footer {
     background: linear-gradient(135deg, #1d1d1f 0%, #111 100%);
     color: #f5f5f7;
     padding: 40px 20px 20px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    transition: all 0.3s ease;
 }
 .footer::before {
     content: "";
@@ -78,13 +78,16 @@ const footerStyle = `
     font-weight: 600;
     margin-bottom: 15px;
     font-size: 16px;
-    letter-spacing: 0.5px;
+}
+.footer h3 img {
+    height: 24px;
+    margin-right: 8px;
+    vertical-align: middle;
 }
 .footer p {
     color: #d1d1d6;
     font-size: 14px;
     line-height: 1.5;
-    transition: all 0.3s ease;
 }
 .footer ul {
     padding: 0;
@@ -115,15 +118,8 @@ const footerStyle = `
     opacity: 0;
     animation: fadeIn 1s forwards;
 }
-.footer-bottom a {
-    color: #8e8e93;
-    text-decoration: none;
-    transition: none;
-}
-.footer-bottom a:hover {
-    color: #8e8e93;
-    transform: none;
-}
+.footer-bottom a { color:#8e8e93; text-decoration:none; }
+.footer-bottom a:hover { color:#8e8e93; }
 .footer .row {
     display: flex;
     flex-wrap: wrap;
@@ -133,9 +129,7 @@ const footerStyle = `
 .footer .col {
     flex: 1 1 0;
     min-width: 150px;
-    transition: all 0.3s ease;
 }
-/* 移动端折叠栏目动画 */
 .footer .footer-section h4 {
     cursor: pointer;
     position: relative;
@@ -159,27 +153,38 @@ const footerStyle = `
     max-height: 0;
 }
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity:0; transform:translateY(10px); }
+    to { opacity:1; transform:translateY(0); }
 }
 .visitor-ip-info {
     opacity: 0;
     transition: opacity 1s ease;
+    font-size: 13px;
+    position: relative;
+    padding-left: 24px;
 }
-.visitor-ip-info.show {
-    opacity: 1;
+.visitor-ip-info .loader {
+    width: 12px;
+    height: 12px;
+    background: #0a84ff;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 4px;
+    animation: pulse 1.5s infinite ease-in-out;
 }
-@media (max-width: 768px) {
-    .footer .row {
-        flex-direction: column;
-    }
-    .footer .col {
-        min-width: auto;
-    }
+@keyframes pulse {
+    0% { transform: scale(0.9); opacity:0.6; }
+    50% { transform: scale(1.3); opacity:1; }
+    100% { transform: scale(0.9); opacity:0.6; }
+}
+.visitor-ip-info.show { opacity: 1; }
+@media (max-width:768px){
+    .footer .row{flex-direction:column;}
+    .footer .col{min-width:auto;}
 }
 `;
 
-// 注入样式
 const styleTag = document.createElement('style');
 styleTag.innerHTML = footerStyle;
 document.head.appendChild(styleTag);
@@ -187,17 +192,35 @@ document.head.appendChild(styleTag);
 // -------------------- 渲染页脚 --------------------
 function renderFooter(containerId = "site-footer") {
     const container = document.getElementById(containerId);
-    if (!container || !window.siteConfig || !window.siteConfig.footer) return;
+    if(!container || !window.siteConfig || !window.siteConfig.footer) return;
 
     const cfg = window.siteConfig.footer;
+
+    // 动态备案和站点类别
+    const hostname = window.location.hostname;
+    const domesticDomains = ["sec.hn.cn", "www.sec.hn.cn"];
+    const internationalDomains = ["xinnew.top", "www.xinnew.top",];
+    let siteType = '';
+    let icpNumber = '';
+    if(domesticDomains.includes(hostname)){
+        siteType="国内站 - 已支持IPv6"; icpNumber="琼ICP备2025060601号-1";
+    } else if(internationalDomains.includes(hostname)){
+        siteType="国际站 - 已支持IPv6"; icpNumber="琼ICP备2025060601号-2";
+    } else {
+        siteType="！！！非官方站点！！！"; icpNumber="！！！请注意，非官方站点！！！";
+    }
+    cfg.siteType = siteType;
+    cfg.icpNumber = icpNumber;
+
+    // 渲染 HTML
     const footerHTML = `
     <footer class="footer">
         <div class="container">
             <div class="row footer-top">
                 <div class="col footer-brand">
-                    <h3>${cfg.brand.name}</h3>
+                    <h3>${cfg.brand.logo ? `<img src="${cfg.brand.logo}" alt="${cfg.brand.name} Logo">` : ""}${cfg.brand.name}</h3>
                     <p>${cfg.brand.description}</p>
-                    <p class="visitor-ip-info">正在获取您的 IP 信息...（本站支持 IPv6）</p>
+                    <p class="visitor-ip-info"><span class="loader"></span> 正在获取您的 IP 信息...（${cfg.extra.ipv6}）</p>
                 </div>
                 ${cfg.links.map(section => `
                     <div class="col footer-section">
@@ -212,96 +235,71 @@ function renderFooter(containerId = "site-footer") {
             </div>
             <div class="footer-bottom">
                 <p>${cfg.copyright}</p>
-                <p class="beian-info"></p>
+                <p><span class="footer-icp">${cfg.icpNumber}</span> | <span class="footer-site-type">${cfg.siteType}</span></p>
             </div>
         </div>
     </footer>
     `;
     container.innerHTML = footerHTML;
 
-    // 设置备案信息
-    const beianElem = container.querySelector('.beian-info');
-    if(beianElem && cfg.beian) {
-        beianElem.innerHTML = `
-            <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">${cfg.beian.icp}</a> | 
-            <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${cfg.beian.police.replace('琼公网安备','')}" target="_blank" rel="noopener noreferrer">${cfg.beian.police}</a>
-        `;
-    }
-
     // -------------------- 移动端折叠栏目逻辑 --------------------
     const sections = container.querySelectorAll('.footer-section');
-
-    function updateLayout() {
+    function updateLayout(){
         const isMobile = window.innerWidth <= 768;
-        sections.forEach(sec => {
+        sections.forEach(sec=>{
             const list = sec.querySelector('ul');
             if(isMobile){
                 sec.classList.add('collapsed');
-                list.style.maxHeight = 0;
+                list.style.maxHeight=0;
             } else {
                 sec.classList.remove('collapsed');
-                list.style.maxHeight = list.scrollHeight + "px";
+                list.style.maxHeight=list.scrollHeight+"px";
             }
         });
     }
-
-    sections.forEach(sec => {
-        const header = sec.querySelector('h4');
-        const list = sec.querySelector('ul');
-        header.addEventListener('click', () => {
-            if(window.innerWidth > 768) return;
-            const isCollapsed = sec.classList.contains('collapsed');
+    sections.forEach(sec=>{
+        const header=sec.querySelector('h4');
+        const list=sec.querySelector('ul');
+        header.addEventListener('click', ()=>{
+            if(window.innerWidth>768) return;
+            const isCollapsed=sec.classList.contains('collapsed');
             if(isCollapsed){
                 sec.classList.remove('collapsed');
-                list.style.maxHeight = list.scrollHeight + "px";
+                list.style.maxHeight=list.scrollHeight+"px";
             } else {
-                list.style.maxHeight = list.scrollHeight + "px";
-                setTimeout(() => {
-                    sec.classList.add('collapsed');
-                    list.style.maxHeight = 0;
-                }, 10);
+                list.style.maxHeight=list.scrollHeight+"px";
+                setTimeout(()=>{sec.classList.add('collapsed'); list.style.maxHeight=0;},10);
             }
         });
     });
-
     updateLayout();
     window.addEventListener('resize', updateLayout);
 
-    // -------------------- 获取访问者 IP 信息并自动刷新 --------------------
+    // -------------------- 获取访问者 IP 信息 --------------------
     const ipInfoElem = container.querySelector('.visitor-ip-info');
-    if(!ipInfoElem) return;
-
-    function updateIP() {
-        ipInfoElem.classList.remove('show');
-        fetch('https://api.ip.sb/geoip/')
-        .then(res => res.json())
-        .then(data => {
-            const ip = data.ip || '未知';
-            const country = data.country || '未知';
-            const region = data.region || '未知';
-            const isp = data.isp || '未知';
-            const timezone = data.timezone || '未知';
-            let ipv4 = '未知', ipv6 = '未知';
-            if(ip.includes(':')) ipv6 = ip; else ipv4 = ip;
-            ipInfoElem.innerHTML = `
-                IPv4: ${ipv4}<br>
-                IPv6: ${ipv6}<br>
-                国家/地区: ${country} / ${region}<br>
-                ISP: ${isp}<br>
-                时区: ${timezone}<br>
-                
-            `;
-            setTimeout(() => ipInfoElem.classList.add('show'), 50);
-        })
-        .catch(err => {
-            ipInfoElem.textContent = '无法获取 IP 信息 （本站支持 IPv6）';
-            ipInfoElem.classList.add('show');
-            console.error('IP 获取失败', err);
-        });
+    if(ipInfoElem){
+        function updateIP(){
+            ipInfoElem.classList.remove('show');
+            ipInfoElem.innerHTML='<span class="loader"></span> 正在获取您的 IP 信息...（'+cfg.extra.ipv6+'）';
+            fetch('https://api.ip.sb/geoip/').then(res=>res.json()).then(data=>{
+                const ip=data.ip||'未知';
+                const country=data.country||'未知';
+                const region=data.region||'';
+                const isp=data.isp||'未知';
+                const timezone=data.timezone||'未知';
+                let ipv4='',ipv6='';
+                if(ip.includes(':')) ipv6=ip; else ipv4=ip;
+                ipInfoElem.innerHTML=`IPv4: ${ipv4}<br>IPv6: ${ipv6}<br>地区: ${country} ${region}<br>ISP: ${isp}<br>时区: ${timezone}`;
+                setTimeout(()=>ipInfoElem.classList.add('show'),50);
+            }).catch(err=>{
+                ipInfoElem.innerText='无法获取 IP 信息 （本站支持 IPv6）';
+                ipInfoElem.classList.add('show');
+                console.error('IP 获取失败',err);
+            });
+        }
+        updateIP();
+        setInterval(updateIP,60000);
     }
-
-    updateIP();
-    setInterval(updateIP, 60000);
 }
 
-document.addEventListener('DOMContentLoaded', () => renderFooter("site-footer"));
+document.addEventListener('DOMContentLoaded',()=>renderFooter("site-footer"));
