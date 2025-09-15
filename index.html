@@ -1310,241 +1310,274 @@
     })();
     </script>
 
-    <!-- 项目展示模块 -->
-    <section class="project-section">
-      <!-- 背景粒子层 -->
-      <canvas id="project-bg" class="project-bg"></canvas>
+<!-- 项目展示模块（自动无限横向轮播 + 星空粒子背景） -->
+<section class="project-section">
+    <!-- 背景粒子层 -->
+    <canvas id="project-bg" class="project-bg"></canvas>
 
-      <div class="container py-5">
-        <div class="row">
-          <!-- 左侧定制方案介绍 -->
-          <div class="col-lg-5 mb-4 mb-lg-0">
-            <div class="cta-box">
-              <h2 class="cta-title">定制专属方案</h2>
-              <p class="cta-description">
-                我们为每个客户提供量身定制的解决方案，满足您的独特需求，助力业务发展。
-              </p>
-
-              <ul class="feature-list">
-                <li>
-                  <i class="fas fa-check-circle"></i>
-                  <div>
-                    <strong>专业定制</strong> - 根据需求打造专属解决方案
-                  </div>
-                </li>
-                <li>
-                  <i class="fas fa-check-circle"></i>
-                  <div>
-                    <strong>高效交付</strong> - 严格遵循项目时间表
-                  </div>
-                </li>
-                <li>
-                  <i class="fas fa-check-circle"></i>
-                  <div>
-                    <strong>持续支持</strong> - 项目交付后提供完善的技术支持
-                  </div>
-                </li>
-              </ul>
-
-              <a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" class="btn custom-btn">
-                <i class="fas fa-pen-fancy me-2"></i>定制专属方案
-              </a>
-            </div>
-          </div>
-
-          <!-- 右侧项目案例展示 -->
-          <div class="col-lg-7">
-            <div class="row">
-              <!-- 项目案例1 -->
-              <div class="col-md-6 mb-4">
-                <div class="project-card scroll-animate">
-                  <div class="position-relative">
-                    <img src="source/index_imgs/ihaikou_index01.png"
-                         alt="HTC iHAIKOU 网站建设" class="project-img">
-                    <div class="card-date">
-                      17<br>JAN<br>2025
-                    </div>
-                  </div>
-                  <div class="project-content">
-                    <p class="project-author">By <a href="#" class="text-decoration-none">徐中信</a></p>
-                    <h3 class="project-title">HTC iHAIKOU 网站建设</h3>
-                    <p class="project-description">
-                      海口旅游职业学院职教周 iHAIKOU内容分发系统（国际站及国内站）建设
+    <div class="container py-5">
+        <div class="row g-5">
+            <!-- 左侧CTA盒子 -->
+            <div class="col-lg-5">
+                <div class="cta-box">
+                    <h2 class="cta-title">定制专属方案</h2>
+                    <p class="cta-description">
+                        我们为每个客户提供量身定制的解决方案，满足您的独特需求，助力业务发展。
                     </p>
-                    <a href="business/b/htc-ihaikou.html" class="btn btn-more">
-                      <i class="fas fa-arrow-right me-1"></i>查看详情
-                    </a>
-                  </div>
-                </div>
-              </div>
 
-              <!-- 项目案例2 -->
-              <div class="col-md-6 mb-4">
-                <div class="project-card scroll-animate">
-                  <div class="position-relative">
-                    <img src="source/index_imgs/hsd_index02.png"
-                         alt="VMware 私有云故障修复" class="project-img">
-                    <div class="card-date">
-                      26<br>MAR<br>2025
-                    </div>
-                  </div>
-                  <div class="project-content">
-                    <p class="project-author">By <a href="#" class="text-decoration-none">徐中信</a></p>
-                    <h3 class="project-title">VMware 私有云故障修复</h3>
-                    <p class="project-description">
-                      海南好思达网络科技有限公司分管运维现场处理VMware私有云故障
-                    </p>
-                    <a href="business/b/hnhsd-vmh3c.html" class="btn btn-more">
-                      <i class="fas fa-arrow-right me-1"></i>查看详情
-                    </a>
-                  </div>
-                </div>
-              </div>
+                    <ul class="feature-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>专业定制</strong> - 根据需求打造专属解决方案
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>高效交付</strong> - 严格遵循项目时间表
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>持续支持</strong> - 项目交付后提供完善的技术支持
+                            </div>
+                        </li>
+                    </ul>
 
+                    <a href="https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" class="btn custom-btn">
+                        <i class="fas fa-pen-fancy me-2"></i>定制专属方案
+                    </a>
+                </div>
             </div>
-          </div>
+
+            <!-- 右侧横向轮播项目案例 -->
+            <div class="col-lg-7">
+                <div class="carousel-wrapper">
+                    <div class="carousel-track">
+                        <!-- 示例项目卡片 -->
+                        <div class="project-card">
+                            <div class="position-relative">
+                                <img src="/source/index_imgs/ihaikou_index01.png" alt="HTC iHAIKOU 网站建设" class="project-img">
+                                <div class="card-date">17<br>JAN<br>2025</div>
+                            </div>
+                            <div class="project-content">
+                                <p class="project-author">By <a href="#">徐中信</a></p>
+                                <h3 class="project-title">HTC iHAIKOU 网站建设</h3>
+                                <p class="project-description">
+                                    海口旅游职业学院职教周 iHAIKOU内容分发系统建设
+                                </p>
+                                <a href="/business/b/htc-ihaikou.html" class="btn btn-more">
+                                    <i class="fas fa-arrow-right me-1"></i>查看详情
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="position-relative">
+                                <img src="/source/index_imgs/hsd_index02.png" alt="VMware 私有云故障修复" class="project-img">
+                                <div class="card-date">26<br>MAR<br>2025</div>
+                            </div>
+                            <div class="project-content">
+                                <p class="project-author">By <a href="#">徐中信</a></p>
+                                <h3 class="project-title">VMware 私有云故障修复</h3>
+                                <p class="project-description">
+                                    分管运维现场处理VMware私有云故障
+                                </p>
+                                <a href="/business/b/hnhsd-vmh3c.html" class="btn btn-more">
+                                    <i class="fas fa-arrow-right me-1"></i>查看详情
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- 重复项目以实现无缝循环 -->
+                        <div class="project-card">
+                            <div class="position-relative">
+                                <img src="/business/b/hhps-xinchuang/01.jpg" alt="海口海甸小学信创系统" class="project-img">
+                                <div class="card-date">17<br>JAN<br>2025</div>
+                            </div>
+                            <div class="project-content">
+                                <p class="project-author">By <a href="#">徐中信</a></p>
+                                <h3 class="project-title">海口海甸小学信创系统软件适配</h3>
+                                <p class="project-description">
+                                    海口海甸小学银河麒麟信创系统软件适配
+                                </p>
+                                <a href="/business/b/hhps.html" class="btn btn-more">
+                                    <i class="fas fa-arrow-right me-1"></i>查看详情
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </section>
+    </div>
+</section>
 
-    <style>
-    .project-section {
-      position: relative;
-      padding: 100px 0;
-      background-color: #0b0b0b;
-      color: #fff;
-      overflow: hidden;
-    }
+<style>
+/* 模块CSS */
+.project-section {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    overflow: hidden;
+    color: #e0e0ff;
+    background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #000000 100%);
+    display: flex;
+    align-items: center;
+}
 
-    .project-bg {
-      position: absolute;
-      top:0; left:0;
-      width:100%; height:100%;
-      z-index:0;
-    }
+/* 静态星点背景 */
+.project-section::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+        radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1.5px 1.5px at 40% 70%, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1.2px 1.2px at 80% 40%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1px 1px at 60% 20%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(2px 2px at 70% 80%, rgba(255,255,255,0.7), transparent);
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    z-index: -2;
+}
 
-    /* 卡片通用毛玻璃 */
-    .project-card, .cta-box {
-      border-radius: 20px;
-      overflow: hidden;
-      background: rgba(255,255,255,0.05);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.2);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-      transition: all 0.5s ease;
-      position: relative;
-    }
+.project-bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+}
 
-    /* hover动画 */
-    .project-card:hover, .cta-box:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-    }
+/* 其他样式保持不变 */
+.cta-box {
+    background: linear-gradient(145deg, #1a1a2e, #16213e);
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex; flex-direction: column; justify-content: center;
+}
 
-    .project-img { width: 100%; height: 220px; object-fit: cover; transition: transform 0.5s ease; }
-    .project-card:hover .project-img { transform: scale(1.05); }
+.cta-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-    .card-date {
-      position: absolute;
-      top: 20px; left: 20px;
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-radius: 12px;
-      padding: 12px 15px;
-      font-weight: 600;
-      text-align: center;
-      color: #0ae0ff;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-      line-height: 1.3;
-      border: 1px solid rgba(255,255,255,0.3);
-      z-index: 2;
-    }
+.cta-description { font-size: 1.1rem; line-height: 1.6; margin-bottom: 30px; color: #a0a0c0; }
 
-    .project-content { padding: 25px; }
-    .project-author { color: rgba(255,255,255,0.6); font-size:0.95rem; margin-bottom:8px; }
-    .project-title { font-weight:700; font-size:1.5rem; margin-bottom:12px; color:#fff; line-height:1.3; }
-    .project-description { color: rgba(255,255,255,0.6); margin-bottom:20px; line-height:1.6; font-size:1.05rem; }
-    .btn-more { background: rgba(0,113,227,0.1); color:#0ae0ff; border:none; border-radius:10px; padding:8px 18px; transition: all 0.3s ease; }
-    .btn-more:hover { background:#0ae0ff; color:white; }
+.feature-list { list-style: none; padding: 0; margin-bottom: 30px; }
+.feature-list li { display: flex; align-items: flex-start; margin-bottom: 20px; }
+.feature-list i { color: #00c6ff; font-size: 1.2rem; margin-right: 15px; margin-top: 5px; }
+.feature-list div strong { color: #fff; display: block; margin-bottom: 5px; }
+.feature-list div { color: #c0c0e0; }
 
-    .cta-box { padding:30px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; }
-    .cta-title { font-weight:700; font-size:1.8rem; margin-bottom:15px; color:#fff; }
-    .cta-description { color: rgba(255,255,255,0.6); margin-bottom:25px; font-size:1.1rem; line-height:1.6; }
-    .feature-list { list-style:none; padding:0; margin-bottom:30px; }
-    .feature-list li { margin-bottom:12px; display:flex; align-items:flex-start; }
-    .feature-list li i { color:#0ae0ff; margin-right:10px; margin-top:5px; font-size:1.2rem; }
-    .custom-btn { background:#0ae0ff; color:white; border:none; border-radius:12px; padding:12px 24px; font-weight:500; transition: all 0.3s ease; }
-    .custom-btn:hover { transform:translateY(-5px) scale(1.05); box-shadow:0 8px 20px rgba(0,113,227,0.35); }
+.custom-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: linear-gradient(90deg, #0072ff, #00c6ff);
+    color: white; border: none; padding: 12px 25px;
+    font-size: 1.1rem; font-weight: 600; border-radius: 50px;
+    text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,114,255,0.4);
+}
+.custom-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,114,255,0.6); color:white; }
+.custom-btn i { transition: transform 0.3s ease; }
+.custom-btn:hover i { transform: translateX(5px); }
 
-    /* 滚动动效初始状态 */
-    .scroll-animate {
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
+.carousel-wrapper { position: relative; width: 100%; overflow: hidden; border-radius: 15px; height: 100%; }
+.carousel-track { display: flex; width: max-content; animation: scroll-left 30s linear infinite; }
+.carousel-track:hover { animation-play-state: paused; }
+@keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-    .scroll-animate.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+.project-card { flex: 0 0 auto; width: 350px; margin-right: 30px; background: linear-gradient(145deg,#1a1a2e,#16213e);
+border-radius:15px; overflow:hidden; box-shadow:0 8px 25px rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.05);
+transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.project-card:hover { transform: translateY(-10px); box-shadow:0 15px 35px rgba(0,114,255,0.3); }
 
-    /* 响应式 */
-    @media(max-width:768px){ .project-img{height:180px;} }
-    </style>
+.project-img { width:100%; height:200px; object-fit:cover; display:block; }
+.card-date { position:absolute; top:20px; left:20px; background:rgba(0,0,0,0.6);
+color:white; padding:10px; border-radius:8px; text-align:center; font-size:0.85rem; line-height:1.2; font-weight:bold; }
+.card-date br { line-height:1.5; }
 
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // 滚动入场 + 离场动画
-      const items = document.querySelectorAll('.scroll-animate');
-      const observer = new IntersectionObserver(entries=>{
-        entries.forEach(entry=>{
-          if(entry.isIntersecting){
-            entry.target.classList.add('visible');
-          } else {
-            entry.target.classList.remove('visible');
-          }
-        });
-      }, {threshold:0.3});
-      items.forEach(item=>observer.observe(item));
+.project-content { padding:25px; }
+.project-author { font-size:0.9rem; color:#a0a0c0; margin-bottom:10px; }
+.project-author a { color:#00c6ff; text-decoration:none; }
+.project-author a:hover { text-decoration:underline; }
+.project-title { font-size:1.4rem; font-weight:700; margin-bottom:15px; color:#fff; }
+.project-description { font-size:1rem; line-height:1.6; color:#c0c0e0; margin-bottom:20px; }
+.btn-more { display:inline-flex; align-items:center; color:#00c6ff; text-decoration:none; font-weight:600; font-size:1rem; transition:color 0.3s ease; }
+.btn-more:hover { color:#0072ff; }
+.btn-more i { transition: transform 0.3s ease; }
+.btn-more:hover i { transform:translateX(5px); }
 
-      // 粒子背景
-      const canvas = document.getElementById('project-bg');
-      const ctx = canvas.getContext('2d');
-      canvas.width=window.innerWidth; canvas.height=window.innerHeight;
+@media (max-width: 991.98px) {
+    .project-section { padding:0; }
+    .cta-box { padding:30px; margin-bottom:40px; }
+    .cta-title { font-size:2rem; }
+    .project-card { width:320px; }
+}
+@media (max-width: 767.98px) {
+    .project-card { width:calc(100vw - 60px); margin-right:20px; }
+    .carousel-track { animation-duration:40s; }
+}
+</style>
 
-      const particles=[];
-      for(let i=0;i<120;i++){
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // 粒子背景（动态星星）
+    const canvas = document.getElementById('project-bg');
+    const ctx = canvas.getContext('2d');
+    function resizeCanvas(){ canvas.width=window.innerWidth; canvas.height=window.innerHeight; }
+    resizeCanvas(); window.addEventListener('resize', resizeCanvas);
+
+    const particles = [];
+    const particleCount = 120;
+    for(let i=0;i<particleCount;i++){
         particles.push({
-          x:Math.random()*canvas.width,
-          y:Math.random()*canvas.height,
-          r:Math.random()*2+1,
-          dx:(Math.random()-0.5)*0.4,
-          dy:(Math.random()-0.5)*0.4
+            x:Math.random()*canvas.width,
+            y:Math.random()*canvas.height,
+            r:Math.random()*2+1,
+            dx:(Math.random()-0.5)*0.3,
+            dy:(Math.random()-0.5)*0.3,
+            opacity:Math.random(),
+            twinkleSpeed:Math.random()*0.02+0.01
         });
-      }
+    }
 
-      function animateParticles(){
+    function animateParticles(){
         ctx.clearRect(0,0,canvas.width,canvas.height);
         particles.forEach(p=>{
-          ctx.beginPath();
-          ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-          ctx.fillStyle='rgba(255,255,255,0.2)';
-          ctx.fill();
-          p.x+=p.dx; p.y+=p.dy;
-          if(p.x>canvas.width) p.x=0;
-          if(p.x<0) p.x=canvas.width;
-          if(p.y>canvas.height) p.y=0;
-          if(p.y<0) p.y=canvas.height;
+            ctx.beginPath();
+            ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+            ctx.fillStyle=`rgba(255,255,255,${p.opacity})`;
+            ctx.fill();
+
+            // 更新位置
+            p.x+=p.dx; p.y+=p.dy;
+            if(p.x>canvas.width)p.x=0;
+            if(p.x<0)p.x=canvas.width;
+            if(p.y>canvas.height)p.y=0;
+            if(p.y<0)p.y=canvas.height;
+
+            // 星星闪烁
+            p.opacity += p.twinkleSpeed;
+            if(p.opacity >= 1 || p.opacity <= 0){
+                p.twinkleSpeed *= -1; // 反向
+            }
         });
         requestAnimationFrame(animateParticles);
-      }
-      animateParticles();
+    }
+    animateParticles();
+});
+</script>
 
-      window.addEventListener('resize',()=>{canvas.width=window.innerWidth; canvas.height=window.innerHeight;});
-    });
-    </script>
+
 
     <!-- 近期动态模块 -->
     <section class="news-section">
@@ -1627,7 +1660,7 @@
     }
     </style>
 
-    <script src="leadership/indexnews/js/newsConfig.js"></script>
+    <script src="/leadership/indexnews/js/newsConfig.js"></script>
     <script>
     document.addEventListener("DOMContentLoaded", ()=>{
       const carousel = document.querySelector(".responsive-carousel");
