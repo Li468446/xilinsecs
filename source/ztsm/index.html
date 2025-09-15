@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iOA安全办公软件下载 - 海口希灵赛斯网络科技有限公司</title>
+  <meta name="description" content="免费下载iOA安全办公软件，为企业提供安全高效的移动办公解决方案，支持远程访问、数据加密和多平台兼容。">
+  <meta name="keywords" content="iOA, 安全办公软件, 远程办公, 企业办公, 移动办公, 办公安全">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.hkx-cms.com/ztsm/">
+  <meta property="og:title" content="iOA安全办公软件下载 - 海口希灵赛斯网络科技有限公司">
+  <meta property="og:description" content="免费下载iOA安全办公软件，为企业提供安全高效的移动办公解决方案">
+  <meta property="og:image" content="/source/imgs/ioa-office-software.jpg">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://www.hkx-cms.com/ztsm/">
+  <meta property="twitter:title" content="iOA安全办公软件下载 - 海口希灵赛斯网络科技有限公司">
+  <meta property="twitter:description" content="免费下载iOA安全办公软件，为企业提供安全高效的移动办公解决方案">
+  <meta property="twitter:image" content="/source/imgs/ioa-office-software.jpg">
+  
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+    }
+    .header-iframe {
+      width: 100%;
+      height: calc(100vh - 60px); /* 为页脚留出空间 */
+      border: none;
+    }
+    
+    #site-footer {
+      height: 60px;
+    }
+  </style>
+  
+  <!-- 结构化数据 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "iOA安全办公软件",
+    "description": "为企业提供安全高效的移动办公解决方案，支持远程访问、数据加密和多平台兼容",
+    "operatingSystem": ["Windows", "macOS", "Android", "iOS"],
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CNY"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- 页面头部嵌入腾讯云下载页面 -->
+  <iframe class="header-iframe" src="https://ioa.cloud.tencent.com/download/" allowfullscreen></iframe>
+
+<!-- ===================== 团队 PIN 信息卡片模块（苹果毛玻璃 + 动态光斑效果） ===================== -->
+<section class="team-pin-card">
+  <div class="background-blobs">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+  </div>
+  <div class="pin-card glass-card">
+    <h3>团队 PIN 码</h3>
+    <button class="toggle-btn" onclick="togglePin()">查看 PIN 码</button>
+    <div id="pinContent" class="pin-content">
+      <div class="pin-box">
+        <p class="pin-value" id="pinValue">SLALAQ</p>
+        <button class="copy-btn" onclick="copyPin()">复制</button>
+      </div>
+      <p class="pin-note">（不分大小写）</p>
+      <div class="pin-warning">
+        ⚠️ 本 iOA 仅服务海口希灵赛斯员工及业务代理商
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.team-pin-card {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin: 60px 0;
+  padding: 0 20px;
+}
+
+/* ===== 背景光斑容器 ===== */
+.background-blobs {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  filter: blur(60px);
+}
+
+.blob {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: floatBlobs 18s infinite ease-in-out alternate;
+}
+
+.blob1 {
+  background: #0a84ff;
+  top: -60px;
+  left: -60px;
+  animation-delay: 0s;
+}
+
+.blob2 {
+  background: #30d158;
+  bottom: -80px;
+  right: -40px;
+  animation-delay: 6s;
+}
+
+.blob3 {
+  background: #ff9f0a;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-delay: 12s;
+}
+
+@keyframes floatBlobs {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, -30px) scale(1.2); }
+  100% { transform: translate(-30px, 20px) scale(0.9); }
+}
+
+/* ===== 毛玻璃卡片 ===== */
+.glass-card {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 25px 35px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+}
+
+.pin-card h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.toggle-btn {
+  background: rgba(0, 122, 255, 0.85);
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 12px 0;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.toggle-btn:hover {
+  background: rgba(0, 122, 255, 1);
+  transform: scale(1.05);
+}
+
+.pin-content {
+  display: none;
+  margin-top: 18px;
+  color: #f1f1f1;
+}
+
+.pin-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 12px 0;
+}
+
+.pin-value {
+  font-size: 30px;
+  font-weight: 700;
+  color: #0a84ff;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.copy-btn {
+  background: rgba(16, 185, 129, 0.9);
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.copy-btn:hover {
+  background: rgba(5, 150, 105, 1);
+  transform: scale(1.05);
+}
+
+.pin-note {
+  font-size: 14px;
+  color: #d1d5db;
+  margin-bottom: 15px;
+}
+
+.pin-warning {
+  font-size: 13px;
+  color: #fca5a5;
+  background: rgba(239, 68, 68, 0.2);
+  padding: 10px;
+  border-radius: 10px;
+}
+</style>
+
+<script>
+function togglePin() {
+  const content = document.getElementById("pinContent");
+  const btn = document.querySelector(".toggle-btn");
+  if (content.style.display === "block") {
+    content.style.display = "none";
+    btn.textContent = "查看 PIN 码";
+  } else {
+    content.style.display = "block";
+    btn.textContent = "隐藏 PIN 码";
+  }
+}
+
+function copyPin() {
+  const pinText = document.getElementById("pinValue").innerText;
+  navigator.clipboard.writeText(pinText).then(() => {
+    const btn = document.querySelector(".copy-btn");
+    btn.textContent = "已复制 ✔";
+    btn.style.background = "rgba(34,197,94,0.9)";
+    setTimeout(() => {
+      btn.textContent = "复制";
+      btn.style.background = "rgba(16,185,129,0.9)";
+    }, 1500);
+  });
+}
+</script>
+
+
+  <!-- 统一引用全局页脚 -->
+  <footer id="site-footer"></footer>
+  <script src="/source/footer.js"></script>
+</body>
+</html>

@@ -28,15 +28,15 @@ window.siteConfig = {
                 title: "资源",
                 items: [
                     { text: "技术博客", href: "https://blog.csdn.net/qq_73252299?spm=1000.2115.3001.5343", target: "_blank" },
-                    { text: "支持中心", href: "https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af" },
-                    { text: "公共服务", href: "/business/g/" }
+                    { text: "公共服务", href: "/business/g/" },
+                    { text: "零信任办公", href: "/source/ztsm/" }
                 ]
             },
             {
                 title: "联系我们",
                 items: [
                     { text: "客服咨询", href: "https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af", target: "_blank" },
-                    { text: "商务合作", href: "/business/c/subscription.html", target: "_blank" },
+                    { text: "商务合作", href: "/business/c/need.html", target: "_blank" },
                     { text: "客户服务", href: "/business/c/", target: "_blank" }
                 ]
             },
@@ -212,7 +212,7 @@ function renderFooter(containerId = "site-footer") {
     } else if(internationalDomains.includes(hostname)){
         siteType="国际站 - 已支持IPv6"; icpNumber="琼ICP备2025060601号-2";
     } else {
-        siteType="！！！非官方站点！！！"; icpNumber="！！！请注意，非官方站点！！！";
+        siteType="非官方站点"; icpNumber="非官方站点";
     }
     cfg.siteType = siteType;
     cfg.icpNumber = icpNumber;
