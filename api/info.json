@@ -1,9 +1,9 @@
 {
-  "name": "xilinsecs",
+  "name": "HKX CMS System",
   "systemName": "Hkx CMS",
   "version": "1.0.0",
   "description": "海口希灵赛斯网络科技有限公司官方网站内容管理系统",
-  "main": "index.js",
+    "main": "index.js",
   "developers": [
     "徐中信",
     "彭芊惠"
@@ -12,9 +12,17 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "gitee（当前代码状态：闭源迭代中",
-    "url": "https://gitee.com/root-xx_edc-ctf/xilinsecs.git"
+    "type": "gitee（当前代码状态：闭源迭代中，仅开发团队的同学可见）",
+    "url": "git clone https://gitee.com/rootxss/hkx-cms.git"
   },
   "private": true,
-  "company": "海口希灵赛斯网络科技有限公司"
+  "company": "海口希灵赛斯网络科技有限公司",
+  "api": {
+    "ipGeoLocation": {
+      "name": "ip.sb",
+      "endpoint": "https://api.ip.sb/geoip/",
+      "description": "IP地理位置查询API",
+      "usage": "通过IP地址获取地理位置信息"
+    }
+  }
 }

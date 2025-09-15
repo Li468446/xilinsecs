@@ -3,7 +3,7 @@ window.siteConfig = {
     footer: {
         brand: {
             logo: "/source/imgs/logo.png",
-            name: "HKXSEC",
+            name: "HK XSEC",
             description: "致力于提供专业的信息化解决方案,助力企业数字化转型升级。"
         },
         links: [
@@ -13,12 +13,11 @@ window.siteConfig = {
                     { text: "企业简介", href: "/leadership/me/" },
                     { text: "企业动态", href: "/leadership/" },
                     { text: "领导团队", href: "/leadership/me/lead/" },
-                    { text: "发展历程", href: "#" },
-                    { text: "隐私政策", href: "/legal/privacy/" }
+                    { text: "发展历程", href: "#" }
                 ]
             },
             {
-                title: "工作机会",
+                title: "职业机会",
                 items: [
                     { text: "XSEC 职业机会", href: "/careers/cn/" },
                     { text: "在 XSEC 生活", href: "/careers/cn/life-at-xsec.html" },
@@ -39,6 +38,12 @@ window.siteConfig = {
                     { text: "客服咨询", href: "https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af", target: "_blank" },
                     { text: "商务合作", href: "/business/c/subscription.html", target: "_blank" },
                     { text: "客户服务", href: "/business/c/", target: "_blank" }
+                ]
+            },
+            {
+                title: "条款与政策",
+                items: [
+                    { text: "隐私政策", href: "/legal/privacy/" }
                 ]
             }
         ],
