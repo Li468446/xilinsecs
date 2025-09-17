@@ -1310,13 +1310,13 @@
     })();
     </script>
 
-<!-- 项目展示模块（自动无限横向轮播 + 星空粒子背景） -->
+<!-- 项目展示模块（自动无限横向轮播 + 星空粒子背景 + 触屏滑动） -->
 <section class="project-section">
     <!-- 背景粒子层 -->
     <canvas id="project-bg" class="project-bg"></canvas>
 
     <div class="container py-5">
-        <div class="row g-5">
+        <div class="row g-5 flex-column-reverse flex-lg-row">
             <!-- 左侧CTA盒子 -->
             <div class="col-lg-5">
                 <div class="cta-box">
@@ -1391,11 +1391,10 @@
                             </div>
                         </div>
 
-                        <!-- 重复项目以实现无缝循环 -->
                         <div class="project-card">
                             <div class="position-relative">
                                 <img src="/business/b/hhps-xinchuang/01.jpg" alt="海口海甸小学信创系统" class="project-img">
-                                <div class="card-date">17<br>JAN<br>2025</div>
+                                <div class="card-date">03<br>SEP<br>2025</div>
                             </div>
                             <div class="project-content">
                                 <p class="project-author">By <a href="#">徐中信</a></p>
@@ -1416,11 +1415,10 @@
 </section>
 
 <style>
-/* 模块CSS */
 .project-section {
     position: relative;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     padding: 0;
     overflow: hidden;
     color: #e0e0ff;
@@ -1452,7 +1450,6 @@
     z-index: -1;
 }
 
-/* 其他样式保持不变 */
 .cta-box {
     background: linear-gradient(145deg, #1a1a2e, #16213e);
     border-radius: 15px;
@@ -1517,20 +1514,24 @@ color:white; padding:10px; border-radius:8px; text-align:center; font-size:0.85r
 .btn-more:hover i { transform:translateX(5px); }
 
 @media (max-width: 991.98px) {
-    .project-section { padding:0; }
-    .cta-box { padding:30px; margin-bottom:40px; }
+    .row.g-5 { gap: 30px; }
+    .cta-box { padding:30px; }
     .cta-title { font-size:2rem; }
-    .project-card { width:320px; }
+    .project-card { width:300px; }
 }
 @media (max-width: 767.98px) {
-    .project-card { width:calc(100vw - 60px); margin-right:20px; }
+    .project-card { width:calc(100vw - 40px); margin-right:20px; }
     .carousel-track { animation-duration:40s; }
+    .cta-box { padding:25px; }
+    .cta-title { font-size:1.8rem; }
+    .cta-description { font-size:1rem; }
+    .feature-list div { font-size:0.95rem; }
 }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    // 粒子背景（动态星星）
+    // 粒子背景
     const canvas = document.getElementById('project-bg');
     const ctx = canvas.getContext('2d');
     function resizeCanvas(){ canvas.width=window.innerWidth; canvas.height=window.innerHeight; }
@@ -1557,27 +1558,79 @@ document.addEventListener('DOMContentLoaded', function () {
             ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
             ctx.fillStyle=`rgba(255,255,255,${p.opacity})`;
             ctx.fill();
-
-            // 更新位置
             p.x+=p.dx; p.y+=p.dy;
             if(p.x>canvas.width)p.x=0;
             if(p.x<0)p.x=canvas.width;
             if(p.y>canvas.height)p.y=0;
             if(p.y<0)p.y=canvas.height;
-
-            // 星星闪烁
             p.opacity += p.twinkleSpeed;
             if(p.opacity >= 1 || p.opacity <= 0){
-                p.twinkleSpeed *= -1; // 反向
+                p.twinkleSpeed *= -1;
             }
         });
         requestAnimationFrame(animateParticles);
     }
     animateParticles();
+
+    // 触屏滑动 + 惯性
+    const track = document.querySelector('.carousel-track');
+    let isDragging = false;
+    let startX = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+    let animationID;
+    let velocity = 0;
+    let lastX = 0;
+
+    const getPositionX = (e) => e.touches ? e.touches[0].clientX : e.clientX;
+
+    const animation = () => {
+        track.style.transform = `translateX(${currentTranslate}px)`;
+        if(!isDragging){
+            velocity *= 0.95;
+            if(Math.abs(velocity) > 0.5){
+                currentTranslate += velocity;
+                requestAnimationFrame(animation);
+            }
+        } else {
+            requestAnimationFrame(animation);
+        }
+    }
+
+    track.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        startX = getPositionX(e) - prevTranslate;
+        velocity = 0;
+        lastX = getPositionX(e);
+        track.style.animationPlayState = 'paused';
+        cancelAnimationFrame(animationID);
+    });
+
+    track.addEventListener('touchmove', (e) => {
+        if(!isDragging) return;
+        const x = getPositionX(e);
+        const dx = x - lastX;
+        velocity = dx;
+        currentTranslate = x - startX;
+        lastX = x;
+        animationID = requestAnimationFrame(animation);
+    });
+
+    track.addEventListener('touchend', () => {
+        isDragging = false;
+        prevTranslate = currentTranslate;
+        requestAnimationFrame(animation);
+        setTimeout(()=>track.style.animationPlayState = 'running', 100); // 自动滚动恢复
+    });
+
+    track.addEventListener('touchcancel', () => {
+        isDragging = false;
+        prevTranslate = currentTranslate;
+        requestAnimationFrame(animation);
+        setTimeout(()=>track.style.animationPlayState = 'running', 100);
+    });
 });
 </script>
-
-
 
     <!-- 近期动态模块 -->
     <section class="news-section">
