@@ -29,7 +29,8 @@ window.siteConfig = {
                 items: [
                     { text: "技术博客", href: "https://blog.csdn.net/qq_73252299?spm=1000.2115.3001.5343", target: "_blank" },
                     { text: "公共服务", href: "/business/g/" },
-                    { text: "零信任办公", href: "/source/ztsm/" }
+                    { text: "零信任办公", href: "/source/ztsm/" },
+                    { text: "软件资产", href: "/api/softwareassets/sa.html" }
                 ]
             },
             {

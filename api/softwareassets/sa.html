@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>软件资产下载 - 海口希灵赛斯网络科技有限公司</title>
+    <meta name="description" content="海口希灵赛斯网络科技有限公司软件资产下载中心，提供各类软件资源下载服务">
+    <meta name="keywords" content="软件下载, 资产管理, 希灵赛斯, 海口希灵赛斯">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="软件资产下载 - 海口希灵赛斯网络科技有限公司">
+    <meta property="og:description" content="海口希灵赛斯网络科技有限公司软件资产下载中心，提供各类软件资源下载服务">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="软件资产下载 - 海口希灵赛斯网络科技有限公司">
+    <meta property="twitter:description" content="海口希灵赛斯网络科技有限公司软件资产下载中心，提供各类软件资源下载服务">
+    
+    <!-- 结构化数据 -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "希灵赛斯软件资产",
+        "description": "海口希灵赛斯网络科技有限公司软件资产下载中心",
+        "operatingSystem": "Windows, Mac, Linux",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "CNY"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- 主体内容区域 -->
+    <div class="container">
+        <main class="content">
+            <div class="download-container">
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                </div>
+                <iframe src="https://user-ocloud.ihep.ac.cn/share/535178b6-8106-4082-854c-2cd0a34b8de0?pwd=" 
+                        class="download-frame" 
+                        id="downloadFrame"
+                        onload="hideLoading()">
+                </iframe>
+                <noscript>
+                    <p class="fallback-link">您的浏览器不支持iframe，请点击<a href="https://user-ocloud.ihep.ac.cn/share/535178b6-8106-4082-854c-2cd0a34b8de0?pwd=">这里</a>访问下载页面。</p>
+                </noscript>
+            </div>
+        </main>
+    </div>
+    
+    <style>
+        /* 全局样式 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #ffffff;
+        }
+        
+        /* 容器样式 */
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* 内容区域样式 */
+        .content {
+            flex: 1;
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* 下载容器样式 */
+        .download-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* iframe样式 */
+        .download-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* 备用链接样式 */
+        .fallback-link {
+            display: block;
+            text-align: center;
+            padding: 20px;
+            background-color: #f1f8ff;
+            color: #0366d6;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .fallback-link:hover {
+            background-color: #def;
+        }
+        
+        /* 加载指示器样式 */
+        .loading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 10;
+        }
+        
+        /* 旋转动画样式 */
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(33, 150, 243, 0.2);
+            border-top: 5px solid #2196F3;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+    </style>
+    
+    <script>
+        // 隐藏加载指示器
+        function hideLoading() {
+            document.getElementById('loading').style.display = 'none';
+        }
+        
+        // 确保在页面加载完成后隐藏加载指示器
+        document.addEventListener('DOMContentLoaded', function() {
+            const frame = document.getElementById('downloadFrame');
+            if (frame && frame.contentDocument) {
+                hideLoading();
+            }
+        });
+    </script>
+</body>
+</html>
