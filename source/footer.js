@@ -13,7 +13,7 @@ window.siteConfig = {
                     { text: "企业简介", href: "/leadership/me/" },
                     { text: "企业动态", href: "/leadership/" },
                     { text: "领导团队", href: "/leadership/me/lead/" },
-                    { text: "发展历程", href: "#" }
+                    { text: "发展历程", href: "/leadership/fzlc/index.html" }
                 ]
             },
             {
