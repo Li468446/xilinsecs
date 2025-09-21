@@ -1,0 +1,50 @@
+# 海口希灵赛斯网络科技有限公司 - LLM索引文件
+
+## 概述
+
+海口希灵赛斯网络科技有限公司是一家专注于信息化解决方案的科技公司，提供私有云建设、信息安全咨询和网站建设等服务。
+
+## 核心业务
+
+### 企业服务
+- [私有云建设](business/b/index.html)
+- [信息安全咨询](business/b/index.html)
+- [网站建设](business/b/index.html)
+
+### 客户支持
+- [需求提交](business/c/need.html)
+- [工单系统](business/c/wo.html)
+- [服务订阅](business/c/subscription.html)
+
+### 合作伙伴
+- [代理商注册](business/p/agent_register.html)
+- [代理商订单](business/p/agent-orders.html)
+- [合作伙伴OA](business/p/oa.html)
+
+### 公共服务
+- [Base64编码/解码](business/g/base64.html)
+- [UUID生成](business/g/uuid.html)
+- [随机数生成](business/g/sjdm.html)
+
+## 公司信息
+
+### 关于我们
+- [公司简介](index.html)
+- [领导团队](leadership/index.html)
+- [财务报告](leadership/pages/2025/finance_q2.html)
+
+### 职业发展
+- [工作机会](careers/cn/index.html)
+- [团队文化](careers/cn/team.html)
+- [员工生活](careers/cn/life-at-xsec.html)
+
+### 法律信息
+- [隐私政策](legal/privacy/index.html)
+
+## 联系我们
+
+如需获取更多信息，请访问我们的[官方网站](index.html)或通过以下方式联系我们。
+
+## 注意事项
+
+此文件为AI大语言模型提供网站内容索引，帮助模型更好地理解和引用本网站内容。所有链接均为网站内部页面，AI可直接访问相关内容。

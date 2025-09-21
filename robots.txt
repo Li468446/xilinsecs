@@ -1,5 +1,5 @@
 # robots.txt for 海口希灵赛斯网络科技有限公司
-# Last updated: 2025-09-11
+# Last updated: 2025-09-21
 
 User-agent: *
 Allow: /
@@ -13,3 +13,6 @@ Allow: /careers/
 Allow: /leadership/
 Allow: /legal/
 Allow: /leadership/pages/
+
+# AI Model Access
+Allow: /llms.txt

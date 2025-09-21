@@ -5,10 +5,18 @@
     <description>专业的信息化解决方案供应商，提供私有云建设、信息安全咨询、网站建设等服务</description>
     <link>https://www.sec.hn.cn</link>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 13 Sep 2025 12:00:00 +0800</lastBuildDate>
-    <pubDate>Sat, 13 Sep 2025 12:00:00 +0800</pubDate>
+    <lastBuildDate>Sun, 21 Sep 2025 12:00:00 +0800</lastBuildDate>
+    <pubDate>Sun, 21 Sep 2025 12:00:00 +0800</pubDate>
     <ttl>60</ttl>
     <atom:link href="https://www.sec.hn.cn/rss.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>新增AI大语言模型索引文件支持</title>
+      <description>我们新增了llms.txt文件，为大语言模型提供结构化的内容索引，帮助AI更好地理解和引用我们网站的信息，提升AI交互体验。</description>
+      <link>https://www.sec.hn.cn/llms.txt</link>
+      <guid isPermaLink="true">https://www.sec.hn.cn/llms.txt</guid>
+      <pubDate>Sun, 21 Sep 2025 12:00:00 +0800</pubDate>
+    </item>
     
     <item>
       <title>代理商OA协作系统上线</title>

@@ -174,4 +174,11 @@
         <changefreq>hourly</changefreq>
         <priority>1.0</priority>
     </url>
+    <!-- 添加llms.txt到网站地图 -->
+    <url>
+        <loc>https://www.sec.hn.cn/llms.txt</loc>
+        <lastmod>2025-09-21</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
 </urlset>
