@@ -23,6 +23,24 @@
       "endpoint": "https://api.ip.sb/geoip/",
       "description": "IP地理位置查询API",
       "usage": "通过IP地址获取地理位置信息"
+    },
+    "tencentCloudMonitor1": {
+      "name": "腾讯云CDN观测",
+      "endpoint": "https://tam.cdn-go.cn",
+      "description": "腾讯云前端监控服务",
+      "usage": "用于网站性能监控和用户体验分析及CDN相关服务"
+    },
+    "tencentCloudMonitor2": {
+      "name": "腾讯云观测",
+      "endpoint": "https://rumt-zh.com",
+      "description": "腾讯云前端监控服务",
+      "usage": "用于网站性能监控和用户体验分析"
+    },
+    "googleCloudMonitor": {
+      "name": "谷歌云观测",
+      "endpoint": "https://www.googletagmanager.com",
+      "description": "谷歌前端监控服务",
+      "usage": "用于网站性能监控和用户体验分析"
     }
   }
 }
