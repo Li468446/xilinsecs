@@ -1,15 +1,30 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+          <script src="https://tam.cdn-go.cn/aegis-sdk/latest/aegis.min.js"></script>
+      <script>
+        // 初始化 Aegis 监控SDK
+        // 用于页面性能监控、接口测速、静态资源测速等功能
+        if (typeof Aegis === 'function') {
+          var aegis = new Aegis({
+            id: '0GVpeTz2n3Epk34gYP', // 上报 id
+            uin: 'e70af75a-1e3f-4f1d-9d23-302dca2dc099', // 用户唯一 ID（可选）
+            reportApiSpeed: true, // 接口测速
+            reportAssetSpeed: true, // 静态资源测速
+            spa: true, // spa 应用页面跳转的时候开启 pv 计算
+          hostUrl: 'https://rumt-zh.com'
+          });
+        }
+      </script>
         <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0PVCDX1CZK"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PVCDX1CZK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-0PVCDX1CZK');
-</script>
+      gtag('config', 'G-0PVCDX1CZK');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>页面开发中 - 海口希灵赛斯网络科技有限公司</title>
