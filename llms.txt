@@ -25,6 +25,7 @@
 - [Base64编码/解码](business/g/base64.html)
 - [UUID生成](business/g/uuid.html)
 - [随机数生成](business/g/sjdm.html)
+- [DNS查询工具](business/g/dns-query.html) - 支持DOH(DNS over HTTPS)安全查询，可获取域名解析结果和IP地理位置信息
 
 ## 公司信息
 

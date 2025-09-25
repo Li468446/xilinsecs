@@ -41,6 +41,18 @@
       "endpoint": "https://www.googletagmanager.com",
       "description": "谷歌前端监控服务",
       "usage": "用于网站性能监控和用户体验分析"
+    },
+    "doh": {
+      "name": "XL DOH Server",
+      "endpoint": "https://xl-d0h-server.xinnew.top/dns-query",
+      "description": "DOH(DNS over HTTPS)后端接口",
+      "usage": "提供安全的DNS解析服务，通过HTTPS协议加密DNS查询请求"
+    },
+    "ipGeoLocationNew": {
+      "name": "XL IP地理位置查询",
+      "endpoint": "https://xl-d0h-server.xinnew.top/ip-info?ip={ip}&token=dns-query",
+      "description": "IP地理位置查询接口",
+      "usage": "通过IP地址获取地理位置信息"
     }
   }
 }
