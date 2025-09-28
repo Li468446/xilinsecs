@@ -3,9 +3,10 @@
   "systemName": "Hkx CMS",
   "version": "1.0.0",
   "description": "海口希灵赛斯网络科技有限公司官方网站内容管理系统",
-    "main": "index.js",
+    "main": "/index.html",
   "developers": [
     "徐中信",
+    "陈诗怡",
     "彭芊惠"
   ],
   "scripts": {
