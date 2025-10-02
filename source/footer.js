@@ -46,6 +46,13 @@ window.siteConfig = {
                 items: [
                     { text: "隐私政策", href: "/legal/privacy/" }
                 ]
+            },
+            {
+                title: "社交媒体",
+                items: [
+                    { text: "小红书（待开发）", href: "" },
+                    { text: "CSDN（待开发）", href: "" }
+                ]
             }
         ],
         copyright: "© 2025 海口希灵赛斯网络科技有限公司.保留所有权利.",
