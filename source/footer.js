@@ -31,6 +31,7 @@ window.siteConfig = {
                     { text: "公共服务", href: "/business/g/" },
                     { text: "零信任办公", href: "/source/ztsm/" },
                     { text: "软件资产", href: "/api/softwareassets/ioa.html" },
+                    { text: "MD5计算", href: "/business/g/md5check.html" },
                     { text: "大学考勤管理系统（试点）", href: "https://hktcuk.sec.hn.cn/accounts/login/" }
                 ]
             },
