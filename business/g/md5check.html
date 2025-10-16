@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+                  <script src="https://tam.cdn-go.cn/aegis-sdk/latest/aegis.min.js"></script>
+      <script>
+        // 初始化 Aegis 监控SDK
+        // 用于页面性能监控、接口测速、静态资源测速等功能
+        if (typeof Aegis === 'function') {
+          var aegis = new Aegis({
+            id: '0GVpeTz2n3Epk34gYP', // 上报 id
+            uin: 'e70af75a-1e3f-4f1d-9d23-302dca2dc099', // 用户唯一 ID（可选）
+            reportApiSpeed: true, // 接口测速
+            reportAssetSpeed: true, // 静态资源测速
+            spa: true, // spa 应用页面跳转的时候开启 pv 计算
+          hostUrl: 'https://rumt-zh.com'
+          });
+        }
+      </script>
+        <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PVCDX1CZK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-0PVCDX1CZK');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线文件MD5计算器</title>
+    <!-- 引入SparkMD5库（轻量MD5计算工具，支持分片处理大文件） -->
+    <script src="https://cdn.jsdelivr.net/npm/spark-md5@3.0.2/spark-md5.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", Arial, sans-serif;
+        }
+        body {
+            background-color: #f5f7fa;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+        /* 上传区域样式 */
+        .upload-area {
+            border: 2px dashed #0086ff;
+            border-radius: 8px;
+            padding: 50px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .upload-area:hover {
+            background-color: #f0f7ff;
+            border-color: #0066cc;
+        }
+        .upload-area.active {
+            background-color: #e6f2ff;
+            border-color: #0066cc;
+        }
+        .upload-icon {
+            font-size: 48px;
+            color: #0086ff;
+            margin-bottom: 15px;
+        }
+        .upload-text {
+            color: #666;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        #file-input {
+            display: none; /* 隐藏原生文件输入框 */
+        }
+        /* 状态和结果区域样式 */
+        .status {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+            height: 24px;
+            font-size: 14px;
+        }
+        .result {
+            display: none; /* 初始隐藏结果 */
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .result-title {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .md5-value {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #fff;
+            padding: 10px 15px;
+            border-radius: 4px;
+            border: 1px solid #eee;
+        }
+        #md5-code {
+            color: #28a745;
+            word-break: break-all; /* 支持长文本换行 */
+            flex: 1;
+            font-family: "Consolas", monospace;
+        }
+        #copy-btn {
+            padding: 6px 12px;
+            background-color: #0086ff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background-color 0.3s;
+        }
+        #copy-btn:hover {
+            background-color: #0066cc;
+        }
+        .copy-tip {
+            text-align: center;
+            color: #28a745;
+            font-size: 14px;
+            margin-top: 10px;
+            display: none; /* 初始隐藏复制提示 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>在线文件MD5计算器</h1>
+
+        <!-- 上传区域（支持点击和拖拽） -->
+        <div class="upload-area" id="upload-area">
+            <div class="upload-icon">📂</div>
+            <div class="upload-text">点击或拖拽文件到此处上传</div>
+            <div class="upload-subtext">支持任意格式文件，自动计算MD5值</div>
+            <input type="file" id="file-input" accept="*">
+        </div>
+
+        <!-- 状态提示（读取/计算中） -->
+        <div class="status" id="status"></div>
+
+        <!-- 结果展示区域 -->
+        <div class="result" id="result">
+            <div class="result-title">文件MD5值：</div>
+            <div class="md5-value">
+                <span id="md5-code"></span>
+                <button id="copy-btn">复制</button>
+            </div>
+            <div class="copy-tip" id="copy-tip">复制成功！</div>
+        </div>
+    </div>
+
+    <script>
+        // 获取DOM元素
+        const uploadArea = document.getElementById('upload-area');
+        const fileInput = document.getElementById('file-input');
+        const status = document.getElementById('status');
+        const result = document.getElementById('result');
+        const md5Code = document.getElementById('md5-code');
+        const copyBtn = document.getElementById('copy-btn');
+        const copyTip = document.getElementById('copy-tip');
+
+        // 点击上传区域触发文件选择
+        uploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        // 拖拽文件相关事件
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault(); // 阻止默认行为（否则浏览器会打开文件）
+            uploadArea.classList.add('active');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('active');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('active');
+            if (e.dataTransfer.files.length > 0) {
+                calculateMD5(e.dataTransfer.files[0]); // 只处理单个文件
+            }
+        });
+
+        // 选择文件后触发计算
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                calculateMD5(e.target.files[0]);
+            }
+        });
+
+        // 复制MD5值功能
+        copyBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(md5Code.textContent).then(() => {
+                copyTip.style.display = 'block';
+                setTimeout(() => {
+                    copyTip.style.display = 'none';
+                }, 2000); // 2秒后隐藏提示
+            }).catch(() => {
+                copyTip.textContent = '复制失败，请手动复制！';
+                copyTip.style.color = '#dc3545';
+                copyTip.style.display = 'block';
+                setTimeout(() => {
+                    copyTip.style.display = 'none';
+                }, 2000);
+            });
+        });
+
+        /**
+         * 计算文件MD5值（分片处理大文件，避免内存溢出）
+         * @param {File} file - 待计算的文件
+         */
+        function calculateMD5(file) {
+            // 重置状态和结果
+            status.textContent = `正在读取文件：${file.name}（0%）`;
+            result.style.display = 'none';
+            const spark = new SparkMD5.ArrayBuffer();
+            const fileReader = new FileReader();
+            const chunkSize = 2 * 1024 * 1024; // 分片大小：2MB（可调整）
+            let chunkIndex = 0;
+
+            // 读取分片完成事件
+            fileReader.onload = (e) => {
+                spark.append(e.target.result); // 将分片数据加入计算
+                chunkIndex++;
+                const progress = Math.floor((chunkIndex * chunkSize / file.size) * 100);
+                status.textContent = `正在计算MD5：${file.name}（${progress > 100 ? 100 : progress}%）`;
+
+                // 判断是否还有分片未读取
+                if (chunkIndex * chunkSize < file.size) {
+                    readNextChunk();
+                } else {
+                    // 计算完成，显示结果
+                    const md5 = spark.end();
+                    status.textContent = '';
+                    md5Code.textContent = md5;
+                    result.style.display = 'block';
+                }
+            };
+
+            // 读取错误事件
+            fileReader.onerror = () => {
+                status.textContent = '文件读取失败，请重新上传！';
+                status.style.color = '#dc3545';
+            };
+
+            // 读取下一个分片
+            function readNextChunk() {
+                const start = chunkIndex * chunkSize;
+                const end = Math.min(start + chunkSize, file.size);
+                fileReader.readAsArrayBuffer(file.slice(start, end));
+            }
+
+            // 开始读取第一个分片
+            readNextChunk();
+        }
+    </script>
+</body>
+</html>
