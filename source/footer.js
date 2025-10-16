@@ -56,7 +56,7 @@ window.siteConfig = {
                 ]
             }
         ],
-        copyright: "© 2025 海口希灵赛斯网络科技有限公司.保留所有权利.",
+        copyright: "© 2025 希灵赛斯网络科技有限公司 Xilingsys Technologies Ltd.保留所有权利.",
         extra: {
             ipv6: "本站支持IPv6"
         }
