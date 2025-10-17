@@ -11,17 +11,9 @@ window.siteConfig = {
                 title: "关于我们",
                 items: [
                     { text: "企业简介", href: "/leadership/me/" },
-                    { text: "企业动态", href: "/leadership/" },
+                    { text: "职业机会", href: "/careers/cn/" },
                     { text: "领导团队", href: "/leadership/me/lead/" },
-                    { text: "发展历程", href: "/leadership/fzlc/index.html" }
-                ]
-            },
-            {
-                title: "职业机会",
-                items: [
-                    { text: "XSEC 职业机会", href: "/careers/cn/" },
-                    { text: "在 XSEC 生活", href: "/careers/cn/life-at-xsec.html" },
-                    { text: "在 XSEC 工作", href: "/careers/cn/work-at-xsec.html" }
+                    { text: "隐私政策", href: "/legal/privacy/" }
                 ]
             },
             {
@@ -32,7 +24,7 @@ window.siteConfig = {
                     { text: "零信任办公", href: "/source/ztsm/" },
                     { text: "软件资产", href: "/api/softwareassets/ioa.html" },
                     { text: "MD5计算", href: "/business/g/md5check.html" },
-                    { text: "大学考勤管理系统（试点）", href: "https://hktcuk.sec.hn.cn/accounts/login/" }
+                    { text: "大学考勤管理系统（试点）", href: "http://hktcuk.sec.hn.cn/accounts/login/" }
                 ]
             },
             {
@@ -44,20 +36,21 @@ window.siteConfig = {
                 ]
             },
             {
-                title: "条款与政策",
-                items: [
-                    { text: "隐私政策", href: "/legal/privacy/" }
-                ]
-            },
-            {
                 title: "社交媒体",
                 items: [
                     { text: "小红书（待开发）", href: "" },
+                    { text: "微信公众号（待开发）", href: "" },
                     { text: "CSDN（待开发）", href: "" }
+                ]
+            },
+            {
+                title: "友情链接",
+                items: [
+                    { text: "计小智", href: "https://hncst-jxz.sec.hn.cn/" }
                 ]
             }
         ],
-        copyright: "© 2025 希灵赛斯网络科技有限公司 Xilingsys Technologies Ltd.保留所有权利.",
+        copyright: "© 2025  Xilingsys Technologies Ltd.保留所有权利.",
         extra: {
             ipv6: "本站支持IPv6"
         }
