@@ -124,7 +124,7 @@
 <div class="container">
   <h1>信息提交成功！</h1>
   <p>页面将在 <span id="countdown">3</span> 秒后自动前往查询页面</p>
-  <button onclick="window.location.href='/business/p/agent_register.html'">立即前往查询</button>
+  <button onclick="window.location.href='agent_register.html'">立即前往查询</button>
 </div>
 
 <script>
@@ -137,7 +137,7 @@
     countdownEl.textContent = countdown;
     if (countdown <= 0) {
       clearInterval(timer);
-      window.location.href = '/business/p/agent_register.html';
+      window.location.href = 'agent_register.html';
     }
   }, 1000);
 

@@ -133,7 +133,7 @@
         <nav class="navbar navbar-expand-lg py-3">
             <div class="container position-relative">
                 <!-- 品牌标识 -->
-                <a class="navbar-brand" href="#home">
+                <a class="navbar-brand" href="/">
                     <img src="source/imgs/logo.png" alt="海口希灵赛斯" class="nav-logo">
                     <span class="brand-text">海口希灵赛斯</span>
                 </a>
@@ -148,13 +148,25 @@
                 <!-- 导航菜单 -->
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown" id="productDropdownItem">
+                            <a class="nav-link dropdown-toggle" href="#" id="productDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-box me-1" style="font-size:0.8rem"></i>产品中心
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="productDropdown">
+                                <li><a class="dropdown-item" href="/business/product/software/"><i class="fas fa-laptop me-1" style="font-size:0.8rem"></i>软件产品</a></li>
+                                <li><a class="dropdown-item" href="/business/product/hardware/"><i class="fas fa-server me-1" style="font-size:0.8rem"></i>硬件产品</a></li>
+                                <li><a class="dropdown-item" href="/business/product/cloud/"><i class="fas fa-cloud me-1" style="font-size:0.8rem"></i>云服务产品</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="/business/product/"><i class="fas fa-tools me-1" style="font-size:0.8rem"></i>解决方案</a></li>
+                            </ul>
+                        </li>
                         <li class="nav-item dropdown" id="businessDropdownItem">
-                            <a class="nav-link dropdown-toggle" href="/business/index.html" id="businessDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-briefcase me-1" style="font-size:0.8rem"></i>业  务
+                            <a class="nav-link dropdown-toggle" href="/business/services/index.html" id="businessDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-briefcase me-1" style="font-size:0.8rem"></i>业务范围
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="businessDropdown">
-                                <li><a class="dropdown-item" href="/business/#user-focused"><i class="fas fa-user me-1" style="font-size:0.8rem"></i>面向用户</a></li>
-                                <li><a class="dropdown-item" href="/business/#enterprise"><i class="fas fa-building me-1" style="font-size:0.8rem"></i>面向企业</a></li>
+                                <li><a class="dropdown-item" href="/business/#personal"><i class="fas fa-user me-1" style="font-size:0.8rem"></i>个人服务</a></li>
+                                <li><a class="dropdown-item" href="/business/#enterprise"><i class="fas fa-building me-1" style="font-size:0.8rem"></i>企业服务</a></li>
                                 <li><a class="dropdown-item" href="/business/#innovation"><i class="fas fa-flask me-1" style="font-size:0.8rem"></i>科技创新</a></li>
                             </ul>
                         </li>
@@ -163,32 +175,33 @@
                                 <i class="fas fa-headset me-1" style="font-size:0.8rem"></i>服务中心
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="serviceDropdown">
-                                <li><a class="dropdown-item" href="/business/c/"><i class="fas fa-headset me-1" style="font-size:0.8rem"></i>客户服务</a></li>
-                                <li><a class="dropdown-item" href="/business/p/"><i class="fas fa-store me-1" style="font-size:0.8rem"></i>代理服务</a></li>
-                                <li><a class="dropdown-item" href="/business/b/"><i class="fas fa-building me-1" style="font-size:0.8rem"></i>对公服务</a></li>
-                                <li><a class="dropdown-item" href="/business/g/"><i class="fas fa-cloud me-1" style="font-size:0.8rem"></i>公共服务</a></li>
+                                <li><a class="dropdown-item" href="/business/services/c/"><i class="fas fa-user me-1" style="font-size:0.8rem"></i>客户服务</a></li>
+                                <li><a class="dropdown-item" href="/business/services/p/"><i class="fas fa-store me-1" style="font-size:0.8rem"></i>代理服务</a></li>
+                                <li><a class="dropdown-item" href="/business/services/b/"><i class="fas fa-building me-1" style="font-size:0.8rem"></i>对公服务</a></li>
+                                <li><a class="dropdown-item" href="/business/services/g/"><i class="fas fa-cloud me-1" style="font-size:0.8rem"></i>公共服务</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="https://se-xl-services.xinnew.top/"><i class="fas fa-chart-line me-1" style="font-size:0.8rem"></i>资源监测</a></li>
-                        <li class="nav-item"><a class="nav-link" href="https://blog.csdn.net/qq_73252299?spm=1011.2124.3001.5343"><i class="fas fa-blog me-1" style="font-size:0.8rem"></i>技术频道</a></li>
-                        <li class="nav-item dropdown" id="teamDropdownItem">
-                            <a class="nav-link dropdown-toggle" href="#" id="teamDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-users me-1" style="font-size:0.8rem"></i>团队
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://se-xl-services.xinnew.top/">
+                                <i class="fas fa-chart-line me-1" style="font-size:0.8rem"></i>资源监测
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="teamDropdown">
-                                <li><a class="dropdown-item" href="/leadership/teams/qgyw/"><i class="fas fa-user-friends me-1" style="font-size:0.8rem"></i>琼关云卫团队</a></li>
-                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://blog.csdn.net/qq_73252299?spm=1011.2124.3001.5343">
+                                <i class="fas fa-blog me-1" style="font-size:0.8rem"></i>技术频道
+                            </a>
                         </li>
                         <li class="nav-item dropdown" id="aboutDropdownItem">
-                            <a class="nav-link dropdown-toggle" href="#about" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fas fa-building me-1" style="font-size:0.8rem"></i>关于我们
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
                                 <li><a class="dropdown-item" href="/leadership/"><i class="fas fa-building me-1" style="font-size:0.8rem"></i>企业简介</a></li>
-                                <li><a class="dropdown-item" href="https://sec.hn.cn/"><i class="fas fa-bell me-1" style="font-size:0.8rem"></i>更新动态</a></li>
                                 <li><a class="dropdown-item" href="/leadership/me/"><i class="fas fa-users me-1" style="font-size:0.8rem"></i>领导团队</a></li>
                                 <li><a class="dropdown-item" href="/leadership/fzlc/index.html"><i class="fas fa-history me-1" style="font-size:0.8rem"></i>发展历程</a></li>
                                 <li><a class="dropdown-item" href="/careers/cn/"><i class="fas fa-briefcase me-1" style="font-size:0.8rem"></i>职业机会</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="https://sec.hn.cn/"><i class="fas fa-bell me-1" style="font-size:0.8rem"></i>更新动态</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -234,6 +247,7 @@
         display: flex;
         align-items: center;
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        text-decoration: none;
     }
 
     .navbar.scrolled .navbar-brand {
@@ -265,6 +279,8 @@
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
         text-decoration: none;
         outline: none;
+        display: flex;
+        align-items: center;
     }
 
     .navbar.scrolled .nav-link {
@@ -316,6 +332,8 @@
         font-weight: 500;
         transition: all 0.3s ease;
         outline: none;
+        display: flex;
+        align-items: center;
     }
 
     /* 滚动时下拉菜单项样式 */
@@ -453,7 +471,7 @@
         setupDropdown('businessDropdownItem','businessDropdown');
         setupDropdown('aboutDropdownItem','aboutDropdown');
         setupDropdown('serviceDropdownItem','serviceDropdown');
-        setupDropdown('teamDropdownItem','teamDropdown');
+        setupDropdown('productDropdownItem', 'productDropdown');
 
         // 滚动透明度和Logo缩放
         var navbar = document.querySelector('.navbar');
@@ -1223,7 +1241,7 @@
       <div class="ezy__about3_inner">
         <h2 class="ezy__about3_title">提交您的需求</h2>
         <p class="ezy__about3_desc">把您的项目需求、时间节点与预算提交给我们，我们会在T+1个工作日内联系您。</p>
-        <a href="/business/c/need.html" class="ezy__about3_cta">现在提交</a>
+        <a href="/business/services/c/need.html" class="ezy__about3_cta">现在提交</a>
       </div>
     </section>
 
@@ -1392,7 +1410,7 @@
                                 <p class="project-description">
                                     海口旅游职业学院职教周 iHAIKOU内容分发系统建设
                                 </p>
-                                <a href="/business/b/htc-ihaikou.html" class="btn btn-more">
+                                <a href="/business/services/b/htc-ihaikou.html" class="btn btn-more">
                                     <i class="fas fa-arrow-right me-1"></i>查看详情
                                 </a>
                             </div>
@@ -1409,7 +1427,7 @@
                                 <p class="project-description">
                                     分管运维现场处理VMware私有云故障
                                 </p>
-                                <a href="/business/b/hnhsd-vmh3c.html" class="btn btn-more">
+                                <a href="/business/services/b/hnhsd-vmh3c.html" class="btn btn-more">
                                     <i class="fas fa-arrow-right me-1"></i>查看详情
                                 </a>
                             </div>
@@ -1417,7 +1435,7 @@
 
                         <div class="project-card">
                             <div class="position-relative">
-                                <img src="/business/b/hhps-xinchuang/01.jpg" alt="海口海甸小学信创系统" class="project-img">
+                                <img src="/business/services/b/hhps-xinchuang/01.jpg" alt="海口海甸小学信创系统" class="project-img">
                                 <div class="card-date">03<br>SEP<br>2025</div>
                             </div>
                             <div class="project-content">
@@ -1426,7 +1444,7 @@
                                 <p class="project-description">
                                     海口海甸小学银河麒麟信创系统软件适配
                                 </p>
-                                <a href="/business/b/keliy.pdf" class="btn btn-more">
+                                <a href="/business/services/b/keliy.pdf" class="btn btn-more">
                                     <i class="fas fa-arrow-right me-1"></i>查看详情
                                 </a>
                             </div>
