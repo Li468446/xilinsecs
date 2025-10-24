@@ -3,7 +3,7 @@
 <html lang="zh-CN" dir="ltr">
 <!-- 设置语言为简体中文，文本方向为从左到右 -->
 <head>
-          <script src="https://tam.cdn-go.cn/aegis-sdk/latest/aegis.min.js"></script>
+
       <script>
         // 初始化 Aegis 监控SDK
         // 用于页面性能监控、接口测速、静态资源测速等功能
@@ -2331,75 +2331,6 @@ document.addEventListener('DOMContentLoaded', function () {
         您的浏览器不支持音频元素。
     </audio>
     
-    <script>
-        // 控制背景音乐
-        document.addEventListener('DOMContentLoaded', function() {
-            var bgMusic = document.getElementById('bgMusic');
-            var musicSrc = './source/audio/background.mp3'; // 请确保这个路径下有音乐文件
-            
-            // 设置音乐源
-            bgMusic.innerHTML = '<source src="' + musicSrc + '" type="audio/mpeg">' + 
-                               '您的浏览器不支持音频元素。';
-            
-            // 尝试自动播放（某些浏览器可能阻止自动播放）
-            bgMusic.load();
-            
-            // 添加播放控制
-            var musicControl = document.createElement('div');
-            musicControl.id = 'musicControl';
-            musicControl.innerHTML = `
-                <div class="music-disc">
-                    <div class="disc-center"></div>
-                </div>
-            `;
-            musicControl.style.cssText = `
-                position: fixed;
-                bottom: 20px;
-                right: 20px;
-                width: 50px;
-                height: 50px;
-                cursor: pointer;
-                z-index: 9999;
-                transition: all 0.3s ease;
-            `;
-            
-            // 随机颜色数组
-            var colorPairs = [
-                { outer: '#6a11cb', inner: '#2575fc' },
-                { outer: '#ff416c', inner: '#ff4b2b' },
-                { outer: '#36d1dc', inner: '#5b86e5' },
-                { outer: '#f6d365', inner: '#fda085' },
-                { outer: '#5ee7df', inner: '#b490ca' },
-                { outer: '#d4fc79', inner: '#96e6a1' },
-                { outer: '#a1c4fd', inner: '#c2e9fb' },
-                { outer: '#84fab0', inner: '#8fd3f4' }
-            ];
-            
-            // 应用随机颜色
-            function applyRandomColors() {
-                var randomColors = colorPairs[Math.floor(Math.random() * colorPairs.length)];
-                var disc = musicControl.querySelector('.music-disc');
-                disc.style.background = `linear-gradient(135deg, ${randomColors.outer} 0%, ${randomColors.inner} 100%)`;
-            }
-            
-            musicControl.addEventListener('click', function() {
-                if (bgMusic.paused) {
-                    bgMusic.play();
-                    musicControl.classList.add('playing');
-                    applyRandomColors(); // 播放时应用随机颜色
-                } else {
-                    bgMusic.pause();
-                    musicControl.classList.remove('playing');
-                }
-            });
-            
-            document.body.appendChild(musicControl);
-            
-            // 初始化时应用随机颜色
-            applyRandomColors();
-        });
-    </script>
-    
     <style>
         #musicControl {
             display: flex;
@@ -2460,6 +2391,97 @@ document.addEventListener('DOMContentLoaded', function () {
         #musicControl:hover .music-disc::before {
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
         }
+        
+        /* 新增样式：创建右下角容器用于垂直排列 */
+        .bottom-right-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 9999;
+        }
     </style>
+    
+    <script>
+        // 修改背景音乐控制代码以适应新布局
+        document.addEventListener('DOMContentLoaded', function() {
+            var bgMusic = document.getElementById('bgMusic');
+            var musicSrc = './source/audio/background.mp3'; // 请确保这个路径下有音乐文件
+            
+            // 设置音乐源
+            bgMusic.innerHTML = '<source src="' + musicSrc + '" type="audio/mpeg">' + 
+                               '您的浏览器不支持音频元素。';
+            
+            // 尝试自动播放（某些浏览器可能阻止自动播放）
+            bgMusic.load();
+            
+            // 创建右下角容器
+            var bottomRightContainer = document.createElement('div');
+            bottomRightContainer.className = 'bottom-right-container';
+            
+            // 添加播放控制
+            var musicControl = document.createElement('div');
+            musicControl.id = 'musicControl';
+            musicControl.innerHTML = `
+                <div class="music-disc">
+                    <div class="disc-center"></div>
+                </div>
+            `;
+            musicControl.style.cssText = `
+                width: 50px;
+                height: 50px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            `;
+            
+            // 随机颜色数组
+            var colorPairs = [
+                { outer: '#6a11cb', inner: '#2575fc' },
+                { outer: '#ff416c', inner: '#ff4b2b' },
+                { outer: '#36d1dc', inner: '#5b86e5' },
+                { outer: '#f6d365', inner: '#fda085' },
+                { outer: '#5ee7df', inner: '#b490ca' },
+                { outer: '#d4fc79', inner: '#96e6a1' },
+                { outer: '#a1c4fd', inner: '#c2e9fb' },
+                { outer: '#84fab0', inner: '#8fd3f4' }
+            ];
+            
+            // 应用随机颜色
+            function applyRandomColors() {
+                var randomColors = colorPairs[Math.floor(Math.random() * colorPairs.length)];
+                var disc = musicControl.querySelector('.music-disc');
+                disc.style.background = `linear-gradient(135deg, ${randomColors.outer} 0%, ${randomColors.inner} 100%)`;
+            }
+            
+            musicControl.addEventListener('click', function() {
+                if (bgMusic.paused) {
+                    bgMusic.play();
+                    musicControl.classList.add('playing');
+                    applyRandomColors(); // 播放时应用随机颜色
+                } else {
+                    bgMusic.pause();
+                    musicControl.classList.remove('playing');
+                }
+            });
+            
+            // 将音乐控制添加到右下角容器
+            bottomRightContainer.appendChild(musicControl);
+            
+            // 将容器添加到body
+            document.body.appendChild(bottomRightContainer);
+            
+            // 初始化时应用随机颜色
+            applyRandomColors();
+        });
+    </script>
+    
+    <script
+async
+defer
+src="https://ai.sec.hn.cn/chat/api/embed?protocol=https&host=ai.sec.hn.cn&token=c5d146bc0a3fcb80">
+</script>
+
 </body>
 </html>
