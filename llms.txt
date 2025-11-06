@@ -7,25 +7,31 @@
 ## 核心业务
 
 ### 企业服务
-- [私有云建设](business/b/index.html)
-- [信息安全咨询](business/b/index.html)
-- [网站建设](business/b/index.html)
+- [私有云建设](business/services/b/index.html)
+- [信息安全咨询](business/services/b/index.html)
+- [网站建设](business/services/b/index.html)
 
 ### 客户支持
-- [需求提交](business/c/need.html)
-- [工单系统](business/c/wo.html)
-- [服务订阅](business/c/subscription.html)
+- [需求提交](business/services/c/need.html)
+- [工单系统](business/services/c/wo.html)
+- [服务订阅](business/services/c/subscription.html)
 
 ### 合作伙伴
-- [代理商注册](business/p/agent_register.html)
-- [代理商订单](business/p/agent-orders.html)
-- [合作伙伴OA](business/p/oa.html)
+- [代理商注册](business/services/p/agent_register.html)
+- [代理商订单](business/services/p/agent-orders.html)
+- [合作伙伴OA](business/services/p/oa.html)
 
 ### 公共服务
-- [Base64编码/解码](business/g/base64.html)
-- [UUID生成](business/g/uuid.html)
-- [随机数生成](business/g/sjdm.html)
-- [DNS查询工具](business/g/dns-query.html) - 支持DOH(DNS over HTTPS)安全查询，可获取域名解析结果和IP地理位置信息
+- [Base64编码/解码](business/services/g/base64.html)
+- [UUID生成](business/services/g/uuid.html)
+- [随机数生成](business/services/g/sjdm.html)
+- [DNS查询工具](business/services/g/dns-query.html) - 支持DOH(DNS over HTTPS)安全查询，可获取域名解析结果和IP地理位置信息
+- [MD5校验](business/services/g/md5check.html)
+
+### 产品中心
+- [软件产品](business/product/software/index.html)
+- [硬件产品](business/product/hardware/index.html)
+- [云服务产品](business/product/cloud/index.html)
 
 ## 公司信息
 
@@ -41,6 +47,9 @@
 
 ### 法律信息
 - [隐私政策](legal/privacy/index.html)
+
+## 最新动态
+- [近期新闻](leadership/indexnews/js/newsConfig.js)
 
 ## 联系我们
 
