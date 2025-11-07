@@ -23,7 +23,7 @@ window.siteConfig = {
                     { text: "公共服务", href: "/business/g/" },
                     { text: "零信任办公", href: "/source/ztsm/" },
                     { text: "软件资产", href: "/api/softwareassets/ioa.html" },
-                    { text: "MD5计算", href: "/business/g/md5check.html" },
+                    { text: "MD5计算", href: "/business/services/g/md5check.html" },
                     { text: "Educheck", href: "https://educheck.sec.hn.cn/" }
                 ]
             },
