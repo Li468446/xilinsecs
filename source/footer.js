@@ -19,12 +19,18 @@ window.siteConfig = {
             {
                 title: "资源",
                 items: [
-                    { text: "技术博客", href: "https://blog.csdn.net/qq_73252299?spm=1000.2115.3001.5343", target: "_blank" },
-                    { text: "公共服务", href: "/business/g/" },
-                    { text: "零信任办公", href: "/source/ztsm/" },
-                    { text: "软件资产", href: "/api/softwareassets/ioa.html" },
+                    { text: "IOA零信任办公", href: "/source/ztsm/" },
                     { text: "MD5计算", href: "/business/services/g/md5check.html" },
+                    { text: "软件资产", href: "/api/softwareassets/ioa.html" },
                     { text: "Educheck", href: "https://educheck.sec.hn.cn/" }
+                ]
+            },
+            {
+                title: "星际网络应用",
+                items: [
+                    { text: "Alist OSCA存储桶", href: "https://alist.xinnew.top/" },
+                    { text: "AI Agent测试平台", href: "https://ai-agent.xinnew.top/" },
+                    { text: "零信任接入网关", href: "https://atrust.xinnew.top/login" }
                 ]
             },
             {
@@ -46,7 +52,8 @@ window.siteConfig = {
             {
                 title: "友情链接",
                 items: [
-                    { text: "计小智", href: "https://hncst-jxz.sec.hn.cn/" }
+                    { text: "海软计小智", href: "https://hncst-jxz.sec.hn.cn/" },
+                    { text: "iHAIKOU", href: "https://news.xinnew.top/" }
                 ]
             }
         ],
