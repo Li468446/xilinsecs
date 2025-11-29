@@ -131,6 +131,17 @@
             min-height: 100vh;
             overflow-x: hidden;
         }
+        html, body { height: 100%; overflow: hidden; -ms-overflow-style: none; }
+        html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
+    </style>
+
+    <style>
+    .snap-container{height:calc(var(--vh) * 100);overflow-y:auto;scroll-snap-type:y mandatory;scroll-behavior:smooth;-ms-overflow-style:none;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+    .snap-container::-webkit-scrollbar{display:none}
+    .flip-panel{min-height:calc(var(--vh) * 100);scroll-snap-align:start;position:relative;scroll-margin-top:70px}
+    .flip-panel .container{transition:transform 700ms cubic-bezier(0.175,0.885,0.32,1.1),opacity 700ms ease;transform:translate3d(0,40px,0) scale(0.98);opacity:0;will-change:transform,opacity}
+    .flip-panel.inview .container{transform:translate3d(0,0,0) scale(1);opacity:1}
+    .footer-panel{min-height:auto;scroll-snap-align:end;padding:0;background:linear-gradient(135deg,#1d1d1f 0%,#111 100%)}
     </style>
 </head>
 <body>
@@ -461,6 +472,7 @@
         const navbar = document.querySelector('.navbar');
         const navLinks = document.querySelectorAll('.nav-link');
         const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+        const scroller = document.querySelector('.snap-container') || window;
         
         // 下拉菜单悬停 + 动画
         function setupDropdown(dropdownItemId, dropdownToggleId){
@@ -552,7 +564,7 @@
 
         function updateNavbarOnScroll() {
             // 获取滚动位置
-            const scrollPosition = window.scrollY;
+            const scrollPosition = scroller === window ? window.scrollY : scroller.scrollTop;
             
             // 避免过于频繁的更新
             if (Math.abs(scrollPosition - lastScrollPosition) < 2) {
@@ -619,21 +631,36 @@
             }
         }
 
-        window.addEventListener('scroll', throttle(onScroll, 16), { passive: true });
+        if(scroller === window){
+          window.addEventListener('scroll', throttle(onScroll, 16), { passive: true });
+        } else {
+          scroller.addEventListener('scroll', throttle(onScroll, 16), { passive: true });
+        }
         
         // 页面可见性API优化 - 页面不可见时暂停滚动处理
         document.addEventListener('visibilitychange', () => {
             if (document.hidden) {
-                window.removeEventListener('scroll', onScroll, { passive: true });
+                if(scroller === window){
+                  window.removeEventListener('scroll', onScroll, { passive: true });
+                } else {
+                  scroller.removeEventListener('scroll', onScroll, { passive: true });
+                }
             } else {
-                window.addEventListener('scroll', throttle(onScroll, 16), { passive: true });
+                if(scroller === window){
+                  window.addEventListener('scroll', throttle(onScroll, 16), { passive: true });
+                } else {
+                  scroller.addEventListener('scroll', throttle(onScroll, 16), { passive: true });
+                }
             }
         });
+        // 初始化一次以便首屏状态正确
+        updateNavbarOnScroll();
     });
     </script>
 
     <!-- ===================== 头部模块（视频背景 + 弹性滚动 + 渐隐渐显 + 微动优化） ===================== -->
-    <section class="ezy__header22_9Wbn5LJN">
+    <div class="snap-container">
+    <section class="ezy__header22_9Wbn5LJN flip-panel">
         <video autoplay loop muted playsinline preload="auto" class="video-bg" id="header-video">
             <source src="source/video/index_01.mp4" type="video/mp4">
             <source src="source/video/index_01.webm" type="video/webm">
@@ -656,7 +683,7 @@
     </section>
 
     <style>
-    .ezy__header22_9Wbn5LJN { position: relative; width: 100%; height: 100vh; overflow: hidden; }
+    .ezy__header22_9Wbn5LJN { position: relative; width: 100%; height: calc(var(--vh) * 100); overflow: hidden; padding-top: 70px; }
     .video-bg {
         position: absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:-2;
         transform: translateZ(0); /* 启用硬件加速 */
@@ -807,14 +834,15 @@
     </script>
 
     <!-- 核心定位模块 -->
-    <section class="ezy__about3_xOZLftWU">
+    <section class="ezy__about3_xOZLftWU flip-panel">
       <!-- 粒子背景 -->
       <canvas id="particle-bg"></canvas>
 
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-8 text-center">
-            <h1 class="ezy__about3_xOZLftWU-heading">打造数字化未来<br/>专业IT解决方案提供商</h1>
+            <h1 class="ezy__about3_xOZLftWU-heading">打造数字化未来</h1>
+            <p class="ezy__about3_xOZLftWU-sub">专业IT解决方案提供商</p>
           </div>
         </div>
         <div class="row mt-5">
@@ -892,31 +920,31 @@
 
     /* 标题 */
     .ezy__about3_xOZLftWU-heading {
-      font-size: 2.8rem;
+      font-size: 3.2rem;
       font-weight: 800;
-      color: #fff;
       position: relative;
-      padding-bottom: 25px;
-      margin-bottom: 70px;
+      padding-bottom: 18px;
+      margin-bottom: 18px;
       opacity: 0;
       transform: translateY(30px);
-      animation: fadeUp 1s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
-      background: linear-gradient(to right, #ffffff, #a0a0a0);
+      animation: fadeUp 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
+      background: linear-gradient(90deg, #ffffff 0%, #e5e5e5 50%, #ffffff 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      letter-spacing: -0.02em;
       text-align: center;
     }
+    .ezy__about3_xOZLftWU-sub{font-size:1.2rem;color:#9aa0a6;margin-bottom:48px}
     .ezy__about3_xOZLftWU-heading::after {
       content: '';
       position: absolute;
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 100px;
-      height: 5px;
-      background: linear-gradient(90deg, rgba(10,170,255,0.2), rgba(10,170,255,0.8), rgba(10,170,255,0.2));
-      border-radius: 3px;
-      box-shadow: 0 0 15px rgba(10,170,255,0.5);
+      width: 120px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.2), rgba(255,255,255,0.7), rgba(255,255,255,0.2));
+      border-radius: 2px;
     }
 
     /* 卡片容器 */
@@ -936,17 +964,17 @@
 
     /* 卡片内部容器 - 实现毛玻璃效果 */
     .ezy__about3_xOZLftWU .card-inner {
-      border-radius: 24px;
+      border-radius: 28px;
       overflow: hidden;
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(25px);
-      -webkit-backdrop-filter: blur(25px);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+      transition: all 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.1);
       height: 100%;
-      padding: 25px 20px;
+      padding: 32px 24px;
       position: relative;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     /* 液态光泽效果 */
@@ -982,27 +1010,10 @@
     }
 
     /* 图标包装器 */
-    .icon-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 90px;
-      height: 90px;
-      margin: 0 auto 20px;
-      border-radius: 50%;
-      background: rgba(10, 170, 255, 0.1);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      transition: all 0.4s ease;
-    }
+    .icon-wrapper {display:flex;justify-content:center;align-items:center;width:96px;height:96px;margin:0 auto 20px;border-radius:50%;background:rgba(255,255,255,0.06);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.15)}
 
     /* 图标 */
-    .ezy__about3_xOZLftWU-icon {
-      font-size: 2.5rem;
-      color: #0af;
-      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-      will-change: transform, color;
-    }
+    .ezy__about3_xOZLftWU-icon {font-size:2.6rem;color:#aee3ff;transition:transform 0.3s ease,color 0.3s ease}
 
     .ezy__about3_xOZLftWU .card:hover .ezy__about3_xOZLftWU-icon {
       transform: scale(1.2) rotate(5deg);
@@ -1010,13 +1021,7 @@
       text-shadow: 0 0 20px rgba(10, 170, 255, 0.7);
     }
 
-    .ezy__about3_xOZLftWU .card-title {
-      font-weight: 700;
-      font-size: 1.6rem;
-      color: #fff;
-      margin-bottom: 15px;
-      transition: color 0.3s ease;
-    }
+    .ezy__about3_xOZLftWU .card-title {font-weight:700;font-size:1.6rem;color:#fff;margin-bottom:10px;letter-spacing:-0.01em}
 
     .ezy__about3_xOZLftWU .card-text {
       color: #ccc;
@@ -1027,16 +1032,7 @@
     }
 
     /* 学习更多链接 */
-    .learn-more {
-      color: #0af;
-      text-decoration: none;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      transition: all 0.3s ease;
-      padding: 5px 10px;
-      border-radius: 20px;
-    }
+    .learn-more {color:#8bd6ff;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;transition:transform 0.2s ease,color 0.2s ease;padding:6px 10px;border-radius:20px}
 
     .learn-more:hover {
       background: rgba(10, 170, 255, 0.15);
@@ -1059,9 +1055,7 @@
 
     /* 移动端优化 */
     @media (max-width: 767.98px) {
-      .ezy__about3_xOZLftWU {
-        padding: 80px 0;
-      }
+      .ezy__about3_xOZLftWU { padding: 80px 0; }
       
       .ezy__about3_xOZLftWU .card {
         max-width: 400px;
@@ -1078,11 +1072,9 @@
         transform: translateY(-5px) scale(1.01);
       }
       
-      .ezy__about3_xOZLftWU-heading {
-        font-size: 2.2rem;
-        margin-bottom: 50px;
-        line-height: 1.3;
-      }
+      .ezy__about3_xOZLftWU-heading { font-size: 2.3rem; }
+      .ezy__about3_xOZLftWU-sub { font-size: 1rem; margin-bottom: 36px; }
+      .icon-wrapper { width: 72px; height: 72px; }
       
       .ezy__about3_xOZLftWU .card {
         transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.1), 
@@ -1240,7 +1232,7 @@
     </script>
 
     <!-- 产品列表与需求提交模块 -->
-    <section class="product-section">
+    <section class="product-section flip-panel">
       <canvas id="product-bg" class="product-bg"></canvas>
       <div class="container">
         <div class="row align-items-center">
@@ -1317,13 +1309,7 @@
     </section>
 
     <style>
-    .product-section {
-      position: relative;
-      padding: 120px 20px;
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-      color: #fff;
-      overflow: hidden;
-    }
+    .product-section { position: relative; padding: 120px 20px; background: linear-gradient(135deg,#0b0b0d 0%,#151517 100%); color:#fff; overflow:hidden }
     .product-bg {
       position: absolute;
       top:0; left:0;
@@ -1331,229 +1317,123 @@
       z-index:0;
     }
 
-    .product-heading {
-      font-size: 2.8rem;
-      font-weight: 800;
-      z-index:1;
-      position: relative;
-      margin-bottom: 2.5rem;
-      background: linear-gradient(to right, #ffffff, #a0a0a0);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-align: left;
-    }
+    .product-heading { font-size:3rem; font-weight:800; z-index:1; position:relative; margin-bottom:2.5rem; background:linear-gradient(90deg,#ffffff 0%,#e5e5e5 50%,#ffffff 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; letter-spacing:-0.02em; text-align:left }
 
     .product-image-wrapper {
-      position: relative;
-      perspective: 1000px;
-      z-index:1;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      position:relative; perspective:1000px; z-index:1; border-radius:28px; overflow:hidden; box-shadow:0 24px 48px rgba(0,0,0,0.35)
     }
     
     .product-image {
-      width: 100%;
-      border-radius: 24px;
-      transform: rotateY(-5deg) rotateX(3deg);
-      transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.1), box-shadow 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-      will-change: transform;
+      width:100%; border-radius:28px; transform:rotateY(-4deg) rotateX(2deg); transition:transform 0.6s cubic-bezier(0.175,0.885,0.32,1.1), box-shadow 0.6s cubic-bezier(0.175,0.885,0.32,1.1); will-change:transform
     }
     
     .product-image-wrapper:hover .product-image {
-      transform: rotateY(0deg) rotateX(0deg) scale(1.03);
-      box-shadow: 0 30px 60px rgba(0, 255, 255, 0.3);
+      transform:rotateY(0) rotateX(0) scale(1.02); box-shadow:0 30px 60px rgba(0,255,255,0.25)
     }
 
     .product-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 25px;
-      position: relative;
-      z-index:1;
-      margin-bottom: 30px;
+      display:grid; grid-template-columns:1fr 1fr; gap:28px; position:relative; z-index:1; margin-bottom:30px
     }
     
     .product-card {
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(25px);
-      -webkit-backdrop-filter: blur(25px);
-      border-radius: 20px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-      position: relative;
-      overflow: hidden;
-      opacity: 0;
-      transform: translateY(50px) scale(0.95);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      will-change: transform, opacity, box-shadow;
+      background:rgba(255,255,255,0.06); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); border-radius:28px; box-shadow:0 14px 30px rgba(0,0,0,0.35); transition:all 0.45s cubic-bezier(0.175,0.885,0.32,1.1); position:relative; overflow:hidden; opacity:0; transform:translateY(40px) scale(0.98); border:1px solid rgba(255,255,255,0.1); will-change:transform,opacity,box-shadow
     }
     
     .product-card-inner {
-      padding: 28px 24px;
-      position: relative;
-      z-index: 2;
-      display: flex;
-      gap: 20px;
+      padding:32px 28px; position:relative; z-index:2; display:flex; gap:20px; align-items:flex-start
     }
     
     .product-card.visible {
-      opacity: 1;
-      transform: translateY(0) scale(1);
+      opacity:1; transform:translateY(0) scale(1)
     }
     
     .product-card:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 20px 50px rgba(0, 255, 255, 0.4);
-      background: rgba(255, 255, 255, 0.12);
+      transform:translateY(-6px) scale(1.01); box-shadow:0 18px 40px rgba(0,255,255,0.3); background:rgba(255,255,255,0.1)
     }
     
     /* 液态光泽效果 */
     .product-card::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
-      transform: scale(0);
-      transition: transform 0.6s ease-out;
-      z-index: 1;
+      content:''; position:absolute; top:-40%; left:-40%; width:180%; height:180%; background:radial-gradient(circle at center, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 70%); transform:scale(0); transition:transform 0.6s ease-out; z-index:1
     }
     
     .product-card:hover::before {
-      transform: scale(1);
-      opacity: 0.3;
+      transform:scale(1); opacity:0.25
     }
     
     .product-icon {
-      flex-shrink: 0;
-      width: 56px;
-      height: 56px;
-      border-radius: 16px;
-      background: rgba(10, 170, 255, 0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      color: #0af;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      transition: all 0.4s ease;
+      flex-shrink:0; width:56px; height:56px; border-radius:18px; background:rgba(255,255,255,0.06); display:flex; align-items:center; justify-content:center; font-size:1.5rem; color:#aee3ff; box-shadow:inset 0 0 0 1px rgba(255,255,255,0.15); transition:transform 0.3s ease, color 0.3s ease
     }
     
     .product-card:hover .product-icon {
-      transform: scale(1.1) rotate(5deg);
-      background: rgba(10, 170, 255, 0.25);
-      box-shadow: 0 0 20px rgba(10, 170, 255, 0.4);
+      transform:scale(1.06) rotate(3deg); color:#cfefff
     }
     
     .product-content {
-      flex: 1;
+      flex:1
     }
     
     .product-title {
-      font-weight: 700;
-      font-size: 1.3rem;
-      margin-bottom: 12px;
-      color: #fff;
-      transition: color 0.3s ease;
+      font-weight:700; font-size:1.4rem; margin-bottom:10px; color:#fff; letter-spacing:-0.01em
     }
     
     .product-description {
-      color: #ccc;
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin: 0;
+      color:#cfd3d8; font-size:1rem; line-height:1.7; margin:0
     }
     
     /* 需求提交卡片 */
     .need-card {
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(25px);
-      -webkit-backdrop-filter: blur(25px);
-      border-radius: 20px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-      position: relative;
-      overflow: hidden;
-      opacity: 0;
-      transform: translateY(50px) scale(0.95);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      will-change: transform, opacity, box-shadow;
-      grid-column: span 2;
+      background:rgba(255,255,255,0.06); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); border-radius:28px; box-shadow:0 14px 30px rgba(0,0,0,0.35); transition:all 0.45s cubic-bezier(0.175,0.885,0.32,1.1); position:relative; overflow:hidden; opacity:0; transform:translateY(40px) scale(0.98); border:1px solid rgba(255,255,255,0.1); will-change:transform,opacity,box-shadow; grid-column:span 2
     }
     
     .need-card-inner {
-      padding: 32px 28px;
-      position: relative;
-      z-index: 2;
+      padding:36px 32px; position:relative; z-index:2
     }
     
     .need-card.visible {
-      opacity: 1;
-      transform: translateY(0) scale(1);
+      opacity:1; transform:translateY(0) scale(1)
     }
     
     .need-card:hover {
-      transform: translateY(-5px) scale(1.01);
-      box-shadow: 0 15px 40px rgba(0, 255, 255, 0.4);
-      background: rgba(255, 255, 255, 0.12);
+      transform:translateY(-4px) scale(1.005); box-shadow:0 18px 40px rgba(0,255,255,0.3); background:rgba(255,255,255,0.1)
     }
     
     /* 液态光泽效果 */
     .need-card::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
-      transform: scale(0);
-      transition: transform 0.6s ease-out;
-      z-index: 1;
+      content:''; position:absolute; top:-40%; left:-40%; width:180%; height:180%; background:radial-gradient(circle at center, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 70%); transform:scale(0); transition:transform 0.6s ease-out; z-index:1
     }
     
     .need-card:hover::before {
-      transform: scale(1);
-      opacity: 0.3;
+      transform:scale(1); opacity:0.25
     }
     
     .need-title {
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin: 0 0 12px 0;
-      color: #fff;
+      font-size:1.9rem; font-weight:800; margin:0 0 12px 0; color:#fff; letter-spacing:-0.01em
     }
     
     .need-desc {
-      font-size: 1rem;
-      color: #ccc;
-      line-height: 1.6;
-      margin: 0 0 24px 0;
+      font-size:1rem; color:#cfd3d8; line-height:1.7; margin:0 0 24px 0
     }
     
     .need-cta {
-      padding: 12px 28px;
-      border-radius: 12px;
-      border: 1px solid rgba(0, 255, 255, 0.4);
-      background: rgba(0, 255, 255, 0.12);
-      color: #0ff;
-      font-weight: 600;
-      letter-spacing: 0.4px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 6px 18px rgba(0, 255, 255, 0.3);
-      text-decoration: none;
-      display: inline-block;
+      padding:12px 24px; border-radius:12px; border:1px solid rgba(255,255,255,0.25); background:rgba(255,255,255,0.08); color:#eaf6ff; font-weight:600; letter-spacing:0.3px; cursor:pointer; transition:transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease; text-decoration:none; display:inline-block
     }
     
     .need-cta:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 28px rgba(0, 255, 255, 0.5);
-      background: rgba(0, 255, 255, 0.2);
+      transform:translateY(-2px); box-shadow:0 12px 28px rgba(255,255,255,0.15); background:rgba(255,255,255,0.12)
+    }
+
+    @media(max-width:992px){
+      .product-grid{grid-template-columns:1fr; gap:22px}
+      .product-heading{font-size:2.5rem; text-align:center}
+      .need-card{grid-column:span 1}
+    }
+    @media(max-width:768px){
+      .product-section{padding:80px 15px}
+      .product-heading{font-size:2.1rem; margin-bottom:2rem}
+      .product-card-inner{padding:24px 20px; flex-direction:column; gap:14px}
+      .product-icon{width:50px; height:50px; font-size:1.3rem}
+      .need-card-inner{padding:24px 20px}
+      .need-title{font-size:1.5rem}
     }
 
     @media(max-width:992px){ 
@@ -1722,7 +1602,7 @@
 
 
 <!-- 项目展示模块（苹果液态毛玻璃风格重构版） -->
-<section class="project-section">
+<section class="project-section flip-panel">
     <!-- 背景粒子层 -->
     <canvas id="project-bg" class="project-bg"></canvas>
 
@@ -2460,7 +2340,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
     <!-- 近期动态模块（苹果液态毛玻璃风格） -->
-    <section class="news-section">
+    <section class="news-section flip-panel">
       <canvas id="news-bg" class="news-bg"></canvas>
       
       <div class="container">
@@ -2906,7 +2786,7 @@ document.addEventListener('DOMContentLoaded', function () {
     </script>
 
     <!-- 团队成员模块（全屏苹果风格 + 动态背景 + 进场缩放 + 依次延迟） -->
-    <section class="team-section-apple">
+    <section class="team-section-apple flip-panel">
       <div class="background-overlay"></div>
       <div class="container team-container-apple">
         <div class="row text-center">
@@ -3108,7 +2988,7 @@ document.addEventListener('DOMContentLoaded', function () {
     </script>
 
     <!-- 发展历程模块（苹果液态毛玻璃风格） -->
-    <section id="development-history" class="history-section">
+    <section id="development-history" class="history-section flip-panel">
       <!-- 背景粒子层 -->
       <canvas id="history-bg" class="history-bg"></canvas>
 
@@ -3148,6 +3028,10 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
       </div>
     </section>
+    <section class="flip-panel footer-panel">
+      <footer id="site-footer"></footer>
+    </section>
+    </div>
 
     <style>
     .history-section {
@@ -3519,9 +3403,34 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     </script>
 
+    <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      const container = document.querySelector('.snap-container')
+      const panels = Array.from(document.querySelectorAll('.flip-panel'))
+      const io = new IntersectionObserver(entries=>{
+        entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('inview') } else { e.target.classList.remove('inview') } })
+        toggleCanvas()
+      },{ threshold:0.6 })
+      panels.forEach(p=>io.observe(p))
+      function toggleCanvas(){
+        const ids=['particle-bg','product-bg','project-bg','news-bg','history-bg']
+        panels.forEach(p=>{
+          const inview = p.classList.contains('inview')
+          ids.forEach(id=>{ const c = p.querySelector('#'+id); if(c){ c.style.display = inview? 'block':'none' } })
+        })
+      }
+      function updateSnap(){ if(!container) return; if(window.innerHeight < 600){ container.style.scrollSnapType = 'none' } else { container.style.scrollSnapType = 'y mandatory' } }
+      updateSnap(); window.addEventListener('resize', updateSnap)
+      function scrollToPanel(dir){ const vh = window.innerHeight; if(!container) return; container.scrollBy({ top: dir>0? vh : -vh, behavior: 'smooth' }) }
+      let lock=false; function throttle(){ lock=true; setTimeout(()=>lock=false,600) }
+      window.addEventListener('wheel',(e)=>{ if(lock) return; scrollToPanel(e.deltaY>0?1:-1); throttle() },{ passive:true })
+      window.addEventListener('keydown',(e)=>{ if(lock) return; if(e.key==='ArrowDown'||e.key==='PageDown'){ scrollToPanel(1); throttle() } else if(e.key==='ArrowUp'||e.key==='PageUp'){ scrollToPanel(-1); throttle() } })
+      let sy=0; window.addEventListener('touchstart',(e)=>{ sy = e.touches[0].clientY },{ passive:true }); window.addEventListener('touchend',(e)=>{ if(lock) return; const dy = e.changedTouches[0].clientY - sy; if(Math.abs(dy)>50){ scrollToPanel(dy<0?1:-1); throttle() } },{ passive:true })
+    })
+    </script>
+
 
     <!-- 统一引用全局页脚 -->
-    <footer id="site-footer"></footer>
     <script src="/source/footer.js"></script>
 
     <!-- Required scripts -->
@@ -3530,76 +3439,21 @@ document.addEventListener('DOMContentLoaded', function () {
     <!-- Popper.js用于处理Bootstrap的弹出框和工具提示 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <!-- Bootstrap JavaScript框架 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- jQuery库 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js" integrity="sha512-rpLlll167T5LJHwp0waJCh3ZRf7pO6IT1+LZOhAyP6phAirwchClbTZV3iqL3BMrVxIYRbzGTpli4rfxsCK6Vw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Font Awesome图标库的JavaScript文件 -->
-    <script>
-        // 滚动动画效果
-        $(document).ready(function() {
-            // 添加滚动监听
-            $(window).scroll(function() {
-                $('.ezy__about3_xOZLftWU .card, .ezy__howitworks1_0Fvj0bF9 .p-xl-3, .project-card, .cta-box, .ezy__careers6_zvZzU4GV-card, .ezy__howitworks11_cxxYqC5P-card').each(function() {
-                    var elementTop = $(this).offset().top;
-                    var elementBottom = elementTop + $(this).outerHeight();
-                    var viewportTop = $(window).scrollTop();
-                    var viewportBottom = viewportTop + $(window).height();
-                    
-                    if (elementBottom > viewportTop && elementTop < viewportBottom) {
-                        $(this).addClass('animate__animated animate__fadeInUp');
-                    }
-                });
-            });
-        });
+    <div id="app"></div>
+    <script type="module">
+      import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+      const App = {
+        mounted(){
+          const setVH = () => { const vh = window.innerHeight * 0.01; document.documentElement.style.setProperty('--vh', vh + 'px') }
+          setVH(); window.addEventListener('resize', setVH)
+          if (!('IntersectionObserver' in window)) {
+            document.querySelectorAll('.fade-card,.scroll-animate,.need-card,.product-card,.timeline-item,.team-card-apple,.team-heading-apple,.team-subheading-apple').forEach(el=>{ el.classList.add('show'); el.classList.add('visible') })
+          }
+        }
+      }
+      createApp(App).mount('#app')
     </script>
-<script>
-    // 动态加载项目数据
-    document.addEventListener('DOMContentLoaded', function() {
-        fetch('/data/projects.json')
-            .then(response => response.json())
-            .then(data => {
-                const carousel = document.getElementById('projectCarousel');
-                if (!carousel) return;
-                
-                // 清空现有内容
-                carousel.innerHTML = '';
-                
-                // 生成项目卡片
-                data.projects.forEach(project => {
-                    const projectCard = document.createElement('div');
-                    projectCard.className = 'project-card';
-                    projectCard.innerHTML = `
-                        <div class="project-card-inner">
-                            <div class="project-img-wrapper">
-                                <img src="${project.image}" alt="${project.title}" class="project-img">
-                                <div class="card-date">${project.date.day}<br>${project.date.month}<br>${project.date.year}</div>
-                            </div>
-                            <div class="project-content">
-                                <p class="project-author">By <span class="author-name">${project.author}</span></p>
-                                <h4 class="project-name">${project.title}</h4>
-                                <p class="project-description">
-                                    ${project.description}
-                                </p>
-                                <a href="${project.link}" class="btn project-btn">
-                                    查看详情 <i class="fas fa-arrow-right ms-2"></i>
-                                </a>
-                            </div>
-                        </div>
-                    `;
-                    carousel.appendChild(projectCard);
-                });
-                
-                // 克隆所有卡片以实现无缝循环
-                const cards = Array.from(carousel.children);
-                cards.forEach(card => {
-                    const clone = card.cloneNode(true);
-                    carousel.appendChild(clone);
-                });
-            })
-            .catch(error => {
-                console.error('加载项目数据失败:', error);
-            });
-    });
-</script>
 </body>
 </html>

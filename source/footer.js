@@ -204,6 +204,21 @@ const styleTag = document.createElement('style');
 styleTag.innerHTML = footerStyle;
 document.head.appendChild(styleTag);
 
+(function(){
+    if (!document.querySelector('link[href="/source/compat.css"]')) {
+        var l = document.createElement('link');
+        l.rel = 'stylesheet';
+        l.href = '/source/compat.css';
+        document.head.appendChild(l);
+    }
+    if (!document.querySelector('script[src="/source/compat.js"]')) {
+        var s = document.createElement('script');
+        s.src = '/source/compat.js';
+        s.defer = true;
+        document.head.appendChild(s);
+    }
+})();
+
 // -------------------- 渲染页脚 --------------------
 function renderFooter(containerId = "site-footer") {
     const container = document.getElementById(containerId);
