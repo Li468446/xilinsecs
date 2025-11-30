@@ -30,7 +30,8 @@ window.siteConfig = {
                 items: [
                     { text: "Alist OSCA存储桶", href: "https://alist.xinnew.top/" },
                     { text: "AI Agent测试平台", href: "https://ai-agent.xinnew.top/" },
-                    { text: "零信任接入网关", href: "https://atrust.xinnew.top/login" }
+                    { text: "零信任接入网关", href: "https://atrust.xinnew.top/login" },
+                    { text: "订阅格式转换", href: "https://zjdyzh.xinnew.top/" }
                 ]
             },
             {
