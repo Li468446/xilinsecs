@@ -233,15 +233,23 @@ function renderFooter(containerId = "site-footer") {
     const internationalDomains = ["xinnew.top", "www.xinnew.top",];
     let siteType = '';
     let icpNumber = '';
+    let icpLink = '';
     if(domesticDomains.includes(hostname)){
-        siteType="中国站 - 已支持IPv6"; icpNumber="琼ICP备2025060601号-1";
+        siteType="中国站 - 已支持IPv6"; 
+        icpNumber="琼ICP备2025060601号-1";
+        icpLink="https://beian.miit.gov.cn/";
     } else if(internationalDomains.includes(hostname)){
-        siteType="国际站 - 已支持IPv6"; icpNumber="琼ICP备2025060601号-2";
+        siteType="国际站 - 已支持IPv6"; 
+        icpNumber="琼ICP备2025060601号-2";
+        icpLink="https://beian.miit.gov.cn/";
     } else {
-        siteType="非官方站点"; icpNumber="非官方站点";
+        siteType="非官方站点"; 
+        icpNumber="非官方站点";
+        icpLink="";
     }
     cfg.siteType = siteType;
     cfg.icpNumber = icpNumber;
+    cfg.icpLink = icpLink;
 
     // 渲染 HTML
     const footerHTML = `
@@ -266,7 +274,7 @@ function renderFooter(containerId = "site-footer") {
             </div>
             <div class="footer-bottom">
                 <p>${cfg.copyright}</p>
-                <p><span class="footer-icp">${cfg.icpNumber}</span> | <span class="footer-site-type">${cfg.siteType}</span></p>
+                <p><span class="footer-icp">${cfg.icpLink ? `<a href="${cfg.icpLink}" target="_blank" rel="noopener noreferrer">${cfg.icpNumber}</a>` : cfg.icpNumber}</span> | <span class="footer-site-type">${cfg.siteType}</span></p>
             </div>
         </div>
     </footer>
