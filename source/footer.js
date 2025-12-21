@@ -29,9 +29,9 @@ window.siteConfig = {
                 title: "星际网络应用",
                 items: [
                     { text: "Alist OSCA存储桶", href: "https://alist.xinnew.top/" },
-                    { text: "AI Agent测试平台", href: "https://ai-agent.xinnew.top/" },
-                    { text: "零信任接入网关", href: "https://atrust.xinnew.top/login" },
-                    { text: "订阅格式转换", href: "https://zjdyzh.xinnew.top/" }
+                    { text: "AI Agent平台", href: "https://chats.sec.hn.cn/" },
+                    { text: "Dataease", href: "https://bi-sci.sec.hn.cn/" },
+                    { text: "项目管理OA", href: "https://cdproject.sec.hn.cn/" }
                 ]
             },
             {
@@ -54,7 +54,8 @@ window.siteConfig = {
                 title: "友情链接",
                 items: [
                     { text: "海软计小智", href: "https://hncst-jxz.sec.hn.cn/" },
-                    { text: "iHAIKOU", href: "https://htc-ms.xinnew.top/" }
+                    { text: "iHAIKOU", href: "https://htc-ms.xinnew.top/" },
+                    { text: "订阅格式转换", href: "https://zjdyzh.xinnew.top/" }
                 ]
             }
         ],
