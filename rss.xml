@@ -5,8 +5,8 @@
     <description>专业的信息化解决方案供应商，提供私有云建设、信息安全咨询、网站建设等服务</description>
     <link>https://www.sec.hn.cn</link>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 21 Sep 2025 12:00:00 +0800</lastBuildDate>
-    <pubDate>Sun, 21 Sep 2025 12:00:00 +0800</pubDate>
+    <lastBuildDate>Mon, 30 Dec 2025 12:00:00 +0800</lastBuildDate>
+    <pubDate>Mon, 30 Dec 2025 12:00:00 +0800</pubDate>
     <ttl>60</ttl>
     <atom:link href="https://www.sec.hn.cn/rss.xml" rel="self" type="application/rss+xml" />
     
@@ -40,14 +40,6 @@
       <link>https://www.sec.hn.cn/leadership/pages/2025/finance_q2.html</link>
       <guid isPermaLink="true">https://www.sec.hn.cn/leadership/pages/2025/finance_q2.html</guid>
       <pubDate>Thu, 11 Sep 2025 12:00:00 +0800</pubDate>
-    </item>
-    
-    <item>
-      <title>XILINGSYS 发布新一代安全网关</title>
-      <description>新一代VPN安全网关正式发布，采用零信任架构，性能提升40%。</description>
-      <link>https://www.sec.hn.cn/leadership/indexnews/post1.html</link>
-      <guid isPermaLink="true">https://www.sec.hn.cn/leadership/indexnews/post1.html</guid>
-      <pubDate>Mon, 01 Sep 2025 12:00:00 +0800</pubDate>
     </item>
     
     <item>
@@ -96,6 +88,30 @@
       <link>https://www.sec.hn.cn/business/g/dns-query.html</link>
       <guid isPermaLink="true">https://www.sec.hn.cn/business/g/dns-query.html</guid>
       <pubDate>Thu, 25 Sep 2025 12:00:00 +0800</pubDate>
+    </item>
+    
+    <item>
+      <title>网站地图全面更新</title>
+      <description>我们全面更新了网站地图，添加了所有新页面，包括教育检查产品、分支流程页面、代理商管理等新功能页面</description>
+      <link>https://www.sec.hn.cn/sitemap.xml</link>
+      <guid isPermaLink="true">https://www.sec.hn.cn/sitemap.xml</guid>
+      <pubDate>Mon, 30 Dec 2025 12:00:00 +0800</pubDate>
+    </item>
+    
+    <item>
+      <title>AI大语言模型索引文件增强</title>
+      <description>我们更新了llms.txt文件，为AI模型提供更多网站内容索引，覆盖更多页面和功能</description>
+      <link>https://www.sec.hn.cn/llms.txt</link>
+      <guid isPermaLink="true">https://www.sec.hn.cn/llms.txt</guid>
+      <pubDate>Mon, 30 Dec 2025 12:00:00 +0800</pubDate>
+    </item>
+    
+    <item>
+      <title>新增教育检查产品页面</title>
+      <description>我们发布了教育检查产品页面，为教育行业提供专业的考勤和管理解决方案</description>
+      <link>https://www.sec.hn.cn/business/product/software/educheck/index.html</link>
+      <guid isPermaLink="true">https://www.sec.hn.cn/business/product/software/educheck/index.html</guid>
+      <pubDate>Mon, 30 Dec 2025 12:00:00 +0800</pubDate>
     </item>
   </channel>
 </rss>
