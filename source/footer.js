@@ -54,7 +54,7 @@ window.siteConfig = {
                 title: "友情链接",
                 items: [
                     { text: "海软计小智", href: "https://hncst-jxz.sec.hn.cn/" },
-                    { text: "iHAIKOU", href: "https://htc-ms.xinnew.top/" },
+                    { text: "民选甄企", href: "https://community.sec.hn.cn/" },
                     { text: "订阅格式转换", href: "https://zjdyzh.xinnew.top/" }
                 ]
             }
