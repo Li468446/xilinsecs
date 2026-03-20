@@ -92,6 +92,8 @@
     <!-- Bootstrap CSS框架 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Font Awesome图标库 -->
+    <link rel="stylesheet" href="source/css/global.css">
+    <!-- 全局样式 -->
     <!-- 性能优化 -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://www.sec.hn.cn">
@@ -3531,26 +3533,31 @@ document.addEventListener('DOMContentLoaded', function () {
     <!-- Popper.js用于处理Bootstrap的弹出框和工具提示 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <!-- Bootstrap JavaScript框架 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- jQuery库 -->
+    <!-- 已移除jQuery依赖，使用原生JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js" integrity="sha512-rpLlll167T5LJHwp0waJCh3ZRf7pO6IT1+LZOhAyP6phAirwchClbTZV3iqL3BMrVxIYRbzGTpli4rfxsCK6Vw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Font Awesome图标库的JavaScript文件 -->
+    <script src="source/js/utils.js"></script>
     <script>
-        // 滚动动画效果
-        $(document).ready(function() {
-            // 添加滚动监听
-            $(window).scroll(function() {
-                $('.ezy__about3_xOZLftWU .card, .ezy__howitworks1_0Fvj0bF9 .p-xl-3, .project-card, .cta-box, .ezy__careers6_zvZzU4GV-card, .ezy__howitworks11_cxxYqC5P-card').each(function() {
-                    var elementTop = $(this).offset().top;
-                    var elementBottom = elementTop + $(this).outerHeight();
-                    var viewportTop = $(window).scrollTop();
-                    var viewportBottom = viewportTop + $(window).height();
+        // 滚动动画效果 - 原生JS实现
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = '.ezy__about3_xOZLftWU .card, .project-card, .cta-box';
 
-                    if (elementBottom > viewportTop && elementTop < viewportBottom) {
-                        $(this).addClass('animate__animated animate__fadeInUp');
+            function handleScroll() {
+                document.querySelectorAll(animatedElements).forEach(function(el) {
+                    var rect = el.getBoundingClientRect();
+                    var viewportTop = 0;
+                    var viewportBottom = window.innerHeight;
+
+                    if (rect.bottom > viewportTop && rect.top < viewportBottom) {
+                        if (!el.classList.contains('animate__animated')) {
+                            el.classList.add('animate__animated', 'animate__fadeInUp');
+                        }
                     }
                 });
-            });
+            }
+
+            window.addEventListener('scroll', Utils.throttle(handleScroll, 100), { passive: true });
+            handleScroll();
         });
     </script>
 <script>

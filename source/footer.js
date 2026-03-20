@@ -45,9 +45,9 @@ window.siteConfig = {
             {
                 title: "社交媒体",
                 items: [
-                    { text: "小红书（待开发）", href: "" },
-                    { text: "微信公众号（待开发）", href: "" },
-                    { text: "CSDN（待开发）", href: "" }
+                    { text: "小红书（待开发）", href: "", disabled: true },
+                    { text: "微信公众号（待开发）", href: "", disabled: true },
+                    { text: "CSDN（待开发）", href: "", disabled: true }
                 ]
             },
             {
@@ -59,9 +59,16 @@ window.siteConfig = {
                 ]
             }
         ],
-        copyright: "© 2025  Xilingsys Technologies Ltd.保留所有权利.",
+        copyright: "© 2025—2026 sec.hn.cn 版权所有",
         extra: {
-            ipv6: "本站支持IPv6"
+            ipv6: "本站支持IPv6",
+            license: {
+                buttonText: "查验证件",
+                pdfPath: "/source/data/2ff2b419a870908ceba8c24596e6eb4f.pdf",
+                md5Value: "2ff2b419a870908ceba8c24596e6eb4f",
+                verifyLink: "/business/services/g/md5check.html",
+                verifyText: "防篡改验证"
+            }
         }
     }
 };
@@ -125,6 +132,16 @@ const footerStyle = `
     color: #0a84ff;
     transform: translateY(-2px);
 }
+.footer ul li a.disabled-link {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+.footer ul li a.disabled-link:hover {
+    color: #d1d1d6;
+    transform: none;
+}
+.footer-bottom a { color:#8e8e93; text-decoration:none; }
+.footer-bottom a:hover { color:#8e8e93; }
 .footer-bottom {
     text-align: center;
     border-top: 1px solid #2c2c2e;
@@ -132,11 +149,29 @@ const footerStyle = `
     padding-top: 15px;
     font-size: 13px;
     color: #8e8e93;
-    opacity: 0;
-    animation: fadeIn 1s forwards;
 }
-.footer-bottom a { color:#8e8e93; text-decoration:none; }
-.footer-bottom a:hover { color:#8e8e93; }
+.footer-extra-links {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin: 12px 0;
+    flex-wrap: wrap;
+}
+.footer-extra-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    font-size: 13px;
+    color: #8e8e93;
+    transition: all 0.2s ease;
+}
+.footer-extra-links a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #0a84ff;
+}
 .footer .row {
     display: flex;
     flex-wrap: wrap;
@@ -173,6 +208,29 @@ const footerStyle = `
     from { opacity:0; transform:translateY(10px); }
     to { opacity:1; transform:translateY(0); }
 }
+@keyframes fadeInUp {
+    from { opacity:0; transform:translateY(20px); }
+    to { opacity:1; transform:translateY(0); }
+}
+.footer-brand {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+}
+.footer-section {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+}
+.footer-section:nth-child(2) { animation-delay: 0.1s; }
+.footer-section:nth-child(3) { animation-delay: 0.15s; }
+.footer-section:nth-child(4) { animation-delay: 0.2s; }
+.footer-section:nth-child(5) { animation-delay: 0.25s; }
+.footer-section:nth-child(6) { animation-delay: 0.3s; }
+.footer-section:nth-child(7) { animation-delay: 0.35s; }
+.footer-bottom {
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards;
+    animation-delay: 0.4s;
+}
 .visitor-ip-info {
     opacity: 0;
     transition: opacity 1s ease;
@@ -199,6 +257,163 @@ const footerStyle = `
 @media (max-width:768px){
     .footer .row{flex-direction:column;}
     .footer .col{min-width:auto;}
+}
+/* 亮证弹窗样式 */
+.license-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.license-modal-overlay.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+}
+.license-modal {
+    background: #1d1d1f;
+    border-radius: 16px;
+    max-width: 90%;
+    max-height: 90%;
+    width: 800px;
+    max-height: 90vh;
+    overflow: hidden;
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+.license-modal-overlay.show .license-modal {
+    transform: scale(1);
+}
+.license-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    border-bottom: 1px solid #2c2c2e;
+    background: linear-gradient(135deg, #1d1d1f 0%, #2d2d2f 100%);
+}
+.license-modal-header h3 {
+    margin: 0;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+}
+.license-modal-close {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: #8e8e93;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+.license-modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+.license-modal-body {
+    padding: 24px;
+    max-height: calc(90vh - 140px);
+    overflow-y: auto;
+}
+.license-pdf-viewer {
+    width: 100%;
+    height: 500px;
+    border: none;
+    border-radius: 8px;
+    background: #000;
+}
+.license-modal-footer {
+    padding: 16px 24px;
+    border-top: 1px solid #2c2c2e;
+    background: #1a1a1c;
+}
+.license-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+.license-md5 {
+    color: #8e8e93;
+    font-size: 13px;
+}
+.license-md5 code {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: #0a84ff;
+    font-family: monospace;
+}
+.license-verify-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, #0a84ff 0%, #0066cc 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+.license-verify-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(10, 132, 255, 0.4);
+}
+.license-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #d1d1d6;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    margin-left: 12px;
+}
+.license-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+}
+@media (max-width: 768px) {
+    .license-modal {
+        max-width: 95%;
+        max-height: 85vh;
+    }
+    .license-pdf-viewer {
+        height: 400px;
+    }
+    .license-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .license-btn {
+        margin-left: 0;
+        margin-top: 12px;
+    }
 }
 `;
 
@@ -266,15 +481,22 @@ function renderFooter(containerId = "site-footer") {
                     <div class="col footer-section">
                         <h4>${section.title}</h4>
                         <ul>
-                            ${section.items.map(item => `
-                                <li><a href="${item.href}" ${item.target ? `target="${item.target}"` : ""} rel="noopener noreferrer">${item.text}</a></li>
-                            `).join("")}
+                            ${section.items.map(item => {
+                                const classes = [];
+                                if (item.class) classes.push(item.class);
+                                if (item.disabled) classes.push('disabled-link');
+                                return `<li><a href="${item.href || 'javascript:void(0)'}" ${item.target ? `target="${item.target}"` : ""} ${classes.length ? `class="${classes.join(' ')}"` : ""} ${item.disabled ? 'onclick="return false;"' : ''} rel="noopener noreferrer">${item.text}</a></li>`;
+                            }).join("")}
                         </ul>
                     </div>
                 `).join("")}
             </div>
             <div class="footer-bottom">
                 <p>${cfg.copyright}</p>
+                <p class="footer-extra-links">
+                    <a href="javascript:void(0)" class="license-link"><i class="fas fa-certificate"></i> 查验证件</a>
+                    <a href="https://www.12377.cn/" target="_blank" rel="noopener noreferrer"><i class="fas fa-exclamation-triangle"></i> 互联网违法信息举报</a>
+                </p>
                 <p><span class="footer-icp">${cfg.icpLink ? `<a href="${cfg.icpLink}" target="_blank" rel="noopener noreferrer">${cfg.icpNumber}</a>` : cfg.icpNumber}</span> | <span class="footer-site-type">${cfg.siteType}</span></p>
             </div>
         </div>
@@ -321,24 +543,101 @@ function renderFooter(containerId = "site-footer") {
         function updateIP(){
             ipInfoElem.classList.remove('show');
             ipInfoElem.innerHTML='<span class="loader"></span> 正在获取您的 IP 信息...（'+cfg.extra.ipv6+'）';
-            fetch('https://api.ip.sb/geoip/').then(res=>res.json()).then(data=>{
-                const ip=data.ip||'未知';
-                const country=data.country||'未知';
-                const region=data.region||'';
-                const isp=data.isp||'未知';
-                const timezone=data.timezone||'未知';
-                let ipv4='',ipv6='';
-                if(ip.includes(':')) ipv6=ip; else ipv4=ip;
-                ipInfoElem.innerHTML=`IPv4: ${ipv4}<br>IPv6: ${ipv6}<br>地区: ${country} ${region}<br>ISP: ${isp}<br>时区: ${timezone}`;
-                setTimeout(()=>ipInfoElem.classList.add('show'),50);
-            }).catch(err=>{
-                ipInfoElem.innerText='无法获取 IP 信息 （本站支持 IPv6）';
-                ipInfoElem.classList.add('show');
-                console.error('IP 获取失败',err);
-            });
+            
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 5000);
+            
+            fetch('https://api.ip.sb/geoip/', { signal: controller.signal })
+                .then(res => res.json())
+                .then(data => {
+                    clearTimeout(timeoutId);
+                    const ip = data.ip || '未知';
+                    const country = data.country || '未知';
+                    const region = data.region || '';
+                    const isp = data.isp || '未知';
+                    const timezone = data.timezone || '未知';
+                    let ipv4 = '', ipv6 = '';
+                    if (ip.includes(':')) {
+                        ipv6 = ip;
+                    } else {
+                        ipv4 = ip;
+                    }
+                    const ipLines = [];
+                    if (ipv4) ipLines.push(`IPv4: ${ipv4}`);
+                    if (ipv6) ipLines.push(`IPv6: ${ipv6}`);
+                    if (ipLines.length === 0) ipLines.push('IP: 未知');
+                    ipInfoElem.innerHTML = ipLines.join('<br>') + `<br>地区: ${country} ${region}<br>ISP: ${isp}<br>时区: ${timezone}`;
+                    setTimeout(() => ipInfoElem.classList.add('show'), 50);
+                })
+                .catch(err => {
+                    clearTimeout(timeoutId);
+                    if (err.name === 'AbortError') {
+                        ipInfoElem.innerText = 'IP 获取超时 （本站支持 IPv6）';
+                    } else {
+                        ipInfoElem.innerText = '无法获取 IP 信息 （本站支持 IPv6）';
+                    }
+                    ipInfoElem.classList.add('show');
+                    console.error('IP 获取失败', err);
+                });
         }
         updateIP();
         setInterval(updateIP,60000);
+    }
+
+    // -------------------- 亮证弹窗功能 --------------------
+    const licenseLink = container.querySelector('.license-link');
+    if (licenseLink && cfg.extra.license) {
+        const license = cfg.extra.license;
+        const modalHTML = `
+            <div class="license-modal-overlay" id="licenseModal">
+                <div class="license-modal">
+                    <div class="license-modal-header">
+                        <h3><i class="fas fa-certificate"></i> 营业执照</h3>
+                        <button class="license-modal-close" id="licenseModalClose">&times;</button>
+                    </div>
+                    <div class="license-modal-body">
+                        <iframe class="license-pdf-viewer" src="${license.pdfPath}" title="营业执照"></iframe>
+                    </div>
+                    <div class="license-modal-footer">
+                        <div class="license-info">
+                            <span class="license-md5">文件MD5：<code>${license.md5Value}</code></span>
+                            <a href="${license.verifyLink}" class="license-verify-btn" target="_blank">
+                                <i class="fas fa-shield-alt"></i> ${license.verifyText}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        container.insertAdjacentHTML('beforeend', modalHTML);
+
+        const modal = container.querySelector('#licenseModal');
+        const closeBtn = container.querySelector('#licenseModalClose');
+
+        licenseLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        });
+
+        const closeModal = () => {
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+        };
+
+        closeBtn.addEventListener('click', closeModal);
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('show')) {
+                closeModal();
+            }
+        });
     }
 }
 

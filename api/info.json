@@ -5,9 +5,7 @@
   "description": "海口希灵赛斯网络科技有限公司官方网站内容管理系统",
     "main": "/index.html",
   "developers": [
-    "徐中信",
-    "陈诗怡",
-    "彭芊惠"
+    "徐中信"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,6 +16,7 @@
   },
   "private": true,
   "company": "海口希灵赛斯网络科技有限公司",
+  "flag": "别看了-这里没有flag和漏洞，只是个内容管理系统",
   "api": {
     "ipGeoLocation": {
       "name": "ip.sb",
