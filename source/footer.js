@@ -45,6 +45,7 @@ window.siteConfig = {
             {
                 title: "社交媒体",
                 items: [
+                    { text: "抖音", href: "https://v.douyin.com/9N7akmvVn1Q/", target: "_blank" },
                     { text: "小红书（待开发）", href: "", disabled: true },
                     { text: "微信公众号（待开发）", href: "", disabled: true },
                     { text: "CSDN（待开发）", href: "", disabled: true }
@@ -504,6 +505,12 @@ function renderFooter(containerId = "site-footer") {
     `;
     container.innerHTML = footerHTML;
 
+    // 初始化折叠状态（避免闪烁）
+    container.querySelectorAll('.footer-section ul').forEach(ul => {
+        ul.style.overflow = 'hidden';
+        ul.style.transition = 'none';
+    });
+
     // -------------------- 移动端折叠栏目逻辑 --------------------
     const sections = container.querySelectorAll('.footer-section');
     function updateLayout(){
@@ -519,22 +526,32 @@ function renderFooter(containerId = "site-footer") {
             }
         });
     }
-    sections.forEach(sec=>{
-        const header=sec.querySelector('h4');
-        const list=sec.querySelector('ul');
-        header.addEventListener('click', ()=>{
-            if(window.innerWidth>768) return;
-            const isCollapsed=sec.classList.contains('collapsed');
-            if(isCollapsed){
+    
+    // 首次布局后启用动画
+    updateLayout();
+    requestAnimationFrame(() => {
+        container.querySelectorAll('.footer-section ul').forEach(ul => {
+            ul.style.transition = 'max-height 0.5s ease';
+        });
+    });
+    
+    // 点击切换移动端折叠
+    sections.forEach(sec => {
+        const header = sec.querySelector('h4');
+        const list = sec.querySelector('ul');
+        header.addEventListener('click', () => {
+            if (window.innerWidth > 768) return;
+            const isCollapsed = sec.classList.contains('collapsed');
+            if (isCollapsed) {
                 sec.classList.remove('collapsed');
-                list.style.maxHeight=list.scrollHeight+"px";
+                list.style.maxHeight = list.scrollHeight + "px";
             } else {
-                list.style.maxHeight=list.scrollHeight+"px";
-                setTimeout(()=>{sec.classList.add('collapsed'); list.style.maxHeight=0;},10);
+                sec.classList.add('collapsed');
+                list.style.maxHeight = 0;
             }
         });
     });
-    updateLayout();
+    
     window.addEventListener('resize', updateLayout);
 
     // -------------------- 获取访问者 IP 信息 --------------------
