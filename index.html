@@ -3,37 +3,7 @@
 <html lang="zh-CN" dir="ltr">
 <!-- 设置语言为简体中文，文本方向为从左到右 -->
 <head>
-   <script src="https://tam.cdn-go.cn/aegis-sdk/latest/aegis.min.js"></script>
-      <script>
-        // 初始化 Aegis 监控SDK
-        // 用于页面性能监控、接口测速、静态资源测速等功能
-        if (typeof Aegis === 'function') {
-          var aegis = new Aegis({
-            id: '0GVpeTz2n3Epk34gYP', // 上报 id
-            uin: 'e70af75a-1e3f-4f1d-9d23-302dca2dc099', // 用户唯一 ID（可选）
-            reportApiSpeed: true, // 接口测速
-            reportAssetSpeed: true, // 静态资源测速
-            spa: true, // spa 应用页面跳转的时候开启 pv 计算
-          hostUrl: 'https://rumt-zh.com'
-          });
-        }
-      </script>
-        <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PVCDX1CZK"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-0PVCDX1CZK');
-    </script>
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "u1z97w1v6n");
-</script>
+   <script src="/api/aegis-init.js"></script>
     <!-- 页面元数据 -->
     <meta charset="utf-8">
     <!-- 字符编码设置为UTF-8 -->
@@ -137,583 +107,392 @@
 </head>
 <body>
 
-    <!-- ===================== 导航栏模块 ===================== -->
-    <div class="ezy__nav6_7SyLoOH3k">
-        <nav class="navbar navbar-expand-lg py-3">
-            <div class="container position-relative">
-                <!-- 品牌标识 -->
-                <a class="navbar-brand" href="/">
-                    <img src="source/imgs/logo.png" alt="海口希灵赛斯" class="nav-logo">
-                    <span class="brand-text">海口希灵赛斯</span>
-                </a>
-                <!-- 下划线指示器 -->
-                <div class="nav-indicator"></div>
-
-                <!-- 移动端导航切换按钮 -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <!-- 导航菜单 -->
-                <div class="collapse navbar-collapse" id="navbarText">
-                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                        <li class="nav-item dropdown" id="productDropdownItem">
-                            <a class="nav-link dropdown-toggle" href="#" id="productDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-box me-1" style="font-size:0.8rem"></i>产品中心
+    <!-- 导航栏模块 -->
+<div class="xsec-navbar">
+    <div class="navbar-container">
+        <!-- 品牌标识 -->
+        <a class="navbar-brand" href="/">
+            <img src="source/imgs/logo.png" alt="海口希灵赛斯" class="nav-logo">
+            <span class="brand-text">海口希灵赛斯</span>
+        </a>
+        
+        <!-- 移动端菜单按钮 -->
+        <button class="navbar-toggle" id="navbarToggle" aria-label="切换菜单">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+        
+        <!-- 导航菜单 -->
+        <div class="navbar-menu" id="navbarMenu">
+            <ul class="nav-list">
+                <!-- 产品中心 -->
+                <li class="nav-item has-submenu">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-box"></i>产品中心
+                    </a>
+                    <ul class="submenu">
+                        <li class="submenu-item has-submenu">
+                            <a href="javascript:void(0);" class="submenu-link">
+                                <i class="fas fa-shield-alt"></i>安全产品
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="productDropdown">
-                                <!-- 安全产品 -->
-                                <li>
-                                    <a class="dropdown-item dropdown-toggle" href="/business/product/security/" id="securityProductsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fas fa-shield-alt me-1" style="font-size:0.8rem"></i>安全产品
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="securityProductsDropdown">
-                                        <li><a class="dropdown-item" href="#"><i class="fas fa-file-certificate me-1" style="font-size:0.8rem"></i>数据跨境合规审查（CDCRS）</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="fas fa-firewall me-1" style="font-size:0.8rem"></i>信创防火墙（CloudWAF）</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="fas fa-key me-1" style="font-size:0.8rem"></i>灵契授权中心（IdPOC）</a></li>
-                                    </ul>
-                                </li>
-                                <!-- 安全解决方案 -->
-                                <li>
-                                    <a class="dropdown-item dropdown-toggle" href="/business/product/solutions/" id="securitySolutionsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fas fa-puzzle-piece me-1" style="font-size:0.8rem"></i>安全解决方案
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="securitySolutionsDropdown">
-                                        <li><a class="dropdown-item" href="#">企业安全解决方案</a></li>
-                                        <li><a class="dropdown-item" href="#">云安全解决方案</a></li>
-                                        <li><a class="dropdown-item" href="#">数据安全解决方案</a></li>
-                                    </ul>
-                                </li>
-                                <!-- 安全服务 -->
-                                <li>
-                                    <a class="dropdown-item dropdown-toggle" href="/business/product/services/" id="securityServicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fas fa-headset me-1" style="font-size:0.8rem"></i>安全服务
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="securityServicesDropdown">
-                                        <li><a class="dropdown-item" href="#">安全咨询服务</a></li>
-                                        <li><a class="dropdown-item" href="#">安全运维服务</a></li>
-                                        <li><a class="dropdown-item" href="#">安全培训服务</a></li>
-                                    </ul>
-                                </li>
-                                <!-- 其他产品 -->
-                                <li>
-                                    <a class="dropdown-item dropdown-toggle" href="/business/product/other/" id="otherProductsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fas fa-cubes me-1" style="font-size:0.8rem"></i>其他产品
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="otherProductsDropdown">
-                                        <li><a class="dropdown-item" href="#">产品预留位置1</a></li>
-                                        <li><a class="dropdown-item" href="#">产品预留位置2</a></li>
-                                        <li><a class="dropdown-item" href="#">产品预留位置3</a></li>
-                                    </ul>
-                                </li>
+                            <ul class="submenu">
+                                <li><a href="#" class="submenu-link">数据跨境合规审查（CDCRS）</a></li>
+                                <li><a href="#" class="submenu-link">信创防火墙（CloudWAF）</a></li>
+                                <li><a href="#" class="submenu-link">灵契授权中心（IdPOC）</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item dropdown" id="businessDropdownItem">
-                            <a class="nav-link dropdown-toggle" href="/business/services/index.html" id="businessDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-briefcase me-1" style="font-size:0.8rem"></i>业务范围
+                        <li class="submenu-item has-submenu">
+                            <a href="javascript:void(0);" class="submenu-link">
+                                <i class="fas fa-puzzle-piece"></i>安全解决方案
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="businessDropdown">
-                                <li><a class="dropdown-item" href="/business/services/#personal"><i class="fas fa-user me-1" style="font-size:0.8rem"></i>个人服务</a></li>
-                                <li><a class="dropdown-item" href="/business/services/#enterprise"><i class="fas fa-building me-1" style="font-size:0.8rem"></i>企业服务</a></li>
-                                <li><a class="dropdown-item" href="/business/services/#innovation"><i class="fas fa-flask me-1" style="font-size:0.8rem"></i>科技创新</a></li>
+                            <ul class="submenu">
+                                <li><a href="#" class="submenu-link">企业安全解决方案</a></li>
+                                <li><a href="#" class="submenu-link">云安全解决方案</a></li>
+                                <li><a href="#" class="submenu-link">数据安全解决方案</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item dropdown" id="serviceDropdownItem">
-                            <a class="nav-link dropdown-toggle" href="#" id="serviceDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-headset me-1" style="font-size:0.8rem"></i>服务中心
+                        <li class="submenu-item has-submenu">
+                            <a href="javascript:void(0);" class="submenu-link">
+                                <i class="fas fa-headset"></i>安全服务
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="serviceDropdown">
-                                <li><a class="dropdown-item" href="/business/services/c/"><i class="fas fa-user me-1" style="font-size:0.8rem"></i>客户服务</a></li>
-                                <li><a class="dropdown-item" href="/business/services/p/"><i class="fas fa-store me-1" style="font-size:0.8rem"></i>代理服务</a></li>
-                                <li><a class="dropdown-item" href="/business/services/b/"><i class="fas fa-building me-1" style="font-size:0.8rem"></i>对公服务</a></li>
-                                <li><a class="dropdown-item" href="/business/services/g/"><i class="fas fa-cloud me-1" style="font-size:0.8rem"></i>公共服务</a></li>
+                            <ul class="submenu">
+                                <li><a href="#" class="submenu-link">安全咨询服务</a></li>
+                                <li><a href="#" class="submenu-link">安全运维服务</a></li>
+                                <li><a href="#" class="submenu-link">安全培训服务</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://se-xl-services.xinnew.top/">
-                                <i class="fas fa-chart-line me-1" style="font-size:0.8rem"></i>资源监测
+                        <li class="submenu-item has-submenu">
+                            <a href="javascript:void(0);" class="submenu-link">
+                                <i class="fas fa-cubes"></i>其他产品
                             </a>
-                        </li>
-                        <li class="nav-item dropdown" id="aboutDropdownItem">
-                            <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-building me-1" style="font-size:0.8rem"></i>关于我们
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
-                                <li><a class="dropdown-item" href="/leadership/"><i class="fas fa-building me-1" style="font-size:0.8rem"></i>企业简介</a></li>
-                                <li><a class="dropdown-item" href="/leadership/me/"><i class="fas fa-users me-1" style="font-size:0.8rem"></i>领导团队</a></li>
-                                <li><a class="dropdown-item" href="/leadership/fzlc/index.html"><i class="fas fa-history me-1" style="font-size:0.8rem"></i>发展历程</a></li>
-                                <li><a class="dropdown-item" href="/careers/cn/"><i class="fas fa-briefcase me-1" style="font-size:0.8rem"></i>职业机会</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="https://sec.hn.cn/"><i class="fas fa-bell me-1" style="font-size:0.8rem"></i>更新动态</a></li>
+                            <ul class="submenu">
+                                <li><a href="#" class="submenu-link">产品预留位置1</a></li>
+                                <li><a href="#" class="submenu-link">产品预留位置2</a></li>
+                                <li><a href="#" class="submenu-link">产品预留位置3</a></li>
                             </ul>
                         </li>
                     </ul>
-                </div>
-            </div>
-        </nav>
+                </li>
+                
+                <!-- 业务范围 -->
+                <li class="nav-item has-submenu">
+                    <a href="/business/services/index.html" class="nav-link">
+                        <i class="fas fa-briefcase"></i>业务范围
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="/business/services/#personal" class="submenu-link"><i class="fas fa-user"></i>个人服务</a></li>
+                        <li><a href="/business/services/#enterprise" class="submenu-link"><i class="fas fa-building"></i>企业服务</a></li>
+                        <li><a href="/business/services/#innovation" class="submenu-link"><i class="fas fa-flask"></i>科技创新</a></li>
+                    </ul>
+                </li>
+                
+                <!-- 服务中心 -->
+                <li class="nav-item has-submenu">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-headset"></i>服务中心
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="/business/services/c/" class="submenu-link"><i class="fas fa-user"></i>客户服务</a></li>
+                        <li><a href="/business/services/p/" class="submenu-link"><i class="fas fa-store"></i>代理服务</a></li>
+                        <li><a href="/business/services/b/" class="submenu-link"><i class="fas fa-building"></i>对公服务</a></li>
+                        <li><a href="/business/services/g/" class="submenu-link"><i class="fas fa-cloud"></i>公共服务</a></li>
+                    </ul>
+                </li>
+                
+                <!-- 资源监测 -->
+                <li class="nav-item">
+                    <a href="https://se-xl-services.xinnew.top/" class="nav-link">
+                        <i class="fas fa-chart-line"></i>资源监测
+                    </a>
+                </li>
+                
+                <!-- 关于我们 -->
+                <li class="nav-item has-submenu">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-building"></i>关于我们
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="/leadership/" class="submenu-link"><i class="fas fa-building"></i>企业简介</a></li>
+                        <li><a href="/leadership/me/" class="submenu-link"><i class="fas fa-users"></i>领导团队</a></li>
+                        <li><a href="/leadership/fzlc/index.html" class="submenu-link"><i class="fas fa-history"></i>发展历程</a></li>
+                        <li><a href="/careers/cn/" class="submenu-link"><i class="fas fa-briefcase"></i>职业机会</a></li>
+                        <li class="submenu-divider"></li>
+                        <li><a href="https://sec.hn.cn/" class="submenu-link"><i class="fas fa-bell"></i>更新动态</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
+</div>
 
-    <!-- ===================== CSS ===================== -->
-    <style>
-    /* 导航栏基础 */
-    .ezy__nav6_7SyLoOH3k {
+<!-- 导航栏样式 -->
+<style>
+/* 导航栏基础样式 */
+.xsec-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.85);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+}
+
+/* 品牌标识 */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #f5f5f7;
+}
+
+.nav-logo {
+    height: 36px;
+    margin-right: 8px;
+}
+
+.brand-text {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+/* 导航菜单 */
+.nav-list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    color: #f5f5f7;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+    color: #ffffff;
+}
+
+/* 子菜单 */
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    background: rgba(30, 30, 30, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    list-style: none;
+    margin: 0;
+    padding: 8px 0;
+}
+
+.nav-item:hover > .submenu {
+    display: block;
+}
+
+.submenu-item {
+    position: relative;
+}
+
+.submenu-item.has-submenu > .submenu-link {
+    cursor: default;
+}
+
+.submenu .submenu .submenu-link {
+    cursor: pointer;
+}
+
+.submenu-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    color: #f5f5f7;
+    text-decoration: none;
+    font-size: 13px;
+    transition: background 0.15s ease;
+}
+
+.submenu-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.submenu .submenu {
+    top: 0;
+    left: 100%;
+}
+
+.submenu-item:hover > .submenu {
+    display: block;
+}
+
+.submenu-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 8px 0;
+}
+
+/* 移动端菜单按钮 */
+.navbar-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.hamburger-line {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #f5f5f7;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.navbar-toggle.active .hamburger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.navbar-toggle.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar-toggle.active .hamburger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* 滚动时样式 */
+.xsec-navbar.scrolled {
+    background: rgba(30, 30, 30, 0.95);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* 响应式布局 */
+@media (max-width: 991.98px) {
+    .navbar-toggle {
+        display: flex;
+    }
+    
+    .navbar-menu {
         position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
-        font-size: 1.125rem;
+        top: 64px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.95);
+        padding: 20px;
+        overflow-y: auto;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
     }
-
-    /* navbar 毛玻璃效果 */
-    .navbar {
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        background: rgba(0, 0, 0, 0.85);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.25);
-        transition: all 0.3s ease;
-        position: relative;
-        will-change: background, border-bottom;
+    
+    .navbar-menu.active {
+        transform: translateX(0);
     }
-
-    /* 滚动时的导航栏样式 */
-    .navbar.scrolled {
-        background: rgba(30, 30, 30, 0.85); /* 深灰色背景 */
+    
+    .nav-list {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .nav-item {
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
     }
-
-    /* Logo */
-    .navbar-brand {
-        font-weight: 700;
-        font-size: 1.2rem;
-        color: #f5f5f7;
-        letter-spacing: -0.5px;
-        display: flex;
-        align-items: center;
-        transition: all 0.3s ease;
-        text-decoration: none;
-        will-change: color, transform;
-    }
-
-    .navbar.scrolled .navbar-brand {
-        color: #ffffff; /* 滚动时字体变白 */
-    }
-
-    .nav-logo {
-        height: 40px;
-        margin-right: 8px;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-        will-change: height;
-    }
-
-    .brand-text {
-        font-weight: 700;
-        font-size: 1.4rem;
-        color: inherit;
-        letter-spacing: -0.5px;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-        will-change: transform;
-    }
-
-    /* 导航链接 */
+    
     .nav-link {
-        font-weight: 400;
-        color: #f5f5f7;
-        padding: 6px 12px;
-        margin: 0 2px;
-        border-radius: 8px;
-        position: relative;
-        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        text-decoration: none;
-        outline: none;
-        display: flex;
-        align-items: center;
-        font-size: 14px;
-        letter-spacing: -0.01em;
+        gap: 6px;
+        padding: 16px 0;
+        font-size: 16px;
     }
-
-    .nav-link:hover {
-        color: #ffffff;
-        background: rgba(255, 255, 255, 0.1);
+    
+    .submenu {
+        position: static;
+        background: transparent;
+        border: none;
+        padding-left: 20px;
     }
-
-    .nav-link:focus {
-        background: rgba(255, 255, 255, 0.15);
+    
+    .submenu .submenu {
+        padding-left: 40px;
     }
-
-    /* 下拉箭头动画 */
-    .nav-link.dropdown-toggle::after {
-        display: inline-block;
-        margin-left: 4px;
-        vertical-align: 0.15em;
-        content: "";
-        border: 4px solid transparent;
-        border-top-color: currentColor;
-        transition: transform 0.25s ease;
+    
+    .submenu-link {
+        padding: 12px 0;
     }
+}
+</style>
 
-    .nav-link.dropdown-toggle.show::after {
-        transform: rotate(180deg);
-    }
-
-    .navbar.scrolled .nav-link {
-        color: #ffffff; /* 滚动时字体变白 */
-    }
-
-    /* 下拉菜单 */
-    .dropdown-menu {
-        backdrop-filter: blur(25px) saturate(180%);
-        -webkit-backdrop-filter: blur(25px) saturate(180%);
-        background: rgba(255, 255, 255, 0.75);
-        border: 1px solid rgba(255, 255, 255, 0.5);
-        border-radius: 16px;
-        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08), 0 0 1px rgba(0, 0, 0, 0.1);
-        padding: 8px 0;
-        margin-top: 8px;
-        min-width: 220px;
-        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        opacity: 0;
-        transform: translateY(-4px) scale(0.98);
-        pointer-events: none;
-        will-change: opacity, transform, backdrop-filter;
-        position: absolute;
-        z-index: 1050;
-    }
-
-    .dropdown-menu.show {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        pointer-events: auto;
-    }
-
-    /* 滚动时下拉菜单样式 */
-    .navbar.scrolled .dropdown-menu {
-        background: rgba(255, 255, 255, 0.9);
-        border: 1px solid rgba(255, 255, 255, 0.6);
-    }
-
-    /* 二级下拉菜单 */
-    .dropdown-menu .dropdown-menu {
-        border-radius: 12px;
-        margin: 2px 8px;
-        padding: 6px 0;
-        min-width: 180px;
-        left: 100%;
-        top: 0;
-    }
-
-    /* 下拉菜单项 */
-    .dropdown-item {
-        padding: 8px 20px;
-        color: #1d1d1f;
-        font-weight: 400;
-        font-size: 13px;
-        line-height: 1.5;
-        transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-        outline: none;
-        display: flex;
-        align-items: center;
-        will-change: background, color, transform;
-        border-radius: 6px;
-        margin: 2px 8px;
-        white-space: nowrap;
-    }
-
-    .dropdown-item:hover,
-    .dropdown-item:focus {
-        background: rgba(0, 0, 0, 0.05);
-        color: #0071e3;
-        transform: translateX(2px);
-    }
-
-    .dropdown-item:active {
-        background: rgba(0, 113, 227, 0.1);
-    }
-
-    /* 滚动时下拉菜单项样式 */
-    .navbar.scrolled .dropdown-item {
-        color: #1d1d1f;
-    }
-
-    .navbar.scrolled .dropdown-item:hover {
-        color: #0071e3;
-        background: rgba(0, 113, 227, 0.1);
-    }
-
-    /* 去除PC端二级菜单黑框 */
-    .nav-item.dropdown:focus-within > a.dropdown-toggle,
-    .nav-item.dropdown.show > a.dropdown-toggle {
-        outline: none;
-        box-shadow: none;
-    }
-
-    /* 移动端按钮 */
-    .navbar-toggler {
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-        padding: 4px 8px;
-        z-index: 1001; /* 确保按钮在导航栏上方 */
-        will-change: border-color, background;
-    }
-
-    .navbar-toggler:focus {
-        box-shadow: 0 0 0 0.2rem rgba(0, 113, 227, 0.25);
-    }
-
-    .navbar-toggler-icon {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255,255,255,0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-        transition: filter 0.3s ease;
-        will-change: filter;
-    }
-
-    .navbar.scrolled .navbar-toggler {
-        border: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
-    .navbar.scrolled .navbar-toggler-icon {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255,255,255,0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-    }
-
-    /* 滚动效果 */
-    .navbar.scrolled {
-        background: rgba(30, 30, 30, 0.85);
-        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
-        font-size: 1rem;
-    }
-
-    .navbar.scrolled .nav-logo {
-        height: 30px;
-    }
-
-    /* 修复移动端导航栏遮挡内容的问题 */
-    @media (max-width: 991.98px) {
-        .ezy__header22_9Wbn5LJN {
-            padding-top: 70px; /* 为固定导航栏留出空间 */
-        }
-    }
-
-    /* 响应式优化 */
-    @media (max-width: 767.98px) {
-        .navbar-brand {
-            font-size: 1.2rem;
-        }
-
-        .nav-logo {
-            height: 32px;
-        }
-
-        .navbar.scrolled .nav-logo {
-            height: 26px;
-        }
-
-        .nav-link {
-            padding: 8px 12px;
-            font-size: 0.95rem;
-        }
-
-        .dropdown-menu {
-            border-radius: 12px;
-            margin: 4px;
-            padding: 8px 0;
-        }
-
-        .dropdown-item {
-            padding: 8px 20px;
-            font-size: 0.9rem;
-        }
-    }
-    </style>
-
-    <!-- ===================== JS ===================== -->
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // 缓存DOM元素以提高性能
-        const navbar = document.querySelector('.navbar');
-        const navLinks = document.querySelectorAll('.nav-link');
-        const dropdownMenus = document.querySelectorAll('.dropdown-menu');
-
-        // 下拉菜单悬停 + 动画
-        function setupDropdown(dropdownItemId, dropdownToggleId){
-            const dropdownItem = document.getElementById(dropdownItemId);
-            const dropdownToggle = document.getElementById(dropdownToggleId);
-            const dropdownMenu = dropdownToggle.nextElementSibling;
-            let timeoutId;
-
-            function showDropdown(){
-                clearTimeout(timeoutId);
-                // 应用展开前的初始状态
-                dropdownMenu.style.transition = 'all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.1)';
-                dropdownMenu.style.opacity = '0';
-                dropdownMenu.style.transform = 'translateY(-10px) scale(0.95)';
-                dropdownMenu.style.pointerEvents = 'none';
-
-                // 触发重排
-                dropdownMenu.offsetHeight;
-
-                // 添加Bootstrap的show类
-                const instance = bootstrap.Dropdown.getOrCreateInstance(dropdownToggle);
-                instance.show();
-                dropdownToggle.setAttribute('aria-expanded','true');
-                dropdownMenu.classList.add('show');
-
-                // 应用展开后的状态
-                setTimeout(() => {
-                    dropdownMenu.style.opacity = '1';
-                    dropdownMenu.style.transform = 'translateY(0) scale(1)';
-                    dropdownMenu.style.pointerEvents = 'auto';
-                }, 10);
-            }
-
-            function hideDropdown(){
-                clearTimeout(timeoutId);
-                // 应用收起前的状态
-                dropdownMenu.style.opacity = '1';
-                dropdownMenu.style.transform = 'translateY(0) scale(1)';
-                dropdownMenu.style.pointerEvents = 'auto';
-
-                // 延迟200毫秒后收起菜单
-                timeoutId = setTimeout(() => {
-                    // 应用收起后的状态
-                    setTimeout(() => {
-                        dropdownMenu.style.opacity = '0';
-                        dropdownMenu.style.transform = 'translateY(-10px) scale(0.95)';
-                        dropdownMenu.style.pointerEvents = 'none';
-
-                        timeoutId = setTimeout(function(){
-                            dropdownMenu.classList.remove('show');
-                            const instance = bootstrap.Dropdown.getOrCreateInstance(dropdownToggle);
-                            instance.hide(true);
-                            dropdownToggle.setAttribute('aria-expanded','false');
-                        }, 300);
-                    }, 10);
-                }, 200); // 鼠标移出后延迟200毫秒收回菜单
-            }
-
-            dropdownItem.addEventListener('mouseenter', showDropdown);
-            dropdownItem.addEventListener('mouseleave', hideDropdown);
-            if(dropdownMenu){
-                dropdownMenu.addEventListener('mouseenter', showDropdown);
-                dropdownMenu.addEventListener('mouseleave', hideDropdown);
-            }
-        }
-
-        [['businessDropdownItem','businessDropdown'],['aboutDropdownItem','aboutDropdown'],['serviceDropdownItem','serviceDropdown'],['productDropdownItem','productDropdown']]
-          .forEach(function(ids){
-            var itemEl = document.getElementById(ids[0]);
-            var toggleEl = document.getElementById(ids[1]);
-            if(itemEl && toggleEl){
-              setupDropdown(ids[0], ids[1]);
-            }
-          });
-
-        // 添加节流函数以优化滚动性能
-        function throttle(func, limit) {
-            let inThrottle;
-            return function() {
-                const args = arguments;
-                const context = this;
-                if (!inThrottle) {
-                    func.apply(context, args);
-                    inThrottle = true;
-                    setTimeout(() => inThrottle = false, limit);
-                }
-            }
-        }
-
-        // 滚动透明度和Logo缩放
-        let lastScrollPosition = 0;
-        let ticking = false;
-
-        function updateNavbarOnScroll() {
-            // 获取滚动位置
-            const scrollPosition = window.scrollY;
-
-            // 避免过于频繁的更新
-            if (Math.abs(scrollPosition - lastScrollPosition) < 2) {
-                ticking = false;
-                return;
-            }
-
-            lastScrollPosition = scrollPosition;
-
-            const scrollPercentage = Math.min(scrollPosition / 100, 1); // 0到1之间的值，100px后达到最大值
-
-            // 计算背景颜色 (从浅色到深色)
-            const r = 255 - (255 - 30) * scrollPercentage;
-            const g = 255 - (255 - 30) * scrollPercentage;
-            const b = 255 - (255 - 30) * scrollPercentage;
-            const alpha = 0.2 + 0.65 * scrollPercentage; // 从0.2到0.85的透明度
-
-            // 应用背景颜色
-            navbar.style.background = `rgba(${Math.floor(r)}, ${Math.floor(g)}, ${Math.floor(b)}, ${alpha})`;
-
-            // 计算文字颜色 (从深色到白色)
-            const textR = 68 + (255 - 68) * scrollPercentage;
-            const textG = 68 + (255 - 68) * scrollPercentage;
-            const textB = 68 + (255 - 68) * scrollPercentage;
-
-            // 应用导航链接颜色
-            navLinks.forEach(link => {
-                link.style.color = `rgb(${Math.floor(textR)}, ${Math.floor(textG)}, ${Math.floor(textB)})`;
-            });
-
-            // 应用品牌文字颜色
-            const brand = document.querySelector('.navbar-brand');
-            brand.style.color = `rgb(${Math.floor(textR)}, ${Math.floor(textG)}, ${Math.floor(textB)})`;
-
-            // 应用下拉菜单样式
-            dropdownMenus.forEach(menu => {
-                // 计算下拉菜单背景色
-                const menuBgAlpha = 0.7 + 0.2 * scrollPercentage; // 从0.7到0.9的透明度
-                menu.style.background = `rgba(255, 255, 255, ${menuBgAlpha})`;
-
-                // 滚动时调整下拉菜单边框
-                if (scrollPercentage > 0.5) {
-                    menu.style.border = '1px solid rgba(255, 255, 255, 0.3)';
-                } else {
-                    menu.style.border = '1px solid rgba(255, 255, 255, 0.3)';
-                }
-            });
-
-            // 当滚动超过50px时添加scrolled类以应用其他样式
-            if(scrollPosition > 50){
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-
-            ticking = false;
-        }
-
-        // 使用requestAnimationFrame优化滚动性能
-        function onScroll() {
-            if (!ticking) {
-                requestAnimationFrame(updateNavbarOnScroll);
-                ticking = true;
-            }
-        }
-
-        window.addEventListener('scroll', throttle(onScroll, 16), { passive: true });
-
-        // 页面可见性API优化 - 页面不可见时暂停滚动处理
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) {
-                window.removeEventListener('scroll', onScroll, { passive: true });
-            } else {
-                window.addEventListener('scroll', throttle(onScroll, 16), { passive: true });
-            }
-        });
+<!-- 导航栏脚本 -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.querySelector('.xsec-navbar');
+    const navbarToggle = document.getElementById('navbarToggle');
+    const navbarMenu = document.getElementById('navbarMenu');
+    
+    // 移动端菜单切换
+    navbarToggle.addEventListener('click', function() {
+        navbarToggle.classList.toggle('active');
+        navbarMenu.classList.toggle('active');
     });
-    </script>
+    
+    // 滚动时样式变化
+    let lastScrollY = 0;
+    window.addEventListener('scroll', function() {
+        const currentScrollY = window.scrollY;
+        
+        if (currentScrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+        
+        lastScrollY = currentScrollY;
+    }, { passive: true });
+    
+    // 点击菜单外区域关闭菜单
+    document.addEventListener('click', function(e) {
+        if (navbarMenu.classList.contains('active') && 
+            !navbarMenu.contains(e.target) && 
+            !navbarToggle.contains(e.target)) {
+            navbarToggle.classList.remove('active');
+            navbarMenu.classList.remove('active');
+        }
+    });
+});
+</script>
 
-    <!-- ===================== 头部模块（视频背景 + 弹性滚动 + 渐隐渐显 + 微动优化） ===================== -->
-    <section class="ezy__header22_9Wbn5LJN">
-        <video autoplay loop muted playsinline preload="auto" class="video-bg" id="header-video">
-            <source src="source/video/index_01.mp4" type="video/mp4">
-            <source src="source/video/index_01.webm" type="video/webm">
-            您的浏览器不支持视频标签。
-        </video>
+<!-- 头部模块（静态图片背景 + 弹性滚动 + 渐隐渐显） -->
+<section class="ezy__header22_9Wbn5LJN">
+        <img src="source/index_imgs/20260322-044041.jpg" class="video-bg" id="header-video" alt="">
 
         <div class="video-overlay" id="video-overlay"></div>
 
@@ -731,7 +510,7 @@
     </section>
 
     <style>
-    .ezy__header22_9Wbn5LJN { position: relative; width: 100%; height: 100vh; overflow: hidden; }
+    .ezy__header22_9Wbn5LJN { position: relative; width: 100%; height: 100vh; overflow: hidden; padding-top: 64px; box-sizing: border-box; }
     .video-bg {
         position: absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:-2;
         transform: translateZ(0); /* 启用硬件加速 */
@@ -786,15 +565,11 @@
     </style>
 
     <script>
-    const video = document.getElementById('header-video');
     const heroContent = document.getElementById('hero-content');
     const overlay = document.getElementById('video-overlay');
 
-    let lastScroll = 0;
     let ticking = false;
-    let currentScroll = 0;
 
-    // 使用节流优化滚动事件
     function throttle(func, limit) {
         let inThrottle;
         return function() {
@@ -808,75 +583,32 @@
         }
     }
 
-    function lerp(start, end, amt) {
-        return (1 - amt) * start + amt * end;
-    }
-
-    // 优化的更新函数
     function updateHeader() {
-        lastScroll = lerp(lastScroll, currentScroll, 0.1);
+        const currentScroll = window.scrollY;
+        const transformAmount = currentScroll * 0.3;
+        const opacityValue = Math.max(0.3, 1 - currentScroll / 400);
+        const overlayOpacity = Math.min(0.65, currentScroll / 400 * 0.65);
 
-        // 使用transform3d启用硬件加速
-        video.style.transform = `translate3d(0, ${lastScroll * 0.05}px, 0)`;
-        heroContent.style.transform = `translate3d(0, ${lastScroll * 0.03}px, 0)`;
-
-        // 字体透明度立即响应滚动
-        heroContent.style.opacity = Math.max(0, 1 - currentScroll / 300);
-
-        // 叠加层透明度平滑
-        const overlayOpacity = Math.min(0.65, currentScroll / 500 * 0.65);
+        heroContent.style.transform = `translate3d(0, ${transformAmount}px, 0)`;
+        heroContent.style.opacity = opacityValue;
         overlay.style.background = `linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,${overlayOpacity}))`;
-
         ticking = false;
     }
 
-    // 滚动事件处理
     function onScroll() {
-        currentScroll = window.scrollY;
-
         if (!ticking) {
             requestAnimationFrame(updateHeader);
             ticking = true;
         }
     }
 
-    // 使用节流和passive选项优化滚动性能
     window.addEventListener('scroll', throttle(onScroll, 16), { passive: true });
 
-    // 页面可见性API优化 - 页面不可见时暂停处理
     document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
             window.removeEventListener('scroll', onScroll, { passive: true });
         } else {
             window.addEventListener('scroll', throttle(onScroll, 16), { passive: true });
-        }
-    });
-
-    // 视频播放优化
-    function initVideo(){
-        // 检查是否支持autoplay
-        const playPromise = video.play();
-        if (playPromise !== undefined) {
-            playPromise.catch(error => {
-                // 自动播放失败，设置poster作为后备
-                video.setAttribute('poster', 'source/index_imgs/wx.jpg');
-                console.warn('视频自动播放被阻止:', error);
-            });
-        }
-    }
-
-    // DOM加载完成后初始化
-    document.addEventListener('DOMContentLoaded', initVideo);
-
-    // 页面完全加载后优化视频渲染
-    window.addEventListener('load', () => {
-        // 添加视频渲染优化
-        if (video.requestVideoFrameCallback) {
-            function updateVideoAnimation() {
-                // 使用浏览器原生的视频帧回调优化渲染
-                video.requestVideoFrameCallback(updateVideoAnimation);
-            }
-            video.requestVideoFrameCallback(updateVideoAnimation);
         }
     });
     </script>
@@ -1322,7 +1054,7 @@
           <!-- 左侧图片展示 -->
           <div class="col-12 col-lg-5 mb-5 mb-lg-0">
             <div class="product-image-wrapper">
-              <img src="source/index_imgs/index_cplb01.png" alt="产品展示" class="product-image">
+              <img src="source/index_imgs/index_cplb01.png" alt="产品展示" class="product-image" loading="lazy">
             </div>
           </div>
 
@@ -2993,7 +2725,7 @@ document.addEventListener('DOMContentLoaded', function () {
           <!-- 团队成员卡片 -->
           <div class="col-12 col-md-6 col-lg-4">
             <div class="team-card-apple">
-              <img src="source/index_imgs/touxiang/xuzhongxin_index_01.jpg" alt="徐中信" class="team-avatar-apple">
+              <img src="source/index_imgs/touxiang/xuzhongxin_index_01.jpg" alt="徐中信" class="team-avatar-apple" loading="lazy">
               <h5>徐中信</h5>
               <p>创始人</p>
             </div>
@@ -3001,7 +2733,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
           <div class="col-12 col-md-6 col-lg-4">
             <div class="team-card-apple">
-              <img src="source/index_imgs/touxiang/chenziyi_index_01.jpg" alt="陈紫怡" class="team-avatar-apple">
+              <img src="source/index_imgs/touxiang/chenziyi_index_01.jpg" alt="陈紫怡" class="team-avatar-apple" loading="lazy">
               <h5>陈紫怡</h5>
               <p>创始人</p>
             </div>
@@ -3009,7 +2741,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
           <div class="col-12 col-md-6 col-lg-4">
             <div class="team-card-apple">
-              <img src="source/index_imgs/touxiang/chenshiyi_index_01.jpg" alt="陈诗怡" class="team-avatar-apple">
+              <img src="source/index_imgs/touxiang/chenshiyi_index_01.jpg" alt="陈诗怡" class="team-avatar-apple" loading="lazy">
               <h5>陈诗怡</h5>
               <p>大数据及信息安全工程师</p>
             </div>
@@ -3017,7 +2749,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
           <div class="col-12 col-md-6 col-lg-4">
             <div class="team-card-apple">
-              <img src="source/index_imgs/touxiang/xiaohuahong_index_01.jpg" alt="肖骅鸿" class="team-avatar-apple">
+              <img src="source/index_imgs/touxiang/xiaohuahong_index_01.jpg" alt="肖骅鸿" class="team-avatar-apple" loading="lazy">
               <h5>肖骅鸿</h5>
               <p>信息安全工程师</p>
             </div>
@@ -3025,7 +2757,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
           <div class="col-12 col-md-6 col-lg-4">
             <div class="team-card-apple">
-              <img src="source/index_imgs/touxiang/wangyueyang_index_01.jpg" alt="王越阳" class="team-avatar-apple">
+              <img src="source/index_imgs/touxiang/wangyueyang_index_01.jpg" alt="王越阳" class="team-avatar-apple" loading="lazy">
               <h5>王越阳</h5>
               <p>软件开发工程师</p>
             </div>
@@ -3033,7 +2765,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
           <div class="col-12 col-md-6 col-lg-4">
             <div class="team-card-apple">
-              <img src="source/index_imgs/touxiang/pengqianhui_index_01.jpg" alt="彭芊惠" class="team-avatar-apple">
+              <img src="source/index_imgs/touxiang/pengqianhui_index_01.jpg" alt="彭芊惠" class="team-avatar-apple" loading="lazy">
               <h5>彭芊惠</h5>
               <p>新媒体运营</p>
             </div>

@@ -22,16 +22,12 @@ window.siteConfig = {
                     { text: "IOA零信任办公", href: "/source/ztsm/" },
                     { text: "MD5计算", href: "/business/services/g/md5check.html" },
                     { text: "软件资产", href: "https://user-ocloud.ihep.ac.cn/share/15328d44-91cc-40ce-9e17-022ff934be16?pwd=340854" },
-                    { text: "Educheck", href: "https://educheck.sec.hn.cn/" }
                 ]
             },
             {
                 title: "星际网络应用",
                 items: [
-                    { text: "Alist OSCA存储桶", href: "https://alist.xinnew.top/" },
-                    { text: "AI Agent平台", href: "https://chats.sec.hn.cn/" },
-                    { text: "Dataease", href: "https://bi-sci.sec.hn.cn/" },
-                    { text: "项目管理OA", href: "https://cdproject.sec.hn.cn/" }
+                    { text: "云效Ops", href: "https://devops.aliyun.com/workbench?orgId=690f52c666aca23eccbe7d4c" },
                 ]
             },
             {
@@ -46,9 +42,6 @@ window.siteConfig = {
                 title: "社交媒体",
                 items: [
                     { text: "抖音", href: "https://v.douyin.com/9N7akmvVn1Q/", target: "_blank" },
-                    { text: "小红书（待开发）", href: "", disabled: true },
-                    { text: "微信公众号（待开发）", href: "", disabled: true },
-                    { text: "CSDN（待开发）", href: "", disabled: true }
                 ]
             },
             {
@@ -232,29 +225,37 @@ const footerStyle = `
     animation: fadeIn 0.8s ease forwards;
     animation-delay: 0.4s;
 }
-.visitor-ip-info {
-    opacity: 0;
-    transition: opacity 1s ease;
+.footer-ip-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
     font-size: 13px;
-    position: relative;
-    padding-left: 24px;
+    color: #8e8e93;
 }
-.visitor-ip-info .loader {
+.footer-ip-info .ip-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+.footer-ip-info .ip-separator {
+    color: #555;
+}
+.footer-ip-info .loader {
+    display: inline-block;
     width: 12px;
     height: 12px;
     background: #0a84ff;
     border-radius: 50%;
-    position: absolute;
-    left: 0;
-    top: 4px;
     animation: pulse 1.5s infinite ease-in-out;
+    vertical-align: middle;
 }
 @keyframes pulse {
     0% { transform: scale(0.9); opacity:0.6; }
     50% { transform: scale(1.3); opacity:1; }
     100% { transform: scale(0.9); opacity:0.6; }
 }
-.visitor-ip-info.show { opacity: 1; }
 @media (max-width:768px){
     .footer .row{flex-direction:column;}
     .footer .col{min-width:auto;}
@@ -476,7 +477,6 @@ function renderFooter(containerId = "site-footer") {
                 <div class="col footer-brand">
                     <h3>${cfg.brand.logo ? `<img src="${cfg.brand.logo}" alt="${cfg.brand.name} Logo">` : ""}${cfg.brand.name}</h3>
                     <p>${cfg.brand.description}</p>
-                    <p class="visitor-ip-info"><span class="loader"></span> 正在获取您的 IP 信息...（${cfg.extra.ipv6}）</p>
                 </div>
                 ${cfg.links.map(section => `
                     <div class="col footer-section">
@@ -499,6 +499,7 @@ function renderFooter(containerId = "site-footer") {
                     <a href="https://www.12377.cn/" target="_blank" rel="noopener noreferrer"><i class="fas fa-exclamation-triangle"></i> 互联网违法信息举报</a>
                 </p>
                 <p><span class="footer-icp">${cfg.icpLink ? `<a href="${cfg.icpLink}" target="_blank" rel="noopener noreferrer">${cfg.icpNumber}</a>` : cfg.icpNumber}</span> | <span class="footer-site-type">${cfg.siteType}</span></p>
+                <p class="footer-ip-info"></p>
             </div>
         </div>
     </footer>
@@ -555,15 +556,14 @@ function renderFooter(containerId = "site-footer") {
     window.addEventListener('resize', updateLayout);
 
     // -------------------- 获取访问者 IP 信息 --------------------
-    const ipInfoElem = container.querySelector('.visitor-ip-info');
+    const ipInfoElem = container.querySelector('.footer-ip-info');
     if(ipInfoElem){
         function updateIP(){
-            ipInfoElem.classList.remove('show');
-            ipInfoElem.innerHTML='<span class="loader"></span> 正在获取您的 IP 信息...（'+cfg.extra.ipv6+'）';
-            
+            ipInfoElem.innerHTML = '<span class="loader"></span> 正在获取您的 IP 信息...（'+cfg.extra.ipv6+'）';
+
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 5000);
-            
+
             fetch('https://api.ip.sb/geoip/', { signal: controller.signal })
                 .then(res => res.json())
                 .then(data => {
@@ -579,12 +579,12 @@ function renderFooter(containerId = "site-footer") {
                     } else {
                         ipv4 = ip;
                     }
-                    const ipLines = [];
-                    if (ipv4) ipLines.push(`IPv4: ${ipv4}`);
-                    if (ipv6) ipLines.push(`IPv6: ${ipv6}`);
-                    if (ipLines.length === 0) ipLines.push('IP: 未知');
-                    ipInfoElem.innerHTML = ipLines.join('<br>') + `<br>地区: ${country} ${region}<br>ISP: ${isp}<br>时区: ${timezone}`;
-                    setTimeout(() => ipInfoElem.classList.add('show'), 50);
+                    const ipParts = [];
+                    if (ipv4) ipParts.push(`IPv4: ${ipv4}`);
+                    if (ipv6) ipParts.push(`IPv6: ${ipv6}`);
+                    if (ipParts.length === 0) ipParts.push('IP: 未知');
+                    const sep = '<span class="ip-separator">|</span>';
+                    ipInfoElem.innerHTML = ipParts.join(sep) + sep + `地区: ${country} ${region}` + sep + `ISP: ${isp}` + sep + `时区: ${timezone}`;
                 })
                 .catch(err => {
                     clearTimeout(timeoutId);
@@ -593,7 +593,6 @@ function renderFooter(containerId = "site-footer") {
                     } else {
                         ipInfoElem.innerText = '无法获取 IP 信息 （本站支持 IPv6）';
                     }
-                    ipInfoElem.classList.add('show');
                     console.error('IP 获取失败', err);
                 });
         }
