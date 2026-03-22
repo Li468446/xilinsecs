@@ -894,6 +894,52 @@
             margin: 0 auto;
             padding: 0 15px;
         }
+
+        .query-buttons-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .query-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 32px;
+            background: var(--apple-accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 16px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 113, 227, 0.3);
+        }
+
+        .query-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 113, 227, 0.4);
+            background: var(--apple-accent-hover);
+        }
+
+        .query-btn-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        @media (max-width: 600px) {
+            .query-buttons-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .query-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1165,6 +1211,27 @@
                     allowfullscreen
                     title="职位申请表单">
                 </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- 应征者查询 -->
+    <section class="section" id="query-section">
+        <div class="container">
+            <h2 class="section-title">应征者查询</h2>
+            <div class="query-buttons-container">
+                <a href="https://www.kdocs.cn/etapps/query/q/wreqX09X" target="_blank" rel="noopener noreferrer" class="query-btn">
+                    <svg class="query-btn-icon" viewBox="0 0 512 512" fill="currentColor">
+                        <path d="M256 0a256 256 0 1 0 0 512A256 256 0 1 0 256 0zM127 281c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l71 71L232 136c0-13.3 10.7-24 24-24s24 10.7 24 24l0 182.1 71-71c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L231 393c-9.4 9.4-24.6 9.4-33.9 0L127 281z"/>
+                    </svg>
+                    <span class="query-btn-text">中国大陆</span>
+                </a>
+                <a href="https://www.kdocs.cn/etapps/query/q/EmrvyKwo" target="_blank" rel="noopener noreferrer" class="query-btn">
+                    <svg class="query-btn-icon" viewBox="0 0 512 512" fill="currentColor">
+                        <path d="M256 0a256 256 0 1 0 0 512A256 256 0 1 0 256 0zM127 281c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l71 71L232 136c0-13.3 10.7-24 24-24s24 10.7 24 24l0 182.1 71-71c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L231 393c-9.4 9.4-24.6 9.4-33.9 0L127 281z"/>
+                    </svg>
+                    <span class="query-btn-text">国际应征者</span>
+                </a>
             </div>
         </div>
     </section>

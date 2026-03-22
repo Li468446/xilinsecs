@@ -62,22 +62,27 @@
 
 <!-- ===================== 团队 PIN 信息卡片模块（苹果毛玻璃 + 动态光斑效果） ===================== -->
 <section class="team-pin-card">
-  <div class="background-blobs">
-    <div class="blob blob1"></div>
-    <div class="blob blob2"></div>
-    <div class="blob blob3"></div>
-  </div>
   <div class="pin-card glass-card">
+    <div class="card-glow"></div>
     <h3>团队 PIN 码</h3>
     <button class="toggle-btn" onclick="togglePin()">查看 PIN 码</button>
     <div id="pinContent" class="pin-content">
       <div class="pin-box">
         <p class="pin-value" id="pinValue">SLALAQ</p>
-        <button class="copy-btn" onclick="copyPin()">复制</button>
+        <button class="copy-btn" onclick="copyPin()">
+          <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          <span class="copy-text">复制</span>
+        </button>
       </div>
       <p class="pin-note">（不分大小写）</p>
       <div class="pin-warning">
-        ⚠️ 本 iOA 仅服务海口希灵赛斯员工及业务代理商
+        <svg class="warning-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2L1 21h22L12 2zm0 3.5L19.5 19h-15L12 5.5zM11 10v4h2v-4h-2zm0 6v2h2v-2h-2z"/>
+        </svg>
+        本 iOA 仅服务海口希灵赛斯员工及业务代理商
       </div>
     </div>
   </div>
@@ -92,148 +97,214 @@
   padding: 0 20px;
 }
 
-/* ===== 背景光斑容器 ===== */
-.background-blobs {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  z-index: 0;
-  filter: blur(60px);
-}
-
-.blob {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  opacity: 0.5;
-  animation: floatBlobs 18s infinite ease-in-out alternate;
-}
-
-.blob1 {
-  background: #0a84ff;
-  top: -60px;
-  left: -60px;
-  animation-delay: 0s;
-}
-
-.blob2 {
-  background: #30d158;
-  bottom: -80px;
-  right: -40px;
-  animation-delay: 6s;
-}
-
-.blob3 {
-  background: #ff9f0a;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation-delay: 12s;
-}
-
-@keyframes floatBlobs {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(40px, -30px) scale(1.2); }
-  100% { transform: translate(-30px, 20px) scale(0.9); }
-}
-
-/* ===== 毛玻璃卡片 ===== */
 .glass-card {
   position: relative;
-  z-index: 1;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 16px;
-  padding: 25px 35px;
-  max-width: 420px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 30px 40px;
+  max-width: 400px;
   width: 100%;
   text-align: center;
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .glass-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+  transform: translateY(-4px);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.card-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(10, 132, 255, 0.15) 0%,
+    rgba(48, 209, 88, 0.08) 30%,
+    rgba(255, 159, 10, 0.05) 60%,
+    transparent 70%
+  );
+  animation: glowPulse 8s infinite ease-in-out;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.5; transform: scale(1) rotate(0deg); }
+  50% { opacity: 0.8; transform: scale(1.1) rotate(180deg); }
 }
 
 .pin-card h3 {
-  font-size: 22px;
-  margin-bottom: 12px;
+  font-size: 24px;
+  margin-bottom: 16px;
   color: #ffffff;
   font-weight: 600;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .toggle-btn {
-  background: rgba(0, 122, 255, 0.85);
+  background: linear-gradient(135deg, #007aff 0%, #0051d4 100%);
   color: #fff;
   border: none;
-  padding: 10px 18px;
-  border-radius: 10px;
+  padding: 12px 24px;
+  border-radius: 12px;
   cursor: pointer;
-  margin: 12px 0;
-  transition: background 0.2s ease, transform 0.2s ease;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(0, 122, 255, 0.4);
 }
 
 .toggle-btn:hover {
-  background: rgba(0, 122, 255, 1);
   transform: scale(1.05);
+  box-shadow: 0 6px 24px rgba(0, 122, 255, 0.5);
+}
+
+.toggle-btn:active {
+  transform: scale(0.98);
+}
+
+.toggle-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.4);
 }
 
 .pin-content {
   display: none;
-  margin-top: 18px;
-  color: #f1f1f1;
+  margin-top: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .pin-box {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  margin: 12px 0;
+  gap: 16px;
+  margin: 16px 0;
 }
 
 .pin-value {
-  font-size: 30px;
-  font-weight: 700;
-  color: #0a84ff;
-  letter-spacing: 2px;
+  font-size: 36px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #0a84ff 0%, #30d158 50%, #ff9f0a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 4px;
   margin: 0;
+  filter: drop-shadow(0 2px 8px rgba(10, 132, 255, 0.4));
 }
 
 .copy-btn {
-  background: rgba(16, 185, 129, 0.9);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   color: #fff;
   border: none;
-  padding: 8px 14px;
-  border-radius: 8px;
+  padding: 10px 16px;
+  border-radius: 10px;
   font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
 
 .copy-btn:hover {
-  background: rgba(5, 150, 105, 1);
   transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+.copy-btn:active {
+  transform: scale(0.95);
+}
+
+.copy-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.4);
+}
+
+.copy-btn.copied {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  animation: copySuccess 0.4s ease;
+}
+
+@keyframes copySuccess {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+.copy-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.copy-text {
+  display: inline;
 }
 
 .pin-note {
   font-size: 14px;
-  color: #d1d5db;
-  margin-bottom: 15px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 16px;
 }
 
 .pin-warning {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-size: 13px;
   color: #fca5a5;
-  background: rgba(239, 68, 68, 0.2);
-  padding: 10px;
+  background: rgba(239, 68, 68, 0.15);
+  padding: 10px 16px;
   border-radius: 10px;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.warning-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+  .glass-card {
+    padding: 24px 20px;
+    margin: 0 10px;
+  }
+
+  .pin-value {
+    font-size: 28px;
+    letter-spacing: 2px;
+  }
+
+  .pin-box {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .copy-btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
 </style>
 
@@ -254,11 +325,12 @@ function copyPin() {
   const pinText = document.getElementById("pinValue").innerText;
   navigator.clipboard.writeText(pinText).then(() => {
     const btn = document.querySelector(".copy-btn");
-    btn.textContent = "已复制 ✔";
-    btn.style.background = "rgba(34,197,94,0.9)";
+    const copyText = btn.querySelector(".copy-text");
+    btn.classList.add("copied");
+    copyText.textContent = "已复制";
     setTimeout(() => {
-      btn.textContent = "复制";
-      btn.style.background = "rgba(16,185,129,0.9)";
+      btn.classList.remove("copied");
+      copyText.textContent = "复制";
     }, 1500);
   });
 }
