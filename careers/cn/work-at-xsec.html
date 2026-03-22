@@ -27,8 +27,16 @@
     <meta name="twitter:description" content="加入海口希灵赛斯网络科技有限公司，一起为客户提供专业的信息化解决方案。我们正在寻找有才华的云计算专家、信息安全专家和前端开发专家。">
     <meta name="twitter:image" content="https://www.sec.hn.cn/source/index_imgs/index_01.jpg">
     
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .svg-icon {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            vertical-align: middle;
+        }
+    </style>
     
     <!-- 结构化数据 -->
     <script type="application/ld+json">
@@ -135,121 +143,14 @@
             width: 180px;
             height: 180px;
             background: #5856d6;
-            animation: float 12s infinite ease-in-out, rotate 20s infinite linear;
-            animation-delay: 3s;
-        }
-
-        .bg-decor-6 {
-            top: 30%;
-            left: 30%;
-            width: 150px;
-            height: 150px;
-            background: #ffcc00;
-            animation: pulse 4s infinite alternate;
-            animation-delay: 1s;
-            filter: blur(20px);
-        }
-
-        .bg-decor-7 {
-            top: 50%;
-            left: 70%;
-            width: 200px;
-            height: 200px;
-            background: #9966ff;
-            animation: float 10s infinite ease-in-out, pulse 5s infinite alternate;
-            animation-delay: 3s;
-            filter: blur(30px);
-        }
-
-        .bg-decor-8 {
-            top: 10%;
-            left: 80%;
-            width: 100px;
-            height: 100px;
-            background: #ff6699;
-            animation: rotate 15s infinite linear;
-            animation-delay: 2s;
-            filter: none;
-        }
-
-        .bg-decor-9 {
-            bottom: 10%;
-            right: 20%;
-            width: 180px;
-            height: 180px;
-            background: #66ff99;
-            animation: pulse 5s infinite alternate;
-            animation-delay: 0.5s;
-            filter: blur(15px);
-        }
-
-        .bg-decor-10 {
-            top: 60%;
-            left: 40%;
-            width: 250px;
-            height: 250px;
-            background: #33ccff;
             animation: float 12s infinite ease-in-out;
-            animation-delay: 4s;
-            filter: blur(25px);
+            animation-delay: 3s;
         }
 
-        .bg-triangle-1 {
-            top: 15%;
-            left: 10%;
-            width: 150px;
-            height: 150px;
-            background: #ff2d55;
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-            animation: pulse 5s infinite alternate;
-            filter: blur(20px);
+        .bg-decor {
+            will-change: transform;
         }
 
-        .bg-triangle-2 {
-            top: 40%;
-            right: 15%;
-            width: 200px;
-            height: 200px;
-            background: #34c759;
-            clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
-            animation: float 10s infinite ease-in-out;
-            filter: blur(30px);
-        }
-
-        .bg-square-1 {
-            top: 70%;
-            left: 30%;
-            width: 100px;
-            height: 100px;
-            background: #ff9500;
-            animation: rotate 15s infinite linear;
-            filter: none;
-        }
-
-        .bg-square-2 {
-            top: 35%;
-            left: 60%;
-            width: 80px;
-            height: 80px;
-            background: #ffcc00;
-            animation: moveLeftRight 6s infinite ease-in-out;
-            filter: none;
-        }
-
-        /* 新动画 */
-        @keyframes moveLeftRight {
-            0% {
-                transform: translateX(0);
-            }
-            50% {
-                transform: translateX(20px);
-            }
-            100% {
-                transform: translateX(0);
-            }
-        }
-
-        /* 现有动画保持不变 */
         @keyframes float {
             0% { transform: translateY(0px) translateX(0px); }
             25% { transform: translateY(-20px) translateX(10px); }
@@ -277,7 +178,6 @@
             font-size: 1.125rem;
         }
 
-        /* navbar 毛玻璃效果 */
         .navbar {
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
@@ -288,13 +188,21 @@
             position: relative;
         }
 
-        /* 滚动时的导航栏样式 */
         .navbar.scrolled {
-            background: rgba(30, 30, 30, 0.8); /* 深灰色背景 */
+            background: rgba(30, 30, 30, 0.8);
             box-shadow: 0 6px 25px rgba(0,0,0,0.15);
         }
 
-        /* Logo */
+        .nav-container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
         .navbar-brand {
             font-weight: 700;
             font-size: 1.4rem;
@@ -303,16 +211,11 @@
             display: flex;
             align-items: center;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            text-decoration: none;
         }
 
         .navbar.scrolled .navbar-brand {
-            color: #ffffff; /* 滚动时字体变白 */
-        }
-
-        .nav-logo {
-            height: 40px;
-            margin-right: 8px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            color: #ffffff;
         }
 
         .brand-text {
@@ -323,7 +226,6 @@
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
         }
 
-        /* 导航链接 */
         .nav-link {
             font-weight: 500;
             color: #444;
@@ -337,7 +239,7 @@
         }
 
         .navbar.scrolled .nav-link {
-            color: #ffffff; /* 滚动时字体变白 */
+            color: #ffffff;
         }
 
         .nav-link:hover {
@@ -359,36 +261,117 @@
             color: #007bff;
         }
 
-        /* 移动端按钮 */
         .navbar-toggler {
+            display: none;
             border: 1px solid rgba(0,0,0,0.1);
             border-radius: 5px;
-            padding: 2px 6px;
-            z-index: 1001; /* 确保按钮在导航栏上方 */
+            padding: 8px 10px;
+            background: transparent;
+            cursor: pointer;
+            z-index: 1001;
         }
+
         .navbar-toggler:focus {
+            outline: none;
             box-shadow: 0 0 0 0.2rem rgba(0,113,227,0.25);
         }
-        .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280,0,0,0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+
+        .toggler-icon {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: #1d1d1f;
+            position: relative;
+            transition: all 0.3s;
         }
 
-        .navbar.scrolled .navbar-toggler {
-            border: 1px solid rgba(255,255,255,0.3);
+        .toggler-icon::before,
+        .toggler-icon::after {
+            content: '';
+            position: absolute;
+            width: 22px;
+            height: 2px;
+            background: #1d1d1f;
+            left: 0;
+            transition: all 0.3s;
         }
 
-        .navbar.scrolled .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255,255,255,0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        .toggler-icon::before {
+            top: -7px;
         }
 
-        /* 滚动效果 */
-        .navbar.scrolled {
-            background: rgba(30, 30, 30, 0.8);
-            box-shadow: 0 6px 25px rgba(0,0,0,0.15);
-            font-size: 1rem;
+        .toggler-icon::after {
+            top: 7px;
         }
-        .navbar.scrolled .nav-logo {
-            height: 30px;
+
+        .navbar.scrolled .toggler-icon {
+            background: #ffffff;
+        }
+
+        .navbar.scrolled .toggler-icon::before,
+        .navbar.scrolled .toggler-icon::after {
+            background: #ffffff;
+        }
+
+        .navbar-toggler.collapsed .toggler-icon {
+            background: transparent;
+        }
+
+        .navbar-toggler.collapsed .toggler-icon::before {
+            top: 0;
+            transform: rotate(45deg);
+        }
+
+        .navbar-toggler.collapsed .toggler-icon::after {
+            top: 0;
+            transform: rotate(-45deg);
+        }
+
+        .navbar-collapse {
+            display: flex;
+        }
+
+        .navbar-nav {
+            display: flex;
+            flex-direction: row;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        @media (max-width: 991px) {
+            .navbar-toggler {
+                display: block;
+            }
+
+            .navbar-collapse {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(255,255,255,0.95);
+                backdrop-filter: blur(14px);
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+
+            .navbar-collapse.collapsed {
+                display: block;
+            }
+
+            .navbar.scrolled .navbar-collapse {
+                background: rgba(30, 30, 30, 0.95);
+            }
+
+            .navbar-nav {
+                flex-direction: column;
+            }
+
+            .nav-link {
+                display: block;
+                padding: 12px 16px;
+            }
         }
 
         .hero {
@@ -874,14 +857,42 @@
             .section {
                 padding: 60px 0;
             }
-            
+
             .navbar-nav {
                 text-align: center;
             }
-            
+
             .footer .row > div {
                 margin-bottom: 30px;
             }
+
+            .iframe-container iframe {
+                height: 600px;
+            }
+        }
+
+        .iframe-container {
+            background: var(--apple-card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: var(--apple-shadow);
+            border: var(--glass-border);
+            overflow: hidden;
+        }
+
+        .iframe-container iframe {
+            width: 100%;
+            border: none;
+            border-radius: 12px;
+            background: #ffffff;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 15px;
         }
     </style>
 </head>
@@ -892,33 +903,24 @@
     <div class="bg-decor bg-decor-3"></div>
     <div class="bg-decor bg-decor-4"></div>
     <div class="bg-decor bg-decor-5"></div>
-    <div class="bg-decor bg-decor-6"></div>
-    <div class="bg-decor bg-decor-7"></div>
-    <div class="bg-decor bg-decor-8"></div>
-    <div class="bg-decor bg-decor-9"></div>
-    <div class="bg-decor bg-decor-10"></div>
-    <div class="bg-decor bg-triangle-1"></div>
-    <div class="bg-decor bg-triangle-2"></div>
-    <div class="bg-decor bg-square-1"></div>
-    <div class="bg-decor bg-square-2"></div>
 
     <!-- ===================== 导航栏模块 ===================== -->
     <div class="ezy__nav6_7SyLoOH3k">
-        <nav class="navbar navbar-expand-lg py-3">
-            <div class="container position-relative">
+        <nav class="navbar">
+            <div class="nav-container">
                 <!-- 品牌标识 -->
                 <a class="navbar-brand" href="../../index.html">
                     <span class="brand-text">XSEC 开放职位</span>
                 </a>
 
                 <!-- 移动端导航切换按钮 -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <button class="navbar-toggler" type="button" id="navToggler" aria-label="Toggle navigation">
+                    <span class="toggler-icon"></span>
                 </button>
 
                 <!-- 导航菜单 -->
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <div class="navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
                         <li class="nav-item"><a class="nav-link" href="index.html">概述</a></li>
                         <li class="nav-item"><a class="nav-link active" href="work-at-xsec.html">在 XSEC 工作</a></li>
                         <li class="nav-item"><a class="nav-link" href="life-at-xsec.html">在 XSEC 生活</a></li>
@@ -946,15 +948,15 @@
                 <h3 class="position-title">云计算专家</h3>
                 <div class="position-meta">
                     <div class="meta-item">
-                        <i class="fas fa-map-marker-alt"></i>
+                        <svg class="svg-icon" viewBox="0 0 384 512" fill="currentColor"><path d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"/></svg>
                         <span>海口/香港/远程</span>
                     </div>
                     <div class="meta-item">
-                        <i class="fas fa-clock"></i>
+                        <svg class="svg-icon" viewBox="0 0 512 512" fill="currentColor"><path d="M256 0a256 256 0 1 0 0 512A256 256 0 1 0 256 0zM127 281c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l71 71L232 136c0-13.3 10.7-24 24-24s24 10.7 24 24l0 182.1 71-71c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L231 393c-9.4 9.4-24.6 9.4-33.9 0L127 281z"/></svg>
                         <span>实习/兼职/全职</span>
                     </div>
                     <div class="meta-item">
-                        <i class="fas fa-suitcase"></i>
+                        <svg class="svg-icon" viewBox="0 0 512 512" fill="currentColor"><path d="M184 48h144c4.4 0 8 3.6 8 8v40H176V56c0-4.4 3.6-8 8-8zm-56 8V0H152c-13.3 0-24 10.7-24 24v368c0 13.3 10.7 24 24 24h272c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24zm-24 384H184c-8.8 0-16-7.2-16-16V192h96v224c0 8.8-7.2 16-16 16zm180-124.1l-28.6-21.9c-10-7.7-25-6.3-34.3 3.1L224 369.8l-57.1-81.2c-9.3-13-25-15.1-35.4-5.1l-18 17.4c-10.4 9.9-11.2 26.5-1.6 37.2l70 97.9c9.4 13 25.1 15.2 35.4 5.2l105-84.7c10.4-8.4 11.2-25.2 1.7-35.4z"/></svg>
                         <span>无需工作经验，需要实际能力</span>
                     </div>
                 </div>
@@ -989,7 +991,7 @@
                     </ul>
                 </div>
                 <button class="btn-apply" data-position="云计算工程师">
-                    <i class="fas fa-paper-plane"></i> 与我们的专家交流
+                    <svg class="svg-icon" viewBox="0 0 512 512" fill="currentColor"><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-27 0L302 334.4c-9.1-7.9-13.6-19.5-12.5-30.5l64-304c1.9-9.8 7.9-18.3 16.6-23.2zM344 192c-13.3 0-24 10.7-24 24s10.7 24 24 24l144 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-93.9 0-48.8-48.8c-3.9-3.9-10.2-3.9-14.1 0L344 192z"/></svg> 与我们的专家交流
                 </button>
             </div>
 
@@ -997,15 +999,15 @@
                 <h3 class="position-title">信息安全专家</h3>
                 <div class="position-meta">
                     <div class="meta-item">
-                        <i class="fas fa-map-marker-alt"></i>
+                        <svg class="svg-icon" viewBox="0 0 384 512" fill="currentColor"><path d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"/></svg>
                         <span>海口（跨境数据传输）</span>
                     </div>
                     <div class="meta-item">
-                        <i class="fas fa-clock"></i>
+                        <svg class="svg-icon" viewBox="0 0 512 512" fill="currentColor"><path d="M256 0a256 256 0 1 0 0 512A256 256 0 1 0 256 0zM127 281c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l71 71L232 136c0-13.3 10.7-24 24-24s24 10.7 24 24l0 182.1 71-71c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L231 393c-9.4 9.4-24.6 9.4-33.9 0L127 281z"/></svg>
                         <span>实习/兼职/全职</span>
                     </div>
                     <div class="meta-item">
-                        <i class="fas fa-suitcase"></i>
+                        <svg class="svg-icon" viewBox="0 0 512 512" fill="currentColor"><path d="M184 48h144c4.4 0 8 3.6 8 8v40H176V56c0-4.4 3.6-8 8-8zm-56 8V0H152c-13.3 0-24 10.7-24 24v368c0 13.3 10.7 24 24 24h272c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24zm-24 384H184c-8.8 0-16-7.2-16-16V192h96v224c0 8.8-7.2 16-16 16zm180-124.1l-28.6-21.9c-10-7.7-25-6.3-34.3 3.1L224 369.8l-57.1-81.2c-9.3-13-25-15.1-35.4-5.1l-18 17.4c-10.4 9.9-11.2 26.5-1.6 37.2l70 97.9c9.4 13 25.1 15.2 35.4 5.2l105-84.7c10.4-8.4 11.2-25.2 1.7-35.4z"/></svg>
                         <span>无需工作经验，需要实际能力</span>
                     </div>
                 </div>
@@ -1040,7 +1042,7 @@
                     </ul>
                 </div>
                 <button class="btn-apply" data-position="信息安全工程师">
-                    <i class="fas fa-paper-plane"></i> 与我们的专家交流
+                    <svg class="svg-icon" viewBox="0 0 512 512" fill="currentColor"><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-27 0L302 334.4c-9.1-7.9-13.6-19.5-12.5-30.5l64-304c1.9-9.8 7.9-18.3 16.6-23.2zM344 192c-13.3 0-24 10.7-24 24s10.7 24 24 24l144 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-93.9 0-48.8-48.8c-3.9-3.9-10.2-3.9-14.1 0L344 192z"/></svg> 与我们的专家交流
                 </button>
             </div>
 
@@ -1048,15 +1050,15 @@
                 <h3 class="position-title">前端开发专家</h3>
                 <div class="position-meta">
                     <div class="meta-item">
-                        <i class="fas fa-map-marker-alt"></i>
+                        <svg class="svg-icon" viewBox="0 0 384 512" fill="currentColor"><path d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"/></svg>
                         <span>海口/远程</span>
                     </div>
                     <div class="meta-item">
-                        <i class="fas fa-clock"></i>
+                        <svg class="svg-icon" viewBox="0 0 512 512" fill="currentColor"><path d="M256 0a256 256 0 1 0 0 512A256 256 0 1 0 256 0zM127 281c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l71 71L232 136c0-13.3 10.7-24 24-24s24 10.7 24 24l0 182.1 71-71c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L231 393c-9.4 9.4-24.6 9.4-33.9 0L127 281z"/></svg>
                         <span>实习/兼职/全职</span>
                     </div>
                     <div class="meta-item">
-                        <i class="fas fa-suitcase"></i>
+                        <svg class="svg-icon" viewBox="0 0 512 512" fill="currentColor"><path d="M184 48h144c4.4 0 8 3.6 8 8v40H176V56c0-4.4 3.6-8 8-8zm-56 8V0H152c-13.3 0-24 10.7-24 24v368c0 13.3 10.7 24 24 24h272c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24zm-24 384H184c-8.8 0-16-7.2-16-16V192h96v224c0 8.8-7.2 16-16 16zm180-124.1l-28.6-21.9c-10-7.7-25-6.3-34.3 3.1L224 369.8l-57.1-81.2c-9.3-13-25-15.1-35.4-5.1l-18 17.4c-10.4 9.9-11.2 26.5-1.6 37.2l70 97.9c9.4 13 25.1 15.2 35.4 5.2l105-84.7c10.4-8.4 11.2-25.2 1.7-35.4z"/></svg>
                         <span>无需工作经验，需要实际能力</span>
                     </div>
                 </div>
@@ -1091,7 +1093,7 @@
                     </ul>
                 </div>
                 <button class="btn-apply" data-position="前端开发工程师">
-                    <i class="fas fa-paper-plane"></i> 与我们的专家交流
+                    <svg class="svg-icon" viewBox="0 0 512 512" fill="currentColor"><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-27 0L302 334.4c-9.1-7.9-13.6-19.5-12.5-30.5l64-304c1.9-9.8 7.9-18.3 16.6-23.2zM344 192c-13.3 0-24 10.7-24 24s10.7 24 24 24l144 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-93.9 0-48.8-48.8c-3.9-3.9-10.2-3.9-14.1 0L344 192z"/></svg> 与我们的专家交流
                 </button>
             </div>
 
@@ -1099,15 +1101,15 @@
                 <h3 class="position-title">渠道分销专家</h3>
                 <div class="position-meta">
                     <div class="meta-item">
-                        <i class="fas fa-map-marker-alt"></i>
+                        <svg class="svg-icon" viewBox="0 0 384 512" fill="currentColor"><path d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"/></svg>
                         <span>海口/香港/深圳/远程</span>
                     </div>
                     <div class="meta-item">
-                        <i class="fas fa-clock"></i>
+                        <svg class="svg-icon" viewBox="0 0 512 512" fill="currentColor"><path d="M256 0a256 256 0 1 0 0 512A256 256 0 1 0 256 0zM127 281c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l71 71L232 136c0-13.3 10.7-24 24-24s24 10.7 24 24l0 182.1 71-71c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L231 393c-9.4 9.4-24.6 9.4-33.9 0L127 281z"/></svg>
                         <span>兼职/代理合作</span>
                     </div>
                     <div class="meta-item">
-                        <i class="fas fa-suitcase"></i>
+                        <svg class="svg-icon" viewBox="0 0 512 512" fill="currentColor"><path d="M184 48h144c4.4 0 8 3.6 8 8v40H176V56c0-4.4 3.6-8 8-8zm-56 8V0H152c-13.3 0-24 10.7-24 24v368c0 13.3 10.7 24 24 24h272c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24zm-24 384H184c-8.8 0-16-7.2-16-16V192h96v224c0 8.8-7.2 16-16 16zm180-124.1l-28.6-21.9c-10-7.7-25-6.3-34.3 3.1L224 369.8l-57.1-81.2c-9.3-13-25-15.1-35.4-5.1l-18 17.4c-10.4 9.9-11.2 26.5-1.6 37.2l70 97.9c9.4 13 25.1 15.2 35.4 5.2l105-84.7c10.4-8.4 11.2-25.2 1.7-35.4z"/></svg>
                         <span>无需工作经验，全流程对接教学，需要实际能力</span>
                     </div>
                 </div>
@@ -1142,12 +1144,31 @@
                     </ul>
                 </div>
                 <button class="btn-apply" data-position="渠道分销专家">
-                    <i class="fas fa-paper-plane"></i> 与我们的HR交流
+                    <svg class="svg-icon" viewBox="0 0 512 512" fill="currentColor"><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-27 0L302 334.4c-9.1-7.9-13.6-19.5-12.5-30.5l64-304c1.9-9.8 7.9-18.3 16.6-23.2zM344 192c-13.3 0-24 10.7-24 24s10.7 24 24 24l144 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-93.9 0-48.8-48.8c-3.9-3.9-10.2-3.9-14.1 0L344 192z"/></svg> 与我们的HR交流
                 </button>
             </div>
         </div>
     </section>
-    
+
+    <!-- JPS 职位申请表单 -->
+    <section class="section" id="application-form">
+        <div class="container">
+            <h2 class="section-title">在线申请</h2>
+            <div class="iframe-container">
+                <iframe
+                    src="https://f.kdocs.cn/ksform/w/write/bC39DvWX#routePromt"
+                    width="100%"
+                    height="800"
+                    frameborder="0"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    title="职位申请表单">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
     <!-- 公平就业机会声明 -->
     <section class="section">
         <div class="container">
@@ -1160,20 +1181,11 @@
     </section>
 
     <script>
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-    <script>
-        // 滚动动画效果
         document.addEventListener('DOMContentLoaded', function() {
-            // 滚动透明度和Logo缩放
             var navbar = document.querySelector('.navbar');
             var navLinks = document.querySelectorAll('.nav-link');
             var isScrolling = false;
 
-            // 使用requestAnimationFrame优化滚动性能
             function updateNavbarOnScroll() {
                 if (!isScrolling) {
                     window.requestAnimationFrame(function() {
@@ -1185,34 +1197,27 @@
             }
 
             function performScrollUpdates() {
-                // 获取滚动位置
                 var scrollPosition = window.scrollY;
-                var scrollPercentage = Math.min(scrollPosition / 100, 1); // 0到1之间的值，100px后达到最大值
+                var scrollPercentage = Math.min(scrollPosition / 100, 1);
 
-                // 计算背景颜色 (从浅色到深色)
                 var r = 255 - (255 - 30) * scrollPercentage;
                 var g = 255 - (255 - 30) * scrollPercentage;
                 var b = 255 - (255 - 30) * scrollPercentage;
-                var alpha = 0.4 + 0.4 * scrollPercentage; // 从0.4到0.8的透明度
+                var alpha = 0.4 + 0.4 * scrollPercentage;
 
-                // 应用背景颜色
                 navbar.style.background = `rgba(${Math.floor(r)}, ${Math.floor(g)}, ${Math.floor(b)}, ${alpha})`;
 
-                // 计算文字颜色 (从深色到白色)
                 var textR = 68 + (255 - 68) * scrollPercentage;
                 var textG = 68 + (255 - 68) * scrollPercentage;
                 var textB = 68 + (255 - 68) * scrollPercentage;
 
-                // 应用导航链接颜色
                 navLinks.forEach(link => {
                     link.style.color = `rgb(${Math.floor(textR)}, ${Math.floor(textG)}, ${Math.floor(textB)})`;
                 });
 
-                // 应用品牌文字颜色
                 var brand = document.querySelector('.navbar-brand');
                 brand.style.color = `rgb(${Math.floor(textR)}, ${Math.floor(textG)}, ${Math.floor(textB)})`;
 
-                // 当滚动超过50px时添加scrolled类以应用其他样式
                 if(scrollPosition > 50){
                     navbar.classList.add('scrolled');
                 } else {
@@ -1222,28 +1227,25 @@
 
             window.addEventListener('scroll', updateNavbarOnScroll, { passive: true });
 
-            // 滚动视差效果
-            const bgDecors = document.querySelectorAll('.bg-decor');
+            var bgDecors = document.querySelectorAll('.bg-decor');
 
             window.addEventListener('scroll', function() {
-                const scrollY = window.scrollY;
-                const scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+                var scrollY = window.scrollY;
+                var scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
 
-                bgDecors.forEach((decor, index) => {
-                    const speed = 0.05 * (index + 1);
-                    const yPos = -scrollY * speed;
-                    decor.style.transform = `translateY(${yPos}px)`;
-                    
-                    // 添加旋转效果
-                    const rotation = scrolled * 360 * (index + 1);
-                    decor.style.transform += ` rotate(${rotation}deg)`;
+                bgDecors.forEach(function(decor, index) {
+                    var speed = 0.05 * (index + 1);
+                    var yPos = -scrollY * speed;
+                    decor.style.transform = 'translateY(' + yPos + 'px)';
+
+                    var rotation = scrolled * 360 * (index + 1);
+                    decor.style.transform += ' rotate(' + rotation + 'deg)';
                 });
 
-                // 元素进入视口时添加动画
-                const elements = document.querySelectorAll('.animate-on-scroll');
-                elements.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    const elementVisible = 150;
+                var elements = document.querySelectorAll('.animate-on-scroll');
+                elements.forEach(function(element) {
+                    var elementTop = element.getBoundingClientRect().top;
+                    var elementVisible = 150;
 
                     if (elementTop < window.innerHeight - elementVisible) {
                         element.classList.add('animated');
@@ -1251,59 +1253,52 @@
                 });
             });
 
-            // 初始化检查
-            const elements = document.querySelectorAll('.animate-on-scroll');
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
+            var elements = document.querySelectorAll('.animate-on-scroll');
+            elements.forEach(function(element) {
+                var elementTop = element.getBoundingClientRect().top;
+                var elementVisible = 150;
 
                 if (elementTop < window.innerHeight - elementVisible) {
                     element.classList.add('animated');
                 }
             });
 
-            // 获取模态弹窗元素
-            const modal = document.getElementById('applyModal');
-            const confirmBtn = document.getElementById('confirmApply');
-            const cancelBtn = document.getElementById('cancelApply');
-            const closeBtn = document.querySelector('.close');
-            const positionNameSpan = document.getElementById('positionName');
+            var modal = document.getElementById('applyModal');
+            var confirmBtn = document.getElementById('confirmApply');
+            var cancelBtn = document.getElementById('cancelApply');
+            var closeBtn = document.querySelector('.close');
+            var positionNameSpan = document.getElementById('positionName');
 
-            // 职位申请按钮点击事件
-            document.querySelectorAll('.btn-apply').forEach(button => {
+            document.querySelectorAll('.btn-apply').forEach(function(button) {
                 button.addEventListener('click', function() {
-                    const position = this.getAttribute('data-position');
+                    var position = this.getAttribute('data-position');
                     positionNameSpan.textContent = position;
                     modal.style.display = 'block';
                 });
             });
 
-            // 关闭模态弹窗的函数
             function closeModal() {
                 modal.style.display = 'none';
             }
 
-            // 绑定关闭事件
             if (confirmBtn) confirmBtn.addEventListener('click', closeModal);
             if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
             if (closeBtn) closeBtn.addEventListener('click', closeModal);
 
-            // 点击模态弹窗外部区域关闭
             window.addEventListener('click', function(event) {
                 if (event.target === modal) {
                     closeModal();
                 }
             });
 
-            // 平滑滚动
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
 
-                    const targetId = this.getAttribute('href');
+                    var targetId = this.getAttribute('href');
                     if (targetId === '#') return;
 
-                    const targetElement = document.querySelector(targetId);
+                    var targetElement = document.querySelector(targetId);
                     if (targetElement) {
                         window.scrollTo({
                             top: targetElement.offsetTop - 80,
@@ -1312,10 +1307,18 @@
                     }
                 });
             });
+
+            var navToggler = document.getElementById('navToggler');
+            var navbarCollapse = document.getElementById('navbarNav');
+            if (navToggler && navbarCollapse) {
+                navToggler.addEventListener('click', function() {
+                    navbarCollapse.classList.toggle('collapsed');
+                    navToggler.classList.toggle('collapsed');
+                });
+            }
         });
     </script>
-    
-    <!-- 模态弹窗 -->
+
     <div id="applyModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">

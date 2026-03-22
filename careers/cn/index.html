@@ -2,1231 +2,718 @@
 <html lang="zh-CN">
 <head>
   <script src="/api/aegis-init.js"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> 加入我们 - 海口希灵赛斯网络科技有限责任公司 </title>
-    <meta name="description" content="加入海口希灵赛斯，一起为客户提供专业的信息化解决方案。我们正在寻找有才华的开发人员、安全专家和项目管理人员。">
-    <meta name="keywords" content="希灵赛斯招聘, 海口招聘信息, IT招聘, 信息安全职位, 网站开发职位, 云服务职位, 科技公司招聘">
-    <meta name="author" content="海口希灵赛斯网络科技有限责任公司">
-    <link rel="icon" href="../../favicon.ico">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Open Graph（社交分享优化） -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="加入我们 - 海口希灵赛斯网络科技有限责任公司">
-    <meta property="og:description" content="加入海口希灵赛斯，一起为客户提供专业的信息化解决方案。我们正在寻找有才华的开发人员、安全专家和项目管理人员。">
-    <meta property="og:url" content="https://www.sec.hn.cn/careers/cn/">
-    <meta property="og:image" content="https://www.sec.hn.cn/source/index_imgs/index_01.jpg">
-    <meta property="og:site_name" content="海口希灵赛斯网络科技有限责任公司">
-    
-    <!-- Twitter Card（Twitter 分享优化） -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="加入我们 - 海口希灵赛斯网络科技有限责任公司">
-    <meta name="twitter:description" content="加入海口希灵赛斯，一起为客户提供专业的信息化解决方案。我们正在寻找有才华的开发人员、安全专家和项目管理人员。">
-    <meta name="twitter:image" content="https://www.sec.hn.cn/source/index_imgs/index_01.jpg">
-    <style>
-        /* CSS自定义属性（变量）定义 */
-        :root {
-            --apple-bg: #f5f7fa;
-            --apple-card-bg: rgba(255, 255, 255, 0.85);
-            --apple-text: #333;
-            --apple-text-light: #6c757d;
-            --apple-accent: #0071e3;
-            --apple-accent-hover: #0077ed;
-            --apple-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            --glass-border: 1px solid rgba(255, 255, 255, 0.4);
-            --transition-smooth: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-        }
-
-        /* 页面主体样式 */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
-            color: var(--apple-text);
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-            line-height: 1.6;
-            padding-top: 80px; /* 为固定导航栏留出空间 */
-        }
-
-        /* 背景装饰元素 */
-        .bg-decor {
-            position: fixed;
-            z-index: -1;
-            opacity: 0.05;
-            pointer-events: none;
-            filter: blur(40px);
-            animation: float 8s infinite ease-in-out;
-        }
-
-        .bg-decor-1 {
-            top: 20%;
-            left: 5%;
-            width: 250px;
-            height: 150px; /* 改为椭圆 */
-            background: var(--apple-accent);
-            animation-delay: 0s;
-        }
-
-        .bg-decor-2 {
-            bottom: 20%;
-            right: 10%;
-            width: 300px;
-            height: 200px; /* 改为椭圆 */
-            background: #ff2d55;
-            animation-delay: 2s;
-        }
-
-        .bg-decor-3 {
-            top: 40%;
-            right: 15%;
-            width: 150px;
-            height: 100px; /* 改为椭圆 */
-            background: #34c759;
-            animation-delay: 4s;
-        }
-
-        .bg-decor-4 {
-            top: 70%;
-            left: 15%;
-            width: 100px;
-            height: 100px;
-            background: #ff9500;
-            animation: float 10s infinite ease-in-out, pulse 6s infinite alternate;
-            animation-delay: 1s;
-        }
-
-        .bg-decor-5 {
-            top: 10%;
-            right: 25%;
-            width: 180px;
-            height: 180px;
-            background: #5856d6;
-            animation: float 12s infinite ease-in-out, rotate 20s infinite linear;
-            animation-delay: 3s;
-        }
-
-        .bg-decor-6 {
-            top: 30%;
-            left: 30%;
-            width: 150px;
-            height: 150px;
-            background: #ffcc00;
-            animation: pulse 4s infinite alternate;
-            animation-delay: 1s;
-            filter: blur(20px);
-        }
-
-        .bg-decor-7 {
-            top: 50%;
-            left: 70%;
-            width: 200px;
-            height: 200px;
-            background: #9966ff;
-            animation: float 10s infinite ease-in-out, pulse 5s infinite alternate;
-            animation-delay: 3s;
-            filter: blur(30px);
-        }
-
-        .bg-decor-8 {
-            top: 10%;
-            left: 80%;
-            width: 100px;
-            height: 100px;
-            background: #ff6699;
-            animation: rotate 15s infinite linear;
-            animation-delay: 2s;
-            filter: none;
-        }
-
-        .bg-decor-9 {
-            bottom: 10%;
-            right: 20%;
-            width: 180px;
-            height: 180px;
-            background: #66ff99;
-            animation: pulse 5s infinite alternate;
-            animation-delay: 0.5s;
-            filter: blur(15px);
-        }
-
-        .bg-decor-10 {
-            top: 60%;
-            left: 40%;
-            width: 250px;
-            height: 250px;
-            background: #33ccff;
-            animation: float 12s infinite ease-in-out;
-            animation-delay: 4s;
-            filter: blur(25px);
-        }
-
-        .bg-triangle-1 {
-            top: 15%;
-            left: 10%;
-            width: 150px;
-            height: 150px;
-            background: #ff2d55;
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-            animation: pulse 5s infinite alternate;
-            filter: blur(20px);
-        }
-
-        .bg-triangle-2 {
-            top: 40%;
-            right: 15%;
-            width: 200px;
-            height: 200px;
-            background: #34c759;
-            clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
-            animation: float 10s infinite ease-in-out;
-            filter: blur(30px);
-        }
-
-        .bg-square-1 {
-            top: 70%;
-            left: 30%;
-            width: 100px;
-            height: 100px;
-            background: #ff9500;
-            animation: rotate 15s infinite linear;
-            filter: none;
-        }
-
-        .bg-square-2 {
-            top: 35%;
-            left: 60%;
-            width: 80px;
-            height: 80px;
-            background: #ffcc00;
-            animation: moveLeftRight 6s infinite ease-in-out;
-            filter: none;
-        }
-
-        /* 新动画 */
-        @keyframes moveLeftRight {
-            0% {
-                transform: translateX(0);
-            }
-            50% {
-                transform: translateX(20px);
-            }
-            100% {
-                transform: translateX(0);
-            }
-        }
-
-        /* 现有动画保持不变 */
-        @keyframes float {
-            0% { transform: translateY(0px) translateX(0px); }
-            25% { transform: translateY(-20px) translateX(10px); }
-            50% { transform: translateY(-10px) translateX(-10px); }
-            75% { transform: translateY(-30px) translateX(15px); }
-            100% { transform: translateY(0px) translateX(0px); }
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.8; }
-            100% { transform: scale(1.1); opacity: 1; }
-        }
-
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* 现有样式保持不变 */
-        /* ===================== 导航栏模块 ===================== */
-        .ezy__nav6_7SyLoOH3k {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            font-size: 1.125rem;
-        }
-
-        /* navbar 毛玻璃效果 */
-        .navbar {
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            background: rgba(255,255,255,0.4);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-            position: relative;
-        }
-
-        /* 滚动时的导航栏样式 */
-        .navbar.scrolled {
-            background: rgba(30, 30, 30, 0.8); /* 深灰色背景 */
-            box-shadow: 0 6px 25px rgba(0,0,0,0.15);
-        }
-
-        /* Logo */
-        .navbar-brand {
-            font-weight: 700;
-            font-size: 1.4rem;
-            color: #1d1d1f;
-            letter-spacing: -0.5px;
-            display: flex;
-            align-items: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-        }
-
-        .navbar.scrolled .navbar-brand {
-            color: #ffffff; /* 滚动时字体变白 */
-        }
-
-        .nav-logo {
-            height: 40px;
-            margin-right: 8px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-        }
-
-        .brand-text {
-            font-weight: 700;
-            font-size: 1.4rem;
-            color: inherit;
-            letter-spacing: -0.5px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-        }
-
-        /* 导航链接 */
-        .nav-link {
-            font-weight: 500;
-            color: #444;
-            padding: 10px 16px;
-            margin: 0 4px;
-            border-radius: 12px;
-            position: relative;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-            text-decoration: none;
-            outline: none;
-        }
-
-        .navbar.scrolled .nav-link {
-            color: #ffffff; /* 滚动时字体变白 */
-        }
-
-        .nav-link:hover {
-            color: #007bff;
-            background: rgba(0,113,227,0.08);
-        }
-
-        .navbar.scrolled .nav-link:hover {
-            color: #007bff;
-            background: rgba(0,113,227,0.2);
-        }
-
-        .nav-link.active {
-            color: var(--apple-accent);
-            font-weight: 600;
-        }
-
-        .navbar.scrolled .nav-link.active {
-            color: #007bff;
-        }
-
-        /* 移动端按钮 */
-        .navbar-toggler {
-            border: 1px solid rgba(0,0,0,0.1);
-            border-radius: 5px;
-            padding: 2px 6px;
-            z-index: 1001; /* 确保按钮在导航栏上方 */
-        }
-        .navbar-toggler:focus {
-            box-shadow: 0 0 0 0.2rem rgba(0,113,227,0.25);
-        }
-        .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280,0,0,0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-        }
-
-        .navbar.scrolled .navbar-toggler {
-            border: 1px solid rgba(255,255,255,0.3);
-        }
-
-        .navbar.scrolled .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255,255,255,0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-        }
-
-        /* 滚动效果 */
-        .navbar.scrolled {
-            background: rgba(30, 30, 30, 0.8);
-            box-shadow: 0 6px 25px rgba(0,0,0,0.15);
-            font-size: 1rem;
-        }
-        .navbar.scrolled .nav-logo {
-            height: 30px;
-        }
-
-        .hero {
-            padding: 120px 0 80px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -100px;
-            right: -100px;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(0, 113, 227, 0.1) 0%, rgba(0, 113, 227, 0.05) 100%);
-            z-index: -1;
-            animation: pulse 6s infinite alternate;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.2;
-            color: #1d1d1f;
-            letter-spacing: -1px;
-            margin-bottom: 25px;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .hero p {
-            font-size: 1.4rem;
-            color: #444;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            animation: fadeInUp 1s ease-out 0.2s forwards;
-            opacity: 0;
-        }
-
-        .btn-hero {
-            font-weight: 600;
-            padding: 14px 36px;
-            border-radius: 15px;
-            font-size: 1.1rem;
-            background: var(--apple-accent);
-            color: white;
-            border: none;
-            box-shadow: 0 6px 20px rgba(0, 113, 227, 0.3);
-            transition: var(--transition-smooth);
-            animation: fadeInUp 1s ease-out 0.4s forwards;
-            opacity: 0;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .btn-hero:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 30px rgba(0, 113, 227, 0.4);
-            background: var(--apple-accent-hover);
-        }
-
-        .section {
-            padding: 100px 0;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #1d1d1f;
-            position: relative;
-            padding-bottom: 20px;
-            margin-bottom: 60px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 80px;
-            height: 4px;
-            background: var(--apple-accent);
-            border-radius: 2px;
-        }
-
-        .section-title.center {
-            text-align: center;
-        }
-
-        .section-title.center::after {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .position-card {
-            background: var(--apple-card-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: var(--apple-shadow);
-            border: var(--glass-border);
-            transition: var(--transition-smooth);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .position-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-        }
-
-        .position-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: 0.5s;
-        }
-
-        .position-card:hover::before {
-            left: 100%;
-        }
-
-        .position-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: #1d1d1f;
-        }
-
-        .position-meta {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .meta-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #666;
-        }
-
-        .position-description {
-            line-height: 1.8;
-            margin-bottom: 25px;
-            color: #444;
-        }
-
-        .position-requirements {
-            margin-bottom: 25px;
-        }
-
-        .requirements-title {
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: #1d1d1f;
-        }
-
-        .requirements-list {
-            padding-left: 20px;
-        }
-
-        .requirements-list li {
-            margin-bottom: 8px;
-            color: #444;
-        }
-
-        .btn-apply {
-            background: var(--apple-accent);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            padding: 12px 30px;
-            font-weight: 500;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-apply:hover {
-            background: var(--apple-accent-hover);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 113, 227, 0.3);
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .benefit-card {
-            background: var(--apple-card-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: var(--apple-shadow);
-            border: var(--glass-border);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .benefit-card:hover {
-            transform: translateY(-8px);
-        }
-
-        .benefit-card::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
-            transform: rotate(30deg);
-            transition: all 0.6s ease;
-            opacity: 0;
-        }
-
-        .benefit-card:hover::after {
-            opacity: 1;
-            transform: rotate(30deg) translate(20%, 20%);
-        }
-
-        .benefit-icon {
-            font-size: 3rem;
-            color: var(--apple-accent);
-            margin-bottom: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        .benefit-card:hover .benefit-icon {
-            transform: scale(1.2) rotate(10deg);
-        }
-
-        .benefit-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #1d1d1f;
-        }
-
-        .benefit-description {
-            color: #444;
-            line-height: 1.6;
-        }
-
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .step-card {
-            background: var(--apple-card-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: var(--apple-shadow);
-            border: var(--glass-border);
-            transition: var(--transition-smooth);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .step-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .step-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--apple-accent);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.5s ease;
-        }
-
-        .step-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .step-number {
-            width: 50px;
-            height: 50px;
-            line-height: 50px;
-            background: var(--apple-accent);
-            color: white;
-            border-radius: 50%;
-            font-weight: 700;
-            font-size: 1.2rem;
-            margin: 0 auto 20px;
-            transition: transform 0.3s ease;
-        }
-
-        .step-card:hover .step-number {
-            transform: scale(1.1) rotate(10deg);
-        }
-
-        .step-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #1d1d1f;
-        }
-
-        .step-description {
-            color: #444;
-            line-height: 1.6;
-        }
-
-        .contact-section {
-            padding: 100px 0;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 30px;
-            margin: 50px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(transparent, rgba(0, 113, 227, 0.2), transparent 30%);
-            animation: rotate 10s linear infinite;
-            z-index: -1;
-        }
-
-        .contact-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: #1d1d1f;
-        }
-
-        .contact-email {
-            font-size: 1.3rem;
-            color: var(--apple-accent);
-            margin-bottom: 40px;
-            display: inline-block;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .contact-email::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--apple-accent);
-            transition: width 0.3s ease;
-        }
-
-        .contact-email:hover {
-            transform: translateY(-2px);
-            color: var(--apple-accent-hover);
-        }
-
-        .contact-email:hover::after {
-            width: 100%;
-        }
-
-        .equal-opportunity {
-            background: var(--apple-card-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: var(--apple-shadow);
-            border: var(--glass-border);
-            text-align: center;
-            border-left: 5px solid var(--apple-accent);
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .equal-opportunity:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .equal-opportunity::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent 40%, rgba(0, 113, 227, 0.05) 50%, transparent 60%);
-            background-size: 200% 200%;
-            animation: shine 5s infinite;
-            z-index: -1;
-        }
-
-        .equal-opportunity-icon {
-            font-size: 2.5rem;
-            color: var(--apple-accent);
-            margin-bottom: 20px;
-            animation: pulse 2s infinite;
-        }
-
-        .equal-opportunity h3 {
-            color: #1d1d1f;
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        .equal-opportunity p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #333;
-            margin: 0;
-        }
-
-        .footer {
-            padding: 40px 0;
-            text-align: center;
-            color: #666;
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes shine {
-            0% {
-                background-position: 200% 0;
-            }
-            100% {
-                background-position: -200% 0;
-            }
-        }
-
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        .animate-on-scroll.animated {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .position-meta {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .section {
-                padding: 60px 0;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> 加入我们 - 海口希灵赛斯网络科技有限责任公司 </title>
+  <meta name="description" content="加入海口希灵赛斯，一起为客户提供专业的信息化解决方案。我们正在寻找有才华的开发人员、安全专家和项目管理人员。">
+  <meta name="keywords" content="希灵赛斯招聘, 海口招聘信息, IT招聘, 信息安全职位, 网站开发职位, 云服务职位, 科技公司招聘">
+  <meta name="author" content="海口希灵赛斯网络科技有限责任公司">
+  <link rel="icon" href="../../favicon.ico">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="加入我们 - 海口希灵赛斯网络科技有限责任公司">
+  <meta property="og:description" content="加入海口希灵赛斯，一起为客户提供专业的信息化解决方案。我们正在寻找有才华的开发人员、安全专家和项目管理人员。">
+  <meta property="og:url" content="https://www.sec.hn.cn/careers/cn/">
+  <meta property="og:image" content="https://www.sec.hn.cn/source/index_imgs/index_01.jpg">
+  <meta property="og:site_name" content="海口希灵赛斯网络科技有限责任公司">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="加入我们 - 海口希灵赛斯网络科技有限责任公司">
+  <meta name="twitter:description" content="加入海口希灵赛斯，一起为客户提供专业的信息化解决方案。我们正在寻找有才华的开发人员、安全专家和项目管理人员。">
+  <meta name="twitter:image" content="https://www.sec.hn.cn/source/index_imgs/index_01.jpg">
+
+  <style>
+    :root {
+      --apple-bg: #f5f7fa;
+      --apple-card-bg: rgba(255, 255, 255, 0.85);
+      --apple-text: #333;
+      --apple-text-light: #6c757d;
+      --apple-accent: #0071e3;
+      --apple-accent-hover: #0077ed;
+      --apple-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      --glass-border: 1px solid rgba(255, 255, 255, 0.4);
+      --transition-smooth: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+      color: var(--apple-text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+      padding-top: 80px;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes shine {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    @keyframes float {
+      0% { transform: translate3d(0, 0, 0); }
+      25% { transform: translate3d(-10px, -20px, 0); }
+      50% { transform: translate3d(-10px, -10px, 0); }
+      75% { transform: translate3d(15px, -30px, 0); }
+      100% { transform: translate3d(0, 0, 0); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale3d(1, 1, 1); opacity: 0.8; }
+      100% { transform: scale3d(1.1, 1.1, 1); opacity: 1; }
+    }
+
+    .bg-decor {
+      position: fixed;
+      z-index: -1;
+      opacity: 0.05;
+      pointer-events: none;
+      filter: blur(40px);
+      will-change: transform;
+    }
+
+    .bg-decor-1 {
+      top: 20%;
+      left: 5%;
+      width: 250px;
+      height: 150px;
+      background: var(--apple-accent);
+      animation: float 8s infinite ease-in-out;
+    }
+
+    .bg-decor-2 {
+      bottom: 20%;
+      right: 10%;
+      width: 300px;
+      height: 200px;
+      background: #ff2d55;
+      animation: float 8s infinite ease-in-out 2s;
+    }
+
+    .bg-decor-3 {
+      top: 40%;
+      right: 15%;
+      width: 150px;
+      height: 100px;
+      background: #34c759;
+      animation: pulse 6s infinite alternate 4s;
+    }
+
+    .bg-decor-4 {
+      top: 70%;
+      left: 15%;
+      width: 100px;
+      height: 100px;
+      background: #ff9500;
+      animation: pulse 6s infinite alternate 1s, float 10s infinite ease-in-out;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .bg-decor { animation: none; }
+      .animate-on-scroll { transition: none; opacity: 1; transform: none; }
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: rgba(255, 255, 255, 0.4);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+      transition: background 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+      font-size: 1.125rem;
+    }
+
+    .navbar.scrolled {
+      background: rgba(30, 30, 30, 0.8);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .navbar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: #1d1d1f;
+      letter-spacing: -0.5px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      transition: color 0.4s;
+    }
+
+    .navbar.scrolled .navbar-brand { color: #ffffff; }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 0.5rem;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      color: #444;
+      padding: 0.625rem 1rem;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    }
+
+    .nav-link:hover { color: #007bff; background: rgba(0, 113, 227, 0.08); }
+    .nav-link.active { color: var(--apple-accent); font-weight: 600; }
+    .navbar.scrolled .nav-link { color: #ffffff; }
+    .navbar.scrolled .nav-link:hover { color: #007bff; background: rgba(0, 113, 227, 0.2); }
+    .navbar.scrolled .nav-link.active { color: #007bff; }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      padding: 0.5rem;
+      cursor: pointer;
+    }
+
+    .nav-toggle-icon {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #444;
+      position: relative;
+      transition: background 0.3s;
+    }
+
+    .nav-toggle-icon::before,
+    .nav-toggle-icon::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #444;
+      transition: transform 0.3s;
+    }
+
+    .nav-toggle-icon::before { top: -7px; }
+    .nav-toggle-icon::after { bottom: -7px; }
+
+    .navbar.scrolled .nav-toggle-icon { background: #fff; }
+    .navbar.scrolled .nav-toggle-icon::before,
+    .navbar.scrolled .nav-toggle-icon::after { background: #fff; }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        flex-direction: column;
+        padding: 1rem;
+        display: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+      .nav-menu.open { display: flex; }
+      .navbar.scrolled .nav-menu { background: rgba(30, 30, 30, 0.95); }
+    }
+
+    .hero {
+      padding: 120px 0 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(0, 113, 227, 0.1) 0%, rgba(0, 113, 227, 0.05) 100%);
+      z-index: -1;
+      animation: pulse 6s infinite alternate;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #1d1d1f;
+      letter-spacing: -1px;
+      margin-bottom: 25px;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero p {
+      font-size: 1.4rem;
+      color: #444;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      animation: fadeInUp 1s ease-out 0.2s forwards;
+      opacity: 0;
+    }
+
+    .btn-hero {
+      font-weight: 600;
+      padding: 14px 36px;
+      border-radius: 15px;
+      font-size: 1.1rem;
+      background: var(--apple-accent);
+      color: white;
+      border: none;
+      box-shadow: 0 6px 20px rgba(0, 113, 227, 0.3);
+      transition: var(--transition-smooth);
+      animation: fadeInUp 1s ease-out 0.4s forwards;
+      opacity: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .btn-hero:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 10px 30px rgba(0, 113, 227, 0.4);
+      background: var(--apple-accent-hover);
+    }
+
+    .section { padding: 100px 0; }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1d1d1f;
+      position: relative;
+      padding-bottom: 20px;
+      margin-bottom: 60px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background: var(--apple-accent);
+      border-radius: 2px;
+    }
+
+    .section-title.center { text-align: center; }
+    .section-title.center::after { left: 50%; transform: translateX(-50%); }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .benefit-card {
+      background: var(--apple-card-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: var(--apple-shadow);
+      border: var(--glass-border);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .benefit-card:hover { transform: translateY(-8px); }
+
+    .benefit-card::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+      transform: rotate(30deg);
+      transition: all 0.6s ease;
+      opacity: 0;
+    }
+
+    .benefit-card:hover::after { opacity: 1; transform: rotate(30deg) translate(20%, 20%); }
+
+    .benefit-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 20px;
+      color: var(--apple-accent);
+      transition: transform 0.3s ease;
+    }
+
+    .benefit-card:hover .benefit-icon { transform: scale(1.2) rotate(10deg); }
+
+    .benefit-title { font-size: 1.4rem; font-weight: 600; margin-bottom: 15px; color: #1d1d1f; }
+    .benefit-description { color: #444; line-height: 1.6; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .step-card {
+      background: var(--apple-card-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: var(--apple-shadow);
+      border: var(--glass-border);
+      transition: transform 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .step-card:hover { transform: translateY(-10px); }
+
+    .step-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--apple-accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s ease;
+    }
+
+    .step-card:hover::before { transform: scaleX(1); }
+
+    .step-number {
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      background: var(--apple-accent);
+      color: white;
+      border-radius: 50%;
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin: 0 auto 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .step-card:hover .step-number { transform: scale(1.1) rotate(10deg); }
+    .step-title { font-size: 1.3rem; font-weight: 600; margin-bottom: 15px; color: #1d1d1f; }
+    .step-description { color: #444; line-height: 1.6; }
+
+    .contact-section {
+      padding: 100px 0;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 30px;
+      margin: 50px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(transparent, rgba(0, 113, 227, 0.2), transparent 30%);
+      animation: rotate 10s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .contact-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 20px; color: #1d1d1f; }
+    .contact-email {
+      font-size: 1.3rem;
+      color: var(--apple-accent);
+      margin-bottom: 40px;
+      display: inline-block;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+      text-decoration: none;
+    }
+
+    .contact-email::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--apple-accent);
+      transition: width 0.3s ease;
+    }
+
+    .contact-email:hover { transform: translateY(-2px); color: var(--apple-accent-hover); }
+    .contact-email:hover::after { width: 100%; }
+
+    .eeo-section { background: #f9fafb; padding: 60px 20px; }
+
+    .eeo-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .eeo-title { font-size: 28px; font-weight: 600; margin-bottom: 20px; color: #111827; text-align: center; }
+    .eeo-text { font-size: 16px; line-height: 1.8; color: #374151; margin-bottom: 16px; text-align: justify; }
+
+    .eeo-highlight {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #1f2937;
+      margin-top: 24px;
+      padding: 16px;
+      border-left: 4px solid #2563eb;
+      background: #f0f4ff;
+      border-radius: 8px;
+      font-weight: 500;
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .animate-on-scroll.animated {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .footer { padding: 40px 0; text-align: center; color: #666; font-size: 0.9rem; border-top: 1px solid rgba(0, 0, 0, 0.05); }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      .hero p { font-size: 1.2rem; }
+      .section-title { font-size: 2rem; }
+      .section { padding: 60px 0; }
+      .eeo-container { padding: 20px; }
+      .eeo-title { font-size: 22px; }
+      .eeo-text, .eeo-highlight { font-size: 15px; }
+    }
+  </style>
 </head>
 <body>
-    <!-- 背景装饰元素 -->
-    <div class="bg-decor bg-decor-1"></div>
-    <div class="bg-decor bg-decor-2"></div>
-    <div class="bg-decor bg-decor-3"></div>
-    <div class="bg-decor bg-decor-4"></div>
-    <div class="bg-decor bg-decor-5"></div>
-    <div class="bg-decor bg-decor-6"></div>
-    <div class="bg-decor bg-decor-7"></div>
-    <div class="bg-decor bg-decor-8"></div>
-    <div class="bg-decor bg-decor-9"></div>
-    <div class="bg-decor bg-decor-10"></div>
-    <div class="bg-decor bg-triangle-1"></div>
-    <div class="bg-decor bg-triangle-2"></div>
-    <div class="bg-decor bg-square-1"></div>
-    <div class="bg-decor bg-square-2"></div>
+  <div class="bg-decor bg-decor-1"></div>
+  <div class="bg-decor bg-decor-2"></div>
+  <div class="bg-decor bg-decor-3"></div>
+  <div class="bg-decor bg-decor-4"></div>
 
-    <!-- ===================== 导航栏模块 ===================== -->
-    <div class="ezy__nav6_7SyLoOH3k">
-        <nav class="navbar navbar-expand-lg py-3">
-            <div class="container position-relative">
-                <!-- 品牌标识 -->
-                <a class="navbar-brand" href="../../index.html">
-                    <span class="brand-text">XSEC 职业机会</span>
-                </a>
-
-                <!-- 移动端导航切换按钮 -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <!-- 导航菜单 -->
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" href="index.html">概述</a></li>
-                        <li class="nav-item"><a class="nav-link" href="work-at-xsec.html">在 XSEC 工作</a></li>
-                        <li class="nav-item"><a class="nav-link" href="life-at-xsec.html">在 XSEC 生活</a></li>
-                        <li class="nav-item"><a class="nav-link" href="team.html">探索团队</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+  <nav class="navbar" id="navbar">
+    <div class="navbar-container">
+      <a class="navbar-brand" href="../../index.html">XSEC 职业机会</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span class="nav-toggle-icon"></span>
+      </button>
+      <ul class="nav-menu" id="navMenu">
+        <li><a class="nav-link active" href="index.html">概述</a></li>
+        <li><a class="nav-link" href="work-at-xsec.html">在 XSEC 工作</a></li>
+        <li><a class="nav-link" href="life-at-xsec.html">在 XSEC 生活</a></li>
+        <li><a class="nav-link" href="team.html">探索团队</a></li>
+      </ul>
     </div>
+  </nav>
 
-    <!-- 主标题区域 -->
-    <section class="hero">
-        <div class="container">
-            <h1>加入我们，展现自我。</h1>
-            <p>这里凝聚起每个人的创造力，大家秉承着共同的价值观，一起为成就伟大事业而努力。在这里，你不只是加入我们，更会为我们带来精彩新思维。</p>
+  <section class="hero">
+    <div class="container">
+      <h1>加入我们，展现自我。</h1>
+      <p>这里凝聚起每个人的创造力，大家秉承着共同的价值观，一起为成就伟大事业而努力。在这里，你不只是加入我们，更会为我们带来精彩新思维。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="benefits-grid">
+        <div class="benefit-card animate-on-scroll">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 64 64" fill="currentColor"><path d="M32 4L8 16v16c0 15.5 10.2 30 24 34 13.8-4 24-18.5 24-34V16L32 4zm0 8l18 9v12c0 12.3-7.6 23.7-18 27-10.4-3.3-18-14.7-18-27V21l18-9zM22 28c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm20 0c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm-10 16c-4.4 0-8-2.7-8-6h16c0 3.3-3.6 6-8 6z"/></svg>
+          </div>
+          <h3 class="benefit-title">在工作中相互成就</h3>
+          <p class="benefit-description">在 XSEC，合作不只是单纯的一起工作，还意味着怀揣激情、以协作的心态展开辩论。商务、技术或运营团队的同学可能会持不同的观点，但互相尊重、坦诚讨论的原则并无二致：我们支持不同的想法，对观点进行论辩，最终在彼此的思维之上缔造最优秀的解决方案。</p>
         </div>
-    </section>
 
-    <!-- 公司 -->
-    <section class="section">
-        <div class="container">
-            <div class="benefits-grid">
-                <div class="benefit-card animate-on-scroll">
-                    <div class="benefit-icon">
-                        <i class="fas fa-gem"></i>
-                    </div>
-                    <h3 class="benefit-title">在工作中相互成就</h3>
-                    <p class="benefit-description">在 XSEC，合作不只是单纯的一起工作，还意味着怀揣激情、以协作的心态展开辩论。商务、技术或运营团队的同学可能会持不同的观点，但互相尊重、坦诚讨论的原则并无二致：我们支持不同的想法，对观点进行论辩，最终在彼此的思维之上缔造最优秀的解决方案。</p>
-                </div>
-
-                <div class="benefit-card animate-on-scroll">
-                    <div class="benefit-icon">
-                        <i class="fas fa-heartbeat"></i>
-                    </div>
-                    <h3 class="benefit-title">术业有专攻</h3>
-                    <p class="benefit-description">我们深知术业有专攻，所以在我们这里：安全专家负责领导安全，软件专家负责领导软件，设计专家负责领导设计。这与多数大型公司由总经理监管经理的做法完全不同。我们的独到之处在于，我们赋予领域专家在其相关领域的决策权。</p>
-                </div>
-
-                <div class="benefit-card animate-on-scroll">
-                    <div class="benefit-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3 class="benefit-title">每个人都是创新者</h3>
-                    <p class="benefit-description">在这里，每个人都是创新者，或是未来的创新者，哪怕是在客户一般不会注意到的领域。比如，在甲方私有云的基础上进一步为每台虚拟机去虚拟化，模拟更真实的系统环境，防止其他付费系统的虚拟化监测导致锁机。</p>
-                </div>
-
-                <div class="benefit-card animate-on-scroll">
-                    <div class="benefit-icon">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-                    <h3 class="benefit-title">大胆的设计</h3>
-                    <p class="benefit-description">我们拥有各种资源，不给想法设限。没有想法是过于疯狂而不能被接受的。根据客户的实际需求和环境来大胆的设计业务系统架构，确保客户能获得所需的功能和性能。</p>
-                </div>
-            </div>
+        <div class="benefit-card animate-on-scroll">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 64 64" fill="currentColor"><path d="M32 8c-13.3 0-24 10.7-24 24s10.7 24 24 24 24-10.7 24-24-10.7-24-24-24zm0 40c-8.8 0-16-7.2-16-16s7.2-16 16-16 16 7.2 16 16-7.2 16-16 16zm-4-24c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4zm12 0c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4zm-6 12c-4.4 0-8 2.2-8 4v4h16v-4c0-1.8-3.6-4-8-4z"/></svg>
+          </div>
+          <h3 class="benefit-title">术业有专攻</h3>
+          <p class="benefit-description">我们深知术业有专攻，所以在我们这里：安全专家负责领导安全，软件专家负责领导软件，设计专家负责领导设计。这与多数大型公司由总经理监管经理的做法完全不同。我们的独到之处在于，我们赋予领域专家在其相关领域的决策权。</p>
         </div>
-    </section>
 
-    <!-- 申请流程 -->
-    <section class="section" style="background: rgba(245, 247, 250, 0.6);">
-        <div class="container">
-            <div class="steps">
-                <div class="step-card animate-on-scroll">
-                    <div class="step-number">1</div>
-                    <h3 class="step-title">团队</h3>
-                    <p class="step-description">在这里，每个领域的人才都能大有所为 。</p>
-                </div>
-
-                <div class="step-card animate-on-scroll">
-                    <div class="step-number">2</div>
-                    <h3 class="step-title">XSEC 销售</h3>
-                    <p class="step-description">探索与面对不同的客户群体，寻找最合适的解决方案。</p>
-                </div>
-
-                <div class="step-card animate-on-scroll">
-                    <div class="step-number">3</div>
-                    <h3 class="step-title">学生</h3>
-                    <p class="step-description">探索 XSEC 的发展模式，为职业生涯做好规划</p>
-                </div>
-
-                <div class="step-card animate-on-scroll">
-                    <div class="step-number">4</div>
-                    <h3 class="step-title">工作地点</h3>
-                    <p class="step-description">探索远程支持与现场支持的弹性工作方式</p>
-                </div>
-            </div>
+        <div class="benefit-card animate-on-scroll">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 64 64" fill="currentColor"><path d="M32 4C17.6 4 6 15.6 6 30s11.6 26 26 26 26-11.6 26-26S46.4 4 32 4zm12 32h-8v8h-8v-8h-8v-8h8v-8h8v8h8v8zm-6-18c2.2 0 4 1.8 4 4s-1.8 4-4 4-4-1.8-4-4 1.8-4 4-4z"/></svg>
+          </div>
+          <h3 class="benefit-title">每个人都是创新者</h3>
+          <p class="benefit-description">在这里，每个人都是创新者，或是未来的创新者，哪怕是在客户一般不会注意到的领域。比如，在甲方私有云的基础上进一步为每台虚拟机去虚拟化，模拟更真实的系统环境，防止其他付费系统的虚拟化监测导致锁机。</p>
         </div>
-    </section>
 
-    <!-- 联系方式 -->
-    <section class="contact-section animate-on-scroll">
-        <div class="container">
-            <h2 class="contact-title">加入我们， 共同缔造我们的社群。</h2>
-            <p>探索充满包容、支持成长和鼓励创新的协作文化，并获得能够提升你的福祉的相关资源。</p>
+        <div class="benefit-card animate-on-scroll">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 64 64" fill="currentColor"><path d="M32 4C16.5 4 4 16.5 4 32s12.5 28 28 28 28-12.5 28-28S47.5 4 32 4zm0 52C18.7 56 8 45.3 8 32S18.7 8 32 8s24 10.7 24 24-10.7 24-24 24zm4-18H28v-4h-8v16h8v-4h4v4h8V38h-8v4h-4v-4z"/></svg>
+          </div>
+          <h3 class="benefit-title">大胆的设计</h3>
+          <p class="benefit-description">我们拥有各种资源，不给想法设限。没有想法是过于疯狂而不能被接受的。根据客户的实际需求和环境来大胆的设计业务系统架构，确保客户能获得所需的功能和性能。</p>
         </div>
-    </section>
-    
-    <!-- ===================== 公平就业声明模块 ===================== -->
-    <section id="equal-employment" class="eeo-section">
-      <div class="eeo-container">
-        <h2 class="eeo-title">公平就业声明</h2>
-        <p class="eeo-text">
-          HKXSEC 始终秉持“以人为本”的理念，坚信多元化、公平性与包容性是企业持续发展的核心动力。
-          我们承诺在招聘、录用、晋升、培训、薪酬、福利及其他人力资源相关决策中，严格遵循公平就业原则。
-        </p>
-        <p class="eeo-text">
-          我们不会因种族、肤色、国籍、性别、性别认同或表达、年龄、婚姻状况、怀孕与育儿身份、宗教信仰、
-          政治立场、身体或精神状况、残障、遗传信息或任何其他受适用法律保护的因素而歧视任何个人。
-        </p>
-        <p class="eeo-text">
-          HKXSEC 鼓励每一位同学在开放、尊重与安全的环境中充分发挥潜力。我们致力于推动多元文化与多样性思维的融合，
-          构建一个让所有人都能被平等对待、被尊重、并获得职业发展的工作环境。
-        </p>
-        <p class="eeo-text">
-          此外，我们将持续优化内部流程，确保应聘及就业全过程的透明、公正，并根据相关法律法规不断完善公司政策，
-          以保障所有候选人和同学的合法权益。
-        </p>
-        <p class="eeo-highlight">
-          HKXSEC 提供公平的就业机会，致力于提供兼具包容性和多元化的工作环境。因此，我们会公正、公平地对待所有应聘者。
-          HKXSEC 欢迎任何人士加入我们，并致力于为具有身心障碍的应征者提供合理的安排。
-        </p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ===================== 样式 ===================== -->
-    <style>
-      .eeo-section {
-        background: #f9fafb;
-        padding: 60px 20px;
-        font-family: "Helvetica Neue", Arial, sans-serif;
-      }
-      .eeo-container {
-        max-width: 900px;
-        margin: 0 auto;
-        background: #fff;
-        padding: 40px;
-        border-radius: 16px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-      }
-      .eeo-title {
-        font-size: 28px;
-        font-weight: 600;
-        margin-bottom: 20px;
-        color: #111827;
-        text-align: center;
-      }
-      .eeo-text {
-        font-size: 16px;
-        line-height: 1.8;
-        color: #374151;
-        margin-bottom: 16px;
-        text-align: justify;
-      }
-      .eeo-highlight {
-        font-size: 16px;
-        line-height: 1.8;
-        color: #1f2937;
-        margin-top: 24px;
-        padding: 16px;
-        border-left: 4px solid #2563eb;
-        background: #f0f4ff;
-        border-radius: 8px;
-        font-weight: 500;
-      }
-      @media (max-width: 768px) {
-        .eeo-container {
-          padding: 20px;
-        }
-        .eeo-title {
-          font-size: 22px;
-        }
-        .eeo-text, .eeo-highlight {
-          font-size: 15px;
-        }
-      }
-    </style>
+  <section class="section" style="background: rgba(245, 247, 250, 0.6);">
+    <div class="container">
+      <div class="steps">
+        <div class="step-card animate-on-scroll">
+          <div class="step-number">1</div>
+          <h3 class="step-title">团队</h3>
+          <p class="step-description">在这里，每个领域的人才都能大有所为 。</p>
+        </div>
 
-    <!-- ===================== 交互脚本 ===================== -->
-    <script>
-      // 小交互：页面加载时平滑淡入
-      document.addEventListener("DOMContentLoaded", () => {
-        const eeoSection = document.querySelector("#equal-employment .eeo-container");
-        eeoSection.style.opacity = 0;
-        eeoSection.style.transform = "translateY(20px)";
-        setTimeout(() => {
-          eeoSection.style.transition = "all 0.8s ease";
-          eeoSection.style.opacity = 1;
-          eeoSection.style.transform = "translateY(0)";
-        }, 200);
+        <div class="step-card animate-on-scroll">
+          <div class="step-number">2</div>
+          <h3 class="step-title">XSEC 销售</h3>
+          <p class="step-description">探索与面对不同的客户群体，寻找最合适的解决方案。</p>
+        </div>
+
+        <div class="step-card animate-on-scroll">
+          <div class="step-number">3</div>
+          <h3 class="step-title">学生</h3>
+          <p class="step-description">探索 XSEC 的发展模式，为职业生涯做好规划</p>
+        </div>
+
+        <div class="step-card animate-on-scroll">
+          <div class="step-number">4</div>
+          <h3 class="step-title">工作地点</h3>
+          <p class="step-description">探索远程支持与现场支持的弹性工作方式</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section animate-on-scroll">
+    <div class="container">
+      <h2 class="contact-title">加入我们， 共同缔造我们的社群。</h2>
+      <p>探索充满包容、支持成长和鼓励创新的协作文化，并获得能够提升你的福祉的相关资源。</p>
+    </div>
+  </section>
+
+  <section id="equal-employment" class="eeo-section">
+    <div class="eeo-container" id="eeoContainer">
+      <h2 class="eeo-title">公平就业声明</h2>
+      <p class="eeo-text">HKXSEC 始终秉持"以人为本"的理念，坚信多元化、公平性与包容性是企业持续发展的核心动力。我们承诺在招聘、录用、晋升、培训、薪酬、福利及其他人力资源相关决策中，严格遵循公平就业原则。</p>
+      <p class="eeo-text">我们不会因种族、肤色、国籍、性别、性别认同或表达、年龄、婚姻状况、怀孕与育儿身份、宗教信仰、政治立场、身体或精神状况、残障、遗传信息或任何其他受适用法律保护的因素而歧视任何个人。</p>
+      <p class="eeo-text">HKXSEC 鼓励每一位同学在开放、尊重与安全的环境中充分发挥潜力。我们致力于推动多元文化与多样性思维的融合，构建一个让所有人都能被平等对待、被尊重、并获得职业发展的工作环境。</p>
+      <p class="eeo-text">此外，我们将持续优化内部流程，确保应聘及就业全过程的透明、公正，并根据相关法律法规不断完善公司政策，以保障所有候选人和同学的合法权益。</p>
+      <p class="eeo-highlight">HKXSEC 提供公平的就业机会，致力于提供兼具包容性和多元化的工作环境。因此，我们会公正、公平地对待所有应聘者。HKXSEC 欢迎任何人士加入我们，并致力于为具有身心障碍的应征者提供合理的安排。</p>
+    </div>
+  </section>
+
+  <footer id="site-footer" class="footer"></footer>
+  <script src="/source/footer.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var navbar = document.getElementById('navbar');
+      var navToggle = document.getElementById('navToggle');
+      var navMenu = document.getElementById('navMenu');
+      var eeoContainer = document.getElementById('eeoContainer');
+
+      navToggle.addEventListener('click', function() {
+        navMenu.classList.toggle('open');
       });
-    </script>
 
+      eeoContainer.style.opacity = '0';
+      eeoContainer.style.transform = 'translateY(20px)';
+      setTimeout(function() {
+        eeoContainer.style.transition = 'all 0.8s ease';
+        eeoContainer.style.opacity = '1';
+        eeoContainer.style.transform = 'translateY(0)';
+      }, 200);
 
-    <!-- 统一引用全局页脚 -->
-    <footer id="site-footer"></footer>
-    <script src="/source/footer.js"></script>
+      var scrollHandler = function() {
+        var scrollPosition = window.scrollY;
+        if (scrollPosition > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      };
+      window.addEventListener('scroll', scrollHandler, { passive: true });
+      scrollHandler();
 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-    <script>
-        // 滚动动画效果
-        document.addEventListener('DOMContentLoaded', function() {
-            // 滚动透明度和Logo缩放
-            var navbar = document.querySelector('.navbar');
-            var navLinks = document.querySelectorAll('.nav-link');
-            var isScrolling = false;
-
-            // 使用requestAnimationFrame优化滚动性能
-            function updateNavbarOnScroll() {
-                if (!isScrolling) {
-                    window.requestAnimationFrame(function() {
-                        performScrollUpdates();
-                        isScrolling = false;
-                    });
-                    isScrolling = true;
-                }
-            }
-
-            function performScrollUpdates() {
-                // 获取滚动位置
-                var scrollPosition = window.scrollY;
-                var scrollPercentage = Math.min(scrollPosition / 100, 1); // 0到1之间的值，100px后达到最大值
-
-                // 计算背景颜色 (从浅色到深色)
-                var r = 255 - (255 - 30) * scrollPercentage;
-                var g = 255 - (255 - 30) * scrollPercentage;
-                var b = 255 - (255 - 30) * scrollPercentage;
-                var alpha = 0.4 + 0.4 * scrollPercentage; // 从0.4到0.8的透明度
-
-                // 应用背景颜色
-                navbar.style.background = `rgba(${Math.floor(r)}, ${Math.floor(g)}, ${Math.floor(b)}, ${alpha})`;
-
-                // 计算文字颜色 (从深色到白色)
-                var textR = 68 + (255 - 68) * scrollPercentage;
-                var textG = 68 + (255 - 68) * scrollPercentage;
-                var textB = 68 + (255 - 68) * scrollPercentage;
-
-                // 应用导航链接颜色
-                navLinks.forEach(link => {
-                    link.style.color = `rgb(${Math.floor(textR)}, ${Math.floor(textG)}, ${Math.floor(textB)})`;
-                });
-
-                // 应用品牌文字颜色
-                var brand = document.querySelector('.navbar-brand');
-                brand.style.color = `rgb(${Math.floor(textR)}, ${Math.floor(textG)}, ${Math.floor(textB)})`;
-
-                // 当滚动超过50px时添加scrolled类以应用其他样式
-                if(scrollPosition > 50){
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            }
-
-            window.addEventListener('scroll', updateNavbarOnScroll, { passive: true });
-
-            // 滚动视差效果
-            const bgDecors = document.querySelectorAll('.bg-decor');
-
-            window.addEventListener('scroll', function() {
-                const scrollY = window.scrollY;
-                const scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-
-                bgDecors.forEach((decor, index) => {
-                    const speed = 0.05 * (index + 1);
-                    const yPos = -scrollY * speed;
-                    decor.style.transform = `translateY(${yPos}px)`;
-                    
-                    // 添加旋转效果
-                    const rotation = scrolled * 360 * (index + 1);
-                    decor.style.transform += ` rotate(${rotation}deg)`;
-                });
-
-                // 元素进入视口时添加动画
-                const elements = document.querySelectorAll('.animate-on-scroll');
-                elements.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    const elementVisible = 150;
-
-                    if (elementTop < window.innerHeight - elementVisible) {
-                        element.classList.add('animated');
-                    }
-                });
-            });
-
-            // 初始化检查
-            const elements = document.querySelectorAll('.animate-on-scroll');
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.classList.add('animated');
-                }
-            });
-
-            // 职位申请按钮点击事件
-            document.querySelectorAll('.btn-apply').forEach(button => {
-                button.addEventListener('click', function() {
-                    const position = this.getAttribute('data-position');
-                    alert(`多謝您申請${position}職位！請閣下將履歷寄至 xuzhongxin@sec.hn.cn，郵件標題請註明申請的職位名稱。`);
-                });
-            });
-
-            // 平滑滚动
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
+      var animatedElements = document.querySelectorAll('.animate-on-scroll');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animated');
+            observer.unobserve(entry.target);
+          }
         });
-    </script>
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+      animatedElements.forEach(function(el) {
+        observer.observe(el);
+      });
+
+      document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          var targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          var target = document.querySelector(targetId);
+          if (target) {
+            window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>

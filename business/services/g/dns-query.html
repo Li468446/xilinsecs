@@ -110,7 +110,7 @@
                     </span>
                     <select
                         id="queryTypeSelect"
-                        class="w-full pl-12 pr-4 py-4 rounded-xl bg-white/70 dark:bg-darkCard/70 border border-gray-200 dark:border-gray-700 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all-300 text-base appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,<svg width=\"20\" height=\"20\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M7 10l5 5 5-5z\" fill=\"%2386868b\"/></svg>')] bg-no-repeat bg-right pr-8 dark:bg-[url('data:image/svg+xml;charset=US-ASCII,<svg width=\"20\" height=\"20\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M7 10l5 5 5-5z\" fill=\"%23ffffff\"/></svg>')]"
+                        class="w-full pl-12 pr-4 py-4 rounded-xl bg-white/70 dark:bg-darkCard/70 border border-gray-200 dark:border-gray-700 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all-300 text-base appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M7%2010l5%205%205-5z%22%20fill%3D%22%2386868b%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-right pr-8 dark:bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M7%2010l5%205%205-5z%22%20fill%3D%22%23ffffff%22%2F%3E%3C%2Fsvg%3E')]"
                     >
                         <option value="1">IPv4 (A)</option>
                         <option value="28">IPv6 (AAAA)</option>
@@ -388,7 +388,7 @@
         async function getIpGeolocation(ip) {
             try {
                 // 从API配置中获取DOH端点
-                const response = await fetch('../../api/info.json');
+                const response = await fetch('/api/info.json');
                 const apiConfig = await response.json();
                 const dohEndpoint = apiConfig.api.doh.endpoint;
                 
@@ -695,25 +695,70 @@
                 showLoading();
 
                 // 从API配置中获取DOH端点
-                const response = await fetch('../../api/info.json');
+                const response = await fetch('/api/info.json');
                 const apiConfig = await response.json();
                 const dohEndpoint = apiConfig.api.doh.endpoint;
 
                 // 构建查询URL，包含查询类型参数
                 const url = `${dohEndpoint}?name=${encodeURIComponent(domain)}&type=${queryType}`;
 
-                // 发送请求
-                const fetchResponse = await fetch(url, {
-                    headers: {
-                        'Accept': 'application/dns-json'
+                let data;
+                try {
+                    // 发送请求，添加超时控制
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+                    const fetchResponse = await fetch(url, {
+                        headers: {
+                            'Accept': 'application/dns-json'
+                        },
+                        signal: controller.signal
+                    });
+                    clearTimeout(timeoutId);
+
+                    // 检查HTTP状态码
+                    if (!fetchResponse.ok) {
+                        let errorDetail = '';
+                        try {
+                            // 尝试解析错误响应中的JSON信息
+                            const errorData = await fetchResponse.json();
+                            errorDetail = errorData.message || errorData.error || '';
+                        } catch (e) {
+                            // 非JSON响应，尝试获取文本信息
+                            const errorText = await fetchResponse.text();
+                            if (errorText.length > 0 && errorText.length < 200) {
+                                errorDetail = errorText;
+                            }
+                        }
+
+                        if (fetchResponse.status === 403) {
+                            throw new Error('查询被服务器拒绝，可能存在异常访问行为');
+                        } else if (fetchResponse.status === 404) {
+                            throw new Error('DNS服务暂时不可用，请稍后重试');
+                        } else if (fetchResponse.status >= 500) {
+                            throw new Error('DNS服务器内部错误，请稍后重试');
+                        } else {
+                            throw new Error(`服务器返回错误 (${fetchResponse.status})${errorDetail ? ': ' + errorDetail : ''}`);
+                        }
                     }
-                });
 
-                if (!fetchResponse.ok) {
-                    throw new Error(`HTTP错误: ${fetchResponse.status}`);
+                    // 检查响应内容类型
+                    const contentType = fetchResponse.headers.get('content-type');
+                    if (!contentType || !contentType.includes('application/json')) {
+                        // 服务器返回了非JSON内容（可能是HTML错误页面）
+                        const text = await fetchResponse.text();
+                        console.error('收到非JSON响应:', text.substring(0, 200));
+                        throw new Error('服务器返回异常响应，请稍后重试');
+                    }
+
+                    data = await fetchResponse.json();
+
+                } catch (error) {
+                    if (error.name === 'AbortError') {
+                        throw new Error('查询超时，请检查网络连接');
+                    }
+                    throw error;
                 }
-
-                const data = await fetchResponse.json();
 
                 // 提取IP地址并获取地理位置信息（仅对IP类型记录）
                 const ipAddresses = [];
@@ -754,7 +799,7 @@
 
             } catch (error) {
                 console.error('查询失败:', error);
-                showError(`查询失败: ${error.message}`);
+                showError(error.message || '查询失败，请稍后重试');
             }
         }
 
@@ -796,7 +841,7 @@
             displayHistory();
             
             // 从API配置中获取DOH端点并更新页脚链接
-            fetch('../../api/info.json')
+            fetch('/api/info.json')
                 .then(response => response.json())
                 .then(apiConfig => {
                     const dohEndpoint = apiConfig.api.doh.endpoint;
