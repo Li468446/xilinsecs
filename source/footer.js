@@ -58,10 +58,7 @@ window.siteConfig = {
             ipv6: "本站支持IPv6",
             license: {
                 buttonText: "查验证件",
-                pdfPath: "/source/data/2ff2b419a870908ceba8c24596e6eb4f.pdf",
-                md5Value: "2ff2b419a870908ceba8c24596e6eb4f",
-                verifyLink: "/business/services/g/md5check.html",
-                verifyText: "防篡改验证"
+                verifyUrl: "https://e-register.amr.hainan.gov.cn:17089/#/?qyxx=I8%20HAEmgoR6TVmokEB2TW1jqNWu%2F6cwhlApRTM7toGszlRcs6ZUi30MySmjBAtsgtZrbljvmf6FmOfpPbwlMUXvXAKOaWdJBSpMNk53TLb0OV2l7K2tyrV5eL%20ru5FxZeM%20zBV09hFpPXdWTrE13jYyjlD6xSGFbyQCUx1f3M4I%3D"
             }
         }
     }
@@ -495,7 +492,7 @@ function renderFooter(containerId = "site-footer") {
             <div class="footer-bottom">
                 <p>${cfg.copyright}</p>
                 <p class="footer-extra-links">
-                    <a href="javascript:void(0)" class="license-link"><i class="fas fa-certificate"></i> 查验证件</a>
+                    <a href="${cfg.extra.license.verifyUrl}" target="_blank" rel="noopener noreferrer"><i class="fas fa-certificate"></i> ${cfg.extra.license.buttonText}</a>
                     <a href="https://www.12377.cn/" target="_blank" rel="noopener noreferrer"><i class="fas fa-exclamation-triangle"></i> 互联网违法信息举报</a>
                 </p>
                 <p><span class="footer-icp">${cfg.icpLink ? `<a href="${cfg.icpLink}" target="_blank" rel="noopener noreferrer">${cfg.icpNumber}</a>` : cfg.icpNumber}</span> | <span class="footer-site-type">${cfg.siteType}</span></p>
@@ -505,8 +502,6 @@ function renderFooter(containerId = "site-footer") {
     </footer>
     `;
     container.innerHTML = footerHTML;
-
-    // 初始化折叠状态（避免闪烁）
     container.querySelectorAll('.footer-section ul').forEach(ul => {
         ul.style.overflow = 'hidden';
         ul.style.transition = 'none';
@@ -598,62 +593,6 @@ function renderFooter(containerId = "site-footer") {
         }
         updateIP();
         setInterval(updateIP,60000);
-    }
-
-    // -------------------- 亮证弹窗功能 --------------------
-    const licenseLink = container.querySelector('.license-link');
-    if (licenseLink && cfg.extra.license) {
-        const license = cfg.extra.license;
-        const modalHTML = `
-            <div class="license-modal-overlay" id="licenseModal">
-                <div class="license-modal">
-                    <div class="license-modal-header">
-                        <h3><i class="fas fa-certificate"></i> 营业执照</h3>
-                        <button class="license-modal-close" id="licenseModalClose">&times;</button>
-                    </div>
-                    <div class="license-modal-body">
-                        <iframe class="license-pdf-viewer" src="${license.pdfPath}" title="营业执照"></iframe>
-                    </div>
-                    <div class="license-modal-footer">
-                        <div class="license-info">
-                            <span class="license-md5">文件MD5：<code>${license.md5Value}</code></span>
-                            <a href="${license.verifyLink}" class="license-verify-btn" target="_blank">
-                                <i class="fas fa-shield-alt"></i> ${license.verifyText}
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-        container.insertAdjacentHTML('beforeend', modalHTML);
-
-        const modal = container.querySelector('#licenseModal');
-        const closeBtn = container.querySelector('#licenseModalClose');
-
-        licenseLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            modal.classList.add('show');
-            document.body.style.overflow = 'hidden';
-        });
-
-        const closeModal = () => {
-            modal.classList.remove('show');
-            document.body.style.overflow = '';
-        };
-
-        closeBtn.addEventListener('click', closeModal);
-
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modal.classList.contains('show')) {
-                closeModal();
-            }
-        });
     }
 }
 
