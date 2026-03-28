@@ -19,9 +19,10 @@ window.siteConfig = {
             {
                 title: "资源",
                 items: [
-                    { text: "IOA零信任办公", href: "/source/ztsm/" },
-                    { text: "MD5计算", href: "/business/services/g/md5check.html" },
-                    { text: "软件资产", href: "https://user-ocloud.ihep.ac.cn/share/15328d44-91cc-40ce-9e17-022ff934be16?pwd=340854" },
+                    { text: "IOA保密办公", href: "/source/ztsm/" },
+                    { text: "ZTNA跨境办公", href: "/source/ssrc/cf-sec-hn-cn/" },
+                    { text: "MD5在线校验", href: "/business/services/g/md5check.html" },
+                    { text: "软件资产S3", href: "https://user-ocloud.ihep.ac.cn/share/15328d44-91cc-40ce-9e17-022ff934be16?pwd=340854" },
                 ]
             },
             {

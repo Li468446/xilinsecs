@@ -75,6 +75,7 @@
 ## 其他资源
 - [Gemini AI工具](business/services/g/gemini/index.html)
 - [网站主题页面](source/ztsm/index.html)
+- [跨境办公 - CloudFlare Zero Trust](source/ssrc/cf-sec-hn-cn/index.html) - 提供零信任网络访问客户端下载和团队加入指南
 - [百度验证文件](baidu_verify_codeva-IZLfnlK9jT.html)
 
 ## 联系我们

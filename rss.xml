@@ -113,5 +113,13 @@
       <guid isPermaLink="true">https://www.sec.hn.cn/business/product/software/educheck/index.html</guid>
       <pubDate>Mon, 30 Dec 2025 12:00:00 +0800</pubDate>
     </item>
+    
+    <item>
+      <title>新增 CloudFlare Zero Trust 跨境办公页面</title>
+      <description>我们发布了 CloudFlare Zero Trust 跨境办公解决方案页面，提供零信任网络访问客户端下载和团队加入指南，帮助员工安全便捷地实现跨境办公</description>
+      <link>https://www.sec.hn.cn/source/ssrc/cf-sec-hn-cn/index.html</link>
+      <guid isPermaLink="true">https://www.sec.hn.cn/source/ssrc/cf-sec-hn-cn/index.html</guid>
+      <pubDate>Sun, 29 Mar 2026 12:00:00 +0800</pubDate>
+    </item>
   </channel>
 </rss>
