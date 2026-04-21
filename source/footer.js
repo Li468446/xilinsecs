@@ -29,6 +29,7 @@ window.siteConfig = {
                 title: "星际网络应用",
                 items: [
                     { text: "云效Ops", href: "https://devops.aliyun.com/workbench?orgId=690f52c666aca23eccbe7d4c" },
+                    { text: "配置镜像仓库", href: "https://packages.sec.hn.cn/" }
                 ]
             },
             {
