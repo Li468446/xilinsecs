@@ -1,0 +1,58 @@
+{
+  "name": "HKX CMS System",
+  "systemName": "Hkx CMS",
+  "version": "1.0.0",
+  "description": "海口希灵赛斯网络科技有限公司官方网站内容管理系统",
+    "main": "/index.html",
+  "developers": [
+    "徐中信"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "gitee（当前代码状态：闭源迭代中，仅开发团队的同学可见）",
+    "url": "git clone https://gitee.com/rootxss/hkx-cms.git"
+  },
+  "private": true,
+  "company": "海口希灵赛斯网络科技有限公司",
+  "flag": "别看了-这里没有flag和漏洞，只是个内容管理系统",
+  "api": {
+    "ipGeoLocation": {
+      "name": "ip.sb",
+      "endpoint": "https://api.ip.sb/geoip/",
+      "description": "IP地理位置查询API",
+      "usage": "通过IP地址获取地理位置信息"
+    },
+    "tencentCloudMonitor1": {
+      "name": "腾讯云CDN观测",
+      "endpoint": "https://tam.cdn-go.cn",
+      "description": "腾讯云前端监控服务",
+      "usage": "用于网站性能监控和用户体验分析及CDN相关服务"
+    },
+    "tencentCloudMonitor2": {
+      "name": "腾讯云观测",
+      "endpoint": "https://rumt-zh.com",
+      "description": "腾讯云前端监控服务",
+      "usage": "用于网站性能监控和用户体验分析"
+    },
+    "googleCloudMonitor": {
+      "name": "谷歌云观测",
+      "endpoint": "https://www.googletagmanager.com",
+      "description": "谷歌前端监控服务",
+      "usage": "用于网站性能监控和用户体验分析"
+    },
+    "doh": {
+      "name": "XL DOH Server",
+      "endpoint": "https://xl-d0h-server.xinnew.top/dns-query",
+      "description": "DOH(DNS over HTTPS)后端接口",
+      "usage": "提供安全的DNS解析服务，通过HTTPS协议加密DNS查询请求"
+    },
+    "ipGeoLocationNew": {
+      "name": "XL IP地理位置查询",
+      "endpoint": "https://xl-d0h-server.xinnew.top/ip-info?ip={ip}&token=dns-query",
+      "description": "IP地理位置查询接口",
+      "usage": "通过IP地址获取地理位置信息"
+    }
+  }
+}

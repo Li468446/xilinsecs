@@ -1,0 +1,54 @@
+import type { NavItem } from "@/lib/data/types";
+
+export const navigation: NavItem[] = [
+  {
+    label: "Home",
+    href: "/",
+    description: "品牌首页与核心能力概览",
+    children: [
+      { label: "精选案例", href: "/projects/" },
+      { label: "最新动态", href: "/news/" },
+    ],
+  },
+  {
+    label: "About",
+    href: "/about/",
+    description: "公司介绍、管理层与发展历程",
+    children: [
+      { label: "关于我们", href: "/about/" },
+      { label: "管理团队", href: "/company/leadership/" },
+      { label: "发展历程", href: "/company/timeline/" },
+    ],
+  },
+  {
+    label: "Projects",
+    href: "/projects/",
+    description: "项目案例与交付成果",
+    children: [
+      { label: "项目案例", href: "/projects/" },
+      { label: "服务能力", href: "/services/" },
+      { label: "产品目录", href: "/products/" },
+    ],
+  },
+  {
+    label: "Partners",
+    href: "/partners/",
+    description: "合作生态、伙伴入口与联合交付",
+    children: [
+      { label: "合作伙伴", href: "/partners/" },
+      { label: "申请合作", href: "/partners/apply/" },
+      { label: "伙伴工作台", href: "/partners/workspace/" },
+    ],
+  },
+  {
+    label: "Contact",
+    href: "/contact/",
+    description: "需求、联系、工具与下载入口",
+    children: [
+      { label: "联系我们", href: "/contact/" },
+      { label: "提交需求", href: "/contact/request/" },
+      { label: "工具中心", href: "/tools/" },
+      { label: "下载中心", href: "/downloads/" },
+    ],
+  },
+];

@@ -1,0 +1,24 @@
+# HK XSEC
+
+这是海口希灵赛斯网络科技有限责任公司的品牌站与服务入口中心。
+
+## Main routes
+
+- https://www.sec.hn.cn/
+- https://www.sec.hn.cn/about/
+- https://www.sec.hn.cn/projects/
+- https://www.sec.hn.cn/partners/
+- https://www.sec.hn.cn/contact/
+- https://www.sec.hn.cn/services/
+- https://www.sec.hn.cn/products/
+- https://www.sec.hn.cn/news/
+- https://www.sec.hn.cn/tools/
+- https://www.sec.hn.cn/downloads/
+- https://www.sec.hn.cn/careers/
+- https://www.sec.hn.cn/legal/privacy/
+
+## Notes
+
+- 所有主要业务内容均已迁入 clean URL 路由。
+- 表单与查询入口继续使用既有外部表单源，但页面壳和信息架构已重构。
+- 工具中心包含 Base64、DNS 查询、MD5、随机点名和 UUID 工具。
