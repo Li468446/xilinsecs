@@ -2,7 +2,7 @@
   "projects": [
     {
       "id": "htc-ihaikou",
-      "image": "/source/index_imgs/ihaikou_index01.png",
+      "image": "/source/index_imgs/ihaikou_index01.webp",
       "date": {
         "day": 17,
         "month": "JAN",
@@ -15,7 +15,7 @@
     },
     {
       "id": "vmware-repair",
-      "image": "/source/index_imgs/hsd_index02.png",
+      "image": "/source/index_imgs/hsd_index02.webp",
       "date": {
         "day": 26,
         "month": "MAR",
@@ -28,7 +28,7 @@
     },
     {
       "id": "xinchuang-system",
-      "image": "/business/services/b/hhps-xinchuang/01.jpg",
+      "image": "/business/services/b/hhps-xinchuang/01.webp",
       "date": {
         "day": 3,
         "month": "SEP",
@@ -41,7 +41,7 @@
     },
     {
       "id": "zcloud-vmware",
-      "image": "/business/services/b/hhps-xinchuang/01.jpg",
+      "image": "/business/services/b/hhps-xinchuang/01.webp",
       "date": {
         "day": 28,
         "month": "Oct",

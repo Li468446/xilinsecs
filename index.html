@@ -3,7 +3,6 @@
 <html lang="zh-CN" dir="ltr">
 <!-- 设置语言为简体中文，文本方向为从左到右 -->
 <head>
-   <script src="/api/aegis-init.js"></script>
     <!-- 页面元数据 -->
     <meta charset="utf-8">
     <!-- 字符编码设置为UTF-8 -->
@@ -63,10 +62,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Font Awesome图标库 -->
     <link rel="stylesheet" href="source/css/global.css">
+    <link rel="stylesheet" href="/source/compat.css">
     <!-- 全局样式 -->
     <!-- 性能优化 -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="dns-prefetch" href="https://www.sec.hn.cn">
+    <link rel="preload" as="image" href="/source/index_imgs/20260322-044041.webp" fetchpriority="high">
 
     <!-- 结构化数据 -->
     <script type="application/ld+json">
@@ -102,6 +104,11 @@
             color: var(--apple-text);
             min-height: 100vh;
             overflow-x: hidden;
+        }
+
+        .deferred-section {
+            content-visibility: auto;
+            contain-intrinsic-size: 900px;
         }
     </style>
 </head>
@@ -525,144 +532,11 @@
 </style>
 
 <!-- 导航栏脚本 -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const navbar = document.querySelector('.xsec-navbar');
-    const navbarToggle = document.getElementById('navbarToggle');
-    const navbarMenu = document.getElementById('navbarMenu');
-    const isMobile = window.innerWidth <= 991.98;
-
-    function closeMobileMenu() {
-        navbarToggle.classList.remove('active');
-        navbarMenu.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    function openMobileMenu() {
-        navbarToggle.classList.add('active');
-        navbarMenu.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-
-    // 移动端菜单切换
-    navbarToggle.addEventListener('click', function(e) {
-        e.stopPropagation();
-        if (navbarMenu.classList.contains('active')) {
-            closeMobileMenu();
-        } else {
-            openMobileMenu();
-        }
-    });
-
-    // 滚动时样式变化
-    let lastScrollY = 0;
-    window.addEventListener('scroll', function() {
-        const currentScrollY = window.scrollY;
-
-        if (currentScrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-
-        lastScrollY = currentScrollY;
-    }, { passive: true });
-
-    // 点击菜单外区域关闭菜单
-    document.addEventListener('click', function(e) {
-        if (navbarMenu.classList.contains('active') &&
-            !navbarMenu.contains(e.target) &&
-            !navbarToggle.contains(e.target)) {
-            closeMobileMenu();
-        }
-    });
-
-    // ESC 键关闭菜单
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && navbarMenu.classList.contains('active')) {
-            closeMobileMenu();
-        }
-    });
-
-    // 移动端：子菜单点击展开
-    if (isMobile) {
-        const submenuToggles = document.querySelectorAll('.submenu-toggle');
-        submenuToggles.forEach(function(toggle) {
-            toggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                const submenu = this.nextElementSibling;
-                if (submenu && submenu.classList.contains('submenu')) {
-                    // 关闭其他展开的子菜单
-                    submenuToggles.forEach(function(otherToggle) {
-                        if (otherToggle !== this) {
-                            const otherSubmenu = otherToggle.nextElementSibling;
-                            if (otherSubmenu && otherSubmenu.classList.contains('submenu')) {
-                                otherSubmenu.classList.remove('expanded');
-                                otherToggle.classList.remove('expanded');
-                            }
-                        }
-                    }, this);
-                    
-                    submenu.classList.toggle('expanded');
-                    this.classList.toggle('expanded');
-                }
-            });
-        });
-
-        const submenuToggleSubs = document.querySelectorAll('.submenu-toggle-sub');
-        submenuToggleSubs.forEach(function(toggle) {
-            toggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                const submenu = this.nextElementSibling;
-                if (submenu && submenu.classList.contains('submenu')) {
-                    // 关闭同级其他展开的子菜单
-                    submenuToggleSubs.forEach(function(otherToggle) {
-                        if (otherToggle !== this && otherToggle.parentElement === toggle.parentElement) {
-                            const otherSubmenu = otherToggle.nextElementSibling;
-                            if (otherSubmenu && otherSubmenu.classList.contains('submenu')) {
-                                otherSubmenu.classList.remove('expanded');
-                                otherToggle.classList.remove('expanded');
-                            }
-                        }
-                    }, this);
-                    
-                    submenu.classList.toggle('expanded');
-                    this.classList.toggle('expanded');
-                }
-            });
-        });
-
-        // 移动端导航链接点击后关闭菜单
-        const navLinks = navbarMenu.querySelectorAll('.nav-link');
-        navLinks.forEach(function(link) {
-            link.addEventListener('click', function(e) {
-                if (this.getAttribute('href') !== '#' && !this.classList.contains('submenu-toggle') && !this.classList.contains('submenu-toggle-sub')) {
-                    closeMobileMenu();
-                }
-            });
-        });
-    }
-
-    // 窗口大小改变时重置菜单状态
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 991.98) {
-            closeMobileMenu();
-            document.querySelectorAll('.submenu.expanded').forEach(function(el) {
-                el.classList.remove('expanded');
-            });
-            document.querySelectorAll('.submenu-toggle.expanded, .submenu-toggle-sub.expanded').forEach(function(el) {
-                el.classList.remove('expanded');
-            });
-        }
-    });
-});
-</script>
+<!-- 导航栏交互已迁移到 /source/js/homepage.js -->
 
 <!-- 头部模块（静态图片背景 + 弹性滚动 + 渐隐渐显） -->
 <section class="ezy__header22_9Wbn5LJN">
-        <img src="source/index_imgs/20260322-044041.jpg" class="video-bg" id="header-video" alt="">
+        <img src="source/index_imgs/20260322-044041.webp" class="video-bg" id="header-video" alt="" width="1616" height="940" loading="eager" decoding="async" fetchpriority="high">
 
         <div class="video-overlay" id="video-overlay"></div>
 
@@ -734,57 +608,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     </style>
 
-    <script>
-    const heroContent = document.getElementById('hero-content');
-    const overlay = document.getElementById('video-overlay');
-
-    let ticking = false;
-
-    function throttle(func, limit) {
-        let inThrottle;
-        return function() {
-            const args = arguments;
-            const context = this;
-            if (!inThrottle) {
-                func.apply(context, args);
-                inThrottle = true;
-                setTimeout(() => inThrottle = false, limit);
-            }
-        }
-    }
-
-    function updateHeader() {
-        const currentScroll = window.scrollY;
-        const transformAmount = currentScroll * 0.3;
-        const opacityValue = Math.max(0.3, 1 - currentScroll / 400);
-        const overlayOpacity = Math.min(0.65, currentScroll / 400 * 0.65);
-
-        heroContent.style.transform = `translate3d(0, ${transformAmount}px, 0)`;
-        heroContent.style.opacity = opacityValue;
-        overlay.style.background = `linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,${overlayOpacity}))`;
-        ticking = false;
-    }
-
-    function onScroll() {
-        if (!ticking) {
-            requestAnimationFrame(updateHeader);
-            ticking = true;
-        }
-    }
-
-    window.addEventListener('scroll', throttle(onScroll, 16), { passive: true });
-
-    document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-            window.removeEventListener('scroll', onScroll, { passive: true });
-        } else {
-            window.addEventListener('scroll', throttle(onScroll, 16), { passive: true });
-        }
-    });
-    </script>
+    <!-- Hero 交互已迁移到 /source/js/homepage.js -->
 
     <!-- 核心定位模块 -->
-    <section class="ezy__about3_xOZLftWU">
+    <section class="ezy__about3_xOZLftWU deferred-section">
       <!-- 粒子背景 -->
       <canvas id="particle-bg"></canvas>
 
@@ -1088,143 +915,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     </style>
 
-    <!-- JS: 粒子 + 卡片渐入 -->
-    <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      // 卡片渐入
-      const cards = document.querySelectorAll(".fade-card");
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-          // 使用requestAnimationFrame确保流畅动画
-          requestAnimationFrame(() => {
-            if(entry.isIntersecting){
-              setTimeout(() => {
-                entry.target.classList.add("show");
-              }, index * 200); // 增加延迟时间使动画更优雅
-            } else {
-              // 当卡片滑出视口时，移除show类以实现滑出动画
-              entry.target.classList.remove("show");
-            }
-          });
-        });
-      }, {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px" // 提前触发动画
-      });
-
-      cards.forEach(card => observer.observe(card));
-
-      // 粒子背景
-      const canvas = document.getElementById('particle-bg');
-      const ctx = canvas.getContext('2d');
-      let W = canvas.width = window.innerWidth;
-      let H = canvas.height = window.innerHeight;
-
-      const particles = [];
-      const particleCount = 100; // 减少粒子数量以提高性能
-
-      function random(min,max){return Math.random()*(max-min)+min;}
-
-      class Particle {
-        constructor(){
-          this.x = random(0,W);
-          this.y = random(0,H);
-          this.r = random(0.5, 2);
-          this.dx = random(-0.5,0.5);
-          this.dy = random(-0.5,0.5);
-          this.opacity = random(0.2, 0.8);
-          this.color = `rgba(${Math.floor(random(10, 20))}, ${Math.floor(random(150, 200))}, ${Math.floor(random(240, 255))}, ${this.opacity})`;
-        }
-        draw(){
-          ctx.beginPath();
-          ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
-          ctx.fillStyle = this.color;
-          ctx.fill();
-        }
-        update(){
-          this.x += this.dx;
-          this.y += this.dy;
-
-          // 边界检测
-          if(this.x < 0 || this.x > W) this.dx *= -1;
-          if(this.y < 0 || this.y > H) this.dy *= -1;
-
-          this.draw();
-        }
-      }
-
-      // 连接相邻粒子
-      function connect() {
-        for (let i = 0; i < particles.length; i++) {
-          for (let j = i + 1; j < particles.length; j++) {
-            const dx = particles[i].x - particles[j].x;
-            const dy = particles[i].y - particles[j].y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-
-            if (dist < 100) {
-              const opacity = 0.2 * (1 - dist / 100);
-              ctx.beginPath();
-              ctx.strokeStyle = `rgba(30, 180, 255, ${opacity})`;
-              ctx.lineWidth = 0.5;
-              ctx.moveTo(particles[i].x, particles[i].y);
-              ctx.lineTo(particles[j].x, particles[j].y);
-              ctx.stroke();
-            }
-          }
-        }
-      }
-
-      for(let i=0;i<particleCount;i++) particles.push(new Particle());
-
-      let animationId;
-
-      function animate(){
-        ctx.clearRect(0,0,W,H);
-        particles.forEach(p => p.update());
-        connect();
-        animationId = requestAnimationFrame(animate);
-      }
-
-      animate();
-
-      // 窗口大小调整
-      let resizeTimeout;
-      window.addEventListener('resize',()=>{
-        clearTimeout(resizeTimeout);
-        cancelAnimationFrame(animationId);
-
-        resizeTimeout = setTimeout(() => {
-          W = canvas.width = window.innerWidth;
-          H = canvas.height = window.innerHeight;
-
-          // 重新初始化粒子
-          particles.length = 0;
-          for(let i=0;i<particleCount;i++) particles.push(new Particle());
-
-          animate();
-        }, 100);
-      });
-
-      // 页面可见性API优化 - 页面不可见时暂停动画
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-          cancelAnimationFrame(animationId);
-        } else {
-          animate();
-        }
-      });
-    });
-    </script>
+    <!-- 模块动画已迁移到 /source/js/homepage.js -->
 
     <!-- 产品列表与需求提交模块 -->
-    <section class="product-section">
+    <section class="product-section deferred-section">
       <canvas id="product-bg" class="product-bg"></canvas>
       <div class="container">
         <div class="row align-items-center">
           <!-- 左侧图片展示 -->
           <div class="col-12 col-lg-5 mb-5 mb-lg-0">
             <div class="product-image-wrapper">
-              <img src="source/index_imgs/index_cplb01.png" alt="产品展示" class="product-image" loading="lazy">
+              <img src="source/index_imgs/index_cplb01.webp" alt="产品展示" class="product-image" loading="lazy" decoding="async" fetchpriority="low" width="1403" height="812">
             </div>
           </div>
 
@@ -1585,121 +1286,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     </style>
 
-    <script>
-    // 背景粒子
-    const canvas = document.getElementById('product-bg');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    const particles = [];
-
-    // 减少粒子数量以提高性能
-    const particleCount = 50;
-
-    for(let i=0;i<particleCount;i++){
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        r: Math.random() * 1.5 + 0.5,
-        dx: (Math.random() - 0.5) * 0.15,
-        dy: (Math.random() - 0.5) * 0.15,
-        opacity: Math.random() * 0.4 + 0.2
-      });
-    }
-
-    // 使用节流优化动画性能
-    let animationId;
-    let isVisible = true;
-
-    function animateParticles(){
-      if (!isVisible) return;
-
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(10, 170, 255, ${p.opacity})`;
-        ctx.fill();
-        p.x += p.dx;
-        p.y += p.dy;
-        if(p.x > canvas.width) p.x = 0;
-        if(p.x < 0) p.x = canvas.width;
-        if(p.y > canvas.height) p.y = 0;
-        if(p.y < 0) p.y = canvas.height;
-      });
-
-      // 降低动画帧率以提高性能
-      animationId = setTimeout(() => {
-        requestAnimationFrame(animateParticles);
-      }, 1000 / 30); // 限制为30fps
-    }
-
-    // 页面可见性API优化 - 页面不可见时暂停动画
-    document.addEventListener('visibilitychange', () => {
-      isVisible = !document.hidden;
-      if (isVisible) {
-        animateParticles();
-      } else {
-        clearTimeout(animationId);
-      }
-    });
-
-    // 窗口大小调整优化
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      }, 100);
-    });
-
-    animateParticles();
-
-    // 滚动动画优化
-    document.addEventListener('DOMContentLoaded', function() {
-      // 使用Intersection Observer优化滚动动画
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const card = entry.target;
-            const delay = card.dataset.delay || 0;
-
-            // 使用requestAnimationFrame优化动画性能
-            requestAnimationFrame(() => {
-              setTimeout(() => {
-                card.classList.add('visible');
-              }, delay);
-            });
-          } else {
-            // 当元素滑出视口时，移除visible类以实现滑出动画
-            entry.target.classList.remove('visible');
-          }
-        });
-      }, {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
-      });
-
-      document.querySelectorAll('.scroll-animate').forEach(card => {
-        observer.observe(card);
-      });
-    });
-
-    // AOS滚动动画
-    if (typeof AOS !== 'undefined') {
-      AOS.init({
-        duration: 800,
-        easing: 'ease-out-back',
-        once: true
-      });
-    }
-    </script>
+    <!-- 模块动画已迁移到 /source/js/homepage.js -->
 
 
 
 <!-- 项目展示模块（苹果液态毛玻璃风格重构版） -->
-<section class="project-section">
+<section class="project-section deferred-section">
     <!-- 背景粒子层 -->
     <canvas id="project-bg" class="project-bg"></canvas>
 
@@ -2215,229 +1807,10 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 </style>
 
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    // 动态加载项目数据
-    fetch('/source/data/projects.json')
-        .then(response => response.json())
-        .then(data => {
-            const carouselTrack = document.getElementById('projectCarousel');
-            if (carouselTrack) {
-                // 生成项目卡片HTML
-                let projectCardsHTML = '';
-
-                // 添加项目卡片（重复两次以实现无缝循环）
-                for (let i = 0; i < 2; i++) {
-                    data.projects.forEach(project => {
-                        projectCardsHTML += `
-                        <div class="project-card">
-                            <div class="project-card-inner">
-                                <div class="project-img-wrapper">
-                                    <img src="${project.image}" alt="${project.title}" class="project-img">
-                                    <div class="card-date">${project.date.day}<br>${project.date.month}<br>${project.date.year}</div>
-                                </div>
-                                <div class="project-content">
-                                    <p class="project-author">By <span class="author-name">${project.author}</span></p>
-                                    <h4 class="project-name">${project.title}</h4>
-                                    <p class="project-description">
-                                        ${project.description}
-                                    </p>
-                                    <a href="${project.link}" class="btn project-btn">
-                                        查看详情 <i class="fas fa-arrow-right ms-2"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>`;
-                    });
-                }
-
-                // 插入HTML到轮播轨道
-                carouselTrack.innerHTML = projectCardsHTML;
-            }
-        })
-        .catch(error => {
-            console.error('加载项目数据时出错:', error);
-        });
-
-    // 粒子背景
-    const canvas = document.getElementById('project-bg');
-    const ctx = canvas.getContext('2d');
-
-    function resizeCanvas(){
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-
-    resizeCanvas();
-    window.addEventListener('resize', () => {
-        // 使用节流优化resize事件
-        clearTimeout(window.resizeTimeout);
-        window.resizeTimeout = setTimeout(resizeCanvas, 100);
-    });
-
-    const particles = [];
-    const particleCount = 60; // 减少粒子数量以提高性能
-
-    for(let i = 0; i < particleCount; i++){
-        particles.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            r: Math.random() * 1.5 + 0.5,
-            dx: (Math.random() - 0.5) * 0.2,
-            dy: (Math.random() - 0.5) * 0.2,
-            opacity: Math.random() * 0.5 + 0.3,
-            twinkleSpeed: Math.random() * 0.01 + 0.005
-        });
-    }
-
-    // 使用节流优化动画性能
-    let animationId;
-    let isVisible = true;
-
-    function animateParticles(){
-        if (!isVisible) return;
-
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(p => {
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(100, 200, 255, ${p.opacity})`;
-            ctx.fill();
-            p.x += p.dx;
-            p.y += p.dy;
-
-            if(p.x > canvas.width) p.x = 0;
-            if(p.x < 0) p.x = canvas.width;
-            if(p.y > canvas.height) p.y = 0;
-            if(p.y < 0) p.y = canvas.height;
-
-            p.opacity += p.twinkleSpeed;
-            if(p.opacity >= 0.8 || p.opacity <= 0.3){
-                p.twinkleSpeed *= -1;
-            }
-        });
-
-        // 降低动画帧率以提高性能
-        animationId = setTimeout(() => {
-            requestAnimationFrame(animateParticles);
-        }, 1000 / 30); // 限制为30fps
-    }
-
-    // 页面可见性API优化 - 页面不可见时暂停动画
-    document.addEventListener('visibilitychange', () => {
-        isVisible = !document.hidden;
-        if (isVisible) {
-            animateParticles();
-        } else {
-            clearTimeout(animationId);
-        }
-    });
-
-    animateParticles();
-
-    // 触屏滑动 + 惯性
-    const track = document.querySelector('.carousel-track');
-    let isDragging = false;
-    let startX = 0;
-    let currentTranslate = 0;
-    let prevTranslate = 0;
-    let animationID;
-    let velocity = 0;
-    let lastX = 0;
-
-    const getPositionX = (e) => e.touches ? e.touches[0].clientX : e.clientX;
-
-    const animation = () => {
-        track.style.transform = `translateX(${currentTranslate}px)`;
-        if(!isDragging){
-            velocity *= 0.95;
-            if(Math.abs(velocity) > 0.5){
-                currentTranslate += velocity;
-                requestAnimationFrame(animation);
-            }
-        } else {
-            requestAnimationFrame(animation);
-        }
-    }
-
-    // 触屏事件
-    track.addEventListener('touchstart', (e) => {
-        isDragging = true;
-        startX = getPositionX(e) - prevTranslate;
-        velocity = 0;
-        lastX = getPositionX(e);
-        track.style.animationPlayState = 'paused';
-        cancelAnimationFrame(animationID);
-    });
-
-    track.addEventListener('touchmove', (e) => {
-        if(!isDragging) return;
-        const x = getPositionX(e);
-        const dx = x - lastX;
-        velocity = dx;
-        currentTranslate = x - startX;
-        lastX = x;
-        animationID = requestAnimationFrame(animation);
-    });
-
-    track.addEventListener('touchend', () => {
-        isDragging = false;
-        prevTranslate = currentTranslate;
-        requestAnimationFrame(animation);
-        setTimeout(()=>track.style.animationPlayState = 'running', 100); // 自动滚动恢复
-    });
-
-    track.addEventListener('touchcancel', () => {
-        isDragging = false;
-        prevTranslate = currentTranslate;
-        requestAnimationFrame(animation);
-        setTimeout(()=>track.style.animationPlayState = 'running', 100);
-    });
-
-    // 鼠标拖动支持
-    track.addEventListener('mousedown', (e) => {
-        isDragging = true;
-        startX = getPositionX(e) - prevTranslate;
-        velocity = 0;
-        lastX = getPositionX(e);
-        track.style.animationPlayState = 'paused';
-        cancelAnimationFrame(animationID);
-        track.style.cursor = 'grabbing';
-    });
-
-    track.addEventListener('mousemove', (e) => {
-        if(!isDragging) return;
-        const x = getPositionX(e);
-        const dx = x - lastX;
-        velocity = dx;
-        currentTranslate = x - startX;
-        lastX = x;
-        animationID = requestAnimationFrame(animation);
-    });
-
-    track.addEventListener('mouseup', () => {
-        isDragging = false;
-        prevTranslate = currentTranslate;
-        requestAnimationFrame(animation);
-        setTimeout(()=>track.style.animationPlayState = 'running', 100);
-        track.style.cursor = 'grab';
-    });
-
-    track.addEventListener('mouseleave', () => {
-        isDragging = false;
-        prevTranslate = currentTranslate;
-        requestAnimationFrame(animation);
-        setTimeout(()=>track.style.animationPlayState = 'running', 100);
-        track.style.cursor = 'grab';
-    });
-
-    // 添加鼠标悬停提示
-    track.style.cursor = 'grab';
-});
-</script>
+<!-- 项目模块交互已迁移到 /source/js/homepage.js -->
 
     <!-- 近期动态模块（苹果液态毛玻璃风格） -->
-    <section class="news-section">
+    <section class="news-section deferred-section">
       <canvas id="news-bg" class="news-bg"></canvas>
 
       <div class="container">
@@ -2683,207 +2056,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     </style>
 
-    <script src="/leadership/indexnews/js/newsConfig.js"></script>
-    <script>
-    // 背景粒子动画
-    document.addEventListener('DOMContentLoaded', function() {
-      const canvas = document.getElementById('news-bg');
-      const ctx = canvas.getContext('2d');
-
-      function resizeCanvas() {
-        canvas.width = canvas.parentElement.clientWidth;
-        canvas.height = canvas.parentElement.clientHeight;
-      }
-
-      resizeCanvas();
-      window.addEventListener('resize', resizeCanvas);
-
-      const particles = [];
-      const particleCount = 60;
-
-      for(let i = 0; i < particleCount; i++) {
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          r: Math.random() * 1.5 + 0.5,
-          dx: (Math.random() - 0.5) * 0.2,
-          dy: (Math.random() - 0.5) * 0.2,
-          opacity: Math.random() * 0.5 + 0.3,
-          twinkleSpeed: Math.random() * 0.01 + 0.005
-        });
-      }
-
-      let animationId;
-      let isVisible = true;
-
-      function animateParticles() {
-        if (!isVisible) return;
-
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(p => {
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(100, 200, 255, ${p.opacity})`;
-          ctx.fill();
-          p.x += p.dx;
-          p.y += p.dy;
-
-          if(p.x > canvas.width) p.x = 0;
-          if(p.x < 0) p.x = canvas.width;
-          if(p.y > canvas.height) p.y = 0;
-          if(p.y < 0) p.y = canvas.height;
-
-          p.opacity += p.twinkleSpeed;
-          if(p.opacity >= 0.8 || p.opacity <= 0.3) {
-            p.twinkleSpeed *= -1;
-          }
-        });
-
-        animationId = setTimeout(() => {
-          requestAnimationFrame(animateParticles);
-        }, 1000 / 30);
-      }
-
-      document.addEventListener('visibilitychange', () => {
-        isVisible = !document.hidden;
-        if (isVisible) {
-          animateParticles();
-        } else {
-          clearTimeout(animationId);
-        }
-      });
-
-      animateParticles();
-    });
-
-    // 新闻轮播
-    document.addEventListener("DOMContentLoaded", ()=>{
-      const carousel = document.querySelector(".news-carousel");
-      const dotsContainer = document.querySelector(".news-dots");
-
-      let currentIndex = 0;
-      let autoSlideInterval;
-      let visibleCards = window.innerWidth >= 768 ? 3 : 1;
-
-      function setVisibleCards() {
-        visibleCards = window.innerWidth >= 768 ? 3 : 1;
-      }
-
-      // 生成卡片 & 小圆点
-      if(typeof newsData !== 'undefined' && newsData.length > 0) {
-        newsData.forEach((item, index)=>{
-          const card = document.createElement("div");
-          card.className = "news-card";
-          card.innerHTML = `
-            <div class="news-card-inner">
-              <img src="${item.thumb}" alt="${item.title}" class="news-thumb">
-              <h5>${item.title}</h5>
-              <time>${item.date}</time>
-              <p>${item.desc}</p>
-              <a href="${item.link}" class="read-more-btn">阅读更多</a>
-            </div>
-          `;
-          carousel.appendChild(card);
-
-          const dot = document.createElement("span");
-          dot.className = "dot";
-          dot.dataset.index = index;
-          dotsContainer.appendChild(dot);
-        });
-
-        const cards = document.querySelectorAll(".news-card");
-        const dots = document.querySelectorAll(".dot");
-
-        function updateDisplay(index){
-          const total = cards.length;
-          const offset = index * (100/visibleCards);
-          carousel.style.transition = 'transform 0.5s ease';
-          carousel.style.transform = `translateX(-${offset}%)`;
-          cards.forEach((card,i)=>card.classList.toggle("active", i>=index && i<index+visibleCards));
-          dots.forEach((d,i)=>d.classList.toggle("active", i>=index && i<index+visibleCards));
-        }
-
-        function goTo(index){
-          currentIndex = index;
-          updateDisplay(currentIndex);
-        }
-
-        dots.forEach(dot=>{
-          dot.addEventListener("click", ()=>{
-            const idx = parseInt(dot.dataset.index);
-            goTo(idx);
-            pauseAutoSlide();
-            resumeAutoSlide();
-          });
-        });
-
-        function startAutoSlide() {
-          clearInterval(autoSlideInterval);
-          autoSlideInterval = setInterval(()=>{
-            currentIndex = (currentIndex + 1) > (cards.length-visibleCards) ? 0 : currentIndex + 1;
-            updateDisplay(currentIndex);
-          }, 5000);
-        }
-
-        function pauseAutoSlide() {
-          clearInterval(autoSlideInterval);
-        }
-
-        function resumeAutoSlide() {
-          startAutoSlide();
-        }
-
-        window.addEventListener("resize", ()=>{
-          setVisibleCards();
-          updateDisplay(currentIndex);
-        });
-
-        // 拖动滑动切换
-        let isDragging = false, startX = 0, currentTranslate = 0;
-        carousel.addEventListener("mousedown", startDrag);
-        carousel.addEventListener("touchstart", startDrag);
-        carousel.addEventListener("mousemove", dragMove);
-        carousel.addEventListener("touchmove", dragMove);
-        carousel.addEventListener("mouseup", endDrag);
-        carousel.addEventListener("mouseleave", endDrag);
-        carousel.addEventListener("touchend", endDrag);
-
-        function startDrag(e){
-          pauseAutoSlide();
-          isDragging = true;
-          startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-          currentTranslate = -currentIndex * (carousel.offsetWidth/visibleCards);
-        }
-
-        function dragMove(e){
-          if(!isDragging) return;
-          const x = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-          const dx = x - startX;
-          carousel.style.transition = 'none';
-          carousel.style.transform = `translateX(${currentTranslate + dx}px)`;
-        }
-
-        function endDrag(e){
-          if(!isDragging) return;
-          isDragging = false;
-          const x = e.type.includes('touch') ? e.changedTouches[0].clientX : e.clientX;
-          const dx = x - startX;
-          if(dx < -50 && currentIndex < cards.length-visibleCards) currentIndex++;
-          else if(dx > 50 && currentIndex > 0) currentIndex--;
-          carousel.style.transition = 'transform 0.5s ease';
-          updateDisplay(currentIndex);
-          resumeAutoSlide();
-        }
-
-        setVisibleCards();
-        updateDisplay(currentIndex);
-        startAutoSlide();
-      }
-    });
-    </script>
+    <script defer src="/leadership/indexnews/js/newsConfig.js"></script>
+    <!-- 新闻模块交互已迁移到 /source/js/homepage.js -->
 
     <!-- 团队成员模块（全屏苹果风格 + 动态背景 + 进场缩放 + 依次延迟） -->
-    <section class="team-section-apple">
+    <section class="team-section-apple deferred-section">
       <div class="background-overlay"></div>
       <div class="container team-container-apple">
         <div class="row text-center">
@@ -2895,7 +2072,7 @@ document.addEventListener('DOMContentLoaded', function () {
           <!-- 团队成员卡片 -->
           <div class="col-12 col-md-6 col-lg-4">
             <div class="team-card-apple">
-              <img src="source/index_imgs/touxiang/xuzhongxin_index_01.jpg" alt="徐中信" class="team-avatar-apple" loading="lazy">
+              <img src="source/index_imgs/touxiang/xuzhongxin_index_01.webp" alt="徐中信" class="team-avatar-apple" loading="lazy" decoding="async" fetchpriority="low" width="1407" height="1279">
               <h5>徐中信</h5>
               <p>创始人</p>
             </div>
@@ -2903,7 +2080,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
           <div class="col-12 col-md-6 col-lg-4">
             <div class="team-card-apple">
-              <img src="source/index_imgs/touxiang/chenziyi_index_01.jpg" alt="陈紫怡" class="team-avatar-apple" loading="lazy">
+              <img src="source/index_imgs/touxiang/chenziyi_index_01.webp" alt="陈紫怡" class="team-avatar-apple" loading="lazy" decoding="async" fetchpriority="low" width="1279" height="1281">
               <h5>陈紫怡</h5>
               <p>创始人</p>
             </div>
@@ -2911,7 +2088,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
           <div class="col-12 col-md-6 col-lg-4">
             <div class="team-card-apple">
-              <img src="source/index_imgs/touxiang/chenshiyi_index_01.jpg" alt="陈诗怡" class="team-avatar-apple" loading="lazy">
+              <img src="source/index_imgs/touxiang/chenshiyi_index_01.webp" alt="陈诗怡" class="team-avatar-apple" loading="lazy" decoding="async" fetchpriority="low" width="1200" height="1203">
               <h5>陈诗怡</h5>
               <p>大数据及信息安全工程师</p>
             </div>
@@ -2919,7 +2096,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
           <div class="col-12 col-md-6 col-lg-4">
             <div class="team-card-apple">
-              <img src="source/index_imgs/touxiang/xiaohuahong_index_01.jpg" alt="肖骅鸿" class="team-avatar-apple" loading="lazy">
+              <img src="source/index_imgs/touxiang/xiaohuahong_index_01.webp" alt="肖骅鸿" class="team-avatar-apple" loading="lazy" decoding="async" fetchpriority="low" width="940" height="940">
               <h5>肖骅鸿</h5>
               <p>信息安全工程师</p>
             </div>
@@ -2927,7 +2104,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
           <div class="col-12 col-md-6 col-lg-4">
             <div class="team-card-apple">
-              <img src="source/index_imgs/touxiang/wangyueyang_index_01.jpg" alt="王越阳" class="team-avatar-apple" loading="lazy">
+              <img src="source/index_imgs/touxiang/wangyueyang_index_01.webp" alt="王越阳" class="team-avatar-apple" loading="lazy" decoding="async" fetchpriority="low" width="1220" height="1220">
               <h5>王越阳</h5>
               <p>软件开发工程师</p>
             </div>
@@ -2935,7 +2112,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
           <div class="col-12 col-md-6 col-lg-4">
             <div class="team-card-apple">
-              <img src="source/index_imgs/touxiang/pengqianhui_index_01.jpg" alt="彭芊惠" class="team-avatar-apple" loading="lazy">
+              <img src="source/index_imgs/touxiang/pengqianhui_index_01.webp" alt="彭芊惠" class="team-avatar-apple" loading="lazy" decoding="async" fetchpriority="low" width="1260" height="1238">
               <h5>彭芊惠</h5>
               <p>新媒体运营</p>
             </div>
@@ -3063,29 +2240,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     </style>
 
-    <script>
-    /* 进场动画触发 + 依次延迟 */
-    document.addEventListener("DOMContentLoaded", () => {
-      const elements = document.querySelectorAll(
-        ".team-heading-apple, .team-subheading-apple, .team-card-apple"
-      );
-
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if(entry.isIntersecting){
-            const index = Array.from(elements).indexOf(entry.target);
-            entry.target.style.transitionDelay = `${index * 0.1}s`;
-            entry.target.classList.add("visible");
-          }
-        });
-      }, { threshold: 0.2 });
-
-      elements.forEach(el => observer.observe(el));
-    });
-    </script>
+    <!-- 团队模块交互已迁移到 /source/js/homepage.js -->
 
     <!-- 发展历程模块（苹果液态毛玻璃风格） -->
-    <section id="development-history" class="history-section">
+    <section id="development-history" class="history-section deferred-section">
       <!-- 背景粒子层 -->
       <canvas id="history-bg" class="history-bg"></canvas>
 
@@ -3411,191 +2569,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     </style>
 
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const items = document.querySelectorAll('.timeline-item');
-
-      // 滚动入场动画 + 上下滑动切换动画
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach((entry, index) => {
-          if(entry.isIntersecting){
-            // 添加延迟以创建依次出现的效果
-            setTimeout(() => {
-              entry.target.classList.add('visible');
-            }, index * 200);
-          } else {
-            entry.target.classList.remove('visible');
-          }
-        });
-      }, {
-        threshold: 0.2,
-        rootMargin: "0px 0px -50px 0px"
-      });
-
-      items.forEach(item => observer.observe(item));
-
-      // 背景粒子动效
-      const canvas = document.getElementById('history-bg');
-      const ctx = canvas.getContext('2d');
-
-      function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      }
-
-      resizeCanvas();
-      window.addEventListener('resize', resizeCanvas);
-
-      const particles = [];
-      const particleCount = 80;
-
-      for(let i = 0; i < particleCount; i++){
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          r: Math.random() * 2 + 1,
-          dx: (Math.random() - 0.5) * 0.3,
-          dy: (Math.random() - 0.5) * 0.3,
-          opacity: Math.random() * 0.5 + 0.3,
-          twinkleSpeed: Math.random() * 0.01 + 0.005
-        });
-      }
-
-      let animationId;
-      let isVisible = true;
-
-      function animateParticles(){
-        if (!isVisible) return;
-
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(p => {
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(100, 200, 255, ${p.opacity})`;
-          ctx.fill();
-          p.x += p.dx;
-          p.y += p.dy;
-
-          if(p.x > canvas.width) p.x = 0;
-          if(p.x < 0) p.x = canvas.width;
-          if(p.y > canvas.height) p.y = 0;
-          if(p.y < 0) p.y = canvas.height;
-
-          p.opacity += p.twinkleSpeed;
-          if(p.opacity >= 0.8 || p.opacity <= 0.3){
-            p.twinkleSpeed *= -1;
-          }
-        });
-
-        animationId = setTimeout(() => {
-          requestAnimationFrame(animateParticles);
-        }, 1000 / 30);
-      }
-
-      document.addEventListener('visibilitychange', () => {
-        isVisible = !document.hidden;
-        if (isVisible) {
-          animateParticles();
-        } else {
-          clearTimeout(animationId);
-        }
-      });
-
-      animateParticles();
-    });
-    </script>
+    <!-- 历程模块交互已迁移到 /source/js/homepage.js -->
 
 
     <!-- 统一引用全局页脚 -->
     <footer id="site-footer"></footer>
-    <script src="/source/footer.js"></script>
-
-    <!-- Required scripts -->
-    <!-- 必需的JavaScript库 -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <!-- Popper.js用于处理Bootstrap的弹出框和工具提示 -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    <!-- Bootstrap JavaScript框架 -->
-    <!-- 已移除jQuery依赖，使用原生JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js" integrity="sha512-rpLlll167T5LJHwp0waJCh3ZRf7pO6IT1+LZOhAyP6phAirwchClbTZV3iqL3BMrVxIYRbzGTpli4rfxsCK6Vw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- Font Awesome图标库的JavaScript文件 -->
-    <script src="source/js/utils.js"></script>
-    <script>
-        // 滚动动画效果 - 原生JS实现
-        document.addEventListener('DOMContentLoaded', function() {
-            const animatedElements = '.ezy__about3_xOZLftWU .card, .project-card, .cta-box';
-
-            function handleScroll() {
-                document.querySelectorAll(animatedElements).forEach(function(el) {
-                    var rect = el.getBoundingClientRect();
-                    var viewportTop = 0;
-                    var viewportBottom = window.innerHeight;
-
-                    if (rect.bottom > viewportTop && rect.top < viewportBottom) {
-                        if (!el.classList.contains('animate__animated')) {
-                            el.classList.add('animate__animated', 'animate__fadeInUp');
-                        }
-                    }
-                });
-            }
-
-            window.addEventListener('scroll', Utils.throttle(handleScroll, 100), { passive: true });
-            handleScroll();
-        });
-    </script>
-<script>
-    // 动态加载项目数据
-    document.addEventListener('DOMContentLoaded', function() {
-        fetch('/data/projects.json')
-            .then(response => response.json())
-            .then(data => {
-                const carousel = document.getElementById('projectCarousel');
-                if (!carousel) return;
-
-                // 清空现有内容
-                carousel.innerHTML = '';
-
-                // 生成项目卡片
-                data.projects.forEach(project => {
-                    const projectCard = document.createElement('div');
-                    projectCard.className = 'project-card';
-                    projectCard.innerHTML = `
-                        <div class="project-card-inner">
-                            <div class="project-img-wrapper">
-                                <img src="${project.image}" alt="${project.title}" class="project-img">
-                                <div class="card-date">${project.date.day}<br>${project.date.month}<br>${project.date.year}</div>
-                            </div>
-                            <div class="project-content">
-                                <p class="project-author">By <span class="author-name">${project.author}</span></p>
-                                <h4 class="project-name">${project.title}</h4>
-                                <p class="project-description">
-                                    ${project.description}
-                                </p>
-                                <a href="${project.link}" class="btn project-btn">
-                                    查看详情 <i class="fas fa-arrow-right ms-2"></i>
-                                </a>
-                            </div>
-                        </div>
-                    `;
-                    carousel.appendChild(projectCard);
-                });
-
-                // 克隆所有卡片以实现无缝循环
-                const cards = Array.from(carousel.children);
-                cards.forEach(card => {
-                    const clone = card.cloneNode(true);
-                    carousel.appendChild(clone);
-                });
-            })
-            .catch(error => {
-                console.error('加载项目数据失败:', error);
-            });
-    });
-</script>
-<script
-async
-defer
-src="https://chats.sec.hn.cn/chat/api/embed?protocol=https&host=chats.sec.hn.cn&token=20b9bb4261b8ee7c">
-</script>
+    <script defer src="/source/compat.js"></script>
+    <script defer src="/source/js/homepage.js"></script>
 </body>
 </html>
