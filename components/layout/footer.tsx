@@ -5,8 +5,8 @@ export default function Footer() {
   return (
     <footer className="mt-20 border-t border-white/50 bg-slate-950 text-slate-200">
       <div className="site-shell py-14">
-        <div className="grid gap-10 lg:grid-cols-[1.3fr_repeat(4,1fr)]">
-          <div className="space-y-5">
+        <div className="flex flex-col gap-12 xl:flex-row xl:items-start xl:justify-between">
+          <div className="space-y-5 xl:w-[280px] xl:flex-none">
             <div>
               <p className="text-sm uppercase tracking-[0.28em] text-cyan-300">HK XSEC</p>
               <h2 className="heading-display mt-3 text-3xl font-semibold text-white">{siteConfig.shortName}</h2>
@@ -22,25 +22,30 @@ export default function Footer() {
             </div>
           </div>
 
-          {footerGroups.map((group) => (
-            <div key={group.title}>
-              <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-white">{group.title}</h3>
-              <ul className="mt-5 space-y-3 text-sm text-slate-400">
-                {group.links.map((link) => (
-                  <li key={link.href}>
-                    <SmartLink href={link.href} className="transition hover:text-white">
-                      {link.label}
-                    </SmartLink>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <div className="grid flex-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6">
+            {footerGroups.map((group) => (
+              <div key={group.title} className="min-w-0">
+                <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-white">{group.title}</h3>
+                <ul className="mt-5 space-y-3 text-sm leading-6 text-slate-400">
+                  {group.links.map((link) => (
+                    <li key={link.href}>
+                      <SmartLink href={link.href} className="transition hover:text-white">
+                        {link.label}
+                      </SmartLink>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-6 text-sm text-slate-500 md:flex-row md:items-center md:justify-between">
-          <p>© 2025—2026 sec.hn.cn 版权所有</p>
-          <div className="flex flex-wrap gap-4">
+          <div className="space-y-2">
+            <p>{siteConfig.copyright}</p>
+            <p>{siteConfig.ipv6Text}</p>
+          </div>
+          <div className="flex flex-wrap gap-x-4 gap-y-3">
             <SmartLink href={siteConfig.icpLink} className="transition hover:text-white">
               {siteConfig.icpText}
             </SmartLink>

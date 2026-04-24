@@ -16,24 +16,24 @@ export default function EmbedShell({ src, title, note }: EmbedShellProps) {
 
   return (
     <section className="site-shell">
-      <div className="overflow-hidden rounded-[36px] border border-slate-900/10 bg-white shadow-glass">
-        <div className="flex items-center justify-between gap-4 border-b border-slate-200 bg-slate-950 px-6 py-4 text-white">
+      <div className="rainbow-panel overflow-hidden">
+        <div className="flex items-center justify-between gap-4 border-b border-white/80 bg-white/70 px-6 py-4 text-slate-950">
           <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-cyan-200">Embedded workspace</p>
-            <h2 className="mt-2 text-lg font-semibold">{title}</h2>
+            <p className="text-xs uppercase tracking-[0.2em] text-blue-700">Embedded workspace</p>
+            <h2 className="mt-2 text-lg font-semibold text-slate-950">{title}</h2>
           </div>
           {note ? (
-            <div className="hidden max-w-sm items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-slate-300 md:flex">
-              <ShieldCheck className="h-4 w-4 text-cyan-300" />
+            <div className="hidden max-w-sm items-center gap-2 rounded-full border border-blue-100 bg-white/85 px-4 py-2 text-xs text-slate-600 md:flex">
+              <ShieldCheck className="h-4 w-4 text-blue-600" />
               <span>{note}</span>
             </div>
           ) : null}
         </div>
 
-        <div className="relative min-h-[70vh] bg-slate-100">
+        <div className="relative min-h-[70vh] bg-white/60">
           {!loaded && visible ? (
-            <div className="absolute inset-0 z-10 flex items-center justify-center bg-slate-950/45 backdrop-blur-sm">
-              <div className="w-[min(360px,92%)] rounded-[28px] border border-white/15 bg-white/90 p-8 text-center shadow-glass">
+            <div className="absolute inset-0 z-10 flex items-center justify-center bg-white/55 backdrop-blur-sm">
+              <div className="w-[min(360px,92%)] rounded-[28px] border border-white/80 bg-white/92 p-8 text-center shadow-glass">
                 <div className="mx-auto h-10 w-10 animate-spin rounded-full border-4 border-slate-200 border-t-blue-600" />
                 <h3 className="mt-5 text-lg font-semibold text-slate-950">正在载入外部表单</h3>
                 <p className="mt-3 text-sm leading-7 text-slate-600">

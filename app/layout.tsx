@@ -7,10 +7,10 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.domain),
   title: {
-    default: `${siteConfig.shortName} | 基础设施、软件与安全能力`,
+    default: "海口希灵赛斯：一家专注于信息化解决方案的科技公司",
     template: `%s | ${siteConfig.shortName}`,
   },
-  description: siteConfig.description,
+  description: siteConfig.seoDescription,
   keywords: [
     "海口希灵赛斯",
     "信息化解决方案",
@@ -21,8 +21,8 @@ export const metadata: Metadata = {
     "企业服务",
   ],
   openGraph: {
-    title: `${siteConfig.shortName} | 信息化与安全解决方案`,
-    description: siteConfig.description,
+    title: siteConfig.name,
+    description: siteConfig.seoDescription,
     url: siteConfig.domain,
     siteName: siteConfig.name,
     type: "website",
@@ -36,8 +36,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.shortName} | 信息化与安全解决方案`,
-    description: siteConfig.description,
+    title: siteConfig.name,
+    description: siteConfig.seoDescription,
     images: [siteConfig.heroImage],
   },
 };

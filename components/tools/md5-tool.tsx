@@ -70,8 +70,8 @@ export default function Md5Tool() {
           <div>文件大小：{fileSize || "-"}</div>
           <div>状态：{loading ? "计算中..." : hash ? "已完成" : "等待文件"}</div>
         </div>
-        <div className="mt-6 rounded-[24px] border border-slate-200 bg-slate-950 p-4 text-sm text-slate-100">
-          {error ? <span className="text-rose-300">{error}</span> : hash || "MD5 结果会显示在这里。"}
+        <div className="soft-output-panel mt-6 p-4 text-sm">
+          {error ? <span className="text-rose-500">{error}</span> : hash || "MD5 结果会显示在这里。"}
         </div>
         {hash ? (
           <div className="mt-5">

@@ -2,18 +2,18 @@ import type { NavItem } from "@/lib/data/types";
 
 export const navigation: NavItem[] = [
   {
-    label: "Home",
+    label: "首页",
     href: "/",
-    description: "品牌首页与核心能力概览",
+    description: "首页与核心内容总览",
     children: [
       { label: "精选案例", href: "/projects/" },
       { label: "最新动态", href: "/news/" },
     ],
   },
   {
-    label: "About",
+    label: "关于我们",
     href: "/about/",
-    description: "公司介绍、管理层与发展历程",
+    description: "公司介绍、团队与发展历程",
     children: [
       { label: "关于我们", href: "/about/" },
       { label: "管理团队", href: "/company/leadership/" },
@@ -21,7 +21,7 @@ export const navigation: NavItem[] = [
     ],
   },
   {
-    label: "Projects",
+    label: "项目案例",
     href: "/projects/",
     description: "项目案例与交付成果",
     children: [
@@ -31,7 +31,7 @@ export const navigation: NavItem[] = [
     ],
   },
   {
-    label: "Partners",
+    label: "合作伙伴",
     href: "/partners/",
     description: "合作生态、伙伴入口与联合交付",
     children: [
@@ -41,7 +41,7 @@ export const navigation: NavItem[] = [
     ],
   },
   {
-    label: "Contact",
+    label: "联系我们",
     href: "/contact/",
     description: "需求、联系、工具与下载入口",
     children: [

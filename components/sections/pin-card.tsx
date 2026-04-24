@@ -20,19 +20,19 @@ export default function PinCard({ pin, note }: PinCardProps) {
   }
 
   return (
-    <div className="rounded-[28px] border border-white/15 bg-white/8 p-6 text-white backdrop-blur">
-      <p className="text-xs uppercase tracking-[0.22em] text-cyan-200">Team PIN</p>
-      <h3 className="mt-4 text-2xl font-semibold">iOA 入网 PIN</h3>
-      <p className="mt-3 text-sm leading-7 text-slate-300">{note}</p>
+    <div className="glass-card p-6 text-slate-950">
+      <p className="text-xs uppercase tracking-[0.22em] text-blue-700">Team PIN</p>
+      <h3 className="mt-4 text-2xl font-semibold text-slate-950">iOA 入网 PIN</h3>
+      <p className="mt-3 text-sm leading-7 text-slate-600">{note}</p>
       <div className="mt-6 flex flex-wrap items-center gap-3">
-        <div className="rounded-2xl border border-white/10 bg-slate-950/60 px-5 py-3 text-2xl font-semibold tracking-[0.35em] text-cyan-200">
+        <div className="soft-output-panel px-5 py-3 text-2xl font-semibold tracking-[0.35em] text-blue-700">
           {visible ? pin : "••••••"}
         </div>
-        <Button variant="outline" className="border-white/20 bg-white/5 text-white hover:bg-white/10 hover:text-white" onClick={() => setVisible((value) => !value)}>
+        <Button variant="outline" onClick={() => setVisible((value) => !value)}>
           {visible ? <EyeOff className="mr-2 h-4 w-4" /> : <Eye className="mr-2 h-4 w-4" />}
           {visible ? "隐藏" : "查看"}
         </Button>
-        <Button variant="outline" className="border-white/20 bg-white/5 text-white hover:bg-white/10 hover:text-white" onClick={handleCopy}>
+        <Button variant="outline" onClick={handleCopy}>
           <Copy className="mr-2 h-4 w-4" />
           {copied ? "已复制" : "复制 PIN"}
         </Button>

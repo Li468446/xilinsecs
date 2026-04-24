@@ -60,12 +60,12 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
           { label: "返回案例列表", href: "/projects/", variant: "outline" },
         ]}
         aside={
-          <div className="rounded-[28px] border border-white/15 bg-white/8 p-6 text-white backdrop-blur">
-            <p className="text-xs uppercase tracking-[0.22em] text-cyan-200">Client</p>
-            <p className="mt-3 text-lg font-semibold">{project.client}</p>
+          <div className="glass-card p-6 text-slate-950">
+            <p className="text-xs uppercase tracking-[0.22em] text-blue-700">Client</p>
+            <p className="mt-3 text-lg font-semibold text-slate-950">{project.client}</p>
             <div className="mt-5 flex flex-wrap gap-2">
               {project.tags?.map((tag) => (
-                <span key={tag} className="rounded-full bg-white/10 px-3 py-1 text-xs uppercase tracking-[0.16em] text-slate-200">
+                <span key={tag} className="rounded-full bg-blue-50 px-3 py-1 text-xs uppercase tracking-[0.16em] text-blue-700">
                   {tag}
                 </span>
               ))}
@@ -101,7 +101,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
         <div className="site-shell">
           <Reveal>
             <SectionHeading
-              kicker="Gallery"
+              kicker="项目画面"
               title="项目画面"
               description="保留原项目中的关键界面或环境截图，便于快速理解交付结果。"
             />

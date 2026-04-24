@@ -108,7 +108,7 @@ export const projects: ProjectRecord[] = [
     client: "HK XSEC 自有站点",
     year: "2026",
     services: ["信息架构", "品牌设计", "前端重构", "静态部署"],
-    stack: ["Next.js", "Tailwind CSS", "EdgeOne Pages", "Typed Content"],
+    stack: ["Next.js", "Tailwind CSS", "静态部署", "内容模型"],
     overview: [
       "项目目标是摆脱分散旧页和重复逻辑，建立更现代、清晰、可维护的品牌站。",
       "同时兼顾动态详情路由、工具页本地实现、SEO 和静态导出。",
@@ -124,6 +124,6 @@ export const projects: ProjectRecord[] = [
       "/leadership/indexnews/images/news/post4.webp",
     ],
     cta: { label: "发起类似重构", href: "/contact/request/" },
-    tags: ["重构", "品牌站", "EdgeOne"],
+    tags: ["重构", "品牌站", "静态部署"],
   },
 ];

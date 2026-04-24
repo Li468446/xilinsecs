@@ -49,8 +49,8 @@ export default function Header() {
             <SmartLink href="/news/" className="text-sm font-medium text-slate-600 transition hover:text-slate-950">
               企业动态
             </SmartLink>
-            <SmartLink href="/contact/" className={buttonStyles({ size: "md" })}>
-              Start a project
+            <SmartLink href={siteConfig.wecomLink} className={buttonStyles({ size: "md" })}>
+              与客户经理对话
             </SmartLink>
           </div>
 
@@ -96,8 +96,8 @@ export default function Header() {
                 ) : null}
               </div>
             ))}
-            <SmartLink href="/contact/" className={cn(buttonStyles({ size: "md" }), "mt-4 w-full")} onClick={() => setMobileOpen(false)}>
-              Start a project
+            <SmartLink href={siteConfig.wecomLink} className={cn(buttonStyles({ size: "md" }), "mt-4 w-full")} onClick={() => setMobileOpen(false)}>
+              与客户经理对话
             </SmartLink>
           </div>
         </div>

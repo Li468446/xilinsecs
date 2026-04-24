@@ -114,8 +114,8 @@ export default function Base64Tool() {
               </Button>
             ) : null}
           </div>
-          <div className="mt-3 min-h-[180px] rounded-[24px] border border-slate-200 bg-slate-950 p-4 text-sm leading-7 text-slate-100">
-            {error ? <span className="text-rose-300">{error}</span> : output || "处理结果会显示在这里。"}
+          <div className="soft-output-panel mt-3 min-h-[180px] p-4 text-sm leading-7">
+            {error ? <span className="text-rose-500">{error}</span> : output || "处理结果会显示在这里。"}
           </div>
         </div>
       </section>

@@ -23,9 +23,9 @@ export default function PortalPage({ portal }: PortalPageProps) {
           { label: "联系我们", href: "/contact/", variant: "outline" },
         ]}
         aside={
-          <div className="rounded-[28px] border border-white/15 bg-white/8 p-6 text-white backdrop-blur">
-            <p className="text-xs uppercase tracking-[0.22em] text-cyan-200">Portal brief</p>
-            <p className="mt-4 text-base leading-8 text-slate-200">{portal.summary}</p>
+          <div className="glass-card p-6 text-slate-950">
+            <p className="text-xs uppercase tracking-[0.22em] text-blue-700">Portal brief</p>
+            <p className="mt-4 text-base leading-8 text-slate-600">{portal.summary}</p>
           </div>
         }
       />

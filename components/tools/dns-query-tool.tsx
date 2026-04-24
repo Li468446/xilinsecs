@@ -130,13 +130,13 @@ export default function DnsQueryTool() {
           </div>
         </form>
 
-        <div className="mt-8 rounded-[24px] border border-slate-200 bg-slate-950 p-4 text-sm text-slate-100">
+        <div className="soft-output-panel mt-8 p-4 text-sm">
           {error ? (
-            <div className="text-rose-300">{error}</div>
+            <div className="text-rose-500">{error}</div>
           ) : result ? (
             <pre className="overflow-x-auto whitespace-pre-wrap">{JSON.stringify(result, null, 2)}</pre>
           ) : (
-            <div className="text-slate-400">查询结果会显示在这里。</div>
+            <div className="text-slate-500">查询结果会显示在这里。</div>
           )}
         </div>
       </section>

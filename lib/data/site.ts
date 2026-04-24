@@ -17,9 +17,10 @@ export const siteConfig = {
   name: "海口希灵赛斯网络科技有限责任公司",
   shortName: "HK XSEC",
   domain: "https://www.sec.hn.cn",
-  description:
-    "为企业交付基础设施、软件系统、安全能力与服务运营入口的数字化建设团队。",
-  tagline: "用可落地的基础设施、软件与安全能力，搭建更可靠的业务系统。",
+  description: "致力于提供专业的信息化解决方案,助力企业数字化转型升级。",
+  seoDescription:
+    "专业的信息化解决方案供应商，提供私有云建设、信息安全咨询、网站建设等服务，致力于为客户提供专业、高效的数字化解决方案。",
+  tagline: "让信息化建设，不再有难题。",
   address:
     "海南省海口市龙华区金宇街道南海大道豪苑路1号海口中关村信息谷创新中心2025-ZC-1115",
   email: "xuzhongxin@sec.hn.cn",
@@ -29,64 +30,61 @@ export const siteConfig = {
   wecomLink: "https://work.weixin.qq.com/kfid/kfc5c60f929a2e703af",
   icpLink: "https://beian.miit.gov.cn/",
   icpText: "琼ICP备2025060601号-1",
+  copyright: "© 2025—2026 sec.hn.cn 版权所有",
+  ipv6Text: "本站支持IPv6",
   verifyLink:
     "https://e-register.amr.hainan.gov.cn:17089/#/?qyxx=I8%20HAEmgoR6TVmokEB2TW1jqNWu%2F6cwhlApRTM7toGszlRcs6ZUi30MySmjBAtsgtZrbljvmf6FmOfpPbwlMUXvXAKOaWdJBSpMNk53TLb0OV2l7K2tyrV5eL%20ru5FxZeM%20zBV09hFpPXdWTrE13jYyjlD6xSGFbyQCUx1f3M4I%3D",
 };
 
 export const homeHero = {
-  kicker: "Brand platform for infrastructure teams",
-  title: "把企业的基础设施、软件交付与安全运营放进同一条执行链。",
+  kicker: "海口希灵赛斯网络科技有限责任公司",
+  title: "云启无限",
   description:
-    "HK XSEC 聚焦信息化底座、业务系统、网络安全和服务运营入口。我们不只交付页面或设备，而是把架构、流程、可运维性与增长效率一起落到上线结果里。",
+    "让信息化建设，不再有难题。专业定制私有云基础设施建设，信息安全建设，网站建设，软件开发，计算机设备，信息安全设备销售等信息化建设解决方案。",
   primaryCta: {
-    label: "发起项目沟通",
-    href: "/contact/",
+    label: "与客户经理对话",
+    href: siteConfig.wecomLink,
   } satisfies CTA,
   secondaryCta: {
-    label: "查看精选案例",
-    href: "/projects/",
+    label: "提交您的需求",
+    href: "/business/services/c/need.html",
     variant: "outline",
   } satisfies CTA,
 };
 
 export const homeStats: SiteStat[] = [
   {
-    value: "4",
-    label: "业务能力带",
-    detail: "基础设施、软件系统、安全运营、服务入口统一规划。",
+    value: "私有云",
+    label: "建设与咨询",
+    detail: "针对不同客户群体与预算，分析需求并量身定制建设方案。",
   },
   {
-    value: "10+",
-    label: "可访问入口",
-    detail: "客户、伙伴、工具、下载与内容体系全部统一到新站架构。",
+    value: "信息安全",
+    label: "测试与咨询",
+    detail: "提供漏洞扫描、定向测试与整改建议，协助客户降低风险。",
   },
   {
-    value: "EdgeOne",
-    label: "部署基线",
-    detail: "按静态导出与边缘分发优化，兼顾性能、SEO 与可维护性。",
+    value: "信息系统",
+    label: "建设服务",
+    detail: "建立企业门户网站或定制部署业务系统，支撑长期运营。",
   },
 ];
 
 export const homeHighlights: HomeHighlight[] = [
   {
-    title: "基础设施与云平台",
-    description: "从私有云、虚拟化到边缘节点治理，帮助团队把环境稳定性和交付效率真正拉齐。",
+    title: "VMware私有云",
+    description: "释放服务器最大性能，节省硬件采购成本，提供高可用性云计算服务。",
     icon: Cloud,
   },
   {
-    title: "软件系统与服务入口",
-    description: "围绕官网、业务平台、代理协同和客户服务，建立统一的信息架构与内容运营基础。",
-    icon: Blocks,
-  },
-  {
-    title: "网络与信息安全",
-    description: "把漏洞扫描、渗透测试、安全加固与持续运营放进同一套项目交付路径中。",
+    title: "信息安全咨询",
+    description: "部署防火墙、态势感知平台、漏洞扫描系统，全方位保障企业信息安全。",
     icon: ShieldCheck,
   },
   {
-    title: "伙伴协同与客户成功",
-    description: "让客户、伙伴与内部团队共享一套更顺滑的查询、提交流程和工作台入口。",
-    icon: Workflow,
+    title: "信息化基础建设",
+    description: "快速构建企业门户，提升SEO排名，提供静态网站建设和托管服务。",
+    icon: Globe,
   },
 ];
 
@@ -116,43 +114,60 @@ export const contactChannels = [
 
 export const footerGroups: Array<{ title: string; links: LinkItem[] }> = [
   {
-    title: "主站",
+    title: "关于我们",
     links: [
-      { label: "首页", href: "/" },
-      { label: "关于我们", href: "/about/" },
-      { label: "项目案例", href: "/projects/" },
-      { label: "联系我们", href: "/contact/" },
-    ],
-  },
-  {
-    title: "业务",
-    links: [
-      { label: "服务能力", href: "/services/" },
-      { label: "产品目录", href: "/products/" },
-      { label: "合作伙伴", href: "/partners/" },
-      { label: "招聘信息", href: "/careers/" },
+      { label: "企业简介", href: "/leadership/me/" },
+      { label: "职业机会", href: "/careers/cn/" },
+      { label: "领导团队", href: "/leadership/me/lead/" },
+      { label: "隐私政策", href: "/legal/privacy/" },
     ],
   },
   {
     title: "资源",
     links: [
-      { label: "工具中心", href: "/tools/" },
-      { label: "下载中心", href: "/downloads/" },
-      { label: "企业动态", href: "/news/" },
-      { label: "隐私政策", href: "/legal/privacy/" },
+      { label: "IOA保密办公", href: "/source/ztsm/" },
+      { label: "ZTNA跨境办公", href: "/source/ssrc/cf-sec-hn-cn/" },
+      { label: "MD5在线校验", href: "/business/services/g/md5check.html" },
+      {
+        label: "软件资产S3",
+        href: "https://user-ocloud.ihep.ac.cn/share/15328d44-91cc-40ce-9e17-022ff934be16?pwd=340854",
+        external: true,
+      },
     ],
   },
   {
-    title: "外部入口",
+    title: "星际网络应用",
     links: [
-      { label: "企业微信", href: siteConfig.wecomLink, external: true },
       {
-        label: "云效 Ops",
+        label: "云效Ops",
         href: "https://devops.aliyun.com/workbench?orgId=690f52c666aca23eccbe7d4c",
         external: true,
       },
-      { label: "镜像仓库", href: "https://packages.sec.hn.cn/", external: true },
-      { label: "互联网违法举报", href: "https://www.12377.cn/", external: true },
+      { label: "配置镜像仓库", href: "https://packages.sec.hn.cn/", external: true },
+    ],
+  },
+  {
+    title: "联系我们",
+    links: [
+      { label: "客服咨询", href: siteConfig.wecomLink, external: true },
+      { label: "商务合作", href: "/business/c/need.html" },
+      { label: "客户服务", href: "/business/c/" },
+    ],
+  },
+  {
+    title: "社交媒体",
+    links: [{ label: "抖音", href: "https://v.douyin.com/9N7akmvVn1Q/", external: true }],
+  },
+  {
+    title: "友情链接",
+    links: [
+      { label: "海软计小智", href: "https://hncst-jxz.sec.hn.cn/", external: true },
+      { label: "民选甄企", href: "https://community.sec.hn.cn/", external: true },
+      {
+        label: "订阅格式转换",
+        href: "https://zjdyzh.xinnew.top/",
+        external: true,
+      },
     ],
   },
 ];

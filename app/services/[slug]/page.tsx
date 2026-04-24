@@ -40,9 +40,9 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
           { label: "查看相关案例", href: "/projects/", variant: "outline" },
         ]}
         aside={
-          <div className="rounded-[28px] border border-white/15 bg-white/8 p-6 text-white backdrop-blur">
-            <p className="text-xs uppercase tracking-[0.22em] text-cyan-200">Scope</p>
-            <p className="mt-4 text-base leading-8 text-slate-200">{service.summary}</p>
+          <div className="glass-card p-6 text-slate-950">
+            <p className="text-xs uppercase tracking-[0.22em] text-blue-700">Scope</p>
+            <p className="mt-4 text-base leading-8 text-slate-600">{service.summary}</p>
           </div>
         }
       />

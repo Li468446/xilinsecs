@@ -166,24 +166,27 @@ const footerStyle = `
     color: #0a84ff;
 }
 .footer .row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: minmax(220px, 1.3fr) repeat(3, minmax(150px, 1fr));
+    gap: 24px;
+    align-items: start;
 }
 .footer .col {
-    flex: 1 1 0;
-    min-width: 150px;
+    min-width: 0;
+}
+.footer-brand {
+    max-width: 320px;
 }
 .footer .footer-section h4 {
-    cursor: pointer;
     position: relative;
+    padding-right: 18px;
 }
 .footer .footer-section h4::after {
     content: '▼';
     position: absolute;
     right: 0;
     transition: transform 0.3s ease;
+    display: none;
 }
 .footer .footer-section.collapsed h4::after {
     transform: rotate(-90deg);
@@ -256,8 +259,16 @@ const footerStyle = `
     100% { transform: scale(0.9); opacity:0.6; }
 }
 @media (max-width:768px){
-    .footer .row{flex-direction:column;}
+    .footer .row{grid-template-columns:1fr;}
     .footer .col{min-width:auto;}
+    .footer .footer-section h4::after{display:block;}
+}
+@media (max-width:1200px){
+    .footer .row{grid-template-columns:repeat(3, minmax(0, 1fr));}
+    .footer-brand{grid-column:1 / -1; max-width:420px;}
+}
+@media (max-width:900px){
+    .footer .row{grid-template-columns:repeat(2, minmax(0, 1fr));}
 }
 /* 亮证弹窗样式 */
 .license-modal-overlay {
@@ -497,16 +508,10 @@ function renderFooter(containerId = "site-footer") {
     // -------------------- 移动端折叠栏目逻辑 --------------------
     const sections = container.querySelectorAll('.footer-section');
     function updateLayout(){
-        const isMobile = window.innerWidth <= 768;
         sections.forEach(sec=>{
             const list = sec.querySelector('ul');
-            if(isMobile){
-                sec.classList.add('collapsed');
-                list.style.maxHeight=0;
-            } else {
-                sec.classList.remove('collapsed');
-                list.style.maxHeight=list.scrollHeight+"px";
-            }
+            sec.classList.remove('collapsed');
+            list.style.maxHeight=list.scrollHeight+"px";
         });
     }
     

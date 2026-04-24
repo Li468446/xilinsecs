@@ -106,17 +106,17 @@ export default function RandomPickerTool() {
             </span>
           ))}
         </div>
-        <div className="mt-6 rounded-[24px] border border-slate-200 bg-slate-950 p-4 text-white">
-          <div className="text-sm text-slate-300">抽取结果</div>
+        <div className="soft-output-panel mt-6 p-4">
+          <div className="text-sm text-slate-500">抽取结果</div>
           <div className="mt-4 flex flex-wrap gap-3">
             {picked.length ? (
               picked.map((item) => (
-                <span key={item} className="rounded-full bg-cyan-400/15 px-4 py-2 text-sm text-cyan-100">
+                <span key={item} className="rounded-full bg-cyan-50 px-4 py-2 text-sm text-cyan-700">
                   {item}
                 </span>
               ))
             ) : (
-              <span className="text-sm text-slate-400">暂无结果</span>
+              <span className="text-sm text-slate-500">暂无结果</span>
             )}
           </div>
         </div>
