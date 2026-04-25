@@ -47,7 +47,7 @@ export const homeHero = {
   } satisfies CTA,
   secondaryCta: {
     label: "提交您的需求",
-    href: "/business/services/c/need.html",
+    href: "/contact/request/",
     variant: "outline",
   } satisfies CTA,
 };
@@ -116,18 +116,18 @@ export const footerGroups: Array<{ title: string; links: LinkItem[] }> = [
   {
     title: "关于我们",
     links: [
-      { label: "企业简介", href: "/leadership/me/" },
-      { label: "职业机会", href: "/careers/cn/" },
-      { label: "领导团队", href: "/leadership/me/lead/" },
+      { label: "企业简介", href: "/about/" },
+      { label: "职业机会", href: "/careers/" },
+      { label: "领导团队", href: "/company/leadership/" },
       { label: "隐私政策", href: "/legal/privacy/" },
     ],
   },
   {
     title: "资源",
     links: [
-      { label: "IOA保密办公", href: "/source/ztsm/" },
-      { label: "ZTNA跨境办公", href: "/source/ssrc/cf-sec-hn-cn/" },
-      { label: "MD5在线校验", href: "/business/services/g/md5check.html" },
+      { label: "IOA保密办公", href: "/downloads/ioa-secure-office/" },
+      { label: "ZTNA跨境办公", href: "/downloads/cross-border-office/" },
+      { label: "MD5在线校验", href: "/tools/md5-check/" },
       {
         label: "软件资产S3",
         href: "https://user-ocloud.ihep.ac.cn/share/15328d44-91cc-40ce-9e17-022ff934be16?pwd=340854",
@@ -150,7 +150,7 @@ export const footerGroups: Array<{ title: string; links: LinkItem[] }> = [
     title: "联系我们",
     links: [
       { label: "客服咨询", href: siteConfig.wecomLink, external: true },
-      { label: "商务合作", href: "/business/c/need.html" },
+      { label: "商务合作", href: "/contact/request/" },
       { label: "客户服务", href: "/business/c/" },
     ],
   },

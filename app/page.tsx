@@ -24,7 +24,7 @@ const coreCapabilities = [
     title: "VMware私有云",
     description: "释放服务器最大性能，节省硬件采购成本，提供高可用性云计算服务。",
     icon: Cloud,
-    href: "/business/services/b/hnhsd-vmh3c.html",
+    href: "/products/cloud/",
     label: "了解更多",
   },
   {
@@ -38,7 +38,7 @@ const coreCapabilities = [
     title: "信息化基础建设",
     description: "快速构建企业门户，提升SEO排名，提供静态网站建设和托管服务。",
     icon: Globe,
-    href: "/business/services/b/htc-ihaikou.html",
+    href: "/products/software/",
     label: "了解更多",
   },
 ];
@@ -91,7 +91,7 @@ const featuredProjects = [
     image: "/source/index_imgs/ihaikou_index01.webp",
     author: "徐中信",
     date: "2025-01-17",
-    href: "/business/services/b/htc-ihaikou.html",
+    href: "/projects/ihaikou-platform/",
   },
   {
     title: "VMware 私有云故障修复",
@@ -99,7 +99,7 @@ const featuredProjects = [
     image: "/source/index_imgs/hsd_index02.webp",
     author: "徐中信",
     date: "2025-03-26",
-    href: "/business/services/b/hnhsd-vmh3c.html",
+    href: "/projects/vmware-recovery/",
   },
   {
     title: "海口海甸小学信创系统软件适配",
@@ -107,7 +107,7 @@ const featuredProjects = [
     image: "/business/services/b/hhps-xinchuang/01.webp",
     author: "徐中信",
     date: "2025-09-03",
-    href: "/business/services/b/keliy.pdf",
+    href: "/projects/xinchuang-adaptation/",
   },
   {
     title: "海口红塔烟草局",
@@ -115,7 +115,7 @@ const featuredProjects = [
     image: "/business/services/b/hhps-xinchuang/01.webp",
     author: "徐中信",
     date: "2025-10-28",
-    href: "/business/services/b/",
+    href: "/services/enterprise/",
   },
 ];
 
@@ -125,28 +125,28 @@ const latestNews = [
     summary: "为海南自贸港封关准备，新增技术进出口，代理进出口经营。",
     date: "2025-11-06",
     image: "/leadership/indexnews/images/news/post6.webp",
-    href: "https://www.hnftp.gov.cn/",
+    href: "/news/2025/technology-import-export/",
   },
   {
     title: "代理商服务平台上线",
     summary: "企业自主开发代理商服务平台前端服务上线，面向希灵赛斯的代理商提供跨部门协作等服务。",
     date: "2025-09-01",
     image: "/leadership/indexnews/images/news/post1_thumb.webp",
-    href: "/business/services/p/",
+    href: "/news/2025/partner-platform-launch/",
   },
   {
     title: "公共服务平台上线",
     summary: "企业自主开发公共服务平台前端服务上线，面向全球网民提供公共服务。",
     date: "2025-08-11",
     image: "/leadership/indexnews/images/news/post3_news.webp",
-    href: "/business/services/g/index.html",
+    href: "/news/2025/public-service-center-launch/",
   },
   {
     title: "客户服务平台上线",
     summary: "企业自主开发客户服务平台前端，面向希灵赛斯的潜在客户和现有客户提供服务。",
     date: "2025-07-31",
     image: "/leadership/indexnews/images/news/post4.webp",
-    href: "/business/services/c/index.html",
+    href: "/news/2025/customer-service-center-refresh/",
   },
 ];
 
@@ -233,7 +233,7 @@ export default function HomePage() {
                   <p className="mt-3 text-sm leading-7 text-slate-600">
                     把您的项目需求、时间节点与预算提交给我们，我们会在T+1个工作日内联系您。
                   </p>
-                  <ButtonLink href="/business/services/c/need.html" className="mt-6">
+                  <ButtonLink href="/contact/request/" className="mt-6">
                     现在提交
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </ButtonLink>
